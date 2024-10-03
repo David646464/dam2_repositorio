@@ -13,8 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView textView; // Añadir una referencia al TextView
+    private TextView textView ; // Añadir una referencia al TextView
     private Button button; // Añadir una referencia al Button
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,15 +30,18 @@ public class MainActivity extends AppCompatActivity {
         // Inicializar el TextView y el Button
         textView = findViewById(R.id.textView);
         button = findViewById(R.id.button);
+        bundle = savedInstanceState;
 
         // Configurar el OnClickListener para el botón
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 // Cambiar el texto del TextView cuando se haga clic en el botón
                 textView.setText("¡Has hecho clic en el botón!");
             }
         });
+
 
 
 
