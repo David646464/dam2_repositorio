@@ -60,6 +60,7 @@ public class Corredor implements Serializable {
         TiempoSegundos = tiempoSegundos;
     }
 
+    
     @Override
     public String toString() {
         return "Participante{" +
