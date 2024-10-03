@@ -1,0 +1,122 @@
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES -----> se creo correctamente
+CALOR/2src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ -----> se creo correctamente -----> No tiene el formato CURSO/NUMERO/ALUMNO -----> No tiene el formato CURSO/NUMERO/ALUMNO
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MART�NEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERN�NDEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOF�A P�REZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO G�MEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA S�NCHEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES -----> se creo correctamente
+
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR-----> ha sido borrado
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\1-PEDRO GONZALEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM2\2-ANA MARTÍNEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\1-CARLOS LOPEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\DAM1\2-MARIA FERNÁNDEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\1-JUAN RODRÍGUEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR1\2-SOFÍA PÉREZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\1-LUCÍA GARCÍA -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\ASIR2\2-ALBERTO GÓMEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\FRIO\1-ELENA SÁNCHEZ -----> se creo correctamente
+src\Tarea3Parte2\EJ2_A3_2UD1\ALUMNOS\CALOR\1-MIGUEL TORRES -----> se creo correctamente
