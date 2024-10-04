@@ -1,0 +1,15 @@
+<prefs xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="nombre_de_la_app">Aplicación</string>
+    <integer name="valor_interior">Valor interior</integer>
+    <boolean name="flag_booleane">Flag booleane</boolean>
+    <array name="listado_array" type="string[]">
+        <item>Valor 1</item>
+        <item>Valor 2</item>
+        <item>Valor 3</item>
+    </array>
+    <pair name="pair_name" type="string[string]">
+        <key>string_value</key>
+        <value>Valor string</value>
+    </pair>
+    <integer name="valor_interior2">Valor interior 2</integer>
+</prefs>
