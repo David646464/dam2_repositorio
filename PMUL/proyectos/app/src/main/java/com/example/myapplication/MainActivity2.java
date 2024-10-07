@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,9 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
-    private Button button ;
-    private EditText editText1, editText2;
-    private CheckBox checkBox;
+    private TextView textView1 ;
+
 
 
 
@@ -37,16 +37,10 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
 
-        button = findViewById(R.id.button1);
-        editText1 = findViewById(R.id.editTextText1);
-        editText2 = findViewById(R.id.editTextText2);
-        checkBox = findViewById(R.id.checkBox1);
+         textView1= findViewById(R.id.textView1);
 
-        editText1.setText((String)getData("editText1"));
-        editText2.setText((String)getData("editText2"));
-        String texto = (String) getData("checkBox");
-        checkBox.setText(texto);
-        checkBox.setChecked(texto.equals("true"));
+
+
     }
 
     public void Guardar(View view){
