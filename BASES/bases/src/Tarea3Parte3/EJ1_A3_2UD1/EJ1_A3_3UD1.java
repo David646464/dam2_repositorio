@@ -47,7 +47,7 @@ public class EJ1_A3_3UD1 {
             int numeroDorsal = sc.nextInt();
 
             try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(ruta));
-                ObjectOutputStream objectOutputStreamAux = new ObjectOutputStream(new FileOutputStream("src\\Tarea3Parte3\\EJ1_A3_2UD1\\aux.dat"));) {
+                ObjectOutputStream objectOutputStreamAux = new ObjectOutputStream(new FileOutputStream("src\\Tarea3Parte4\\EJ1_A3_4UD1\\aux.dat"));) {
                 while (true){
                     Corredor corredor = (Corredor) objectInputStream.readObject();
                     if(!(corredor.getDorsal() == numeroDorsal)){
@@ -57,7 +57,7 @@ public class EJ1_A3_3UD1 {
             }catch (Exception e){
             }
             try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(ruta));
-                 ObjectInputStream objectInputStreamAux = new ObjectInputStream(new FileInputStream("src\\Tarea3Parte3\\EJ1_A3_2UD1\\aux.dat"));){
+                 ObjectInputStream objectInputStreamAux = new ObjectInputStream(new FileInputStream("src\\Tarea3Parte4\\EJ1_A3_4UD1\\aux.dat"));){
                 while (true){
                     Corredor corredor = (Corredor) objectInputStreamAux.readObject();
                     objectOutputStream.writeObject(corredor);
@@ -67,7 +67,7 @@ public class EJ1_A3_3UD1 {
             }
 
             try {
-                Files.delete(Path.of("src\\Tarea3Parte3\\EJ1_A3_2UD1\\aux.dat"));
+                Files.delete(Path.of("src\\Tarea3Parte4\\EJ1_A3_4UD1\\aux.dat"));
             }catch (Exception e){
                 throw  new RuntimeException();
             }
@@ -82,7 +82,7 @@ public class EJ1_A3_3UD1 {
             int numeroDorsal = sc.nextInt();
 
             try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(ruta));
-                ObjectOutputStream objectOutputStreamAux = new ObjectOutputStream(new FileOutputStream("src\\Tarea3Parte3\\EJ1_A3_2UD1\\aux.dat"));) {
+                ObjectOutputStream objectOutputStreamAux = new ObjectOutputStream(new FileOutputStream("src\\Tarea3Parte4\\EJ1_A3_4UD1\\aux.dat"));) {
                 while (true){
                     Corredor corredor = (Corredor) objectInputStream.readObject();
                     if(corredor.getDorsal() == numeroDorsal){
@@ -96,7 +96,7 @@ public class EJ1_A3_3UD1 {
             }catch (Exception e){
             }
             try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(ruta));
-                    ObjectInputStream objectInputStreamAux = new ObjectInputStream(new FileInputStream("src\\Tarea3Parte3\\EJ1_A3_2UD1\\aux.dat"));){
+                    ObjectInputStream objectInputStreamAux = new ObjectInputStream(new FileInputStream("src\\Tarea3Parte4\\EJ1_A3_4UD1\\aux.dat"));){
                 while (true){
                     Corredor corredor = (Corredor) objectInputStreamAux.readObject();
                     objectOutputStream.writeObject(corredor);
@@ -106,7 +106,7 @@ public class EJ1_A3_3UD1 {
             }
 
             try {
-                Files.delete(Path.of("src\\Tarea3Parte3\\EJ1_A3_2UD1\\aux.dat"));
+                Files.delete(Path.of("src\\Tarea3Parte4\\EJ1_A3_4UD1\\aux.dat"));
             }catch (Exception e){
                 throw  new RuntimeException();
             }
