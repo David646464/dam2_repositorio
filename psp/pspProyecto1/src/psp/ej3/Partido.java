@@ -1,7 +1,7 @@
 package psp.ej3;
 
 public class Partido implements Comparable{
-    private Integer votos = 0;
+    private int votos = 0;
     private String nombre;
 
     public synchronized void incrementarVotos(){
