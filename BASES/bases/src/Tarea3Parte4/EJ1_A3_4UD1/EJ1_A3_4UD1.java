@@ -8,7 +8,10 @@ import java.util.Scanner;
 
 public class EJ1_A3_4UD1 {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        runCode(args);
+        String[] string = new String[1];
+        string[0] = "src/Tarea3Parte4/EJ1_A3_4UD1/corredores.dat";
+
+        runCode(string);
     }
 
     private static void runCode(String[] args) throws IOException, ClassNotFoundException {
@@ -38,6 +41,8 @@ public class EJ1_A3_4UD1 {
 }
 
     private static void borrar(String ruta) {
+
+
     }
 
     private static void modificarRegistro(String ruta) throws IOException {
@@ -85,7 +90,7 @@ public class EJ1_A3_4UD1 {
         while (corredor != null) {
             corredor = crearCorredor((int) randomAccessFile.length() / 80 + 1);
             if (corredor != null) {
-                randomAccessFile.seek(corredor.getDorsal() * 80);
+                randomAccessFile.seek(corredor.getDorsal() * 80L);
                 if (randomAccessFile.read() != 0) {
                     guardarCorredor(randomAccessFile, corredor);
                 } else {

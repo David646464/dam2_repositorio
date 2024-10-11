@@ -1,8 +1,9 @@
-package Tarea4.CLASESDATOS;
+package CLASESDATOS1;
+
+
+
 
 import java.io.*;
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -72,7 +73,7 @@ public class Alumno implements Serializable {
 
     }
     public void guardarAlumno() throws IOException {
-        RandomAccessFile randomAccessFile = new RandomAccessFile("src\\Tarea4\\ficheros\\alumnos.dat", "rw");
+        RandomAccessFile randomAccessFile = new RandomAccessFile("src\\Tarea4_mod\\ficheros\\alumnos.dat", "rw");
         randomAccessFile.seek(numero * 100);
         randomAccessFile.writeInt(numero);
         randomAccessFile.writeUTF(nombre.getNombre());
@@ -96,7 +97,7 @@ public class Alumno implements Serializable {
     }
 
     public static Alumno leerAlumno(int numeroAlumno) throws IOException {
-        RandomAccessFile randomAccessFile = new RandomAccessFile("src\\Tarea4\\ficheros\\alumnos.dat", "rw");
+        RandomAccessFile randomAccessFile = new RandomAccessFile("src\\Tarea4_mod\\ficheros\\alumnos.dat", "rw");
         randomAccessFile.seek(numero * 100);
         try {
             int numero = randomAccessFile.readInt();
@@ -113,14 +114,29 @@ public class Alumno implements Serializable {
             }catch (Exception e){
 
             }
-            return new Alumno(numero,nombre,date,listaTelefonos,borrado);
+            return new Alumno(numero,nombre,date,listaTelefonos,numero == -1 ? true : false);
         }catch (Exception e){
             return null;
         }
     }
 
 
-    public static NotaAlumno getNotas(){
-        return  null;
+    public static ArrayList<NotaAlumno> getNotas(){
+        ArrayList<NotaAlumno> notas = new ArrayList<>();
+
+        NotaAlumno notaAlumno = new NotaAlumno();
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\Tarea4_mod\\ficheros\\NotasAlumnos.dat"))){
+            while (true){
+                notaAlumno = (NotaAlumno) objectInputStream.readObject();
+                notas.add(notaAlumno);
+            }
+
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+
+        }
+
+        return notas;
     }
 }
