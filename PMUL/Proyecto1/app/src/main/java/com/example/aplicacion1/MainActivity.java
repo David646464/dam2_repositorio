@@ -41,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void modificar(View view){
-        
+
         cambiarEscena(view, 0);
     }
 
 
     public  void obtenerDatos(){
+
         SharedPreferences prefs = getSharedPreferences(this.getClass().getName(), MODE_PRIVATE);
         listaString = new ArrayList<>();
         for (String texto :  prefs.getAll().keySet()){
