@@ -45,9 +45,9 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void Guardar(View view){
 
-        saveData("editText1", editText1.getText());
+        /*saveData("editText1", editText1.getText());
         saveData("editText2", editText2.getText());
-        saveData("checkBox", checkBox.isChecked());
+        saveData("checkBox", checkBox.isChecked());*/
 
         Intent intent = new Intent(MainActivity2.this,MainActivity3.class);
         startActivity(intent);
