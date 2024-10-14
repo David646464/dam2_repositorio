@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Ajustes extends AppCompatActivity {
+    private int numero = -1;
     private EditText nombre;
     private EditText apellido1;
     private EditText apellido2;

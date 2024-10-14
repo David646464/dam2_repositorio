@@ -39,12 +39,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void modificar(View view){
+
+        cambiarEscena(view, 0);
+    }
+
+
     public  void obtenerDatos(){
         SharedPreferences prefs = getSharedPreferences(this.getClass().getName(), MODE_PRIVATE);
         listaString = new ArrayList<>();
         for (String texto :  prefs.getAll().keySet()){
             listaString.add((String) getData(texto));
         }
+
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaString);
         lista.setAdapter(arrayAdapter);
 
@@ -58,10 +65,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(this.getClass().getName(), MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(name, value.toString());
+
         editor.apply();
     }
     public void cambiarEscena(View view){
+
         Intent intent = new Intent(this,Ajustes.class);
+        startActivity(intent);
+    }
+
+    public void cambiarEscena(View view,int i){
+        Intent intent = new Intent(this,Ajustes.class);
+        //intent.putExtra("NumeroUsuario", i)
+        //int defcon=getIntent().getIntExtra("NumeroUsuario",-1);
         startActivity(intent);
     }
 }
