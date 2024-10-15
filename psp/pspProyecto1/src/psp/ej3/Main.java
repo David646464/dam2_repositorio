@@ -12,7 +12,7 @@ public class Main {
         Votante votante = null;
         ArrayList<Votante> votantes = new ArrayList<>();
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10; i++) {
             votante = new Votante(votacion);
             votante.start();
             votantes.add(votante);

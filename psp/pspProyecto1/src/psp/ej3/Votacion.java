@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Votacion {
     private ArrayList<Partido> arrayListPartidos ;
-
+    private ArrayList<Partido> partidosGanadores = new ArrayList<>();
     public Votacion(ArrayList<Partido> arrayListPartidos) {
         this.arrayListPartidos = arrayListPartidos;
     }
@@ -41,18 +41,20 @@ public class Votacion {
         for (int i = 0; i < arrayListPartidos.size(); i++) {
             if (arrayListPartidos.get(i).getVotos() > votos){
                 votos = arrayListPartidos.get(i).getVotos();
+                partidosGanadores.clear();
+                partidosGanadores.add(arrayListPartidos.get(i));
+            } else if(arrayListPartidos.get(i).getVotos() == votos){
+                partidosGanadores.add(arrayListPartidos.get(i));
+
             }
         }
-        for (Partido partido : arrayListPartidos){
-            if (partido.getVotos() == votos){
+        for (Partido partido : partidosGanadores){
                 System.out.println(partido.toString());
-            }
         }
 
     }
 
     public void mostrarVotos() {
-        Collections.sort(arrayListPartidos);
         for (Partido partido :arrayListPartidos){
             System.out.println(partido.toString());
         }
