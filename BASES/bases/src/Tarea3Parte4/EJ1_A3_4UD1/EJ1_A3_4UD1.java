@@ -1,5 +1,7 @@
 package Tarea3Parte4.EJ1_A3_4UD1;
 
+import UD1.EJ1_A3_2UD1.Corredor;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -138,7 +140,7 @@ public class EJ1_A3_4UD1 {
             int dorsal = Dorsal;
             System.out.println("Introduce el tiempo en segundos:");
             double tiempoEnSegundos = sc.nextDouble();
-            corredor = new Corredor(nombre, apellido1, apellido2, dorsal, tiempoEnSegundos,false);
+            corredor = new Corredor();
         }
         return corredor;
     }

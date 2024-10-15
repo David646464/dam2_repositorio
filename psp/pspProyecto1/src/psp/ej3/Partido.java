@@ -5,9 +5,7 @@ public class Partido implements Comparable{
     private String nombre;
 
     public synchronized void incrementarVotos(){
-        Integer aux = votos;
-
-        votos = aux + 1;
+        votos++;
     }
 
     public Partido(String nombre) {

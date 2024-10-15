@@ -1,5 +1,8 @@
 package Tarea4.CLASESDATOS;
 
+import CLASESDATOS.Nombre;
+import CLASESDATOS.NotaAlumno;
+
 import java.io.*;
 import java.text.DateFormat;
 import java.time.LocalDate;
@@ -68,7 +71,7 @@ public class Alumno implements Serializable {
     public long LongitudRegistro() {
         //Date en Internet dice que ocupa 12 bytes? . Vamos a suponer esto
         
-        return (4+nombre.nombre.length() +nombre.apellido1.length()+nombre.apellido2.length()+12 + (telefono.toString()).length()+ 1);
+        return (4+ nombre.getNombre().length() + nombre.getApellido1().length()+ nombre.getApellido2().length()+12 + (telefono.toString()).length()+ 1);
 
     }
     public void guardarAlumno() throws IOException {

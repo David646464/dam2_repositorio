@@ -1,15 +1,24 @@
 package psp.ej3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-
-        Votacion votacion = new Votacion(Votacion.getVotacion(5));
+        String[] partidos = {"PSOE", "Podemos", "Ciudadanos", "Vox"};
+        ArrayList<String> nombresPartidos = new ArrayList<>(Arrays.stream(partidos).toList());
+        Votacion votacion = new Votacion(Votacion.getVotacion(nombresPartidos));
 
         Votante votante = null;
+        ArrayList<Votante> votantes = new ArrayList<>();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             votante = new Votante(votacion);
             votante.start();
+            votantes.add(votante);
+        }
+        for (Votante votante1 : votantes) {
+            votante1.join();
         }
 
         votacion.Ganador();

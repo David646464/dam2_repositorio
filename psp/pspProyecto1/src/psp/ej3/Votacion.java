@@ -20,21 +20,35 @@ public class Votacion {
         return partidos;
     }
 
+    public static ArrayList<Partido> getVotacion( ArrayList<String> partidosNombres) {
+        ArrayList<Partido> partidos = new ArrayList<>();
+
+        for (String nombrePartido : partidosNombres) {
+            Partido partido = new Partido(nombrePartido);
+            partidos.add(partido);
+        }
+        return partidos;
+    }
+
     public ArrayList<Partido> getArrayListPartidos() {
         return arrayListPartidos;
     }
 
     public void Ganador(){
-        Collections.sort(arrayListPartidos);
+        //Collections.sort(arrayListPartidos);
         System.out.println("Ganador o ganadores");
-        for (Partido partido :arrayListPartidos){
-            if (arrayListPartidos.getFirst().getVotos() == partido.getVotos()){
-                System.out.println(partido.toString());
-            }else {
-                break;
+        int votos = 0;
+        for (int i = 0; i < arrayListPartidos.size(); i++) {
+            if (arrayListPartidos.get(i).getVotos() > votos){
+                votos = arrayListPartidos.get(i).getVotos();
             }
-
         }
+        for (Partido partido : arrayListPartidos){
+            if (partido.getVotos() == votos){
+                System.out.println(partido.toString());
+            }
+        }
+
     }
 
     public void mostrarVotos() {

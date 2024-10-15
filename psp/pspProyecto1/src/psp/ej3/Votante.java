@@ -20,6 +20,6 @@ public class Votante extends Thread{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        votacion.getArrayListPartidos().get(new Random().nextInt(5)).incrementarVotos();
+        votacion.getArrayListPartidos().get(new Random().nextInt(votacion.getArrayListPartidos().size())).incrementarVotos();
     }
 }
