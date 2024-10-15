@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,14 +38,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         lista = findViewById(R.id.lista);
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                cambiarEscena(position);
+            }
+        });
         obtenerDatos();
     }
 
 
-    public void modificar(View view){
 
-        cambiarEscena(view, 0);
-    }
 
 
     public  void obtenerDatos(){
@@ -76,10 +81,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void cambiarEscena(View view,int i){
+    public void cambiarEscena(int i){
         Intent intent = new Intent(this,Ajustes.class);
-        //intent.putExtra("NumeroUsuario", i)
-        //int defcon=getIntent().getIntExtra("NumeroUsuario",-1);
+        intent.putExtra("NumeroUsuario", i);
         startActivity(intent);
     }
 }
