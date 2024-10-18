@@ -72,7 +72,7 @@ public class DatosUsuario extends AppCompatActivity {
                 String provinciaTexto = c.getString(1);
                 arrayAdapterProvincias.add(provinciaTexto);
                 if (usuario != null && usuario.getProvincia_id() == c.getInt(0)){
-                    provincia.setSelection(arrayAdapterProvincias.getCount()-1);
+                    provincia.setSelection(arrayAdapterProvincias.getPosition(c.getString(1)));
                 }
             }while(c.moveToNext());
         }
@@ -87,7 +87,6 @@ public class DatosUsuario extends AppCompatActivity {
             apellido2.setText(usuario.getApellido2());
             edad.setText(String.valueOf(usuario.getEdad()));
             vip.setChecked(usuario.isVip());
-            provincia.setSelection(usuario.getProvincia_id());
         }
     }
 
@@ -97,12 +96,14 @@ public class DatosUsuario extends AppCompatActivity {
         String apellido2Texto = apellido2.getText().toString();
         int edadTexto = Integer.parseInt(edad.getText().toString());
         boolean vipTexto = vip.isChecked();
-        int provinciaTexto = provincia.getSelectedItemPosition();
-        Toast.makeText(this, String.valueOf(id), Toast.LENGTH_SHORT).show();
+        String provinciaTexto = arrayAdapterProvincias.getItem(provincia.getSelectedItemPosition());
+        Cursor c = db.rawQuery("SELECT * FROM provincia WHERE nombreProvincia = '"+provinciaTexto+"'", null);
+        c.moveToFirst();
+        int id_provincia = c.getInt(0);
         if(id == -1){
-            db.execSQL("INSERT INTO usuario (nombre, apellido1, apellido2, edad, vip, provincia_id) VALUES ('"+nombreTexto+"','"+apellido1Texto+"','"+apellido2Texto+"',"+edadTexto+","+vipTexto+","+provinciaTexto+")");
+            db.execSQL("INSERT INTO usuario (nombre, apellido1, apellido2, edad, vip, provincia_id) VALUES ('"+nombreTexto+"','"+apellido1Texto+"','"+apellido2Texto+"',"+edadTexto+","+vipTexto+","+id_provincia+")");
         }else{
-            db.execSQL("UPDATE usuario SET nombre = '"+nombreTexto+"', apellido1 = '"+apellido1Texto+"', apellido2 = '"+apellido2Texto+"', edad = "+edadTexto+", vip = "+vipTexto+", provincia_id = "+provinciaTexto+" WHERE id = "+id);
+            db.execSQL("UPDATE usuario SET nombre = '"+nombreTexto+"', apellido1 = '"+apellido1Texto+"', apellido2 = '"+apellido2Texto+"', edad = "+edadTexto+", vip = "+vipTexto+", provincia_id = "+id_provincia);
         }
         finish();
 
