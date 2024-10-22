@@ -8,13 +8,15 @@ public class Plaza {
         this.ocupada = false;
     }
 
-    public synchronized void ocupar(Conductor conductor) {
+    public  void ocupar(Conductor conductor) {
         this.conductor = conductor;
         conductor.setAparcado(true);
+        System.out.println("Conductor " + conductor.getNombre() + " aparca en la plaza");
         this.ocupada = true;
     }
 
-    public void liberar() {
+    public  void liberar() {
+        System.out.println("Conductor " + conductor.getNombre() + " libera la plaza");
         this.conductor = null;
         this.ocupada = false;
     }

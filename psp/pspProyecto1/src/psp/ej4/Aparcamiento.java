@@ -11,24 +11,36 @@ public class Aparcamiento {
         }
     }
 
-    public void aparcar(Conductor conductor) {
-        for (Plaza plaza : plazas) {
-            if (!plaza.isOcupada()) {
-                plaza.ocupar(conductor);
-                break;
+    public synchronized void aparcar(Conductor conductor) {
+        while (!conductor.isAparcado()) {
+            if (!isFull()) {
+                for (Plaza plaza : plazas) {
+                    if (!plaza.isOcupada()) {
+                        plaza.ocupar(conductor);
+                        break;
+                    }
+                }
+            } else {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
         mostrarPlazas();
     }
 
-    public void liberar(Conductor conductor) {
+    public synchronized void liberar(Conductor conductor) {
         for (Plaza plaza : plazas) {
-           if (plaza.getConductor()!=null){
-               if (plaza.getConductor().equals(conductor)) {
-                   plaza.liberar();
-                   break;
-               }
-           }
+            if (plaza.getConductor() != null) {
+                if (plaza.getConductor().equals(conductor)) {
+                    plaza.liberar();
+                    notifyAll();
+                    break;
+                }
+            }
         }
         mostrarPlazas();
     }
@@ -43,16 +55,27 @@ public class Aparcamiento {
         mostrarPlazas();
     }
 
-    public synchronized void mostrarPlazas() {
-        System.out.println();
+    public void mostrarPlazas() {
+        String plazasOcupadas = "";
         for (Plaza plaza : plazas) {
             if (plaza.isOcupada()) {
-                System.out.print(plaza.getConductor().getNombre() + "-");
+                plazasOcupadas += plaza.getConductor().getNombre() + "-";
             } else {
-                System.out.print("X" + "-");
+                plazasOcupadas += "X" + "-";
             }
         }
+        System.out.println(plazasOcupadas);
 
+
+    }
+
+    private boolean isFull() {
+        for (Plaza plaza : plazas) {
+            if (!plaza.isOcupada()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

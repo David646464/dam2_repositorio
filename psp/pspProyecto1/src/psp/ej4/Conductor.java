@@ -39,6 +39,7 @@ public class Conductor extends Thread {
         }
         if (aparcado) {
             aparcamiento.liberar(this);
+
         }
 
     }
