@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Enlaar con un DTD-->
+<!DOCTYPE Actores SYSTEM "src\UD2\EJ2_1A2UD2\Actores.dtd">
 <Actores>
     <Actor id="51">
         <Nome>Elisabeth Shue</Nome>
