@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--- El elmento actores contiene cero o más actores. -->
+<!ELEMENT Actores (Actor)*>
+<!--- El elemento Actor debe tener nome, sexo y fecha de nacimiento. -->
+<!ELEMENT Actor (Nome,Sexo,DataNacemento)>
+<!---  Actor debe tener obligatorio el atributo id -->
+<!ATTLIST Actor
+    id ID #REQUIRED
+ >
+<!--- (#PCDATA) – contenido textual, un conjunto de caracteres -->
+<!ELEMENT Nome (#PCDATA)>
+<!ELEMENT Sexo (#PCDATA)>
+<!ELEMENT DataNacemento (#PCDATA)>
+<!--- #IMPLIED: permite no especificar el atributo (es opcional).-->
+<!ATTLIST DataNacemento
+    formato CDATA #IMPLIED
+  >

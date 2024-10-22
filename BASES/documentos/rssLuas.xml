@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:Luas="Luas" version="2.0">
+  <channel>
+    <title>Fases lunares</title>
+    <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es</link>
+    <description>Fases lunares</description>
+    <item>
+      <title>Luna nueva  25/10/2022 12:48</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=25/10/2022</link>
+      <description>25/10/2022 12:48</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=25/10/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">25/10/2022 12:48</Luas:data>
+      <Luas:estado descricion="Fase lunar">Luna nueva</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">0</Luas:idLua>
+    </item>
+    <item>
+      <title>Cuarto creciente  01/11/2022 07:38</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=01/11/2022</link>
+      <description>01/11/2022 07:38</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=01/11/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">01/11/2022 07:38</Luas:data>
+      <Luas:estado descricion="Fase lunar">Cuarto creciente</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">1</Luas:idLua>
+    </item>
+    <item>
+      <title>Luna llena  08/11/2022 12:02</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=08/11/2022</link>
+      <description>08/11/2022 12:02</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=08/11/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">08/11/2022 12:02</Luas:data>
+      <Luas:estado descricion="Fase lunar">Luna llena</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">2</Luas:idLua>
+    </item>
+    <item>
+      <title>Cuarto menguante  16/11/2022 14:29</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=16/11/2022</link>
+      <description>16/11/2022 14:29</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=16/11/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">16/11/2022 14:29</Luas:data>
+      <Luas:estado descricion="Fase lunar">Cuarto menguante</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">3</Luas:idLua>
+    </item>
+    <item>
+      <title>Luna nueva  23/11/2022 23:57</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=23/11/2022</link>
+      <description>23/11/2022 23:57</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=23/11/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">23/11/2022 23:57</Luas:data>
+      <Luas:estado descricion="Fase lunar">Luna nueva</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">0</Luas:idLua>
+    </item>
+    <item>
+      <title>Cuarto creciente  30/11/2022 15:38</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=30/11/2022</link>
+      <description>30/11/2022 15:38</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=30/11/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">30/11/2022 15:38</Luas:data>
+      <Luas:estado descricion="Fase lunar">Cuarto creciente</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">1</Luas:idLua>
+    </item>
+    <item>
+      <title>Luna llena  08/12/2022 05:09</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=08/12/2022</link>
+      <description>08/12/2022 05:09</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=08/12/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">08/12/2022 05:09</Luas:data>
+      <Luas:estado descricion="Fase lunar">Luna llena</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">2</Luas:idLua>
+    </item>
+    <item>
+      <title>Cuarto menguante  16/12/2022 09:59</title>
+      <link>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=16/12/2022</link>
+      <description>16/12/2022 09:59</description>
+      <guid>https://www.meteogalicia.gal/web/predicion/maritima/mareasIndex.action?request_locale=es&amp;data=16/12/2022</guid>
+      <Luas:data descricion="Fecha de inicio de la fase lunar">16/12/2022 09:59</Luas:data>
+      <Luas:estado descricion="Fase lunar">Cuarto menguante</Luas:estado>
+      <Luas:idLua descricion="Identificador de la fase lunar">3</Luas:idLua>
+    </item>
+  </channel>
+</rss>
+

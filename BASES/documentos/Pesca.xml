@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Pesca   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="UD7_Ejercicio5_Pesca.xsd">
+  <Especies>
+    <Especie nome="Robaliza" valor="alto">
+      <Habitat>Mar</Habitat>
+      <NomeCientifico>Dicentrarchus labrax</NomeCientifico>
+      <OutrosNomes>Lubina</OutrosNomes>
+      <CapturaMinima unidade="cm">36</CapturaMinima>
+      <Nota>Puede llegar a penetrar en aguas dulces</Nota>
+    </Especie>
+    <Especie nome="Sargo" valor="alto">
+      <Habitat>Mar</Habitat>
+      <NomeCientifico>Diplodus sargus sargus</NomeCientifico>
+      <CapturaMinima unidade="cm">15</CapturaMinima>
+      <Nota>Os exemplares novos viven en bancos, volvéndose solitarios ó facerse maiores</Nota>
+    </Especie>
+    <Especie nome="Congrio" valor="baixo">
+      <Habitat>Mar</Habitat>
+      <NomeCientifico>Conger conger</NomeCientifico>
+      <CapturaMinima unidade="cm">58</CapturaMinima>
+      <Nota>A parte final do seu corpo non se come, pois ten moitas espiñas.</Nota>
+      <Nota>Sempre sae comer pola noite, e polo día agóchase en gretas e buracos.</Nota>
+    </Especie>
+    <Especie nome="Pinto" valor="medio">
+      <Habitat>Mar</Habitat>
+      <NomeCientifico>Labrus bergylta</NomeCientifico>
+      <CapturaMinima unidade="cm">35</CapturaMinima>
+      <Nota>Son hermafroditas proterogínicos. Comezan o seu crecemento como femias para transformarse posteriormente en machos</Nota>
+      <Nota>Presenta unha ámplia gama cromática, en xeral adaptada o seu entorno</Nota>
+    </Especie>
+    <Especie nome="Polbo" valor="alto">
+      <Habitat>Mar</Habitat>
+      <NomeCientifico>Octopoda</NomeCientifico>
+      <OutrosNomes>Pulpo</OutrosNomes>
+      <CapturaMinima unidade="kg">1</CapturaMinima>
+      <Nota>As especies mais grandes poden chegar a 6 metros e 70 kgs.</Nota>
+      <Nota>O terceiro brazo dereito do macho é realmente un órgano copulador</Nota>
+      <Nota>Son moluscos</Nota>
+      <Nota>Considéranse os invertebrados de maior intelixencia</Nota>
+    </Especie>
+    <Especie nome="Choco" valor="medio">
+      <Habitat>Mar</Habitat>
+      <NomeCientifico>Sepiida</NomeCientifico>
+      <OutrosNomes>Sepia</OutrosNomes>
+      <CapturaMinima unidade="cm">20</CapturaMinima>
+      <Nota>Cando se ven ameazados soltan un chorro de tinta</Nota>
+    </Especie>
+    <Especie nome="Troita">
+      <Habitat>Río</Habitat>
+      <NomeCientifico>Salmoninae</NomeCientifico>
+      <OutrosNomes>Trucha</OutrosNomes>
+      <CapturaMinima unidade="cm">21</CapturaMinima>
+    </Especie>
+  </Especies>
+  
+</Pesca>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
