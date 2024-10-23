@@ -28,6 +28,6 @@ public class Main {
         element = utilXmlManager.modifyChildElementContent(element, "Nombre", "Maria Rivas Rivas");
         utilXmlManager.addElementFinal(element);
         System.out.println(utilXmlManager.getElementsInfo());*/
-        System.out.println(utilXmlManager.getDocument().getDocumentURI());
+        System.out.println(utilXmlManager.getElementsInfo());
     }
 }
