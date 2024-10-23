@@ -12,4 +12,9 @@ public class ObjetoDePrueba implements Serializable {
     public String getNombre() {
         return nombre;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof ObjetoDePrueba && ((ObjetoDePrueba) obj).getNombre().equals(this.getNombre());
+    }
 }

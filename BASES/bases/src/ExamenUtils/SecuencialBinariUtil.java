@@ -1,6 +1,7 @@
 package ExamenUtils;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class SecuencialBinariUtil {
     private ObjectInputStream objectInputStream;
@@ -75,10 +76,82 @@ public class SecuencialBinariUtil {
     public Object leerObjeto(){
         try {
             return objectInputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        }catch (Exception e) {
+            return null;
         }
-        return null;
+
+    }
+
+    public void guardarSerieObjetos(Object[] objects){
+        for (Object object : objects) {
+            guardarObjeto(object);
+        }
+    }
+
+    public Object[] leerSerieObjetos(int cantidad){
+        Object[] objects = new Object[cantidad];
+        for (int i = 0; i < cantidad; i++) {
+            objects[i] = leerObjeto();
+        }
+        return objects;
+    }
+
+    public void borrarArchivo() {
+        File file = new File(root);
+        file.delete();
+    }
+
+    public void borrarArchivo(String root) {
+        File file = new File(root);
+        file.delete();
+    }
+
+
+    public boolean objetoEnArchivo(Object object) {
+        abrirLectura();
+        Object obj;
+        try {
+            while ((obj = leerObjeto()) != null) {
+                if (obj.equals(object)){
+                    cerrarLectura();
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Fin del archivo");
+
+        }
+        cerrarLectura();
+        return false;
+    }
+
+    public boolean objetoEnArchivo(Object object, String root) {
+        setRoot(root);
+        return objetoEnArchivo(object);
+    }
+
+    public void  borrarObjetoEnArchivo(Object object) {
+        abrirLectura();
+        Object obj;
+        ArrayList<Object> objects = new ArrayList<>();
+
+        int i = 0;
+        try {
+            while ((obj = leerObjeto()) != null) {
+                if (!obj.equals(object)){
+                    objects.add(obj);
+                    i++;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Fin del archivo");
+
+        }
+        cerrarLectura();
+        borrarArchivo();
+        abrirEscritura();
+        guardarSerieObjetos(objects.toArray());
+        cerrarEscritura();
     }
 
 
