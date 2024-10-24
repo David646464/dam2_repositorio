@@ -103,7 +103,7 @@ public class DatosUsuario extends AppCompatActivity {
         if(id == -1){
             db.execSQL("INSERT INTO usuario (nombre, apellido1, apellido2, edad, vip, provincia_id) VALUES ('"+nombreTexto+"','"+apellido1Texto+"','"+apellido2Texto+"',"+edadTexto+","+vipTexto+","+id_provincia+")");
         }else{
-            db.execSQL("UPDATE usuario SET nombre = '"+nombreTexto+"', apellido1 = '"+apellido1Texto+"', apellido2 = '"+apellido2Texto+"', edad = "+edadTexto+", vip = "+vipTexto+", provincia_id = "+id_provincia);
+            db.execSQL("UPDATE usuario SET nombre = '"+nombreTexto+"', apellido1 = '"+apellido1Texto+"', apellido2 = '"+apellido2Texto+"', edad = "+edadTexto+", vip = "+vipTexto+", provincia_id = "+id_provincia + " WHERE id = " + id);
         }
         finish();
 
