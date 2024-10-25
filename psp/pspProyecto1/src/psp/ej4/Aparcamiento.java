@@ -14,12 +14,7 @@ public class Aparcamiento {
     public synchronized void aparcar(Conductor conductor) {
         while (!conductor.isAparcado()) {
             if (!isFull()) {
-                for (Plaza plaza : plazas) {
-                    if (!plaza.isOcupada()) {
-                        plaza.ocupar(conductor);
-                        break;
-                    }
-                }
+                plazas.get(getPlazaLibre()).ocupar(conductor);
             } else {
                 try {
                     wait();
@@ -37,19 +32,9 @@ public class Aparcamiento {
             if (plaza.getConductor() != null) {
                 if (plaza.getConductor().equals(conductor)) {
                     plaza.liberar();
-                    notifyAll();
+                    notify();
                     break;
                 }
-            }
-        }
-        mostrarPlazas();
-    }
-
-    public void intercambiarConductor(Conductor conductor1, Conductor conductor2) {
-        for (Plaza plaza : plazas) {
-            if (plaza.getConductor().equals(conductor1)) {
-                plaza.intercambiarConductor(conductor2);
-                break;
             }
         }
         mostrarPlazas();
@@ -67,6 +52,15 @@ public class Aparcamiento {
         System.out.println(plazasOcupadas);
 
 
+    }
+
+    private int getPlazaLibre() {
+        for (int i = 0; i < plazas.size(); i++) {
+            if (!plazas.get(i).isOcupada()) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private boolean isFull() {
