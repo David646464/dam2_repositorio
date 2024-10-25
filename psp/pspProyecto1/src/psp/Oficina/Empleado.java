@@ -32,15 +32,11 @@ public class Empleado extends Thread{
             e.printStackTrace();
         }
         if(!trabajando){
-            oficina.trabajar(this);
-        }
-        try{
-            Thread.sleep((long)(Math.random()*1000));
-        }catch(InterruptedException e){
-            e.printStackTrace();
-        }
-        if(trabajando){
-            oficina.descansar(this);
+            try {
+                oficina.trabajar(this);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
