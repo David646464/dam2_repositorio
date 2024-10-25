@@ -1,5 +1,7 @@
 package psp.Oficina;
 
+import java.sql.SQLOutput;
+
 public class Oficina {
     private boolean trabajando = false;
     private Empleado[] empleados;
@@ -19,7 +21,11 @@ public class Oficina {
         jefe.setTrabajando(true);
         trabajando = true;
         for(Empleado empleado : empleados){
-           empleado.notify();
+           if (empleado.isAlive()){
+                synchronized (empleado){
+                     empleado.notify();
+                }
+           }
         }
     }
 
@@ -40,4 +46,16 @@ public class Oficina {
         oficina.abrir();
     }
 
+    public void trabajar(Empleado empleado) throws InterruptedException {
+        if (trabajando){
+            System.out.println(empleado.getNombre() + " Hola jefe!, me pongo a trabajar");
+            empleado.setTrabajando(true);
+        }else{
+            System.out.println(empleado.getNombre() + " ZZZz");
+            empleado.setTrabajando(false);
+            empleado.wait();
+            System.out.println(empleado.getNombre() + " buenos días jefe, aquí estoy trabajando");
+        }
+
+    }
 }

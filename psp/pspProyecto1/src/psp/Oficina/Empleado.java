@@ -26,34 +26,25 @@ public class Empleado extends Thread{
 
     @Override
     public void run(){
-        try{
+        try {
             Thread.sleep((long)(Math.random()*1000));
-        }catch(InterruptedException e){
-            e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         if(!trabajando){
-            try {
-                trabajar();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            synchronized (this){
+
+                try {
+                    oficina.trabajar(this);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         }
     }
 
-    private synchronized void trabajar() throws InterruptedException {
-        if (!oficina.isTrabajando()){
-            System.out.println(getNombre() + " zzzz");
-            this.wait();
-            if (oficina.isTrabajando()){
-                System.out.println(getNombre() + " buenos días jefe, aquí estoy trabajando");
-                return;
-            }
-            return;
-        }else{
-            System.out.println(getNombre() + " Hola jefe!, me pongo a trabajar");
-            return;
-        }
-    }
+
 
 
 }
