@@ -27,7 +27,7 @@ public class Jefe extends Thread{
         @Override
         public void run(){
             try{
-                Thread.sleep((long)(Math.random()*500));
+                Thread.sleep((long)(Math.random()*1000));
             }catch(InterruptedException e){
                 e.printStackTrace();
             }

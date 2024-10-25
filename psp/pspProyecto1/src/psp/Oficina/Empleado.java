@@ -33,10 +33,27 @@ public class Empleado extends Thread{
         }
         if(!trabajando){
             try {
-                oficina.trabajar(this);
+                trabajar();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
     }
+
+    private synchronized void trabajar() throws InterruptedException {
+        if (!oficina.isTrabajando()){
+            System.out.println(getNombre() + " zzzz");
+            this.wait();
+            if (oficina.isTrabajando()){
+                System.out.println(getNombre() + " buenos días jefe, aquí estoy trabajando");
+                return;
+            }
+            return;
+        }else{
+            System.out.println(getNombre() + " Hola jefe!, me pongo a trabajar");
+            return;
+        }
+    }
+
+
 }

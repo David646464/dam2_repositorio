@@ -13,29 +13,13 @@ public class Oficina {
         jefe = new Jefe("Jefe", this);
     }
 
-    public synchronized void trabajar(Empleado empleado) throws InterruptedException {
-        if (!jefe.isTrabajando()){
-            System.out.println(empleado.getNombre() + " zzzz");
-            empleado.wait();
-            if (jefe.isTrabajando()){
-                System.out.println(empleado.getNombre() + " buenos días jefe, aquí estoy trabajando");
-                return;
-            }
-            return;
-        }else{
-            System.out.println(empleado.getNombre() + " Hola jefe!, me pongo a trabajar");
-            return;
-        }
-    }
 
-    public void trabajar(Jefe jefe){
+    public  synchronized void trabajar(Jefe jefe){
         System.out.println(jefe.getNombre() + " EL JEFE HA LLEGADO!");
         jefe.setTrabajando(true);
         trabajando = true;
         for(Empleado empleado : empleados){
-            synchronized (empleado){
-                empleado.notify();
-            }
+           empleado.notify();
         }
     }
 
