@@ -21,7 +21,7 @@ import java.util.PrimitiveIterator;
 
 public class MainActivity extends AppCompatActivity {
     private ListView lista;
-    private ArrayAdapter<Usuario> arrayAdapter;
+    private ArrayAdapter<MiniObjeto> arrayAdapter;
     private SQLiteDatabase db = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         cargarDatos();
     }
 
-    public void cambiarEscena(Usuario item) {
+    public void cambiarEscena(MiniObjeto item) {
         Intent intent = new Intent(this, DatosUsuario.class);
         intent.putExtra("Usuario", item);
         startActivity(intent);
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void cambiarEscena(View view) {
         Intent intent = new Intent(this, DatosUsuario.class);
+        intent.putExtra("Usuario", new MiniObjeto(-1, ""));
         startActivity(intent);
     }
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         usuarios = getUsers();
         for (Usuario usuario : usuarios) {
-            arrayAdapter.add(usuario);
+            arrayAdapter.add(new MiniObjeto(usuario.getId(), usuario.toString()));
         }
         lista.setAdapter(arrayAdapter);
     }

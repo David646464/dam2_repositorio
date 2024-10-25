@@ -43,8 +43,8 @@ public class DatosUsuario extends AppCompatActivity {
 
         DatabaseManager dbHelper = new DatabaseManager(this);
         db = dbHelper.getWritableDatabase();
-        usuario = (Usuario) getIntent().getSerializableExtra("Usuario");
-
+        MiniObjeto miniObjeto = (MiniObjeto) getIntent().getSerializableExtra("Usuario");
+        usuario = getUser(miniObjeto,id);
 
         nombre = findViewById(R.id.campoNombre);
         apellido1 = findViewById(R.id.campoApellido1);
@@ -54,6 +54,14 @@ public class DatosUsuario extends AppCompatActivity {
         provincia = findViewById(R.id.spinnerProvincia);
         obtenerProvincias();
         obtenerDatos();
+    }
+
+    private Usuario getUser(MiniObjeto miniObjeto, int id) {
+        Cursor c = db.rawQuery("SELECT * FROM usuario WHERE id = " + miniObjeto.getId(), null);
+        if(c.moveToFirst()){
+            return new Usuario(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4), c.getInt(5) == 1, c.getInt(6));
+        }
+        return null;
     }
 
     @Override
@@ -80,7 +88,7 @@ public class DatosUsuario extends AppCompatActivity {
     }
 
     private void obtenerDatos() {
-        if(usuario != null){
+        if(usuario != null &&usuario.getId() != -1){
             id = usuario.getId();
             nombre.setText(usuario.getNombre());
             apellido1.setText(usuario.getApellido1());
@@ -90,25 +98,54 @@ public class DatosUsuario extends AppCompatActivity {
         }
     }
 
-    public void guardarDatos(View view){
-        String nombreTexto = nombre.getText().toString();
-        String apellido1Texto = apellido1.getText().toString();
-        String apellido2Texto = apellido2.getText().toString();
-        int edadTexto = Integer.parseInt(edad.getText().toString());
-        boolean vipTexto = vip.isChecked();
-        String provinciaTexto = arrayAdapterProvincias.getItem(provincia.getSelectedItemPosition());
-        Cursor c = db.rawQuery("SELECT * FROM provincia WHERE nombreProvincia = '"+provinciaTexto+"'", null);
-        c.moveToFirst();
-        int id_provincia = c.getInt(0);
-        if(id == -1){
-            db.execSQL("INSERT INTO usuario (nombre, apellido1, apellido2, edad, vip, provincia_id) VALUES ('"+nombreTexto+"','"+apellido1Texto+"','"+apellido2Texto+"',"+edadTexto+","+vipTexto+","+id_provincia+")");
-        }else{
-            db.execSQL("UPDATE usuario SET nombre = '"+nombreTexto+"', apellido1 = '"+apellido1Texto+"', apellido2 = '"+apellido2Texto+"', edad = "+edadTexto+", vip = "+vipTexto+", provincia_id = "+id_provincia + " WHERE id = " + id);
-        }
-        finish();
+    public void guardarDatos(View view) {
+        if (camposLLenos()) {
+                String nombreTexto = nombre.getText().toString();
+                String apellido1Texto = apellido1.getText().toString();
+                String apellido2Texto = apellido2.getText().toString();
+                int edadTexto = Integer.parseInt(edad.getText().toString());
+                boolean vipTexto = vip.isChecked();
+                String provinciaTexto = arrayAdapterProvincias.getItem(provincia.getSelectedItemPosition());
+                Cursor c = db.rawQuery("SELECT * FROM provincia WHERE nombreProvincia = '" + provinciaTexto + "'", null);
+                c.moveToFirst();
+                int id_provincia = c.getInt(0);
+                if (usuario == null || usuario.getId() == -1) {
+                    db.execSQL("INSERT INTO usuario (nombre, apellido1, apellido2, edad, vip, provincia_id) VALUES ('" + nombreTexto + "','" + apellido1Texto + "','" + apellido2Texto + "'," + edadTexto + "," + vipTexto + "," + id_provincia + ")");
+                } else {
+                    db.execSQL("UPDATE usuario SET nombre = '" + nombreTexto + "', apellido1 = '" + apellido1Texto + "', apellido2 = '" + apellido2Texto + "', edad = " + edadTexto + ", vip = " + vipTexto + ", provincia_id = " + id_provincia + " WHERE id = " + id);
+                }
 
-        cambiarEscena();
+            finish();
+
+            cambiarEscena();
+        }else{
+            camposVaciosSetError(true);
+        }
+        }
+
+    private void camposVaciosSetError(boolean b) {
+        if (nombre.getText().toString().isEmpty()){
+            nombre.setError("Campo vacío");
+        }else{
+            nombre.setError(null);
+        }
+        if (apellido1.getText().toString().isEmpty()){
+            apellido1.setError("Campo vacío");
+        }else{
+            nombre.setError(null);
+        }
+        if (apellido2.getText().toString().isEmpty()){
+            apellido2.setError("Campo vacío");
+        }else{
+            nombre.setError(null);
+        }
+        if (edad.getText().toString().isEmpty()){
+            edad.setError("Campo vacío");
+        }else{
+            nombre.setError(null);
+        }
     }
+
     public void nuevaProvincia(View view) {
         Intent intent = new Intent(this, NuevaProvincia.class);
         startActivity(intent);
@@ -119,5 +156,11 @@ public class DatosUsuario extends AppCompatActivity {
 
     }
 
+        private boolean camposLLenos() {
+            if (nombre.getText().toString().isEmpty() || apellido1.getText().toString().isEmpty() || apellido2.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
+                return false;
+            }
+            return true;
+        }
 
 }
