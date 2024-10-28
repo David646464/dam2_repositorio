@@ -21,4 +21,18 @@ Nome: Harrison Ford
 Sexo: home
 DataNacemento: 13/07/1943
 --------------------------------
-Número total de actores: 3
+Actor 4
+**********
+id: 156
+Nome: Persona2
+Sexo: home
+DataNacemento: 25/07/1943
+--------------------------------
+Actor 5
+**********
+id: 200
+Nome: Persona1
+Sexo: home
+DataNacemento: 13/08/1963
+--------------------------------
+Número total de actores: 5

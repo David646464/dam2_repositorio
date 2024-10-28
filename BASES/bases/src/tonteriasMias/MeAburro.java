@@ -1,7 +1,5 @@
 package tonteriasMias;
 
-import javax.smartcardio.TerminalFactory;
-import javax.smartcardio.TerminalFactorySpi;
 
 public class MeAburro {
     public static void main(String[] args) throws InterruptedException {
