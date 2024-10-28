@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 OPR/114.0.0.0" version="24.8.3">
+  <diagram name="Página-1" id="_OpcX7CHmwGCbE0Cd0Ah">
+    <mxGraphModel dx="1349" dy="588" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-1" value="Unidad 1. Identificación de los Sistemas ERP/CRM&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="90" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-2" target="B7mQQOBLMKgcxqiVuBdQ-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-620" y="350" />
+              <mxPoint x="-620" y="385" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-2" target="B7mQQOBLMKgcxqiVuBdQ-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-620" y="425" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-2" target="B7mQQOBLMKgcxqiVuBdQ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-2" value="Introducción" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-620" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-3" value="Revolución digital" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-600" y="420" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-4" value="Siglo XX" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-600" y="370" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-5" target="B7mQQOBLMKgcxqiVuBdQ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-5" target="B7mQQOBLMKgcxqiVuBdQ-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-460" y="505" />
+              <mxPoint x="-460" y="510" />
+              <mxPoint x="-440" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-5" value="emrpesa" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-590" y="490" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-6" value="funcionamiento(la gestion empresarial y intrerelacion de los departamentos)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="530" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-7" value="componentes(Departamentos)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="450" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-14" target="B7mQQOBLMKgcxqiVuBdQ-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-14" value="¿Qué es una empresa?" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-15" target="B7mQQOBLMKgcxqiVuBdQ-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-15" value="organización o institución dedicada a actividades o persecución de fines&lt;br/&gt;económicos o comerciales" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="360" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-16" value="&amp;nbsp;satisfacer las necesidades de bienes y/o servicios de la sociedad, a&lt;br/&gt;la par de asegurar la continuidad de la estructura productivo-comercia" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="480" width="170" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-20" target="B7mQQOBLMKgcxqiVuBdQ-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-20" target="B7mQQOBLMKgcxqiVuBdQ-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-20" target="B7mQQOBLMKgcxqiVuBdQ-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-20" value="Elementos para su creación y desarrollo:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.17;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-14" target="B7mQQOBLMKgcxqiVuBdQ-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-22" target="B7mQQOBLMKgcxqiVuBdQ-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-22" value="proyecto empresarial" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="720" width="130" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-23" value="objetivo principal de la producción (cliente)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="780" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B7mQQOBLMKgcxqiVuBdQ-24" target="B7mQQOBLMKgcxqiVuBdQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-24" value="tamaño de la empresa" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="750" width="130" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-25" value="planificación de la evolución del mismo a medio y largo plazo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-27" value="&amp;nbsp;Su tamaño inicial y planificación de crecimiento" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="740" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-33" value="Componentes básicos de la gestión empresarial&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-35" value="Estrategia" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="360" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-36" value="Gestión de personal" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="420" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-37" value="Finanzas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="480" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-38" value="Departamento de Operaciones" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="540" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-39" value="Marketing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="600" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-40" value="plan de actuacion" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-41" value="Misión" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="320" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-42" value="Visión" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="360" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-43" value="Valores" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="400" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B7mQQOBLMKgcxqiVuBdQ-44" value="Proposito de la empresa" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
