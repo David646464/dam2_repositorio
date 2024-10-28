@@ -55,6 +55,7 @@ public class Oficina {
             empleado.setTrabajando(false);
             empleado.wait();
             System.out.println(empleado.getNombre() + " buenos días jefe, aquí estoy trabajando");
+            
         }
 
     }
