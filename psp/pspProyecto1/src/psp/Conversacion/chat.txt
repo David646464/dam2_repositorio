@@ -1,0 +1,21 @@
+Chateador 1: Hola, ¿cómo estás?
+Chateador 2: Muy bien, ¿y tú?
+Chateador 1: Muy bien, ¿y tú?
+Chateador 2: También bien, gracias.
+Chateador 1: ¿Qué has hecho hoy?
+Chateador 2: He estado trabajando en un proyecto interesante.
+Chateador 1: ¡Qué bien! Cuéntame más.
+Chateador 2: Es un proyecto de programación en Java.
+Chateador 1: Me encanta Java. ¿Qué estás desarrollando?
+Chateador 2: Una aplicación de chat.
+Chateador 1: ¡Qué coincidencia! Yo también estoy trabajando en algo similar.
+Chateador 2: ¿En serio? ¡Qué interesante!
+Chateador 1: Sí, podríamos colaborar.
+Chateador 2: Me parece una excelente idea.
+Chateador 1: ¿Cuándo podríamos empezar?
+Chateador 2: ¿Qué tal mañana por la tarde?
+Chateador 1: Perfecto, nos vemos entonces.
+Chateador 2: Hasta mañana.
+Chateador 1: Hasta mañana, cuídate.
+Chateador 2: Tú también, adiós.
+Chateador 1: Adiós.
