@@ -37,11 +37,11 @@ public class Chat {
             }
             numActual++;
 
-                bufferedWriter.write(chateador.getNombre() + ": " + mensaje + "\n");
-                 bufferedWriter.flush();
-                System.out.println(chateador.getNombre() + ": " + mensaje);
-                turno = turno == 1 ? 2 : 1;
-                notifyAll();
+            bufferedWriter.write(chateador.getNombre() + ": " + mensaje + "\n");
+            bufferedWriter.flush();
+            System.out.println(chateador.getNombre() + ": " + mensaje);
+            turno = turno == 1 ? 2 : 1;
+            notifyAll();
 
 
         } else {
