@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-        <!ELEMENT Actores (Actor)*>
+        <!ELEMENT Actores (Actor*)>
         <!ELEMENT Actor (Nome, Sexo, DataNacemento)>
-        <!ATTLIST Actor
-                id ID #REQUIRED>
+        <!ATTLIST Actor id ID #REQUIRED>
         <!ELEMENT Nome (#PCDATA)>
         <!ELEMENT Sexo (#PCDATA)>
         <!ELEMENT DataNacemento (#PCDATA)>
-        <!ATTLIST DataNacemento
-                formato CDATA #IMPLIED>
+        <!ATTLIST DataNacemento formato CDATA #IMPLIED>
