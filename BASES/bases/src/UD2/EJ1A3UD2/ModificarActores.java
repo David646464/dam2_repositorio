@@ -29,7 +29,7 @@ public class ModificarActores {
             String fecha = fechas.get(id);
             utilXmlManager.modifyElementById("Actor",id, "DataNacemento", fecha);
         }
-        utilXmlManager.saveXmlChanges();
+        utilXmlManager.saveXmlChanges("src/UD2/EJ1A3UD2/Actores.dtd");
 
 
 
@@ -50,7 +50,7 @@ public class ModificarActores {
 
 
         addElementActor("Actor", null, childElements, atributes, utilXmlManager.getDocument());
-        utilXmlManager.saveXmlChanges();
+        utilXmlManager.saveXmlChanges("src/UD2/EJ1A3UD2/Actores.dtd");
         }else{
             System.out.println("El actor ya existe");
         }
