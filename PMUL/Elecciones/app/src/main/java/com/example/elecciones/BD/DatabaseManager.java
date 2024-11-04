@@ -5,7 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.elecciones.Objetos.Candidato;
 import com.example.elecciones.Utils.Hash;
+
+import java.util.ArrayList;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "mydatabase.db";
@@ -17,6 +20,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -89,6 +94,29 @@ public class DatabaseManager extends SQLiteOpenHelper {
             }
             return 0;
         }
+    }
+
+    public static String getNombrePartidoID(int ID){
+        Cursor cursor = db.rawQuery("SELECT nombrePartido FROM partido WHERE id = ?", new String[]{String.valueOf(ID)});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        } else {
+            return null;
+        }
+
+    }
+
+    public static ArrayList<Candidato> getCandidatos() {
+        ArrayList<Candidato> candidatos = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM candidato", null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                candidatos.add(new Candidato(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9)));
+            } while (cursor.moveToNext());
+        }
+        return candidatos;
     }
 
 

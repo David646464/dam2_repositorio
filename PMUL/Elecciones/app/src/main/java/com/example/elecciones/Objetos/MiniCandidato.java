@@ -14,6 +14,13 @@ public class MiniCandidato {
         this.apellido2 = apellido2;
         this.votos = votos;
     }
+    public MiniCandidato(Candidato candidato) {
+        this.id = candidato.getId();
+        this.nombre = candidato.getNombre();
+        this.apellido1 = candidato.getApellido1();
+        this.apellido2 = candidato.getApellido2();
+        this.votos = candidato.getVotos();
+    }
 
     public int getId() {
         return id;
