@@ -41,7 +41,7 @@ public class Chat {
             bufferedWriter.flush();
             System.out.println(chateador.getNombre() + ": " + mensaje);
             turno = turno == 1 ? 2 : 1;
-            notifyAll();
+            notify();
 
 
         } else {

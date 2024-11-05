@@ -31,17 +31,12 @@ public class Empleado extends Thread{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        if(!trabajando){
-            synchronized (this){
-
-                try {
-                    oficina.trabajar(this);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-
-            }
+        try {
+            oficina.trabajar(this);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+
     }
 
 

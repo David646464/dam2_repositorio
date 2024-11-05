@@ -1,10 +1,8 @@
 //David Sánchez Peso v4
-package UD2.util;
+package EJ1A3UD2;
 
 import org.w3c.dom.*;
-import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,7 +27,7 @@ import java.util.HashMap;
 public class UtilXmlManager {
     private String xmlPath;
     private String txtPath;
-    private static Document document;
+    private Document document;
 
     /**
      * Instantiates a new Util xml manager.
@@ -64,45 +62,6 @@ public class UtilXmlManager {
     public UtilXmlManager(String xmlPath) throws ParserConfigurationException, IOException, SAXException {
         this.xmlPath = xmlPath;
         document = getDocument(xmlPath);
-    }
-
-    public static Document createDocument(String s) {
-        try {
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            return documentBuilder.parse(new File(s));
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static void saveXmlChanges(String s, Document doc) {
-        try {
-            // Create a transformer factory and transformer
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-
-            // Set output properties for indentation
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-            // Create a DOM source and stream result
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(s));
-
-            // Remove empty text nodes
-            quitarLineasVacias(doc);
-
-            // Transform the document to the result
-            transformer.transform(source, result);
-        } catch (TransformerException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void quitarLineasVacias(Document doc) {
-        removeEmptyTextNodes(doc);
     }
 
     /**
@@ -665,11 +624,11 @@ public class UtilXmlManager {
         }
     }
 
-    public static void quitarLineasVacias() {
+    public void quitarLineasVacias() {
         removeEmptyTextNodes(document);
     }
 
-    private static void removeEmptyTextNodes(Node node) {
+    private void removeEmptyTextNodes(Node node) {
         NodeList nodeList = node.getChildNodes();
         for (int i = nodeList.getLength() - 1; i >= 0; i--) {
             Node childNode = nodeList.item(i);
@@ -694,62 +653,6 @@ public class UtilXmlManager {
 
     public Element getElementById(String actor, String a32) {
         return document.getElementById(a32);
-    }
-
-    public void validateXmlXSD(String xsdPath) {
-        try {
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            documentBuilderFactory.setValidating(true);
-            documentBuilderFactory.setNamespaceAware(true);
-            documentBuilderFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
-            documentBuilderFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaSource", new File(xsdPath));
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            documentBuilder.setErrorHandler(new ErrorHandler() {
-                @Override
-                public void warning(SAXParseException exception) throws SAXException {
-                    throw new SAXException("Warning: " + exception.getMessage());
-                }
-
-                @Override
-                public void error(SAXParseException exception) throws SAXException {
-                    throw new SAXException("Error: " + exception.getMessage());
-                }
-
-                @Override
-                public void fatalError(SAXParseException exception) throws SAXException {
-                    throw new SAXException("Fatal error: " + exception.getMessage());
-                }
-            });
-            documentBuilder.parse(new File(xmlPath));
-            System.out.println("El documento es válido");
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void saveDocumentXSLT(Document document) {
-        try {
-            // Create a transformer factory and transformer
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-
-            // Set output properties for indentation
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-            // Create a DOM source and stream result
-            DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(new File(xmlPath));
-
-            // Remove empty text nodes
-            quitarLineasVacias(document);
-
-            // Transform the document to the result
-            transformer.transform(source, result);
-        } catch (TransformerException e) {
-            e.printStackTrace();
-        }
     }
 }
 

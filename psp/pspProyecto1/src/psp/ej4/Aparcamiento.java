@@ -39,7 +39,6 @@ public class Aparcamiento {
         }
         mostrarPlazas();
     }
-
     public void mostrarPlazas() {
         String plazasOcupadas = "";
         for (Plaza plaza : plazas) {

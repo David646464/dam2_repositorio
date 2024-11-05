@@ -20,12 +20,8 @@ public class Oficina {
         System.out.println(jefe.getNombre() + " EL JEFE HA LLEGADO!");
         jefe.setTrabajando(true);
         trabajando = true;
-        for (Empleado empleado : empleados) {
-            if (empleado.isAlive()) {
-                synchronized (empleado) {
-                    empleado.notify();
-                }
-            }
+        synchronized (this) {
+            notifyAll();
         }
     }
 
@@ -42,16 +38,15 @@ public class Oficina {
         oficina.abrir();
     }
 
-    public void trabajar(Empleado empleado) throws InterruptedException {
+    public synchronized void trabajar(Empleado empleado) throws InterruptedException {
         if (trabajando) {
             System.out.println(empleado.getNombre() + " Hola jefe!, me pongo a trabajar");
             empleado.setTrabajando(true);
         } else {
             System.out.println(empleado.getNombre() + " ZZZz");
             empleado.setTrabajando(false);
-            empleado.wait();
+            wait();
             System.out.println(empleado.getNombre() + " buenos días jefe, aquí estoy trabajando");
-
         }
 
     }

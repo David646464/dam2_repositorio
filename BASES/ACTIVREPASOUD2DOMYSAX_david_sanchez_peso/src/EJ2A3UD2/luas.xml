@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Lunas Descripcion="Fases da lúa" Servicio="MeteoGalicia">
+    <Luna Estado="">
+        <Fecha/>
+        <Hora/>
+    </Luna>
+    <Luna Estado="Lúa nova">
+        <Fecha>02/10/202402/10/2024</Fecha>
+        <Hora>20:5020:50</Hora>
+    </Luna>
+    <Luna Estado="Cuarto crecente">
+        <Fecha>10/10/202410/10/2024</Fecha>
+        <Hora>20:5620:56</Hora>
+    </Luna>
+    <Luna Estado="Lúa chea">
+        <Fecha>17/10/202417/10/2024</Fecha>
+        <Hora>13:2713:27</Hora>
+    </Luna>
+    <Luna Estado="Cuarto minguante">
+        <Fecha>24/10/202424/10/2024</Fecha>
+        <Hora>10:0510:05</Hora>
+    </Luna>
+    <Luna Estado="Lúa nova">
+        <Fecha>01/11/202401/11/2024</Fecha>
+        <Hora>13:4813:48</Hora>
+    </Luna>
+    <Luna Estado="Cuarto crecente">
+        <Fecha>09/11/202409/11/2024</Fecha>
+        <Hora>06:5606:56</Hora>
+    </Luna>
+    <Luna Estado="Lúa chea">
+        <Fecha>15/11/202415/11/2024</Fecha>
+        <Hora>22:2922:29</Hora>
+    </Luna>
+</Lunas>

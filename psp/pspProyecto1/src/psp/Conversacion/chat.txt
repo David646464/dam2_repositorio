@@ -1,5 +1,5 @@
 Chateador 1: Hola, ¿cómo estás?
-Chateador 2: Hola, ¿cómo estás?
+Chateador 2: Muy bien, ¿y tú?
 Chateador 1: Muy bien, ¿y tú?
 Chateador 2: También bien, gracias.
 Chateador 1: ¿Qué has hecho hoy?
