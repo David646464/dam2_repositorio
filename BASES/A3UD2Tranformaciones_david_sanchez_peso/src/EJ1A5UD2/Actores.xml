@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Actores>
+    <Actor id="A51">
+        <Nome>Elisabeth Shue</Nome>
+        <Sexo>muller</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">10/10/1910</DataNacemento>
+    </Actor>
+    <Actor id="A139">
+        <Nome>Jhonny Depp</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">09/06/1963</DataNacemento>
+    </Actor>
+    <Actor id="A100">
+        <Nome>Harrison Ford</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">11/11/1911</DataNacemento>
+    </Actor>
+    <Actor id="A156">
+        <Nome>Persona2</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">25/07/1943</DataNacemento>
+    </Actor>
+    <Actor id="A200">
+        <Nome>Persona1</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">13/08/1963</DataNacemento>
+    </Actor>
+    <Actor id="A32">
+        <Nome>Michael Caine</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">1933-03-14</DataNacemento>
+    </Actor>
+</Actores>
