@@ -6,12 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.elecciones.Objetos.Candidato;
+import com.example.elecciones.Objetos.Partido;
 import com.example.elecciones.Utils.Hash;
 
 import java.util.ArrayList;
 
 public class DatabaseManager extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "mydatabase.db";
+    private static final String DATABASE_NAME = "mydatabase2.db";
     // Versión de la base de datos (cambiarlo cada vez que se realice un cambio en el esquema)
     private static final int DATABASE_VERSION = 1;
     private static DatabaseManager instance;
@@ -20,6 +21,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
 
 
@@ -41,6 +43,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('12345678A', '" + Hash.hash("12345678A")+"', 'Pablo', 'Casado', 'Blanco', 40, 1, 0, 0)");
         sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('87654321B', '" + Hash.hash("87654321B") + "', 'Pedro', 'Sánchez', 'Pérez-Castejón', 49, 2, 0, 0)");
         sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('12348765C', '" + Hash.hash("12348765C") + "', 'Pablo', 'Iglesias', 'Turrión', 42, 3, 0, 0)");
+        sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('12345678D', '" + Hash.hash("12345678D") + "', 'Albert', 'Rivera', 'Díaz', 41, 1, 0, 0)");
+        sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('87654321E', '" + Hash.hash("87654321E") + "', 'Inés', 'Arrimadas', 'García', 38, 2, 0, 0)");
+        sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('12348765F', '" + Hash.hash("12348765F") + "', 'Santiago', 'Abascal', 'Conde', 44, 3, 0, 0)");
 
         //Usuarios
         sqLiteDatabase.execSQL("INSERT INTO usuario (nif, password, nombre, apellido1, apellido2, edad, votosReaelizados) VALUES ('12345678A', '"+Hash.hash("12348765C")+"', 'Pablo', 'Casado', 'Blanco', 40, 0)");
@@ -52,7 +57,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS users");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS partido");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS candidato");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS usuario");
         onCreate(sqLiteDatabase);
     }
 
@@ -79,6 +86,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
             }
             return false;
         }
+    }
+
+    public static ArrayList<Candidato> getCandidatosByPartido(int i) {
+        ArrayList<Candidato> candidatos = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM candidato WHERE partido_id = ?", new String[]{String.valueOf(i)});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                candidatos.add(new Candidato(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9)));
+            } while (cursor.moveToNext());
+        }
+        return candidatos;
+
     }
 
     public int getNumVotosUsuario(String nif) {
@@ -117,6 +137,25 @@ public class DatabaseManager extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return candidatos;
+    }
+
+    public static ArrayList<Partido> getPartidos() {
+        ArrayList<Partido> partidos = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT id, nombrePartido, siglas, color FROM partido", null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                Partido partido = new Partido(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3)
+                );
+                partidos.add(partido);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return partidos;
     }
 
 
