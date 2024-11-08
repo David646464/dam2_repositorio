@@ -1,5 +1,6 @@
 package com.example.elecciones.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -12,11 +13,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.elecciones.BD.DatabaseManager;
-import com.example.elecciones.Objetos.Candidato;
+import com.example.elecciones.Database.DatabaseManager;
+import com.example.elecciones.Objects.Candidato;
 import com.example.elecciones.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CandidatosAdapter extends ArrayAdapter<Candidato> {
 
@@ -27,8 +29,10 @@ public class CandidatosAdapter extends ArrayAdapter<Candidato> {
         this.candidatosList = new ArrayList<>(objects);
     }
 
+    @NonNull
+    @SuppressLint("SetTextI18n")
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.partidos, parent, false);
         }
@@ -36,7 +40,7 @@ public class CandidatosAdapter extends ArrayAdapter<Candidato> {
         Candidato candidato = getItem(position);
 
         ImageView partyImageView = convertView.findViewById(R.id.partyImageView);
-        switch (DatabaseManager.getNombrePartidoID(candidato.getPartido_id())) {
+        switch (Objects.requireNonNull(DatabaseManager.getNombrePartidoID(Objects.requireNonNull(candidato).getPartido_id()))) {
             case "Partido Popular":
                 partyImageView.setImageResource(R.drawable.pp);
                 break;
@@ -54,9 +58,9 @@ public class CandidatosAdapter extends ArrayAdapter<Candidato> {
         TextView candidateNameTextView = convertView.findViewById(R.id.candidatoNameTextView);
         candidateNameTextView.setText(candidato.getNombre() + " " + candidato.getApellido1() + " " + candidato.getApellido2());
 
-        // Get the ListView and handle selection state
+
         ListView listView = (ListView) parent;
-        convertView.setBackgroundColor(listView.isItemChecked(position) ? Color.GRAY : Color.WHITE);
+        convertView.setBackgroundColor(listView.isItemChecked(position) ? Color.GRAY : Color.TRANSPARENT);
 
         return convertView;
     }

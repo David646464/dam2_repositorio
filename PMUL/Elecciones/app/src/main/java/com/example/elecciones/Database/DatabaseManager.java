@@ -1,12 +1,14 @@
-package com.example.elecciones.BD;
+package com.example.elecciones.Database;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.elecciones.Objetos.Candidato;
-import com.example.elecciones.Objetos.Partido;
+import com.example.elecciones.Objects.Candidato;
+import com.example.elecciones.Objects.Partido;
+import com.example.elecciones.Objects.Usuario;
 import com.example.elecciones.Utils.Hash;
 
 import java.util.ArrayList;
@@ -76,21 +78,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public Boolean login(String nif, String password) {
-        Cursor cursor = db.rawQuery("SELECT * FROM usuario WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM usuario WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
         if (cursor.getCount() > 0) {
             return true;
         } else {
-            Cursor cursor2 = db.rawQuery("SELECT * FROM candidato WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
-            if (cursor2.getCount() > 0) {
-                return true;
-            }
-            return false;
+            @SuppressLint("Recycle") Cursor cursor2 = db.rawQuery("SELECT * FROM candidato WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
+            return cursor2.getCount() > 0;
         }
     }
 
     public static ArrayList<Candidato> getCandidatosByPartido(int i) {
         ArrayList<Candidato> candidatos = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM candidato WHERE partido_id = ?", new String[]{String.valueOf(i)});
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM candidato WHERE partido_id = ?", new String[]{String.valueOf(i)});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
@@ -102,12 +101,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public int getNumVotosUsuario(String nif) {
-        Cursor cursor = db.rawQuery("SELECT votosRealizados FROM usuario WHERE nif = ?", new String[]{nif});
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT votosRealizados FROM usuario WHERE nif = ?", new String[]{nif});
        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             return cursor.getInt(0);
         } else {
-           Cursor cursor2 = db.rawQuery("SELECT votosRealizados FROM candidato WHERE nif = ?", new String[]{nif});
+           @SuppressLint("Recycle") Cursor cursor2 = db.rawQuery("SELECT votosRealizados FROM candidato WHERE nif = ?", new String[]{nif});
             if (cursor2.getCount() > 0) {
                 cursor2.moveToFirst();
                 return cursor2.getInt(0);
@@ -117,7 +116,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public static String getNombrePartidoID(int ID){
-        Cursor cursor = db.rawQuery("SELECT nombrePartido FROM partido WHERE id = ?", new String[]{String.valueOf(ID)});
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT nombrePartido FROM partido WHERE id = ?", new String[]{String.valueOf(ID)});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             return cursor.getString(0);
@@ -129,7 +128,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public static ArrayList<Candidato> getCandidatos() {
         ArrayList<Candidato> candidatos = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM candidato", null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM candidato order by partido_id", null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
@@ -158,8 +157,45 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return partidos;
     }
 
+    public static Usuario getUsuario(String usuario) {
+        Cursor cursor = db.rawQuery("SELECT * FROM usuario WHERE nif = ?", new String[]{usuario});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            Usuario user = new Usuario(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7));
+            cursor.close();
+            return user;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    public static void votar(Usuario usuario, ArrayList<Integer> selectedCandidates) {
+        String id = String.valueOf(usuario.getId());
+        db.execSQL("UPDATE usuario SET votosReaelizados = 3 WHERE id = ?", new String[]{id});
+        for (int i = 0; i < selectedCandidates.size(); i++) {
+            db.execSQL("UPDATE candidato SET votos = votos + 1 WHERE id = ?", new String[]{String.valueOf(selectedCandidates.get(i))});
+        }
+    }
 
 
+    public void nuevaVotacion() {
+        //Poner todos los votos a 0
+        db.execSQL("UPDATE candidato SET votos = 0");
+        //Poner los votos realizados a 0
+        db.execSQL("UPDATE usuario SET votosReaelizados = 0");
 
+    }
 
+    public static ArrayList<Candidato> getGanadoresConEmpates(){
+        ArrayList<Candidato> candidatos = new ArrayList<>();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM candidato WHERE votos = (SELECT MAX(votos) FROM candidato) order by partido_id", null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                candidatos.add(new Candidato(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9)));
+            } while (cursor.moveToNext());
+        }
+        return candidatos;
+    }
 }

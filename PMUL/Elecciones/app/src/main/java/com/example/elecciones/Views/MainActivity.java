@@ -12,8 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.elecciones.BD.DatabaseManager;
-import com.example.elecciones.Objetos.Usuario;
+import com.example.elecciones.Database.DatabaseManager;
+import com.example.elecciones.Objects.Usuario;
 import com.example.elecciones.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,9 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         if(databaseManager.login(usuario, contrasena)){
             Intent intent = new Intent(this, ViewVotacion.class);
+            intent.putExtra("usuario", usuario);
             startActivity(intent);
         }else{
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void nuevaVotacion(View view){
+        DatabaseManager.getInstance(this).nuevaVotacion();
+    }
+
+    public void ganadores(View view){
+        Intent intent = new Intent(this, Ganadores.class);
+        startActivity(intent);
     }
 }

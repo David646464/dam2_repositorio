@@ -1,4 +1,4 @@
-package com.example.elecciones.Objetos;
+package com.example.elecciones.Objects;
 
 public class Partido {
     private int id;
