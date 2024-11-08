@@ -6,13 +6,20 @@ package escenariocomplexo;
 
 import java.awt.CardLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author usuario
  */
 public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
+
     private javax.swing.DefaultListModel<Raza> modeloRaza;
+    private javax.swing.DefaultListModel<Propietario> modeloPropietario;
 
     /**
      * Creates new form IFrmltasCansRazas
@@ -21,7 +28,14 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
         initComponents();
         modeloRaza = new DefaultListModel<Raza>();
         listaRazas.setModel(modeloRaza);
+        modeloPropietario = new DefaultListModel<Propietario>();
+        listaPropietarios.setModel(modeloPropietario);
         cargarRazas();
+        cargarPropietarios();
+
+        this.setResizable(true);
+        this.setSize(800, 400);
+       SwingUtilities.invokeLater(() -> centrarEnDesktop());
     }
 
     /**
@@ -52,12 +66,15 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         panelAltaRaza = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        labelRaza = new java.awt.Label();
+        txtRaza = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(500, 400));
+        setTitle("Cans/Razas");
+        setMinimumSize(new java.awt.Dimension(100, 50));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Realizar alta de");
@@ -95,7 +112,6 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
         panelCentral.setBackground(new java.awt.Color(51, 255, 51));
         panelCentral.setLayout(new java.awt.CardLayout());
 
-        panelAltaCan.setBackground(new java.awt.Color(51, 51, 255));
         panelAltaCan.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setText("Nome");
@@ -185,6 +201,11 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
         panelAltaCan.add(jScrollPane2, gridBagConstraints);
 
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -211,41 +232,58 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
 
         panelCentral.add(panelAltaCan, "card1");
 
-        panelAltaRaza.setBackground(new java.awt.Color(255, 204, 255));
+        panelAltaRaza.setLayout(new java.awt.GridBagLayout());
 
-        jPanel7.setBackground(new java.awt.Color(51, 255, 51));
+        labelRaza.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        labelRaza.setText("Raza");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weightx = 0.05;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        panelAltaRaza.add(labelRaza, gridBagConstraints);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        txtRaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRazaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weightx = 0.7;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        panelAltaRaza.add(txtRaza, gridBagConstraints);
 
-        javax.swing.GroupLayout panelAltaRazaLayout = new javax.swing.GroupLayout(panelAltaRaza);
-        panelAltaRaza.setLayout(panelAltaRazaLayout);
-        panelAltaRazaLayout.setHorizontalGroup(
-            panelAltaRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
-            .addGroup(panelAltaRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelAltaRazaLayout.createSequentialGroup()
-                    .addGap(0, 421, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 422, Short.MAX_VALUE)))
-        );
-        panelAltaRazaLayout.setVerticalGroup(
-            panelAltaRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-            .addGroup(panelAltaRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelAltaRazaLayout.createSequentialGroup()
-                    .addGap(0, 185, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 185, Short.MAX_VALUE)))
-        );
+        jButton3.setText("Guardar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        panelAltaRaza.add(jButton3, gridBagConstraints);
+
+        jButton4.setText("Pechar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        panelAltaRaza.add(jButton4, gridBagConstraints);
 
         panelCentral.add(panelAltaRaza, "card2");
 
@@ -271,20 +309,92 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         //TODO  
-        CardLayout paneisLayout=(CardLayout)this.panelCentral.getLayout();
-        
-        if (jComboBox1.getSelectedItem().toString().equals("Cans")){
-            paneisLayout.show(this.panelCentral, "card1"); 
-        }else{
-              paneisLayout.show(this.panelCentral, "card2"); 
+        CardLayout paneisLayout = (CardLayout) this.panelCentral.getLayout();
+
+        if (jComboBox1.getSelectedItem().toString().equals("Cans")) {
+            paneisLayout.show(this.panelCentral, "card1");
+            this.setSize(800, 400);
+        } else {
+            paneisLayout.show(this.panelCentral, "card2");
+            this.setSize(300, 200);
         }
-      
+
     }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        int numError = 0;
+
+        if (txtChip.getText().isEmpty()) {
+
+            numError = 1;
+        } else if (DatabaseManager.existeChip(txtChip.getText()) == 1) {
+
+            numError = 2;
+        } else if (txtNome.getText().isEmpty()) {
+
+            numError = 3;
+        } else if (listaRazas.isSelectionEmpty()) {
+
+            numError = 4;
+        } else if (listaPropietarios.isSelectionEmpty()) {
+
+            numError = 5;
+        }
+
+        if (numError == 0) {
+            String chipCan = txtChip.getText();
+            String nomeCan = txtNome.getText();
+            int codRaza = ((Raza) listaRazas.getSelectedValue()).getCodRaza();
+            String dniPropietario = ((Propietario) listaPropietarios.getSelectedValue()).getDni();
+            DatabaseManager.inserirCan(new Can(chipCan, nomeCan, codRaza, dniPropietario));
+            txtChip.setText("");
+            txtNome.setText("");
+            listaRazas.clearSelection();
+            listaPropietarios.clearSelection();
+        } else {
+            mostrarError(numError);
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txtRazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRazaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int numError = 0;
+        if (txtRaza.getText().isEmpty()) {
+            numError = 6;
+        } else {
+            for (Raza raza : DatabaseManager.recuperarTodalasRazas()) {
+                if (raza.getDescripcion().equals(txtRaza.getText())) {
+                    numError = 7;
+                }
+            }
+        }
+        
+        if (numError == 0){
+            DatabaseManager.insertarRaza(new Raza(0, txtRaza.getText()));
+            txtRaza.setText("");
+        }else{
+            mostrarError(numError);
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -292,9 +402,9 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private java.awt.Label labelRaza;
     private javax.swing.JList listaPropietarios;
     private javax.swing.JList listaRazas;
     private javax.swing.JPanel panelAltaCan;
@@ -302,9 +412,56 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelCentral;
     private javax.swing.JTextField txtChip;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtRaza;
     // End of variables declaration//GEN-END:variables
 
     private void cargarRazas() {
         modeloRaza.addAll(DatabaseManager.recuperarTodalasRazas());
+    }
+
+    private void cargarPropietarios() {
+        modeloPropietario.addAll(DatabaseManager.recuperarTodolosPropietarios());
+    }
+
+    private void mostrarError(int numError) {
+        String mensaje = "";
+
+        // Configurar el mensaje según el tipo de error
+        switch (numError) {
+            //Errores del panel cans
+            case 1 ->
+                mensaje = "Se debe especificar el chip";
+            case 2 ->
+                mensaje = "El chip existe. Introduzca uno que no exista";
+            case 3 ->
+                mensaje = "Se debe especificar el nombre";
+            case 4 ->
+                mensaje = "Se debe seleccionar una raza";
+            case 5 ->
+                mensaje = "Se debe seleccionar un propietario";
+            //Errores del panel razas
+            case 6 ->
+                mensaje = "Se debe especificar el nombre de la raza";
+            case 7 ->
+                mensaje = "Esa raza ya existe";
+        }
+
+        // Mostrar el diálogo de error como modal dentro del JDesktopPane
+        JDesktopPane desktopPane = (JDesktopPane) this.getParent();
+        JOptionPane.showInternalMessageDialog(
+                desktopPane, // JDesktopPane como parent para modal interno
+                mensaje, // Mensaje de error
+                "Error", // Título del diálogo
+                JOptionPane.ERROR_MESSAGE // Tipo de mensaje
+        );
+
+    }
+    private void centrarEnDesktop() {
+        if (getParent() != null && getParent() instanceof JDesktopPane) {
+            JDesktopPane desktopPane = (JDesktopPane) getParent();
+            int x = (desktopPane.getWidth() - this.getWidth()) / 2;
+            int y = (desktopPane.getHeight() - this.getHeight()) / 2;
+            setLocation(x, y);
+        }
     }
 }

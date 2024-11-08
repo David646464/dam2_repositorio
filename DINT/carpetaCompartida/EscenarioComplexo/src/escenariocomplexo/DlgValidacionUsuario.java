@@ -20,6 +20,8 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
     public DlgValidacionUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        getRootPane().setDefaultButton(botonConectarVU); 
+        setLocationRelativeTo(null);
         
     }
 
@@ -54,7 +56,6 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         botonConectarVU.setText("Conectar");
@@ -92,7 +93,6 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         getContentPane().add(jPanel2, gridBagConstraints);
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Usuario");

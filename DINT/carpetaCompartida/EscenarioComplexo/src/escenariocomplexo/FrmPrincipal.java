@@ -4,6 +4,9 @@
  */
 package escenariocomplexo;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+
 /**
  *
  * @author usuario
@@ -17,6 +20,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         DlgValidacionUsuario dlgValidacionUsuario = new DlgValidacionUsuario(this, rootPaneCheckingEnabled);
         dlgValidacionUsuario.setVisible(true);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        gd.setFullScreenWindow(this);
+        
     }
 
     /**
@@ -73,6 +79,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MenuOpciones.add(jSeparator1);
 
         menuSair.setText("Saír");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
         MenuOpciones.add(menuSair);
 
         menuBar.add(MenuOpciones);
@@ -99,6 +110,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         desktop.add(iFrmAltaCansRazas);
         iFrmAltaCansRazas.show(); 
     }//GEN-LAST:event_menuCansRazasActionPerformed
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_menuSairActionPerformed
 
     /**
      * @param args the command line arguments
