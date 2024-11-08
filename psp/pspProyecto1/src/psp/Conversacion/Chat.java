@@ -1,57 +1,42 @@
 package psp.Conversacion;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class Chat {
-    private BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/psp/Conversacion/chat.txt"));
     private Chateador chateador1;
     private Chateador chateador2;
-    private int turno = 1;
+    private Chateador chateador3;
+    private int linea = 0;
+    private final String[] mensajes;
     private boolean chateando = true;
-
-    public int getNumMensaje() {
-        return numMensaje;
-    }
-
-    private int numMensaje = 0;
-    private int numActual = 0;
+    private final String srcConversacion = "src/psp/Conversacion/chat.txt";
 
     public Chat() throws IOException {
-        this.chateador2 = new Chateador("Chateador 2", this);
-        this.chateador1 = new Chateador("Chateador 1", this);
-        this.numMensaje = chateador1.getConversacion();
-        chateador2.start();
+        mensajes = cargarMensajes();
+        chateador1 = new Chateador("Chateador1", this);
+        chateador2 = new Chateador("Chateador2", this);
         chateador1.start();
+        chateador2.start();
     }
 
-    public synchronized void chatear(String mensaje, Chateador chateador) throws IOException {
-        if (numActual < numMensaje) {
-            while (turno == 1 && chateador == chateador2 || turno == 2 && chateador == chateador1) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            numActual++;
+    private String[] cargarMensajes() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(srcConversacion));
+        return bufferedReader.lines().toArray(String[]::new);
+    }
 
-            bufferedWriter.write(chateador.getNombre() + ": " + mensaje + "\n");
-            bufferedWriter.flush();
-            System.out.println(chateador.getNombre() + ": " + mensaje);
-            turno = turno == 1 ? 2 : 1;
-            notify();
-
-
+    public synchronized void enviarMensaje(Chateador chateador) {
+        if (linea < mensajes.length) {
+            String mensaje = mensajes[linea];
+            chateador.setMensaje(mensaje);
+            chateador.mensajear();
+            linea++;
+            notifyAll();
         } else {
             chateando = false;
-            bufferedWriter.close();
+            notifyAll();
         }
-    }
-
-    public int getNumActual() {
-        return numActual;
     }
 
     public boolean isChateando() {

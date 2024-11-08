@@ -1,10 +1,9 @@
-Hola, ¿cómo estás?
-Muy bien, ¿y tú?
+Hola, ¿cómo están?
 Muy bien, ¿y tú?
 También bien, gracias.
-¿Qué has hecho hoy?
+¿Qué han hecho hoy?
 He estado trabajando en un proyecto interesante.
-¡Qué bien! Cuéntame más.
+¡Qué bien! Cuéntanos más.
 Es un proyecto de programación en Java.
 Me encanta Java. ¿Qué estás desarrollando?
 Una aplicación de chat.
@@ -16,6 +15,7 @@ Me parece una excelente idea.
 ¿Qué tal mañana por la tarde?
 Perfecto, nos vemos entonces.
 Hasta mañana.
-Hasta mañana, cuídate.
+Hasta mañana, cuídense.
 Tú también, adiós.
+Adiós.
 Adiós.
