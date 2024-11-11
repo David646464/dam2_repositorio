@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.elecciones.Objects.Candidato;
 import com.example.elecciones.Objects.Partido;
@@ -14,7 +15,7 @@ import com.example.elecciones.Utils.Hash;
 import java.util.ArrayList;
 
 public class DatabaseManager extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "mydatabase2.db";
+    private static final String DATABASE_NAME = "mydatabase5.db";
     // Versión de la base de datos (cambiarlo cada vez que se realice un cambio en el esquema)
     private static final int DATABASE_VERSION = 1;
     private static DatabaseManager instance;
@@ -50,8 +51,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('12348765F', '" + Hash.hash("12348765F") + "', 'Santiago', 'Abascal', 'Conde', 44, 3, 0, 0)");
 
         //Usuarios
-        sqLiteDatabase.execSQL("INSERT INTO usuario (nif, password, nombre, apellido1, apellido2, edad, votosReaelizados) VALUES ('12345678A', '"+Hash.hash("12348765C")+"', 'Pablo', 'Casado', 'Blanco', 40, 0)");
-        sqLiteDatabase.execSQL("INSERT INTO usuario (nif, password, nombre, apellido1, apellido2, edad, votosReaelizados) VALUES ('87654321B', '"+Hash.hash("87654321B")+"', 'Pedro', 'Sánchez', 'Pérez-Castejón', 49, 0)");
+        sqLiteDatabase.execSQL("INSERT INTO candidato (nif, password, nombre, apellido1, apellido2, edad, partido_id, votos, votosReaelizados) VALUES ('12345678A', '" + Hash.hash("12345678A") + "', 'Pablo', 'Casado', 'Blanco', 40, 1, 0, 0)");
+        sqLiteDatabase.execSQL("INSERT INTO usuario (nif, password, nombre, apellido1, apellido2, edad, votosReaelizados) VALUES ('12345678A', '" + Hash.hash("12345678A") + "', 'Pablo', 'Casado', 'Blanco', 40, 0)");
         sqLiteDatabase.execSQL("INSERT INTO usuario (nif, password, nombre, apellido1, apellido2, edad, votosReaelizados) VALUES ('12348765C', '"+Hash.hash("12348765C")+"', 'Pablo', 'Iglesias', 'Turrión', 42, 0)");
 
 
@@ -78,12 +79,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public Boolean login(String nif, String password) {
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM usuario WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
-        if (cursor.getCount() > 0) {
-            return true;
-        } else {
-            @SuppressLint("Recycle") Cursor cursor2 = db.rawQuery("SELECT * FROM candidato WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
-            return cursor2.getCount() > 0;
+        String passWordHash = Hash.hash(password);
+        try {
+            @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM usuario WHERE nif = ? AND password = ?", new String[]{nif, Hash.hash(password)});
+            if (cursor.getCount() > 0) {
+                cursor.close();
+                return true;
+            } else {
+                cursor.close();
+                return false;
+            }
+        } catch (Exception e) {
+            Log.e("DatabaseManager", "Error during login", e);
+            return false;
         }
     }
 

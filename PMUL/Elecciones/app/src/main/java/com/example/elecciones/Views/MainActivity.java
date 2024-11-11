@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         databaseManager = DatabaseManager.getInstance(this);
         etUsuario = findViewById(R.id.editTextNIF);
-        etContrasena = findViewById(R.id.editTextNIF);
+        etContrasena = findViewById(R.id.editTextPassword);
 
 
 
