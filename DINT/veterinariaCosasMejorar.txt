@@ -1,0 +1,2 @@
+al guardar una  cita,can,raza o propietario confirmar lo que selecciona (Mensaje de se va a guardr x estas seguro : si o no)
+al hacer login solo campor contraseña y usuario y el resto a trabes de una ventanita al clicar en un símbolo de engranaje,y quitar las label , ponerlo como hint en lost textfield
