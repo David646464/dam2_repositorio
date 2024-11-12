@@ -4,6 +4,7 @@
  */
 package escenariocomplexo;
 
+import escenariocomplexo.Database.DatabaseManager;
 import java.sql.Connection;
 
 /**

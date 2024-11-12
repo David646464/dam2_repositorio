@@ -4,6 +4,11 @@
  */
 package escenariocomplexo;
 
+import escenariocomplexo.Utils.ErrorClass;
+import escenariocomplexo.Database.DatabaseManager;
+import escenariocomplexo.Objects.Can;
+import escenariocomplexo.Objects.Raza;
+import escenariocomplexo.Objects.Propietario;
 import java.awt.CardLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
@@ -353,7 +358,7 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
             listaRazas.clearSelection();
             listaPropietarios.clearSelection();
         } else {
-            mostrarError(numError);
+              ErrorClass.mostrarError(numError, (JDesktopPane) this.getParent());
         }
 
 
@@ -383,7 +388,7 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
             DatabaseManager.insertarRaza(new Raza(0, txtRaza.getText()));
             txtRaza.setText("");
         }else{
-            mostrarError(numError);
+            ErrorClass.mostrarError(numError, (JDesktopPane) this.getParent());
         }
 
 
@@ -423,39 +428,7 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
         modeloPropietario.addAll(DatabaseManager.recuperarTodolosPropietarios());
     }
 
-    private void mostrarError(int numError) {
-        String mensaje = "";
-
-        // Configurar el mensaje según el tipo de error
-        switch (numError) {
-            //Errores del panel cans
-            case 1 ->
-                mensaje = "Se debe especificar el chip";
-            case 2 ->
-                mensaje = "El chip existe. Introduzca uno que no exista";
-            case 3 ->
-                mensaje = "Se debe especificar el nombre";
-            case 4 ->
-                mensaje = "Se debe seleccionar una raza";
-            case 5 ->
-                mensaje = "Se debe seleccionar un propietario";
-            //Errores del panel razas
-            case 6 ->
-                mensaje = "Se debe especificar el nombre de la raza";
-            case 7 ->
-                mensaje = "Esa raza ya existe";
-        }
-
-        // Mostrar el diálogo de error como modal dentro del JDesktopPane
-        JDesktopPane desktopPane = (JDesktopPane) this.getParent();
-        JOptionPane.showInternalMessageDialog(
-                desktopPane, // JDesktopPane como parent para modal interno
-                mensaje, // Mensaje de error
-                "Error", // Título del diálogo
-                JOptionPane.ERROR_MESSAGE // Tipo de mensaje
-        );
-
-    }
+    
     private void centrarEnDesktop() {
         if (getParent() != null && getParent() instanceof JDesktopPane) {
             JDesktopPane desktopPane = (JDesktopPane) getParent();

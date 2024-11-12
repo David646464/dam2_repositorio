@@ -70,6 +70,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MenuAltas.add(menuCansRazas);
 
         menuPropietarios.setText("Propietarios");
+        menuPropietarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPropietariosActionPerformed(evt);
+            }
+        });
         MenuAltas.add(menuPropietarios);
 
         MenuOpciones.add(MenuAltas);
@@ -114,6 +119,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
        System.exit(0);
     }//GEN-LAST:event_menuSairActionPerformed
+
+    private void menuPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPropietariosActionPerformed
+                 IFrmaltasPropietarios iFrmaltasPropietarios=new IFrmaltasPropietarios();
+        desktop.add(iFrmaltasPropietarios);
+        iFrmaltasPropietarios.show(); 
+    }//GEN-LAST:event_menuPropietariosActionPerformed
 
     /**
      * @param args the command line arguments
