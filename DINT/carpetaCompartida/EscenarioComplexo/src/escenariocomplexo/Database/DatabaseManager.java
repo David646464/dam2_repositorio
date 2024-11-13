@@ -2,8 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package escenariocomplexo;
+package escenariocomplexo.Database;
 
+import escenariocomplexo.Objects.Can;
+import escenariocomplexo.Objects.Vacinacion;
+import escenariocomplexo.Objects.Raza;
+import escenariocomplexo.Objects.Propietario;
+import escenariocomplexo.Objects.Vacina;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -50,6 +55,7 @@ public class DatabaseManager {
         this.user = user;
         this.passWord = passWord;
         String url = "jdbc:mysql://" + ip + ":" + port + "/" + databaseName;
+        
         try {
             Connection connection2 = DriverManager.getConnection(url, user, passWord);
             System.out.println("Conexión exitosa a la base de datos.");
