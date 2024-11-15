@@ -6,12 +6,15 @@ import java.util.HashMap;
 public class Empleado extends Thread {
     private String nombre;
     private ArrayList<Apuesta> apuestas;
-    private final int MAX_APUESTAS = 5;
-    private final int AUMENTO_APUESTA = 1;
+    public static final int MAX_APUESTAS = 5;
+    public static final int MAXGOLES = 4;
+    public static final int AUMENTO_APUESTA = 1;
+    private Porra porra;
 
-    public Empleado(String nombre) {
+    public Empleado(String nombre,Porra porra) {
         this.nombre = nombre;
         this.apuestas = new ArrayList<>();
+        this.porra = porra;
     }
 
     public String getNombre() {
@@ -24,16 +27,24 @@ public class Empleado extends Thread {
 
     private void generateApuestas() {
         for (int i = 0; i < MAX_APUESTAS; i++) {
-            int golesEquipo1 = (int) (Math.random() * 5);
-            int golesEquipo2 = (int) (Math.random() * 5);
+            int golesEquipo1 = (int) (Math.random() * MAXGOLES);
+            int golesEquipo2 = (int) (Math.random() * MAXGOLES);
             Apuesta apuesta = new Apuesta(golesEquipo1, golesEquipo2, i + AUMENTO_APUESTA);
             apuestas.add(apuesta);
+
 
         }
     }
 
+
+
     @Override
     public void run() {
         generateApuestas();
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
