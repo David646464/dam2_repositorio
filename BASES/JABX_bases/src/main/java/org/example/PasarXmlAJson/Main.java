@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import org.example.Pruebas.Biblioteca;
+import org.example.PasarXmlAJson.Biblioteca;
 
 
 import java.io.File;

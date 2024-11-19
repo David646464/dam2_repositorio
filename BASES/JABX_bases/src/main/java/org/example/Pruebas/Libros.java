@@ -1,23 +1,26 @@
-
 package org.example.Pruebas;
 
 import java.util.List;
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Libros {
+public class Libros{
 
-    @SerializedName("libro")
-    private List<Libro> mLibro;
+	@JsonProperty("libro")
+	private List<LibroItem> libro;
 
-    public List<Libro> getLibro() {
-        return mLibro;
-    }
+	public void setLibro(List<LibroItem> libro){
+		this.libro = libro;
+	}
 
-    public void setLibro(List<Libro> libro) {
-        mLibro = libro;
-    }
+	public List<LibroItem> getLibro(){
+		return libro;
+	}
 
+	@Override
+ 	public String toString(){
+		return 
+			"Libros{" + 
+			"libro = '" + libro + '\'' + 
+			"}";
+		}
 }

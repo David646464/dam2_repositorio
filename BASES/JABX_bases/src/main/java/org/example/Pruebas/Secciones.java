@@ -1,23 +1,26 @@
-
 package org.example.Pruebas;
 
 import java.util.List;
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Secciones {
+public class Secciones{
 
-    @SerializedName("seccion")
-    private List<Seccion> mSeccion;
+	@JsonProperty("seccion")
+	private List<SeccionItem> seccion;
 
-    public List<Seccion> getSeccion() {
-        return mSeccion;
-    }
+	public void setSeccion(List<SeccionItem> seccion){
+		this.seccion = seccion;
+	}
 
-    public void setSeccion(List<Seccion> seccion) {
-        mSeccion = seccion;
-    }
+	public List<SeccionItem> getSeccion(){
+		return seccion;
+	}
 
+	@Override
+ 	public String toString(){
+		return 
+			"Secciones{" + 
+			"seccion = '" + seccion + '\'' + 
+			"}";
+		}
 }

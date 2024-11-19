@@ -1,23 +1,26 @@
-
 package org.example.Pruebas;
 
 import java.util.List;
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Autores {
+public class Autores{
 
-    @SerializedName("autor")
-    private List<String> mAutor;
+	@JsonProperty("autor")
+	private List<String> autor;
 
-    public List<String> getAutor() {
-        return mAutor;
-    }
+	public void setAutor(List<String> autor){
+		this.autor = autor;
+	}
 
-    public void setAutor(List<String> autor) {
-        mAutor = autor;
-    }
+	public List<String> getAutor(){
+		return autor;
+	}
 
+	@Override
+ 	public String toString(){
+		return 
+			"Autores{" + 
+			"autor = '" + autor + '\'' + 
+			"}";
+		}
 }

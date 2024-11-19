@@ -1,4 +1,4 @@
-/*package org.example.PasarXmlAJson;
+package org.example.PasarXmlAJson;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -36,4 +36,4 @@ public class Biblioteca {
     public void setSecciones(Secciones secciones) {
         this.secciones = secciones;
     }
-}*/
+}

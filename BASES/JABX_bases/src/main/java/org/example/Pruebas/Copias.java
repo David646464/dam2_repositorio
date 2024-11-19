@@ -1,23 +1,26 @@
-
 package org.example.Pruebas;
 
 import java.util.List;
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Copias {
+public class Copias{
 
-    @SerializedName("copia")
-    private List<Copium> mCopia;
+	@JsonProperty("copia")
+	private List<CopiaItem> copia;
 
-    public List<Copium> getCopia() {
-        return mCopia;
-    }
+	public void setCopia(List<CopiaItem> copia){
+		this.copia = copia;
+	}
 
-    public void setCopia(List<Copium> copia) {
-        mCopia = copia;
-    }
+	public List<CopiaItem> getCopia(){
+		return copia;
+	}
 
+	@Override
+ 	public String toString(){
+		return 
+			"Copias{" + 
+			"copia = '" + copia + '\'' + 
+			"}";
+		}
 }

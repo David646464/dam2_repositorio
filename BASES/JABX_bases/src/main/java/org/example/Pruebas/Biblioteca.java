@@ -1,42 +1,49 @@
-
 package org.example.Pruebas;
 
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Biblioteca {
+public class Biblioteca{
 
-    @SerializedName("campus")
-    private String mCampus;
-    @SerializedName("facultad")
-    private String mFacultad;
-    @SerializedName("secciones")
-    private Secciones mSecciones;
+	@JsonProperty("campus")
+	private String campus;
 
-    public String getCampus() {
-        return mCampus;
-    }
+	@JsonProperty("secciones")
+	private Secciones secciones;
 
-    public void setCampus(String campus) {
-        mCampus = campus;
-    }
+	@JsonProperty("facultad")
+	private String facultad;
 
-    public String getFacultad() {
-        return mFacultad;
-    }
+	public void setCampus(String campus){
+		this.campus = campus;
+	}
 
-    public void setFacultad(String facultad) {
-        mFacultad = facultad;
-    }
+	public String getCampus(){
+		return campus;
+	}
 
-    public Secciones getSecciones() {
-        return mSecciones;
-    }
+	public void setSecciones(Secciones secciones){
+		this.secciones = secciones;
+	}
 
-    public void setSecciones(Secciones secciones) {
-        mSecciones = secciones;
-    }
+	public Secciones getSecciones(){
+		return secciones;
+	}
 
+	public void setFacultad(String facultad){
+		this.facultad = facultad;
+	}
+
+	public String getFacultad(){
+		return facultad;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"Biblioteca{" + 
+			"campus = '" + campus + '\'' + 
+			",secciones = '" + secciones + '\'' + 
+			",facultad = '" + facultad + '\'' + 
+			"}";
+		}
 }

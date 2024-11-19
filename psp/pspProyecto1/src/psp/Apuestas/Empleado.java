@@ -41,10 +41,6 @@ public class Empleado extends Thread {
     @Override
     public void run() {
         generateApuestas();
-        try {
-            wait();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }
