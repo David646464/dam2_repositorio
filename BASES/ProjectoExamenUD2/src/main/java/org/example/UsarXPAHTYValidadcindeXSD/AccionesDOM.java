@@ -1,7 +1,6 @@
-package org.example.DowWithSax;
+package org.example.UsarXPAHTYValidadcindeXSD;
 
 
-import org.example.PasarXmlAJson.Libro;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -290,9 +289,58 @@ public class AccionesDOM {
         }
     }
 
+    public List<Libro> buscarLibrosPorSeccion(String seccion) {
+        List<Libro> libros = new ArrayList<>();
+        try {
+            // Crear una instancia de XPathFactory y XPath
+            XPathFactory xPathFactory = XPathFactory.newInstance();
+            XPath xPath = xPathFactory.newXPath();
 
+            // Crear una expresión XPath para seleccionar los libros de una sección con atributo nombre X
+            String expression = "//seccion[@nombre='" + seccion + "']/libros/libro";
+            XPathExpression xPathExpression = xPath.compile(expression);
 
-    private Object convertNodeListToList(NodeList autor) {
-        return null;
+            // Evaluar la expresión XPath en el documento XML
+            NodeList nodeList = (NodeList) xPathExpression.evaluate(document, XPathConstants.NODESET);
+
+            // Iterar sobre los nodos resultantes y crear instancias de Libro
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element element = (Element) nodeList.item(i);
+                String id = element.getAttribute("ID").toString();
+                String titulo = element.getAttribute("titulo").toString();
+                String isbn = element.getAttribute("isbn").toString();
+                String numeroPaginas = element.getAttribute("numero_de_paginas").toString();
+                String fechaPublicacion = element.getElementsByTagName("fechaEdicion").item(0).getTextContent();
+                String precio = element.getElementsByTagName("precio").item(0).getTextContent();
+                List<String> autores = obtenerAutores(element.getElementsByTagName("autor"));
+                List<String> copias = obtenerCopias(element.getElementsByTagName("copia"));
+                Libro libro = new Libro(id, isbn, titulo, numeroPaginas, autores, fechaPublicacion, precio, copias);
+                libros.add(libro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return libros;
     }
+
+    private List<String> obtenerCopias(NodeList copia) {
+        List<String> listaCopias = new ArrayList<>();
+        for (int i = 0; i < copia.getLength(); i++) {
+            Element element = (Element) copia.item(i);
+            String numero = element.getAttribute("numero").toString();
+            String estado = element.getAttribute("estado").toString();
+            listaCopias.add(numero + " " + estado);
+        }
+        return listaCopias;
+    }
+
+    private List<String> obtenerAutores(NodeList autores) {
+        List<String> listaAutores = new ArrayList<>();
+        for (int i = 0; i < autores.getLength(); i++) {
+            listaAutores.add(autores.item(i).getTextContent());
+        }
+        return listaAutores;
+    }
+
+
 }

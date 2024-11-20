@@ -6,16 +6,14 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 
-
 import java.util.HashMap;
 
 public class LuasHandler extends DefaultHandler {
     private AccionesDOM accionesDOM;
     private HashMap<String, Boolean> indicador = new HashMap<>();
-    String title = "";
+    private String datahora = "";
     String estado = "";
-    String data = "";
-    String hora = "";
+
 
     public LuasHandler(AccionesDOM accionesDOM) {
         this.accionesDOM = accionesDOM;
@@ -38,48 +36,46 @@ public class LuasHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch (qName) {
-            case "title":
-                if (indicador.get("title") == null) {
-                    indicador.put("title", true);
-                } else {
-                    indicador.put("titleItem", true);
-                }
+            case "Luas:data":
+                indicador.put("data", true);
                 break;
-            case "estado":
+            case "Luas:estado":
                 indicador.put("estado", true);
                 break;
-            case "data":
-                indicador.put("data", true);
+            case "item":
+                indicador.put("hora", true);
                 break;
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        switch (qName) {
-            case "title":
-                if (indicador.get("titleItem") != null && indicador.get("titleItem")) {
-                    indicador.put("titleItem", false);
-                }
-                break;
-            case "estado":
-                indicador.put("estado", false);
-                break;
-            case "data":
-                indicador.put("data", false);
-                break;
+        if (qName.equals("item")) {
+            HashMap<String, String> atributos = new HashMap<>();
+            atributos.put("Estado", estado);
+            Element element = accionesDOM.anadirElementoHijoARoot("Lua", null, atributos);
+            accionesDOM.anadirElementoHijo(element, "Fecha", datahora.split(" ")[0], null);
+            element = accionesDOM.anadirElementoHijo(element, "Hora", datahora.split(" ")[1], null);
+
+        }
+        if (qName.equals("Luas:data")) {
+            indicador.put("data", false);
+        }
+        if (qName.equals("Luas:estado")) {
+            indicador.put("estado", false);
         }
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        if (indicador.get("titleItem") != null && indicador.get("titleItem")) {
-            title = new String(ch, start, length);
-        } else if (indicador.get("estado") != null && indicador.get("estado")) {
-           estado = new String(ch, start, length);
-        } else if (indicador.get("data") != null && indicador.get("data")) {
-            data = new String(ch, start, length).split(" ")[0];
-            hora = new String(ch, start, length).split(" ")[1];
+        if (indicador.get("data") != null && indicador.get("data")) {
+            datahora = new String(ch, start, length);
+            indicador.put("data", false);
         }
+        if (indicador.get("estado") != null && indicador.get("estado")) {
+            estado = new String(ch, start, length);
+            indicador.put("estado", false);
+        }
+
     }
 }

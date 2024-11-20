@@ -1,20 +1,27 @@
-package org.example.PasarXmlAJson;
+package org.example.UsarXPAHTYValidadcindeXSD;
+
+import java.util.List;
 
 public class Libro {
     private String ID;
     private String isbn;
     private String titulo;
     private String numeroPaginas;
+    private List<String> autores;
     private String FechaPublicacion;
     private String precio;
+    private List<String> copias;
 
-    public Libro(String ID, String isbn, String titulo, String numeroPaginas, String fechaPublicacion, String precio) {
+
+    public Libro(String ID, String isbn, String titulo, String numeroPaginas, List<String> autores, String fechaPublicacion, String precio, List<String> copias) {
         this.ID = ID;
         this.isbn = isbn;
         this.titulo = titulo;
         this.numeroPaginas = numeroPaginas;
+        this.autores = autores;
         FechaPublicacion = fechaPublicacion;
         this.precio = precio;
+        this.copias = copias;
     }
 
     public String getID() {
@@ -49,6 +56,14 @@ public class Libro {
         this.numeroPaginas = numeroPaginas;
     }
 
+    public List<String> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<String> autores) {
+        this.autores = autores;
+    }
+
     public String getFechaPublicacion() {
         return FechaPublicacion;
     }
@@ -63,5 +78,13 @@ public class Libro {
 
     public void setPrecio(String precio) {
         this.precio = precio;
+    }
+
+    public List<String> getCopias() {
+        return copias;
+    }
+
+    public void setCopias(List<String> copias) {
+        this.copias = copias;
     }
 }
