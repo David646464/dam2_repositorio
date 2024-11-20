@@ -4,6 +4,7 @@
  */
 package escenariocomplexo;
 
+import escenariocomplexo.Utils.xestorXanelas;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
@@ -20,9 +21,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         DlgValidacionUsuario dlgValidacionUsuario = new DlgValidacionUsuario(this, rootPaneCheckingEnabled);
         dlgValidacionUsuario.setVisible(true);
-        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        gd.setFullScreenWindow(this);
-        
+
     }
 
     /**
@@ -41,6 +40,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuCansRazas = new javax.swing.JMenuItem();
         menuPropietarios = new javax.swing.JMenuItem();
         menuXestionVacinacions = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuSair = new javax.swing.JMenuItem();
 
@@ -80,7 +80,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MenuOpciones.add(MenuAltas);
 
         menuXestionVacinacions.setText("Xestión vacinacións");
+        menuXestionVacinacions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuXestionVacinacionsActionPerformed(evt);
+            }
+        });
         MenuOpciones.add(menuXestionVacinacions);
+
+        jMenuItem1.setText("Perruqueria");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MenuOpciones.add(jMenuItem1);
         MenuOpciones.add(jSeparator1);
 
         menuSair.setText("Saír");
@@ -111,20 +124,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void menuCansRazasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCansRazasActionPerformed
 
-       IFrmltasCansRazas iFrmAltaCansRazas=new IFrmltasCansRazas();
-        desktop.add(iFrmAltaCansRazas);
-        iFrmAltaCansRazas.show(); 
+        xestorXanelas.nuevaCansRazas(desktop);
     }//GEN-LAST:event_menuCansRazasActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_menuSairActionPerformed
 
     private void menuPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPropietariosActionPerformed
-                 IFrmaltasPropietarios iFrmaltasPropietarios=new IFrmaltasPropietarios();
-        desktop.add(iFrmaltasPropietarios);
-        iFrmaltasPropietarios.show(); 
+        xestorXanelas.nuevoPropietario(desktop);
     }//GEN-LAST:event_menuPropietariosActionPerformed
+
+    private void menuXestionVacinacionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuXestionVacinacionsActionPerformed
+       xestorXanelas.nuevaVacinacion(desktop);
+
+    }//GEN-LAST:event_menuXestionVacinacionsActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       xestorXanelas.nuevaPerruqueria(desktop);
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +184,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuAltas;
     private javax.swing.JMenu MenuOpciones;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCansRazas;

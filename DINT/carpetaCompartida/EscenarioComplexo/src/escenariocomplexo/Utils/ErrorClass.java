@@ -52,7 +52,29 @@ public class ErrorClass {
             case 15 ->
                 mensaje = "El Email no tiene el formato adecuado (ej. XXXXX@XXXX.XXX)";
             case 16 ->
-                 mensaje = "El dni es incorrecto";
+                mensaje = "El dni es incorrecto";
+            //Errores en vacinacion
+            case 17 ->
+                mensaje = "Para poder borrar esa dosis tienes que borrar las posteriores antes";
+            case 18 ->
+                mensaje = "Hay que seleccionar el dueño y el perro y rrellenar todos los campos";
+            case 19 ->
+                mensaje = "Ya se le administro todas las dosis de esa vacina";
+            //Errores en perruqueria
+            case 20 ->
+                mensaje = "No se ha elegido fecha";
+            case 21 ->
+                mensaje = "No hay perro seleccionado";
+            //Errores al abrir mas de las xanelas permitidas
+                case 22 ->
+                mensaje = "No se pueden abrir mas ventanas de perruquerias";
+                case 23 ->
+                mensaje = "No se pueden abrir mas ventanas de altas de cans/razas";
+                case 24 ->
+                mensaje = "No se pueden abrir mas ventanas de propietarios";
+                case 25 ->
+                mensaje = "No se pueden abrir mas ventanas de vacinacions";
+                
         }
 
         JOptionPane.showInternalMessageDialog(

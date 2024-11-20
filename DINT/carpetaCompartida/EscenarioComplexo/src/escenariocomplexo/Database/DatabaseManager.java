@@ -5,6 +5,7 @@
 package escenariocomplexo.Database;
 
 import escenariocomplexo.Objects.Can;
+import escenariocomplexo.Objects.Cita;
 import escenariocomplexo.Objects.Vacinacion;
 import escenariocomplexo.Objects.Raza;
 import escenariocomplexo.Objects.Propietario;
@@ -51,11 +52,25 @@ public class DatabaseManager {
         return numError;
     }
 
+    public static int inserirCitaPerruqueria(Cita cita) {
+
+        try {
+            Statement stmt = connection.createStatement();
+            String consulta = "INSERT INTO citasperrucaria (chip, data, hora) VALUES ('" + cita.getChip() + "', '" + cita.getData() + "', " + cita.getHora() + ")";
+            stmt.executeUpdate(consulta);
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+
+    }
+
     private DatabaseManager(String user, String passWord, String ip, String port) {
         this.user = user;
         this.passWord = passWord;
         String url = "jdbc:mysql://" + ip + ":" + port + "/" + databaseName;
-        
+
         try {
             Connection connection2 = DriverManager.getConnection(url, user, passWord);
             System.out.println("Conexión exitosa a la base de datos.");
@@ -130,8 +145,6 @@ public class DatabaseManager {
         }
 
     }
-
-    
 
     // Recuperar a ultima dose aplicada dunha vacuna a un can
     public static int recuperarUltimaDoseDunhaVacinaParaOCan(String chip, int codVacina) {
@@ -354,6 +367,25 @@ public class DatabaseManager {
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;
+        }
+    }
+
+    //Obtener las citas de una fecha
+    public static ArrayList citasPorFecha(String fecha) {
+        try {
+            ArrayList resultado = new ArrayList();
+            Statement stmt = connection.createStatement();
+            String consulta = "select * from citasperrucaria where data='" + fecha + "'";
+            //System.out.println(consulta);
+            ResultSet rs = stmt.executeQuery(consulta);
+            while (rs.next()) {
+                Cita cita = new Cita(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4));
+                resultado.add(cita);
+            }
+            return resultado;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

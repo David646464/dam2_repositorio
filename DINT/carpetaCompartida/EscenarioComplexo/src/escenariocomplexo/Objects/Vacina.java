@@ -9,20 +9,21 @@ package escenariocomplexo.Objects;
  * @author DAM IES Chan do Monte
  */
 public class Vacina {
+
     private int codVacina;
+    private String nomeVacina;
+    private int numTotalDoses;
 
     public Vacina(int codVacina, String nomeVacina, int numTotalDoses) {
         this.codVacina = codVacina;
         this.nomeVacina = nomeVacina;
         this.numTotalDoses = numTotalDoses;
     }
-    private String nomeVacina;
 
     @Override
     public String toString() {
         return getNomeVacina();
     }
-    private int numTotalDoses;
 
     /**
      * @return the codVacina
@@ -65,5 +66,5 @@ public class Vacina {
     public void setNumTotalDoses(int numTotalDoses) {
         this.numTotalDoses = numTotalDoses;
     }
-    
+
 }

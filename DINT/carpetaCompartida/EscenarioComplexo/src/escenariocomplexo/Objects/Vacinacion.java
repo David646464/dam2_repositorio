@@ -14,6 +14,7 @@ public class Vacinacion {
     private int codVacina;
     private String data;
     private String observacions;
+    private int dose;
 
     public int getCodVacinacion() {
         return codVacinacion;
@@ -76,5 +77,5 @@ public class Vacinacion {
     public String toString() {
         return observacions;
     }
-    private int dose;
+    
 }

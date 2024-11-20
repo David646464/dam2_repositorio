@@ -74,6 +74,8 @@ public class Propietario {
         this.tlf = tlf;
         this.eMail = eMail;
     }
+    
+    
     private String ap2;
     private String tlf;
     private String eMail;

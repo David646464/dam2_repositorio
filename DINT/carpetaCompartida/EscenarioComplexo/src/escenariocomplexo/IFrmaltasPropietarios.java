@@ -13,6 +13,7 @@ import javax.swing.JDesktopPane;
 import com.aeat.valida.ValNif;
 import com.aeat.valida.Validador;
 import escenariocomplexo.Objects.Propietario;
+import escenariocomplexo.Utils.xestorXanelas;
 public class IFrmaltasPropietarios extends javax.swing.JInternalFrame {
 
     /**
@@ -53,7 +54,6 @@ public class IFrmaltasPropietarios extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 153, 255));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         botonConectarVU.setText("Gardar");
@@ -90,7 +90,6 @@ public class IFrmaltasPropietarios extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         getContentPane().add(jPanel2, gridBagConstraints);
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("DNI");
@@ -206,6 +205,7 @@ public class IFrmaltasPropietarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonConectarVUActionPerformed
 
     private void botoPecharVUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoPecharVUActionPerformed
+        xestorXanelas.cerrarPropietario();
         dispose();
     }//GEN-LAST:event_botoPecharVUActionPerformed
 

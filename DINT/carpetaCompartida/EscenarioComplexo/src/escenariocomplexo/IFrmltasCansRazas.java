@@ -9,6 +9,7 @@ import escenariocomplexo.Database.DatabaseManager;
 import escenariocomplexo.Objects.Can;
 import escenariocomplexo.Objects.Raza;
 import escenariocomplexo.Objects.Propietario;
+import escenariocomplexo.Utils.xestorXanelas;
 import java.awt.CardLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
@@ -305,6 +306,7 @@ public class IFrmltasCansRazas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        xestorXanelas.cerrarCansRazas();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
