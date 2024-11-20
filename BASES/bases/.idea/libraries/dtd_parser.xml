@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="dtd-parser">
+    <CLASSES>
+      <root url="jar://E:/libs/dtd-parser.jar!/" />
+      <root url="jar://E:/libs/rngom.jar!/" />
+      <root url="jar://E:/libs/stax-ex.jar!/" />
+      <root url="jar://E:/libs/txw2.jar!/" />
+      <root url="jar://E:/libs/xsom.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

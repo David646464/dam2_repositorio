@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Elecciones"
         tools:targetApi="31">
         <activity
+            android:name=".Utils.Telefono"
+            android:exported="false" />
+        <activity
             android:name=".Views.Ganadores"
             android:exported="false" />
         <activity
