@@ -22,7 +22,7 @@ public class Fragment1 extends Fragment {
     private EditText editText;
     private ListView listView;
     private ArrayAdapter<String> adapter;
-    private String info;
+    private String info = "";
 
 
     public Fragment1() {
