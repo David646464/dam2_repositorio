@@ -1,6 +1,7 @@
 package com.example.pruebadeexamen;
 
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements Fragment1.CargarD
 
         fragment1 = (Fragment1) getSupportFragmentManager().findFragmentById(R.id.fragmento1);
         fragment1.setObjects(cargarDatos());
+        
     }
 
     private List<String> cargarDatos() {
@@ -51,11 +53,8 @@ public class MainActivity extends AppCompatActivity implements Fragment1.CargarD
     }
 
     @Override
-    public void cargarDatosALaLista() {
-        fragment1.getListView().setOnClickListener(v -> {
-            TextView textView = findViewById(R.id.textView);
-            textView.setText(fragment1.getInfo());
-        });
-
+    public void cargarDatosALaLista(ListView listView) {
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(listView.getSelectedItem().toString());
     }
 }

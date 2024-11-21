@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.Insets;
@@ -22,7 +24,7 @@ public class Fragment1 extends Fragment {
     private EditText editText;
     private ListView listView;
     private ArrayAdapter<String> adapter;
-    private String info = "";
+    private String info;
 
 
     public Fragment1() {
@@ -65,6 +67,16 @@ public class Fragment1 extends Fragment {
 
         listView = view.findViewById(R.id.lista);
         cargarLista();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                new CargarDatosALaLista() {
+                    @Override
+                    public void cargarDatosALaLista(ListView listView) {
+                    }
+                };
+            }
+        });
     }
 
     @Override
@@ -77,7 +89,7 @@ public class Fragment1 extends Fragment {
     }
 
     public interface CargarDatosALaLista {
-        void cargarDatosALaLista();
+         void cargarDatosALaLista(ListView listView);
     }
 
 
