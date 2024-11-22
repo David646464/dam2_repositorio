@@ -1,6 +1,8 @@
 package com.example.pruebadeexamen;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,8 +19,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Fragment1.CargarDatosALaLista {
+public class MainActivity extends AppCompatActivity  {
     private Fragment1 fragment1;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,21 @@ public class MainActivity extends AppCompatActivity implements Fragment1.CargarD
 
         fragment1 = (Fragment1) getSupportFragmentManager().findFragmentById(R.id.fragmento1);
         fragment1.setObjects(cargarDatos());
+        textView = findViewById(R.id.textView);
+        /*fragment1.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                new Fragment1.CargarDatosALaLista(){
+
+                    @Override
+                    public void cargarDatosALaLista() {
+                        int num = 1+1 ;
+                    }
+                };
+
+            }
+        });*/
+
         
     }
 
@@ -52,9 +70,6 @@ public class MainActivity extends AppCompatActivity implements Fragment1.CargarD
         return names;
     }
 
-    @Override
-    public void cargarDatosALaLista(ListView listView) {
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(listView.getSelectedItem().toString());
-    }
+
+
 }

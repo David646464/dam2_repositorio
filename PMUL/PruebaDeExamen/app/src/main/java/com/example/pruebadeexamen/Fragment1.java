@@ -3,7 +3,9 @@ package com.example.pruebadeexamen;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -37,15 +40,17 @@ public class Fragment1 extends Fragment {
         this.objects = objects != null ? objects : new ArrayList<>();
     }
 
+
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment1,container,false);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
         editText = view.findViewById(R.id.editTextFrag);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -67,16 +72,14 @@ public class Fragment1 extends Fragment {
 
         listView = view.findViewById(R.id.lista);
         cargarLista();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                new CargarDatosALaLista() {
-                    @Override
-                    public void cargarDatosALaLista(ListView listView) {
-                    }
-                };
-            }
+
+        ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
+
+
     }
 
     @Override
@@ -88,8 +91,12 @@ public class Fragment1 extends Fragment {
         return info;
     }
 
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
     public interface CargarDatosALaLista {
-         void cargarDatosALaLista(ListView listView);
+         void cargarDatosALaLista();
     }
 
 

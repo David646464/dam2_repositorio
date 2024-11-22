@@ -1,6 +1,6 @@
 package psp.TierraEnPeligro;
 
-public class NaveB extends Thread{
+public class NaveB extends Thread {
     private int id;
     private Espacio espacio;
 
@@ -10,14 +10,18 @@ public class NaveB extends Thread{
     }
 
     @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
     public void run() {
         try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            espacio.explotarMeteoritoYSacarNaveA(this);
+
+            while (espacio.getMeteoritos().size() != 0) {
+                Thread.sleep((long)(Math.random()*1000));
+                espacio.explotarMeteoritoYSacarNaveA(this);
+            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

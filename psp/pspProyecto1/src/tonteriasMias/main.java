@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce un número:23 ");
-        int num = sc.nextInt();
-        System.out.println("El número introducido es: " + num);
+       for (int i = 0; i < 100; i++){
+           System.out.println((Math.random()*1000));
+        }
     }
 }
