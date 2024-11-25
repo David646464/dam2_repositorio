@@ -28,6 +28,7 @@ public class Fragment1 extends Fragment {
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private String info;
+    AdapterView.OnItemClickListener onItemClickListener = null;
 
 
     public Fragment1() {
@@ -40,12 +41,21 @@ public class Fragment1 extends Fragment {
         this.objects = objects != null ? objects : new ArrayList<>();
     }
 
+    public void setOnItemClickListener (AdapterView.OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment1,container,false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -71,6 +81,14 @@ public class Fragment1 extends Fragment {
         });
 
         listView = view.findViewById(R.id.lista);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                info = listView.getSelectedItem().toString();
+                onItemClickListener.;
+            }
+        });
+
         cargarLista();
 
         ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
@@ -94,10 +112,11 @@ public class Fragment1 extends Fragment {
     public void setInfo(String info) {
         this.info = info;
     }
-
-    public interface CargarDatosALaLista {
-         void cargarDatosALaLista();
+    public interface OnItemClickListener {
+        public void cargarDatosALaLista();
     }
+
+
 
 
     void cargarLista() {

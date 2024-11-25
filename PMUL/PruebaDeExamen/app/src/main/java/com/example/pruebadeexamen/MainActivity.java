@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements Fragment1.CargarDatosALaLista  {
     private Fragment1 fragment1;
     private TextView textView;
 
@@ -36,20 +36,8 @@ public class MainActivity extends AppCompatActivity  {
 
         fragment1 = (Fragment1) getSupportFragmentManager().findFragmentById(R.id.fragmento1);
         fragment1.setObjects(cargarDatos());
-        textView = findViewById(R.id.textView);
-        /*fragment1.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                new Fragment1.CargarDatosALaLista(){
+        textView = findViewById(R.id.textView1);
 
-                    @Override
-                    public void cargarDatosALaLista() {
-                        int num = 1+1 ;
-                    }
-                };
-
-            }
-        });*/
 
         
     }
@@ -71,5 +59,8 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
-
+    @Override
+    public void cargarDatosALaLista() {
+        textView.setText(fragment1.getInfo());
+    }
 }
