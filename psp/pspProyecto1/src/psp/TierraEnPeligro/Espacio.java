@@ -53,7 +53,7 @@ public class Espacio {
     }
 
     private Meteorito buscarMeteoritoSinTaladrar() {
-        if (meteoritos.size() == 0) {
+        if (meteoritos.isEmpty()) {
             return null;
         }
         for (Meteorito meteorito : meteoritos) {
