@@ -3,9 +3,9 @@ package psp.TierraEnPeligro;
 import java.util.ArrayList;
 
 public class Espacio {
-    private final int MAX_METEORITOS = 100;
-    private final int MAX_NAVEA = 15;
-    private final int MAX_NAVEB = 8;
+    private final int MAX_METEORITOS = 10;
+    private final int MAX_NAVEA = 5;
+    private final int MAX_NAVEB = 3;
     private ArrayList<Meteorito> meteoritos = new ArrayList<>();
 
     private ArrayList<NaveA> navesA = new ArrayList<>();
@@ -45,13 +45,12 @@ public class Espacio {
             meteorito.setTaladrado(true);
             meteorito.setNaveA(naveA);
             System.out.println("NaveA " + naveA.getId() + " ha taladrado el meteorito " + meteorito.getId());
+            notifyAll();
             wait();
         }
 
 
     }
-
-
 
     private Meteorito buscarMeteoritoSinTaladrar() {
         if (meteoritos.size() == 0) {
@@ -71,6 +70,13 @@ public class Espacio {
             notificarNaveA(meteorito.getNaveA());
             meteoritos.remove(meteorito);
             System.out.println("NaveB " + naveB.getId() + " ha explotado el meteorito " + meteorito.getId());
+        }else{
+            if (meteoritos.size() == 0) {
+                notifyAll();
+            }else{
+                wait();
+            }
+
         }
 
     }

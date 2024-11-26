@@ -148,9 +148,7 @@ public class MedicionesRiosHandler extends DefaultHandler {
             case "07" -> {
                 mes = "jul";
             }
-            case "08" -> {
-                mes = "ago";
-            }
+            case "08" -> mes = "ago";
             case "09" -> {
                 mes = "sep";
             }
