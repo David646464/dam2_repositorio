@@ -1,5 +1,6 @@
 package tonteriasMias;
 
+import java.io.File;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class ruletaRusa {
             if (i == numeroAleatorio){
                 System.out.println("Pummm");
                 System.out.println("Moristes");
-                break;
+                throw new OutOfMemoryError();
             }else {
                 System.out.println("Click");
                 System.out.println("Te salvaste");

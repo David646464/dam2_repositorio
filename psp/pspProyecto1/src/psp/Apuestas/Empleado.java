@@ -1,7 +1,7 @@
 package psp.Apuestas;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class Empleado extends Thread {
     private String nombre;
