@@ -4,11 +4,20 @@
  */
 package escenariocomplexo;
 
+import escenariocomplexo.Objects.Cita;
+import java.util.ArrayList;
+
 /**
  *
  * @author usuario
  */
 public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
+    private ArrayList<Cita> citasFiltradas;
+
+    public IFrmResultadosCitasPerruqueria(ArrayList<Cita> citasFiltradas) {
+        super();
+        this.citasFiltradas = citasFiltradas;
+    }
 
     /**
      * Creates new form IFrmResultadosCitasPerruqueria
@@ -29,12 +38,12 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        buttonVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableResultados = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonBorrarSeleccionado = new javax.swing.JButton();
+        buttonBorrarTodos = new javax.swing.JButton();
 
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -43,8 +52,8 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(102, 255, 102));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        jButton3.setText("Volver");
-        jPanel3.add(jButton3, new java.awt.GridBagConstraints());
+        buttonVolver.setText("Volver");
+        jPanel3.add(buttonVolver, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -54,7 +63,7 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         gridBagConstraints.weighty = 0.1;
         jPanel1.add(jPanel3, gridBagConstraints);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,7 +74,7 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
                 "PROPIETARIO", "CAN", "DATA", "HORA"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableResultados);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -79,7 +88,7 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Borrar Seleccionado");
+        buttonBorrarSeleccionado.setText("Borrar Seleccionado");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -88,9 +97,9 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(jButton1, gridBagConstraints);
+        jPanel2.add(buttonBorrarSeleccionado, gridBagConstraints);
 
-        jButton2.setText("Borrar Todos");
+        buttonBorrarTodos.setText("Borrar Todos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -99,7 +108,7 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(jButton2, gridBagConstraints);
+        jPanel2.add(buttonBorrarTodos, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -126,13 +135,13 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton buttonBorrarSeleccionado;
+    private javax.swing.JButton buttonBorrarTodos;
+    private javax.swing.JButton buttonVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableResultados;
     // End of variables declaration//GEN-END:variables
 }

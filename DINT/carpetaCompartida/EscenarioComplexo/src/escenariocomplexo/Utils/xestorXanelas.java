@@ -5,6 +5,7 @@
 package escenariocomplexo.Utils;
 
 import escenariocomplexo.IFrmVacinacions;
+import escenariocomplexo.IFrmXestionCitasPerruqueria;
 import escenariocomplexo.IFrmXestionPerruqueria;
 import escenariocomplexo.IFrmaltasPropietarios;
 import escenariocomplexo.IFrmltasCansRazas;
@@ -24,6 +25,8 @@ public class xestorXanelas {
     private static int MAXXanelasCansRazas = 1;
     private static int numXanelasPerruqueria = 0;
     private static int MAXXanelasPerruqueria = 1;
+     private static int numXanelasXestionCitas = 0;
+    private static int MAXXanelasXestionCitas = 1;
 
     public static void nuevaVacinacion(JDesktopPane desktopPane) {
         if (numXanelasVacinacions < MAXXanelasVacinacions || MAXXanelasVacinacions == -1) {
@@ -68,6 +71,17 @@ public class xestorXanelas {
             ErrorClass.mostrarError(22, desktopPane);
         }
     }
+    
+    public static void nuevaXestionCitas(JDesktopPane desktopPane) {
+        if (numXanelasXestionCitas < MAXXanelasXestionCitas || MAXXanelasXestionCitas == -1) {
+            IFrmXestionCitasPerruqueria frmXestionCitasPerruqueria = new IFrmXestionCitasPerruqueria();
+            desktopPane.add(frmXestionCitasPerruqueria);
+            frmXestionCitasPerruqueria.setVisible(true);
+            numXanelasXestionCitas++;
+        } else {
+            ErrorClass.mostrarError(26, desktopPane);
+        }
+    }
 
     public static void cerrarPerruqueria() {
         numXanelasPerruqueria--;
@@ -83,6 +97,10 @@ public class xestorXanelas {
 
     public static void cerrarPropietario() {
         numXanelasPropietarios--;
+    }
+
+    public static void cerrarXestionCitas() {
+        numXanelasXestionCitas--;
     }
 
 }

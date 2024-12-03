@@ -4,17 +4,28 @@
  */
 package escenariocomplexo;
 
+import datechooser.beans.DateChooserCombo;
+import escenariocomplexo.Database.DatabaseManager;
+import escenariocomplexo.Objects.Cita;
+import escenariocomplexo.Utils.xestorXanelas;
+import java.util.ArrayList;
+
 /**
  *
  * @author usuario
  */
 public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
 
+    private enum filtros {
+        FECHA
+    }
+
     /**
      * Creates new form IFrmXestionCitasPerruqueria
      */
     public IFrmXestionCitasPerruqueria() {
         initComponents();
+        
     }
 
     /**
@@ -30,96 +41,173 @@ public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         DateChooserDende = new datechooser.beans.DateChooserCombo();
         DateChooserAta = new datechooser.beans.DateChooserCombo();
-        Pechar = new javax.swing.JButton();
+        buttonPechar = new javax.swing.JButton();
         CheckBoxFecha = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        Buscar = new javax.swing.JButton();
+        buttonBuscar = new javax.swing.JButton();
+        txtError = new javax.swing.JLabel();
 
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 153));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        DateChooserDende.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
-        DateChooserDende.setFormat(2);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(DateChooserDende, gridBagConstraints);
+        DateChooserDende.setCurrentView(new datechooser.view.appearance.AppearancesList("Bordered",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Liberation Sans", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Liberation Sans", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Liberation Sans", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Liberation Sans", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Liberation Sans", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Liberation Sans", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    DateChooserDende.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+    gridBagConstraints.weightx = 0.5;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(DateChooserDende, gridBagConstraints);
 
-        DateChooserAta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(DateChooserAta, gridBagConstraints);
+    DateChooserAta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 1;
+    gridBagConstraints.gridy = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+    gridBagConstraints.weightx = 0.5;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(DateChooserAta, gridBagConstraints);
 
-        Pechar.setText("Pechar");
-        Pechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PecharActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(Pechar, gridBagConstraints);
+    buttonPechar.setText("Pechar");
+    buttonPechar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonPecharActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 1;
+    gridBagConstraints.gridy = 4;
+    gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(buttonPechar, gridBagConstraints);
 
-        CheckBoxFecha.setText("Fecha");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(CheckBoxFecha, gridBagConstraints);
+    CheckBoxFecha.setText("Fecha");
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 1;
+    gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(CheckBoxFecha, gridBagConstraints);
 
-        jLabel1.setText("Filtrar por:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabel1, gridBagConstraints);
+    jLabel1.setText("Filtrar por:");
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 0;
+    gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(jLabel1, gridBagConstraints);
 
-        Buscar.setText("Buscar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(Buscar, gridBagConstraints);
+    buttonBuscar.setText("Buscar");
+    buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buttonBuscarActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 4;
+    gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(buttonBuscar, gridBagConstraints);
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 3;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+    gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+    jPanel1.add(txtError, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.2;
-        getContentPane().add(jPanel1, gridBagConstraints);
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 0;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 0.2;
+    getContentPane().add(jPanel1, gridBagConstraints);
 
-        pack();
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PecharActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PecharActionPerformed
+    private void buttonPecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPecharActionPerformed
+        xestorXanelas.cerrarXestionCitas();
+        dispose();
+    }//GEN-LAST:event_buttonPecharActionPerformed
 
+    private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
+        filtros filtro = mirarFiltros();
+        if (filtro != null) {
+            switch (mirarFiltros()) {
+                case FECHA -> {
+                                    ArrayList<Cita> citas = DatabaseManager.getCitasEntreFechas(formatearFecha(DateChooserDende), formatearFecha(DateChooserAta));
+                    System.out.println(citas);
+                }
+            }
+        }
 
+    }//GEN-LAST:event_buttonBuscarActionPerformed
+
+    private String formatearFecha(DateChooserCombo comboFecha){
+        String[] fecha = comboFecha.getText().split("/");
+        return fecha[2] + "-" + fecha[1] + "-" + fecha[0] ;
+    }
+    private filtros mirarFiltros() {
+        if (CheckBoxFecha.isSelected()) {
+            return filtros.FECHA;
+        }
+        return null;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
     private javax.swing.JCheckBox CheckBoxFecha;
     private datechooser.beans.DateChooserCombo DateChooserAta;
     private datechooser.beans.DateChooserCombo DateChooserDende;
-    private javax.swing.JButton Pechar;
+    private javax.swing.JButton buttonBuscar;
+    private javax.swing.JButton buttonPechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel txtError;
     // End of variables declaration//GEN-END:variables
 }

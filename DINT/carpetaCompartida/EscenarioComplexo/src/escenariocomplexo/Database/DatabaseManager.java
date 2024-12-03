@@ -6,6 +6,7 @@ package escenariocomplexo.Database;
 
 import escenariocomplexo.Objects.Can;
 import escenariocomplexo.Objects.Cita;
+import escenariocomplexo.Objects.ListadoPerrucaria;
 import escenariocomplexo.Objects.Vacinacion;
 import escenariocomplexo.Objects.Raza;
 import escenariocomplexo.Objects.Propietario;
@@ -16,6 +17,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
@@ -65,6 +67,8 @@ public class DatabaseManager {
         }
 
     }
+
+   
 
     private DatabaseManager(String user, String passWord, String ip, String port) {
         this.user = user;
@@ -388,5 +392,50 @@ public class DatabaseManager {
             return null;
         }
     }
+    
+     public static ArrayList<Cita> getCitasEntreFechas(String fechaDesde, String fechaAta) {
+        try {
+            ArrayList resultado = new ArrayList();
+            Statement stmt = connection.createStatement();
+            String consulta = "select * from citasperrucaria where data <='" + fechaAta + "' and data >='"+ fechaDesde + "'";
+            //System.out.println(consulta);
+            ResultSet rs = stmt.executeQuery(consulta);
+            while (rs.next()) {
+                Cita cita = new Cita(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4));
+                resultado.add(cita);
+            }
+            return resultado;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+     
+    }
+     
+     public static Vector recuperarTodaAsCitasDePerrucariaEntreDuasDatas(String dataInicial, String dataFinal)
+    {
+        try
+        {
+            Vector resultado=new Vector();
+            Statement stmt = connection.createStatement();
+            String consulta= "SELECT citasperrucaria.codCita, propietarios.nome, propietarios.ap1, propietarios.ap2, cans.nome, citasperrucaria.data, "
+                    + "citasperrucaria.hora FROM citasperrucaria, cans, propietarios "
+                    + "where citasperrucaria.chip=cans.chip and cans.dnipropietario=propietarios.dni "
+                    + "and citasperrucaria.data>='"+dataInicial+"' and citasperrucaria.data<='"+dataFinal+"'"
+                    + " order by citasperrucaria.data";
+            ResultSet rs = stmt.executeQuery(consulta);
+            while(rs.next())
+            {
+                ListadoPerrucaria c=new ListadoPerrucaria(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                resultado.addElement(c);
+            }
+            return resultado;
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }        
 
 }

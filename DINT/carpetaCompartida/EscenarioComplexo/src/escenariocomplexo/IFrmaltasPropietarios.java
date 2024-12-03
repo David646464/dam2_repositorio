@@ -202,6 +202,7 @@ public class IFrmaltasPropietarios extends javax.swing.JInternalFrame {
             DatabaseManager.insertarPropietario(propietario);
             limpiartxt();
         }
+   
     }//GEN-LAST:event_botonConectarVUActionPerformed
 
     private void botoPecharVUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoPecharVUActionPerformed

@@ -19,6 +19,9 @@ import java.util.ArrayList;
  * @author Nitropc
  */
 public class IFrmXestionPerruqueria extends javax.swing.JInternalFrame {
+    
+    
+    
 
     /**
      * Creates new form IFrmXestionPerruqueria

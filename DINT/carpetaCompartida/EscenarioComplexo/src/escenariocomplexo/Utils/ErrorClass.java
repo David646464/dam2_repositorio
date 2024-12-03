@@ -66,15 +66,16 @@ public class ErrorClass {
             case 21 ->
                 mensaje = "No hay perro seleccionado";
             //Errores al abrir mas de las xanelas permitidas
-                case 22 ->
+            case 22 ->
                 mensaje = "No se pueden abrir mas ventanas de perruquerias";
-                case 23 ->
+            case 23 ->
                 mensaje = "No se pueden abrir mas ventanas de altas de cans/razas";
-                case 24 ->
+            case 24 ->
                 mensaje = "No se pueden abrir mas ventanas de propietarios";
-                case 25 ->
+            case 25 ->
                 mensaje = "No se pueden abrir mas ventanas de vacinacions";
-                
+            case 26 ->
+                mensaje = "No se puede abrir mas ventanas de xestion de citas";
         }
 
         JOptionPane.showInternalMessageDialog(
