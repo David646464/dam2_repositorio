@@ -4,19 +4,42 @@
  */
 package escenariocomplexo;
 
+import escenariocomplexo.Database.DatabaseManager;
 import escenariocomplexo.Objects.Cita;
+import escenariocomplexo.Objects.ListadoPerrucaria;
 import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author usuario
  */
 public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
-    private ArrayList<Cita> citasFiltradas;
 
-    public IFrmResultadosCitasPerruqueria(ArrayList<Cita> citasFiltradas) {
-        super();
+    private Vector citasFiltradas;
+
+    public IFrmResultadosCitasPerruqueria(Vector citasFiltradas) {
+        initComponents();
         this.citasFiltradas = citasFiltradas;
+
+       
+        DefaultTableModel modeloNoEditable = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"PROPIETARIO", "CAN", "DATA", "HORA"}
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que ninguna celda sea editable
+            }
+        };
+
+        
+        tableResultados.setModel(modeloNoEditable);
+
+       
+        anhadirAlPanel();
     }
 
     /**
@@ -24,6 +47,7 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
      */
     public IFrmResultadosCitasPerruqueria() {
         initComponents();
+        anhadirAlPanel();
     }
 
     /**
@@ -89,6 +113,11 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         buttonBorrarSeleccionado.setText("Borrar Seleccionado");
+        buttonBorrarSeleccionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBorrarSeleccionadoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -100,6 +129,11 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         jPanel2.add(buttonBorrarSeleccionado, gridBagConstraints);
 
         buttonBorrarTodos.setText("Borrar Todos");
+        buttonBorrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBorrarTodosActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -133,6 +167,28 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonBorrarSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBorrarSeleccionadoActionPerformed
+
+        int indice = tableResultados.getSelectedRow();
+    if (indice != -1) { // Verificar que hay una fila seleccionada
+        DefaultTableModel modelo = (DefaultTableModel) tableResultados.getModel();
+        
+        // Eliminar la cita del DatabaseManager usando el valor de la primera columna
+        Object codigo = modelo.getValueAt(indice, 0);
+        DatabaseManager.eliminarCitaPorCodigo(codigo);
+        
+        // Eliminar la fila del modelo
+        modelo.removeRow(indice);
+    } else {
+        JOptionPane.showMessageDialog(this, "Por favor, seleccione una fila para eliminar.", 
+                                      "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_buttonBorrarSeleccionadoActionPerformed
+
+    private void buttonBorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBorrarTodosActionPerformed
+               
+    }//GEN-LAST:event_buttonBorrarTodosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBorrarSeleccionado;
@@ -144,4 +200,14 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableResultados;
     // End of variables declaration//GEN-END:variables
+
+    private void anhadirAlPanel() {
+        DefaultTableModel tableModel = (DefaultTableModel) tableResultados.getModel();
+        tableModel.setRowCount(0);
+        citasFiltradas.forEach(_item -> {
+            ListadoPerrucaria listadoPerrucaria = (ListadoPerrucaria) _item;
+            Object[] linea = {listadoPerrucaria, listadoPerrucaria.getCan(), listadoPerrucaria.getData(), listadoPerrucaria.getHora()};
+            tableModel.addRow(linea);
+        });
+    }
 }

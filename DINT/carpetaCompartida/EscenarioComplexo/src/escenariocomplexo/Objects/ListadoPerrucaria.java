@@ -1,16 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package escenariocomplexo.Objects;
 
-/**
- *
- * @author usuario
- */
-public class ListadoPerrucaria {
+import escenariocomplexo.Utils.*;
 
-    public ListadoPerrucaria(int aInt, String string, String string1, String string2, String string3, String string4, int aInt1) {
+public class ListadoPerrucaria {
+    int codCita;
+    String propietario;
+    String can;
+    String data;
+    String hora;
+
+    public ListadoPerrucaria(int codCita, String nombrePropietario, String ap1Propietario, String ap2Propietario, 
+            String can, String data, int hora) {
+        this.codCita=codCita;
+        this.propietario = nombrePropietario+ " "+ ap1Propietario+" "+ap2Propietario;
+        this.can = can;
+        this.data = escenariocomplexo.Utils.Datas.DataFormatoMySQLYYYY_GUION_MM_GUION_DDAFormatoDia_BARRA_Mes_BARRA_Anho(data);
+        this.hora = hora+".00 h";
     }
+
+    @Override
+    public String toString() {
+        return propietario;
+    }
+
+    public String getCan() {
+        return can;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public int getCodCita() {
+        return codCita;
+    }
+    
+    
     
 }

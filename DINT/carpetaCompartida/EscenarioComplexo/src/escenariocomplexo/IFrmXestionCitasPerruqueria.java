@@ -9,6 +9,7 @@ import escenariocomplexo.Database.DatabaseManager;
 import escenariocomplexo.Objects.Cita;
 import escenariocomplexo.Utils.xestorXanelas;
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
@@ -182,10 +183,18 @@ public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
         if (filtro != null) {
             switch (mirarFiltros()) {
                 case FECHA -> {
-                                    ArrayList<Cita> citas = DatabaseManager.getCitasEntreFechas(formatearFecha(DateChooserDende), formatearFecha(DateChooserAta));
-                    System.out.println(citas);
+                    Vector citas = DatabaseManager.recuperarTodaAsCitasDePerrucariaEntreDuasDatas(formatearFecha(DateChooserDende), formatearFecha(DateChooserAta));
+                    IFrmResultadosCitasPerruqueria frmResultadosCitasPerruqueria = new IFrmResultadosCitasPerruqueria(citas);
+                    this.getDesktopPane().add(frmResultadosCitasPerruqueria);
+                    frmResultadosCitasPerruqueria.setVisible(true);
                 }
             }
+        }else{
+            
+            Vector citas = DatabaseManager.recuperarTodaAsCitasDePerrucaria();
+            IFrmResultadosCitasPerruqueria frmResultadosCitasPerruqueria = new IFrmResultadosCitasPerruqueria(citas);
+                    this.getDesktopPane().add(frmResultadosCitasPerruqueria);
+                    frmResultadosCitasPerruqueria.setVisible(true);
         }
 
     }//GEN-LAST:event_buttonBuscarActionPerformed

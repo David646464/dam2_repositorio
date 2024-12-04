@@ -68,6 +68,45 @@ public class DatabaseManager {
 
     }
 
+    public static int eliminarCitaPorCodigo(Object valueAt) {
+        ListadoPerrucaria listadoPerrucaria = (ListadoPerrucaria) valueAt;
+        
+        try {
+            Statement stmt = connection.createStatement();
+            String consulta = "delete from citasperrucaria where codCita=" + listadoPerrucaria.getCodCita();
+            //System.out.println(consulta);
+            stmt.executeUpdate(consulta);
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public static Vector recuperarTodaAsCitasDePerrucaria() {
+       try
+        {
+            Vector resultado=new Vector();
+            Statement stmt = connection.createStatement();
+            String consulta= "SELECT citasperrucaria.codCita, propietarios.nome, propietarios.ap1, propietarios.ap2, cans.nome, citasperrucaria.data, "
+                    + "citasperrucaria.hora FROM citasperrucaria, cans, propietarios "
+                    + "where citasperrucaria.chip=cans.chip and cans.dnipropietario=propietarios.dni "
+                    + " order by citasperrucaria.data";
+            ResultSet rs = stmt.executeQuery(consulta);
+            while(rs.next())
+            {
+                ListadoPerrucaria c = new ListadoPerrucaria(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                resultado.addElement(c);
+            }
+            return resultado;
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
    
 
     private DatabaseManager(String user, String passWord, String ip, String port) {
@@ -426,7 +465,7 @@ public class DatabaseManager {
             ResultSet rs = stmt.executeQuery(consulta);
             while(rs.next())
             {
-                ListadoPerrucaria c=new ListadoPerrucaria(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                ListadoPerrucaria c = new ListadoPerrucaria(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
                 resultado.addElement(c);
             }
             return resultado;
@@ -436,6 +475,6 @@ public class DatabaseManager {
             e.printStackTrace();
             return null;
         }
-    }        
+    }       
 
 }
