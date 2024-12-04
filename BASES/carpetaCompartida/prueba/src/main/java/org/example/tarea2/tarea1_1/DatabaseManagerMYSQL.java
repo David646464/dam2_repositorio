@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class DatabaseManagerMYSQL {
     private Connection conexion;
@@ -23,7 +24,7 @@ public class DatabaseManagerMYSQL {
         return conexion;
     }
 
-    public int aumentarSueldoEnUnDepartamento(int aumento, String nomeDepartamento){
+    public int aumentarSueldoEnUnDepartamento(int aumento, String nomeDepartamento) {
         int filasAfectadas = 0;
         try {
             String sql = "UPDATE empregado SET Salario = Salario + ? WHERE Num_departamento_pertenece = (SELECT Num_departamento FROM departamento WHERE Nome_departamento = ?)";
@@ -36,4 +37,23 @@ public class DatabaseManagerMYSQL {
         }
         return filasAfectadas;
     }
+
+    public int novoDepartamento(int numDepartamento, String nomeDepartamento, int nssEmpregado) {
+        LocalDate data = LocalDate.now();
+        int filasAfectadas = 0;
+        try {
+            String sql = "INSERT INTO departamento (Num_departamento, Nome_departamento, NSS_dirige, Data_direcion) VALUES (?,?,?,?)";
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setInt(1, numDepartamento);
+            preparedStatement.setString(2, nomeDepartamento);
+            preparedStatement.setInt(3, nssEmpregado);
+            preparedStatement.setDate(4, java.sql.Date.valueOf(data));
+            filasAfectadas = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return filasAfectadas;
+    }
+
+
 }
