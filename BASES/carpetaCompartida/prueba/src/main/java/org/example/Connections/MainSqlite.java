@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Connections;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -6,13 +6,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MainMicrosoftSqlServer {
+public class MainSqlite {
     public static void main(String[] args) {
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=bdempresa;encrypt=true;trustServerCertificate=true";
-        String user = "sa";
-        String password = "abc123.";
+        String url = "jdbc:sqlite:C:/bases/Empresa.db";
 
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        try (Connection connection = DriverManager.getConnection(url)) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet tables = metaData.getTables(null, null, "%", new String[]{"TABLE"});
             System.out.println("Tables in the database:");
