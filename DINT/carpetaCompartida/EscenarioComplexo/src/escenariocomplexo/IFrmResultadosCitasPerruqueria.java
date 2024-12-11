@@ -73,7 +73,6 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 102));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         buttonVolver.setText("Volver");
