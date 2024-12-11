@@ -59,7 +59,7 @@ public class ErrorClass {
             case 18 ->
                 mensaje = "Hay que seleccionar el dueño y el perro y rrellenar todos los campos";
             case 19 ->
-                mensaje = "Ya se le administro todas las dosis de esa vacina";
+                mensaje = "Ya se le administró todas las dosis de esa vacina";
             //Errores en perruqueria
             case 20 ->
                 mensaje = "No se ha elegido fecha";

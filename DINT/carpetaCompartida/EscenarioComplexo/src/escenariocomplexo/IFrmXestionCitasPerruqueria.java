@@ -26,7 +26,8 @@ public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
      */
     public IFrmXestionCitasPerruqueria() {
         initComponents();
-        
+        restriccionesAFechas();
+
     }
 
     /**
@@ -95,6 +96,11 @@ public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
                 false,
                 true)));
     DateChooserDende.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
+    DateChooserDende.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+        public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+            DateChooserDendeOnSelectionChange(evt);
+        }
+    });
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 0;
     gridBagConstraints.gridy = 2;
@@ -104,6 +110,11 @@ public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
     jPanel1.add(DateChooserDende, gridBagConstraints);
 
     DateChooserAta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
+    DateChooserAta.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+        public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+            DateChooserAtaOnSelectionChange(evt);
+        }
+    });
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 1;
     gridBagConstraints.gridy = 2;
@@ -189,26 +200,42 @@ public class IFrmXestionCitasPerruqueria extends javax.swing.JInternalFrame {
                     frmResultadosCitasPerruqueria.setVisible(true);
                 }
             }
-        }else{
-            
+        } else {
+
             Vector citas = DatabaseManager.recuperarTodaAsCitasDePerrucaria();
             IFrmResultadosCitasPerruqueria frmResultadosCitasPerruqueria = new IFrmResultadosCitasPerruqueria(citas);
-                    this.getDesktopPane().add(frmResultadosCitasPerruqueria);
-                    frmResultadosCitasPerruqueria.setVisible(true);
+            this.getDesktopPane().add(frmResultadosCitasPerruqueria);
+            frmResultadosCitasPerruqueria.setVisible(true);
         }
 
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
-    private String formatearFecha(DateChooserCombo comboFecha){
+    private void DateChooserDendeOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_DateChooserDendeOnSelectionChange
+        restriccionesAFechas();
+    }//GEN-LAST:event_DateChooserDendeOnSelectionChange
+
+    private void DateChooserAtaOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_DateChooserAtaOnSelectionChange
+        restriccionesAFechas();
+    }//GEN-LAST:event_DateChooserAtaOnSelectionChange
+
+    private String formatearFecha(DateChooserCombo comboFecha) {
         String[] fecha = comboFecha.getText().split("/");
-        return fecha[2] + "-" + fecha[1] + "-" + fecha[0] ;
+        return fecha[2] + "-" + fecha[1] + "-" + fecha[0];
     }
+
     private filtros mirarFiltros() {
         if (CheckBoxFecha.isSelected()) {
             return filtros.FECHA;
         }
         return null;
     }
+
+    private void restriccionesAFechas() {
+        DateChooserDende.setMaxDate(DateChooserAta.getCurrent());
+        DateChooserAta.setMinDate(DateChooserDende.getCurrent());
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxFecha;
     private datechooser.beans.DateChooserCombo DateChooserAta;

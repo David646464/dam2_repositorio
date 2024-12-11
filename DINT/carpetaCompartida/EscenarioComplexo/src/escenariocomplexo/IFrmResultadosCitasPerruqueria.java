@@ -77,6 +77,11 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         buttonVolver.setText("Volver");
+        buttonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVolverActionPerformed(evt);
+            }
+        });
         jPanel3.add(buttonVolver, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -186,8 +191,19 @@ public class IFrmResultadosCitasPerruqueria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonBorrarSeleccionadoActionPerformed
 
     private void buttonBorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBorrarTodosActionPerformed
-               
+               DefaultTableModel modelo = (DefaultTableModel) tableResultados.getModel();
+               for (int i = 0; i < modelo.getRowCount(); i++){
+                    Object codigo = modelo.getValueAt(i, 0);
+                    DatabaseManager.eliminarCitaPorCodigo(codigo);
+                    
+               }
+               modelo.setRowCount(0);
     }//GEN-LAST:event_buttonBorrarTodosActionPerformed
+
+    private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
+
+       dispose();
+    }//GEN-LAST:event_buttonVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

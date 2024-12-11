@@ -19,7 +19,7 @@ public class ListadoPerrucaria {
     }
 
     @Override
-    public String toString() {
+    public String toString() {      
         return propietario;
     }
 
