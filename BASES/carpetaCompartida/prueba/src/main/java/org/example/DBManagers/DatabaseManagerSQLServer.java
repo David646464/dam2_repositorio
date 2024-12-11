@@ -90,18 +90,18 @@ public class DatabaseManagerSQLServer {
     }
 
     public void createpr_DatosProxectos() {
-        String sql = "CREATE PROCEDURE pr_DatosProxectos "
+        String sql = " CREATE PROCEDURE pr_DatosProxectos "
                 //Datos entrada
-                +"@num_proxecto int, "
+                +" @num_proxecto int, "
                 //Datos salida
-                +"@nome_proxecto varchar(25) OUTPUT, "
-                +"@lugar varchar(25) OUTPUT, "
-                +"@num_departamento int OUTPUT "
-                +"AS "
-                +"BEGIN "
-                +"    SELECT @nome_proxecto = Nome_Prxecto,@lugar = Lugar,@num_departamento = Num_Departamento from PROXECTO "
-                +"    WHERE PROXECTO.Num_proxecto = @num_proxecto "
-                +"END";
+                +" @nome_proxecto varchar(25) OUTPUT, "
+                +" @lugar varchar(25) OUTPUT, "
+                +" @num_departamento int OUTPUT "
+                +" AS "
+                +" BEGIN "
+                +"     SELECT @nome_proxecto = Nome_Prxecto,@lugar = Lugar,@num_departamento = Num_Departamento from PROXECTO "
+                +"     WHERE PROXECTO.Num_proxecto = @num_proxecto "
+                +" END";
 
         Statement stmt = null;
         try {
