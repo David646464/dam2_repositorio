@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE Actores [
+        <!ELEMENT Actores (Actor)*>
+        <!ELEMENT Actor (Nome|Sexo|DataNacemento)*>
+        <!ATTLIST Actor
+                id CDATA #REQUIRED>
+        <!ELEMENT Nome (NomePila|Apelido|Apelio2)*>
+        <!ELEMENT NomePila (#PCDATA)>
+        <!ELEMENT Apelido (#PCDATA)>
+        <!ELEMENT Apelio2 (#PCDATA)>
+        <!ELEMENT Sexo (#PCDATA)>
+        <!ELEMENT DataNacemento (#PCDATA)>
+        <!ATTLIST DataNacemento
+                formato CDATA #REQUIRED>
+        ]>
+<Actores>
+    <Actor id="51">
+        <Nome>
+            <NomePila>Elisabeth Shue</NomePila>
+            <Apelido>Shue</Apelido>
+            <Apelio2>Shue</Apelio2>
+        </Nome>
+        <Sexo>muller</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">06/10/1963</DataNacemento>
+    </Actor>
+    <Actor id="139">
+        <Nome>
+            <NomePila>Elisabeth Shue</NomePila>
+            <Apelido>Shue</Apelido>
+            <Apelio2>Shue</Apelio2>
+        </Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">09/06/1963</DataNacemento>
+    </Actor>
+    <Actor id="100">
+        <Nome>
+            <NomePila>Elisabeth Shue</NomePila>
+            <Apelido>Shue</Apelido>
+            <Apelio2>Shue</Apelio2>
+        </Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">13/07/1943</DataNacemento>
+    </Actor>
+</Actores>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Enlaar con un DTD-->
+<!DOCTYPE Actores SYSTEM "src\UD2\EJ2_1A2UD2\Actores.dtd">
+<Actores>
+    <Actor id="51">
+        <Nome>Elisabeth Shue</Nome>
+        <Sexo>muller</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">06/10/1963</DataNacemento>
+    </Actor>
+    <Actor id="139">
+        <Nome>Jhonny Depp</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">09/06/1963</DataNacemento>
+    </Actor>
+    <Actor id="100">
+        <Nome>Harrison Ford</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">13/07/1943</DataNacemento>
+    </Actor>
+    <Actor id="156">
+        <Nome>Persona2</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">25/07/1943</DataNacemento>
+    </Actor>
+    <Actor id="200">
+        <Nome>Persona1</Nome>
+        <Sexo>home</Sexo>
+        <DataNacemento formato="dd/mm/aaaa">13/08/1963</DataNacemento>
+    </Actor>
+</Actores>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f1f9018b-cea6-4ccd-80c1-7a188373cb74" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2nFnjkJiHcqTKrRn8YRDumw956L" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.A4UD1_Alumnos.executor": "Run",
+    "Application.EJ1_A3_4UD1.executor": "Run",
+    "Application.EJ2_1A2UD2.executor": "Run",
+    "Application.EJ2_2A2UD2.executor": "Run",
+    "Application.EJ2_3A2UD2.executor": "Run",
+    "Application.GuardarEnArchivoConScanner.executor": "Run",
+    "Application.LeerNotasAlumnos.executor": "Run",
+    "Application.Main3.executor": "Debug",
+    "Application.MainPruebas.executor": "Run",
+    "Application.MainPruebas2.executor": "Run",
+    "Application.Tarea4_mod.a4ud1_alumno.A4UD1_Alumnos.executor": "Run",
+    "Application.Tarea4_mod.a4ud1_alumno.LeerNotasAlumnos.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/clase2/repositorio/dam2_repositorio/BASES/ExamenPepa",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\clase2\repositorio\dam2_repositorio\BASES\bases\src\UD2\EJ2_1A2UD2" />
+      <recent name="E:\clase2\repositorio\dam2_repositorio\BASES\bases\src" />
+      <recent name="E:\clase2\repositorio\dam2_repositorio\BASES\bases\src\Tarea4_mod" />
+      <recent name="E:\clase2\repositorio\dam2_repositorio\BASES\bases\src\Tarea4_mod\ficheros" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ExamenUtils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.EJ2_3A2UD2">
+    <configuration name="EJ2_1A2UD2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UD2.EJ2_1A2UD2.EJ2_1A2UD2" />
+      <module name="bases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UD2.EJ2_1A2UD2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EJ2_2A2UD2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UD2.EJ2_1A2UD2.EJ2_2A2UD2" />
+      <module name="bases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UD2.EJ2_1A2UD2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EJ2_3A2UD2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UD2.EJ2_1A2UD2.EJ2_3A2UD2" />
+      <module name="bases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UD2.EJ2_1A2UD2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExamenUtils.Main3" />
+      <module name="bases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ExamenUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPruebas2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExamenUtils.MainPruebas2" />
+      <module name="bases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ExamenUtils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.EJ2_3A2UD2" />
+        <item itemvalue="Application.EJ2_2A2UD2" />
+        <item itemvalue="Application.EJ2_1A2UD2" />
+        <item itemvalue="Application.Main3" />
+        <item itemvalue="Application.MainPruebas2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1f9018b-cea6-4ccd-80c1-7a188373cb74" name="Changes" comment="" />
+      <created>1728577829428</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728577829428</updated>
+      <workItem from="1728577830534" duration="5856000" />
+      <workItem from="1728632630200" duration="4495000" />
+      <workItem from="1728639355167" duration="644000" />
+      <workItem from="1729615891806" duration="1786000" />
+      <workItem from="1729617717341" duration="1606000" />
+      <workItem from="1729701726473" duration="7088000" />
+      <workItem from="1730137580972" duration="4466000" />
+      <workItem from="1732125436316" duration="157000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tarea3Parte4/EJ1_A3_4UD1/EJ1_A3_4UD1.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tarea4_mod/CLASESDATOS1/Alumno.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ExamenUtils/RandonAccesFileUtil.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ExamenUtils/RandonAccesFileUtil.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ExamenUtils/Main3.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ExamenUtils/RandonAccesFileUtil.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
