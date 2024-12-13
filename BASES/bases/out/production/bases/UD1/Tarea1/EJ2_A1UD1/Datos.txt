@@ -1,0 +1,4 @@
+ cadena: casa
+ caracter: s
+ entero: 1
+ numero real double: 1.2

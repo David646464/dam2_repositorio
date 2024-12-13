@@ -1,0 +1,16 @@
+a
+s
+s
+s
+ssrc/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero1.txt:tiene 5 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero2.txt:tiene 4 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero1.txt:tiene 6 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero2.txt:tiene 4 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero1.txt:tiene 8 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero2.txt:tiene 4 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero1.txt:tiene 10 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero2.txt:tiene 4 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/Salida.txt:tiene 27 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero1.txt:tiene 13 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/fichero2.txt:tiene 4 lineas
+src/UD1.Tarea3Parte2/EJ1_A3_2UD1/Salida.txt:tiene 27 lineas
