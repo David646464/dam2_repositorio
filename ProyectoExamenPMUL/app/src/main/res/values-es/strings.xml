@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pordefecto">defecto</string>
+    <string name="texto">texto</string>
+    <string name="encontrado">encontrado</string>
+    <string name="resetear">resetear</string>
+    <string name="dejar">dejar</string>
+</resources>

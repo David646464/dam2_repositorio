@@ -4,11 +4,14 @@
  */
 package escenariocomplexo.Utils;
 
+import escenariocomplexo.IFrmEditarPropietario;
+import escenariocomplexo.IFrmListadoPropietarios;
 import escenariocomplexo.IFrmVacinacions;
 import escenariocomplexo.IFrmXestionCitasPerruqueria;
 import escenariocomplexo.IFrmXestionPerruqueria;
 import escenariocomplexo.IFrmaltasPropietarios;
 import escenariocomplexo.IFrmltasCansRazas;
+import escenariocomplexo.Objects.Propietario;
 import javax.swing.JDesktopPane;
 
 /**
@@ -25,8 +28,12 @@ public class xestorXanelas {
     private static int MAXXanelasCansRazas = 1;
     private static int numXanelasPerruqueria = 0;
     private static int MAXXanelasPerruqueria = 1;
-     private static int numXanelasXestionCitas = 0;
+    private static int numXanelasXestionCitas = 0;
     private static int MAXXanelasXestionCitas = 1;
+     private static int numXanelasListadoPropietarios = 0;
+    private static int MAXXanelasListadoPropietarios = 1;
+    private static int numXanelasEditarPropietarios = 0;
+    private static int MAXXanelasEditarPropietarios = 1;
 
     public static void nuevaVacinacion(JDesktopPane desktopPane) {
         if (numXanelasVacinacions < MAXXanelasVacinacions || MAXXanelasVacinacions == -1) {
@@ -82,6 +89,27 @@ public class xestorXanelas {
             ErrorClass.mostrarError(26, desktopPane);
         }
     }
+    
+    public static void nuevoListadoPropietarios(JDesktopPane desktopPane) {
+        if (numXanelasListadoPropietarios < MAXXanelasListadoPropietarios || MAXXanelasListadoPropietarios == -1) {
+            IFrmListadoPropietarios frmListadoPropietarios = new IFrmListadoPropietarios();
+            desktopPane.add(frmListadoPropietarios);
+            frmListadoPropietarios.setVisible(true);
+            numXanelasListadoPropietarios++;
+        } else {
+            ErrorClass.mostrarError(33, desktopPane);
+        }
+    }
+    public static void nuevoEditarPropietarios(JDesktopPane desktopPane, Propietario p,IFrmListadoPropietarios padrelista) {
+        if (numXanelasEditarPropietarios < MAXXanelasEditarPropietarios || MAXXanelasEditarPropietarios == -1) {
+            IFrmEditarPropietario editarPropietario = new IFrmEditarPropietario(p,padrelista);
+            desktopPane.add(editarPropietario);
+            editarPropietario.setVisible(true);
+            numXanelasEditarPropietarios++;
+        } else {
+            ErrorClass.mostrarError(34, desktopPane);
+        }
+    }
 
     public static void cerrarPerruqueria() {
         numXanelasPerruqueria--;
@@ -101,6 +129,12 @@ public class xestorXanelas {
 
     public static void cerrarXestionCitas() {
         numXanelasXestionCitas--;
+    }
+    public static void cerrarListadoPropietarios() {
+        numXanelasListadoPropietarios--;
+    }
+    public static void cerrarEditarPropietarios() {
+        numXanelasEditarPropietarios--;
     }
 
 }

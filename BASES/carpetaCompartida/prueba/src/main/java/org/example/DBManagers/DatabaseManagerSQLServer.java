@@ -213,4 +213,159 @@ public class DatabaseManagerSQLServer {
         return departamentos;
 
     }
+
+    public void imprimirTiposDeResultset() {
+
+    }
+
+    public void ejecutarSentencia(String bd, String user, String password ,String sql) throws SQLException {
+        String url = "jdbc:sqlserver://localhost:1433;databaseName="+bd+";encrypt=true;trustServerCertificate=true";
+        Connection connection = DriverManager.getConnection(url, user, password);
+        Statement statement = connection.createStatement();
+        String[] sqls = sql.split(";");
+        for (String s : sqls){
+            statement.execute(s);
+            ResultSet resultSet = statement.getResultSet();
+            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+            int columnCount = resultSetMetaData.getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.print(resultSetMetaData.getColumnName(i) + " ");
+            }
+            System.out.println();
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.print(resultSet.getString(i) + " ");
+                }
+                System.out.println();
+            }
+        }
+
+    }
+
+    public void infoDatabase() {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            //Nome base de datos
+            System.out.println("Nome base de datos: " + metaData.getDatabaseProductName());
+            //Número de versión do SXBD
+            System.out.println("Número de versión do SXBD: " + metaData.getDatabaseProductVersion());
+            //Número de versión principal do SXBD
+            System.out.println("Número de versión principal do SXBD: " + metaData.getDatabaseMajorVersion());
+            //Número de versión secundario do SXBD
+            System.out.println("Número de versión secundario do SXBD: " + metaData.getDatabaseMinorVersion());
+            //Nome do conectador JDBC utilizado
+            System.out.println("Nome do conectador JDBC utilizado: " + metaData.getDriverName());
+            //Número da versión principal do conectador JDBC
+            System.out.println("Número da versión principal do conectador JDBC: " + metaData.getDriverMajorVersion());
+            //Número da versión secundaria do conectador JDBC
+            System.out.println("Número da versión secundaria do conectador JDBC: " + metaData.getDriverMinorVersion());
+            //Número de versión do conectador JDBC utilizado
+            System.out.println("Número de versión do conectador JDBC utilizado: " + metaData.getDriverVersion());
+            //URL da base de datos
+            System.out.println("URL da base de datos: " + metaData.getURL().split(";")[0]);
+            //Nome do usuario actual conectado á base de datos
+            System.out.println("Nome do usuario actual conectado á base de datos: " + metaData.getUserName());
+            //Si a base de datos é de só lectura
+            System.out.println("A base de datos é de só lectura: " + metaData.isReadOnly());
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void tablesInfo(String bd) {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet tables = metaData.getTables(bd, null, "%", new String[]{"TABLE"});
+            while (tables.next()) {
+                String tableName = tables.getString("TABLE_NAME");
+                System.out.println("Táboa: " + tableName);
+                ResultSet columns = metaData.getColumns(null, null, tableName, "%");
+                while (columns.next()) {
+                    String columnName = columns.getString("COLUMN_NAME");
+                    String columnType = columns.getString("TYPE_NAME");
+                    int columnSize = columns.getInt("COLUMN_SIZE");
+                    boolean isNullable = columns.getInt("NULLABLE") == 1;
+                    System.out.println("    Columna: " + columnName + " Tipo: " + columnType + " Tamaño: " + columnSize + " Admite valores nulos: " + isNullable);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void tableColumnsInfo(String dbo, String empregado) {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet columns = metaData.getColumns(null, dbo, empregado, "%");
+            while (columns.next()) {
+                String columnName = columns.getString("COLUMN_NAME");
+                String columnType = columns.getString("TYPE_NAME");
+                int columnSize = columns.getInt("COLUMN_SIZE");
+                boolean isNullable = columns.getInt("NULLABLE") == 1;
+                System.out.println("Columna: " + columnName + " Tipo: " + columnType + " Tamaño: " + columnSize + " Admite valores nulos: " + isNullable);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void proceduresInfo() {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet procedures = metaData.getProcedures(null, null, "%");
+            while (procedures.next()) {
+                String procedureName = procedures.getString("PROCEDURE_NAME");
+                System.out.println("Procedemento: " + procedureName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void primaryKeyColumnsInfo(String dbo, String empregado) {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet primaryKeys = metaData.getPrimaryKeys(null, dbo, empregado);
+            while (primaryKeys.next()) {
+                String columnName = primaryKeys.getString("COLUMN_NAME");
+                System.out.println("Columna de clave primaria: " + columnName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void foreignKeyColumnsInfo(String dbo, String empregado) {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet foreignKeys = metaData.getImportedKeys(null, dbo, empregado);
+            while (foreignKeys.next()) {
+                String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
+                String pkTableName = foreignKeys.getString("PKTABLE_NAME");
+                String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
+                System.out.println("Columna de clave foránea: " + fkColumnName + " Taboa de referencia: " + pkTableName + " Columna de referencia: " + pkColumnName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void queryInfo(String bd, String user, String password, String sql) {
+        try {
+           String url = "jdbc:sqlserver://localhost:1433;databaseName="+bd+";encrypt=true;trustServerCertificate=true";
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+            int columnCount = resultSetMetaData.getColumnCount();
+            System.out.println("Número de columnas recuperadas: " + columnCount);
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.println("Nome: " + resultSetMetaData.getColumnName(i) + " Tipo: " + resultSetMetaData.getColumnTypeName(i) + " Tamaño: " + resultSetMetaData.getColumnDisplaySize(i) + " Admite valores nulos: " + resultSetMetaData.isNullable(i));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

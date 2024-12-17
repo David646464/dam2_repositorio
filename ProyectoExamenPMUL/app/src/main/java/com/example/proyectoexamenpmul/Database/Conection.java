@@ -25,23 +25,17 @@ public class Conection extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String CREATE_TABLE2 = "CREATE TABLE partido (id INTEGER PRIMARY KEY AUTOINCREMENT, nombrePartido TEXT, siglas TEXT,color TEXT)";
-        sqLiteDatabase.execSQL(CREATE_TABLE2);
+        String CREATE_TABLE = "CREATE TABLE alert (id INTEGER PRIMARY KEY AUTOINCREMENT, token TEXT, valid INTEGER)";
+        sqLiteDatabase.execSQL(CREATE_TABLE);
 
 
-        //Partidos
-        sqLiteDatabase.execSQL("INSERT INTO partido (nombrePartido, siglas, color) VALUES ('Partido Popular', 'PP', 'Azul')");
-        sqLiteDatabase.execSQL("INSERT INTO partido (nombrePartido, siglas, color) VALUES ('Partido Socialista Obrero Español', 'PSOE', 'Rojo')");
-        sqLiteDatabase.execSQL("INSERT INTO partido (nombrePartido, siglas, color) VALUES ('Unidas Podemos', 'UP', 'Morado')");
 
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS partido");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS candidato");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS usuario");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS alert");
         onCreate(sqLiteDatabase);
     }
 

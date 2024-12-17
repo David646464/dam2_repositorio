@@ -18,27 +18,33 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView2"
-            android:name="com.example.proyectoexamenpmul.Fragments.GeneralFragment"
+            android:id="@+id/fragmentPara"
+            android:name="com.example.proyectoexamenpmul.Fragments.CniSensorIA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView3"
-            android:name="com.example.proyectoexamenpmul.Fragments.GeneralFragment"
+            android:id="@+id/fragmentAsunto"
+            android:name="com.example.proyectoexamenpmul.Fragments.CniSensorIA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView4"
-            android:name="com.example.proyectoexamenpmul.Fragments.GeneralFragment"
+            android:id="@+id/fragmentCuerpo"
+            android:name="com.example.proyectoexamenpmul.Fragments.CniSensorIA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
-            android:name="com.example.proyectoexamenpmul.Fragments.GeneralFragment"
+        <ListView
+            android:id="@+id/listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="400dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/resetear" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

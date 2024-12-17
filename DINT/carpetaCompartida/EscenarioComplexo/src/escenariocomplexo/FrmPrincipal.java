@@ -21,7 +21,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         DlgValidacionUsuario dlgValidacionUsuario = new DlgValidacionUsuario(this, rootPaneCheckingEnabled);
         dlgValidacionUsuario.setVisible(true);
-        
+
     }
 
     /**
@@ -39,6 +39,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MenuAltas = new javax.swing.JMenu();
         menuCansRazas = new javax.swing.JMenuItem();
         menuPropietarios = new javax.swing.JMenuItem();
+        MenuListadoPropietarios = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         menuXestionVacinacions = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -59,6 +61,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         MenuOpciones.setText("Opcións");
+        MenuOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuOpcionesActionPerformed(evt);
+            }
+        });
 
         MenuAltas.setText("Altas");
 
@@ -79,6 +86,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MenuAltas.add(menuPropietarios);
 
         MenuOpciones.add(MenuAltas);
+
+        MenuListadoPropietarios.setText("Listado propietarios");
+        MenuListadoPropietarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListadoPropietariosActionPerformed(evt);
+            }
+        });
+        MenuOpciones.add(MenuListadoPropietarios);
+        MenuOpciones.add(jSeparator2);
 
         menuXestionVacinacions.setText("Xestión vacinacións");
         menuXestionVacinacions.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +148,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCansRazasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCansRazasActionPerformed
-        
+
         xestorXanelas.nuevaCansRazas(desktop);
     }//GEN-LAST:event_menuCansRazasActionPerformed
 
@@ -155,9 +171,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
+
         xestorXanelas.nuevaXestionCitas(desktop);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void MenuOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcionesActionPerformed
+
+    }//GEN-LAST:event_MenuOpcionesActionPerformed
+
+    private void MenuListadoPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListadoPropietariosActionPerformed
+        xestorXanelas.nuevoListadoPropietarios(desktop);        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuListadoPropietariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,11 +220,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuAltas;
+    private javax.swing.JMenuItem MenuListadoPropietarios;
     private javax.swing.JMenu MenuOpciones;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCansRazas;
     private javax.swing.JMenuItem menuPropietarios;

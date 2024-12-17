@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -82,6 +83,20 @@ public class DatabaseManager {
             return -1;
         }
     }
+    
+    
+    public static int eliminarPropietario(Object valueAt) {
+        Propietario propietario = (Propietario) valueAt;
+        try {
+            Statement stmt = connection.createStatement();
+            String consulta = "delete from propietarios where dni='" + propietario.getDni() + "'";
+            //System.out.println(consulta);
+            stmt.executeUpdate(consulta);
+            return 0;
+        } catch (SQLException e) {
+            return -1;
+        }
+    }
 
     public static Vector recuperarTodaAsCitasDePerrucaria() {
        try
@@ -107,7 +122,64 @@ public class DatabaseManager {
         }
     }
 
-   
+    public static boolean propietariotenCans(Propietario propietario) {
+        try {
+            ArrayList resultado = new ArrayList();
+            Statement stmt = connection.createStatement();
+            String consulta = "SELECT COUNT(*) FROM `cans` WHERE dniPropietario = '"+propietario.getDni() +"'";
+            //System.out.println(consulta);
+            ResultSet rs = stmt.executeQuery(consulta);
+            rs.next();
+            String i = rs.getString(1);
+            
+            return Integer.valueOf(i) != 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+
+    public static void eliminarCansDunPropietario(Propietario propietario) {
+        try {
+            Statement stmt = connection.createStatement();
+            String consulta = "DELETE FROM `cans` WHERE where dniPropietario = '" + propietario.getDni() +"'";
+            //System.out.println(consulta);
+            stmt.executeUpdate(consulta);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void eliminarPropietariioDoscans(Propietario propietario) {
+        //UPDATE `cans` SET `dniPropietario`='[value-4]' WHERE dniPropietario = 
+        
+        try {
+            Statement stmt = connection.createStatement();
+            String consulta = "UPDATE cans SET dniPropietario = 0  where dniPropietario = '" + propietario.getDni() +"'";
+            //System.out.println(consulta);
+            stmt.executeUpdate(consulta);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int modoficarPropietario(Propietario c) {
+        
+        try
+        {
+            Statement stmt = connection.createStatement();
+            String consulta = "UPDATE propietarios SET dni = '" + c.getDni() +  "', nome = '" + c.getNome() + "', ap1 = '" + c.getAp1() + "', ap2 = '" + c.getAp2() + "', tlf = '" + c.getTlf() + "', eMail = '" + c.geteMail() + "' WHERE dni = '" + c.getDni() + "'";
+            stmt.executeUpdate(consulta);
+            return 0;
+        }
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
 
     private DatabaseManager(String user, String passWord, String ip, String port) {
         this.user = user;
@@ -232,6 +304,30 @@ public class DatabaseManager {
             ArrayList resultado = new ArrayList();
             Statement stmt = connection.createStatement();
             String consulta = "select dni, nome, ap1, ap2, tlf, email from propietarios order by nome";
+            //System.out.println(consulta);
+            ResultSet rs = stmt.executeQuery(consulta);
+            while (rs.next()) {
+                Propietario c = new Propietario(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+                resultado.add(c);
+            }
+            return resultado;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
+    public static ArrayList recuperarTodolosPropietariosPororden(String orden,boolean tipo) {
+        try {
+            ArrayList resultado = new ArrayList();
+            Statement stmt = connection.createStatement();
+            String consulta = "";
+           if (tipo){
+                consulta = "select dni, nome, ap1, ap2, tlf, email from propietarios order by " + orden + " asc" ;
+           }else{
+                consulta = "select dni, nome, ap1, ap2, tlf, email from propietarios order by " + orden + " desc" ;
+           }
             //System.out.println(consulta);
             ResultSet rs = stmt.executeQuery(consulta);
             while (rs.next()) {

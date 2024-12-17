@@ -76,6 +76,24 @@ public class ErrorClass {
                 mensaje = "No se pueden abrir mas ventanas de vacinacions";
             case 26 ->
                 mensaje = "No se puede abrir mas ventanas de xestion de citas";
+            //Errores en editar propietario
+            case 27 ->
+                mensaje = "No se puede borrar al propieratio porque ten cans";
+            case 28 ->
+                mensaje = "El campo nome esta incorrecto";
+            case 29 ->
+                mensaje = "El campo apelido1 esta incorrecto";
+            case 30 ->
+                mensaje = "El campo apelido2 esta incorrecto";
+            case 31 ->
+                mensaje = "El campo telefono esta incorrecto";
+            case 32 ->
+                mensaje = "El campo Email esta incorrecto";
+                //errores de xanelas
+            case 33 ->
+                mensaje = "No se pueden abrir mas listas de propietarios";
+            case 34 ->
+                mensaje = "No se pueden abrir mas ediciones de propietarios";
         }
 
         JOptionPane.showInternalMessageDialog(

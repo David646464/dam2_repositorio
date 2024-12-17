@@ -9,9 +9,13 @@ package escenariocomplexo.Objects;
  * @author DAM IES Chan do Monte
  */
 public class Propietario {
+
     private String dni;
     private String nome;
     private String ap1;
+    private String ap2;
+    private String tlf;
+    private String eMail;
 
     public String getDni() {
         return dni;
@@ -74,9 +78,6 @@ public class Propietario {
         this.tlf = tlf;
         this.eMail = eMail;
     }
+
     
-    
-    private String ap2;
-    private String tlf;
-    private String eMail;
 }

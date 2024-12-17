@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProyectoExamenPMUL"
         tools:targetApi="31">
         <activity
+            android:name=".Code.PantallaDecmbio"
+            android:exported="false" />
+        <activity
             android:name=".Code.MainActivity"
             android:exported="true">
             <intent-filter>

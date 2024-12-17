@@ -1,8 +1,10 @@
 package com.example.proyectoexamenpmul.Code;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,19 +12,44 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.proyectoexamenpmul.Fragments.GeneralFragment;
+import com.example.proyectoexamenpmul.Database.DatabaseManager;
+import com.example.proyectoexamenpmul.Fragments.CniSensorIA;
+import com.example.proyectoexamenpmul.Objects.MiniAlert;
+import com.example.proyectoexamenpmul.Objects.Textos;
+import com.example.proyectoexamenpmul.Objects.Tokens;
 import com.example.proyectoexamenpmul.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements GeneralFragment.OnFrgGeneral {
-private List<GeneralFragment> generalFragments;
-private int ids[] = { R.id.fragmentContainerView2,R.id.fragmentContainerView3,R.id.fragmentContainerView4,R.id.fragmentContainerView};
+public class MainActivity extends AppCompatActivity implements CniSensorIA.OnFrgCniSensorIA {
+    public static List<CniSensorIA> cniSensorIAList;
+    private int ids[] = {R.id.fragmentPara, R.id.fragmentAsunto, R.id.fragmentPara};
+    private DatabaseManager databaseManager;
+    //Tokens
+    private String[] tokensPara ;
+    private String[] tokensAsunto;
+    private String[] PatternCuerpo ;
 
-@Override
+    //Bloqueador de tokens
+    private HashMap<String, String> tokensQueBloqueanOtrosTokensAsunto = tokensBloqueanAsunto();
+
+    private ListView listView;
+    private AdaptadorAlertas adaptadorAlertas;
+
+
+
+    private HashMap<String, String> tokensBloqueanAsunto() {
+        HashMap<String, String> tokensQueBloqueanOtrosTokensAsunto = new HashMap<>();
+        tokensQueBloqueanOtrosTokensAsunto.put("desactiva", "ascensor");
+        return tokensQueBloqueanOtrosTokensAsunto;
+    }
+
+
+    @SuppressLint("MissingInflatedId")
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -33,26 +60,70 @@ private int ids[] = { R.id.fragmentContainerView2,R.id.fragmentContainerView3,R.
             return insets;
 
         });
-    generalFragments = new ArrayList<>();
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    for (int i = 0; i < ids.length; i++) {
-        GeneralFragment generalFragment = (GeneralFragment) fragmentManager.findFragmentById(ids[i]);
-        generalFragment.setOnFrgGeneral(i + 1, this);
-        generalFragments.add(generalFragment);
+        Textos.getInstance();
+        Tokens.getInstance();
+        tokensPara = Tokens.getTokensPara();
+        tokensAsunto = Tokens.getTokensAsunto();
+        PatternCuerpo = Tokens.getPatternCuerpo();
+        databaseManager = DatabaseManager.getInstance(this);
+
+        listView = findViewById(R.id.listview);
+        ArrayList<MiniAlert> miniAlerts =databaseManager.getAlertas();
+        adaptadorAlertas = new AdaptadorAlertas(this, miniAlerts);
+        listView.setAdapter(adaptadorAlertas);
+
+        cniSensorIAList = new ArrayList<>();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        CniSensorIA cniSensorIA1 = (CniSensorIA) fragmentManager.findFragmentById(R.id.fragmentPara);
+        cniSensorIA1.setOnFrgCniSensorIA(this, tokensPara, null, null, 0,Textos.getTextos()[0]);
+        CniSensorIA cniSensorIA2 = (CniSensorIA) fragmentManager.findFragmentById(R.id.fragmentAsunto);
+        cniSensorIA2.setOnFrgCniSensorIA(this, tokensAsunto, null, tokensQueBloqueanOtrosTokensAsunto, 1,Textos.getTextos()[0]);
+
+        CniSensorIA cniSensorIA3 = (CniSensorIA) fragmentManager.findFragmentById(R.id.fragmentCuerpo);
+        cniSensorIA3.setOnFrgCniSensorIA(this, null, PatternCuerpo, null, 2,Textos.getTextos()[0]);
+
+        cniSensorIAList.add(cniSensorIA1);
+        cniSensorIAList.add(cniSensorIA2);
+        cniSensorIAList.add(cniSensorIA3);
+
+        Button button = findViewById(R.id.button5);
+        button.setOnClickListener(v -> {
+           resetear();
+        });
+
+
 
     }
-    @SuppressLint({"MissingInflatedId", "LocalSuppress"}) LinearLayout linearLayout = findViewById(R.id.linearLayaout);
-    GeneralFragment newGeneralFragment = new GeneralFragment();
-    newGeneralFragment.setOnFrgGeneral(5, this);
-    FragmentTransaction transaction = fragmentManager.beginTransaction();
-    transaction.add(R.id.linearLayaout, newGeneralFragment);
-    transaction.commit();
 
-
+    private void resetear() {
+        adaptadorAlertas.clear();
+        databaseManager.borrarAlertas();
     }
+
 
     @Override
-    public boolean generico1(boolean activado) {
-        return !activado;
+    public void mandarAviso(String texto, String token, int id) {
+        Intent intent = new Intent(this, PantallaDecmbio.class);
+        guardartextos();
+        intent.putExtra("token", token);
+        intent.putExtra("text", texto);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
+    private void guardartextos() {
+        Textos.setTextos(cniSensorIAList.get(0).getText(),cniSensorIAList.get(1).getText(),cniSensorIAList.get(2).getText());
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cniSensorIAList.get(0).setEsperarUno(true);
+        cniSensorIAList.get(0).setText(Textos.getTextos()[0]);
+        cniSensorIAList.get(1).setEsperarUno(true);
+        cniSensorIAList.get(1).setText(Textos.getTextos()[1]);
+        cniSensorIAList.get(2).setEsperarUno(true);
+        cniSensorIAList.get(2).setText(Textos.getTextos()[2]);
+
     }
 }
