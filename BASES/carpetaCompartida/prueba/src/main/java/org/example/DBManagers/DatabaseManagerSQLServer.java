@@ -368,4 +368,57 @@ public class DatabaseManagerSQLServer {
             e.printStackTrace();
         }
     }
+
+    public void crearTablasVehiculos() {
+        try {
+            Statement statement = conexion.createStatement();
+            String sql = "CREATE TABLE VEHICULO" +
+                    "(" +
+                    "    codVehiculo     int IDENTITY(1,1)," +
+                    "    Matricula       CHAR(10)," +
+                    "    Marca           VARCHAR(20)," +
+                    "    Modelo          VARCHAR(20)," +
+                    "    TipoCombustible char(1)," +
+                    "    constraint PK_VEHICULO PRIMARY KEY (codVehiculo)," +
+                    "    constraint CK_VEHICULO_TIPOCOMBUSTIBLE CHECK (TipoCombustible IN ('G', 'D'))," +
+                    "    constraint CK_VEHICULO_MATRICULA CHECK (Matricula LIKE '[0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]')" +
+                    ")";
+            statement.executeUpdate(sql);
+             System.out.println("Táboa VEHICULO creada exitosamente.");
+            sql = "CREATE TABLE VEHICULO_EMPRESA" +
+                    "(" +
+                    "    codVehiculoEmpresa    int IDENTITY(1,1)," +
+                    "    codVehiculo           int," +
+                    "    FechaCompra           DATE," +
+                    "    Precio                DECIMAL(10, 2)," +
+                    "    constraint PK_VEHICULO_EMPRESA PRIMARY KEY (codVehiculoEmpresa)," +
+                    "    constraint FK_VEHICULO_VE FOREIGN KEY (codVehiculo) REFERENCES VEHICULO(codVehiculo)" +
+                    ")";
+            statement.executeUpdate(sql);
+            System.out.println("Táboa VEHICULO_EMPRESA creada exitosamente.");
+            sql = "CREATE TABLE VEHICULO_RENTING" +
+                    "(" +
+                    "    codVehiculoRenting    int IDENTITY(1,1)," +
+                    "    codVehiculo           int," +
+                    "    FechaInicio           DATE," +
+                    "    PrecioMensual         DECIMAL(10, 2)," +
+                    "    numMeses              int," +
+                    "    constraint PK_VEHICULO_RENTING PRIMARY KEY (codVehiculoRenting)," +
+                    "    constraint FK_VEHICULO_VR FOREIGN KEY (codVehiculo) REFERENCES VEHICULO(codVehiculo)" +
+                    ")";
+            statement.executeUpdate(sql);
+            System.out.println("Táboa VEHICULO_RENTING creada exitosamente.");
+            conexion.commit();
+
+        } catch (SQLException e) {
+            try {
+                if (conexion != null) {
+                    conexion.rollback();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+    }
 }

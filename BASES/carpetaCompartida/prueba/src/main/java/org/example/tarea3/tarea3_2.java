@@ -18,7 +18,7 @@ public class tarea3_2 {
 
         DatabaseManagerSQLServer databaseManagerSQLServer = new DatabaseManagerSQLServer();
         //a)
-        databaseManagerSQLServer.tablesInfo("master");
+        databaseManagerSQLServer.tablesInfo("bdempresa");
         //b)
         //databaseManagerSQLServer.tableColumnsInfo("dbo","EMPREGADO");
         //c)
