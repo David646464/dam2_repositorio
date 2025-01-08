@@ -24,7 +24,7 @@ public class tarea3_2 {
         //c)
         //databaseManagerSQLServer.proceduresInfo();
         //d)
-        //databaseManagerSQLServer.primaryKeyColumnsInfo("dbo","EMPREGADO");
+        databaseManagerSQLServer.primaryKeyColumnsInfo("dbo","EMPREGADO");
         //e)
         //databaseManagerSQLServer.foreignKeyColumnsInfo("dbo","EMPREGADO");
     }

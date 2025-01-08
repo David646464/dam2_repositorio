@@ -253,7 +253,8 @@ public class IFrmListadoPropietarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TipoOrdenActionPerformed
 
     private void tablaPropietariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPropietariosMouseClicked
-          if (tablaPropietarios.getSelectedRow()!= -1){
+
+        if (tablaPropietarios.getSelectedRow()!= -1){
               if (filaSeleccionada == tablaPropietarios.getSelectedRow()){
                   numClicks++;
               }else{

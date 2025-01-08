@@ -1,5 +1,8 @@
 package org.example.DBManagers;
 
+import org.example.Tarea5.objects.Vehiculo;
+import org.example.Tarea5.objects.VehiculoEmpresa;
+import org.example.Tarea5.objects.VehiculoRenting;
 import org.example.tarea2.objects.Departamento;
 import org.example.tarea2.objects.Proxecto;
 
@@ -191,20 +194,20 @@ public class DatabaseManagerSQLServer {
     public List<Departamento> pr_DepartControlaProxe(int i) {
         String sql = "{call pr_DepartControlaProxe(?)}";
         CallableStatement cstmt = null;
-        List<Departamento> departamentos = new ArrayList(){
+        List<Departamento> departamentos = new ArrayList() {
         };
         try {
             cstmt = conexion.prepareCall(sql);
             cstmt.setInt(1, i);
-              // Ejecuta el procedimiento almacenado
+            // Ejecuta el procedimiento almacenado
             String algo = cstmt.toString();
             ResultSet resultSet = cstmt.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int NumDep = resultSet.getInt(1);
                 String NomeDep = resultSet.getString(2);
                 String NSSdirige = resultSet.getString(3);
                 Date dataDireccion = resultSet.getDate(4);
-                departamentos.add(new Departamento(NumDep,NomeDep,NSSdirige,dataDireccion));
+                departamentos.add(new Departamento(NumDep, NomeDep, NSSdirige, dataDireccion));
             }
             System.out.println("Procedimiento almacenado ejecutado exitosamente.");
         } catch (SQLException e) {
@@ -218,12 +221,12 @@ public class DatabaseManagerSQLServer {
 
     }
 
-    public void ejecutarSentencia(String bd, String user, String password ,String sql) throws SQLException {
-        String url = "jdbc:sqlserver://localhost:1433;databaseName="+bd+";encrypt=true;trustServerCertificate=true";
+    public void ejecutarSentencia(String bd, String user, String password, String sql) throws SQLException {
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=" + bd + ";encrypt=true;trustServerCertificate=true";
         Connection connection = DriverManager.getConnection(url, user, password);
         Statement statement = connection.createStatement();
         String[] sqls = sql.split(";");
-        for (String s : sqls){
+        for (String s : sqls) {
             statement.execute(s);
             ResultSet resultSet = statement.getResultSet();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
@@ -354,7 +357,7 @@ public class DatabaseManagerSQLServer {
 
     public void queryInfo(String bd, String user, String password, String sql) {
         try {
-           String url = "jdbc:sqlserver://localhost:1433;databaseName="+bd+";encrypt=true;trustServerCertificate=true";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=" + bd + ";encrypt=true;trustServerCertificate=true";
             Connection conexion = DriverManager.getConnection(url, user, password);
             Statement statement = conexion.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -371,6 +374,8 @@ public class DatabaseManagerSQLServer {
 
     public void crearTablasVehiculos() {
         try {
+            //Si existen las borra
+
             Statement statement = conexion.createStatement();
             String sql = "CREATE TABLE VEHICULO" +
                     "(" +
@@ -384,7 +389,7 @@ public class DatabaseManagerSQLServer {
                     "    constraint CK_VEHICULO_MATRICULA CHECK (Matricula LIKE '[0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]')" +
                     ")";
             statement.executeUpdate(sql);
-             System.out.println("Táboa VEHICULO creada exitosamente.");
+            System.out.println("Táboa VEHICULO creada exitosamente.");
             sql = "CREATE TABLE VEHICULO_EMPRESA" +
                     "(" +
                     "    codVehiculoEmpresa    int IDENTITY(1,1)," +
@@ -421,4 +426,76 @@ public class DatabaseManagerSQLServer {
             e.printStackTrace();
         }
     }
+
+    public void anhadirVehiculo(Vehiculo vehiculo) throws SQLException {
+        try {
+
+            conexion.setAutoCommit(false);
+
+
+            String sql = "INSERT INTO VEHICULO (matricula, marca, modelo, tipocombustible) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, vehiculo.getMatricula());
+            preparedStatement.setString(2, vehiculo.getMarca());
+            preparedStatement.setString(3, vehiculo.getModelo());
+            preparedStatement.setString(4, String.valueOf(vehiculo.getTipoConbustible()));
+
+            ResultSet generatedKeys;
+            synchronized (this){
+                preparedStatement.executeUpdate();
+                generatedKeys = preparedStatement.getGeneratedKeys();
+            }
+            if (generatedKeys.next()) {
+                vehiculo.setCodvehiculo(generatedKeys.getInt(obtenerClavePrimariaTabla("VEHICULO")));
+            }
+
+
+            if (vehiculo instanceof VehiculoRenting) {
+                sql = "INSERT INTO VEHICULO_RENTING (codVehiculo, FechaInicio, PrecioMensual, numMeses) VALUES (?, ?, ?, ?)";
+                preparedStatement = conexion.prepareStatement(sql);
+                preparedStatement.setInt(1, vehiculo.getCodvehiculo());
+                preparedStatement.setDate(2, ((VehiculoRenting) vehiculo).getFechaInicio());
+                preparedStatement.setFloat(3, ((VehiculoRenting) vehiculo).getPrecioMensual());
+                preparedStatement.setInt(4, ((VehiculoRenting) vehiculo).getNumMeses());
+                preparedStatement.executeUpdate();
+            } else {
+                sql = "INSERT INTO VEHICULO_EMPRESA (codVehiculo, FechaCompra, Precio) VALUES (?, ?, ?)";
+                preparedStatement = conexion.prepareStatement(sql);
+                preparedStatement.setInt(1, vehiculo.getCodvehiculo());
+                preparedStatement.setDate(2, ((VehiculoEmpresa) vehiculo).getFechaCompra());
+                preparedStatement.setFloat(3, ((VehiculoEmpresa) vehiculo).getPrecio());
+                preparedStatement.executeUpdate();
+            }
+
+
+            conexion.commit();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+            conexion.rollback();
+            throw e;
+        } finally {
+
+            try {
+                conexion.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private int obtenerClavePrimariaTabla(String table) {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet primaryKeys = metaData.getPrimaryKeys(null, null, table);
+            if (primaryKeys.next()) {
+                return primaryKeys.getInt("KEY_SEQ");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
 }

@@ -36,9 +36,11 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        uRLLabel2 = new urllabel.URLLabel.URLLabel();
         jPanel2 = new javax.swing.JPanel();
         botonConectarVU = new javax.swing.JButton();
         botoPecharVU = new javax.swing.JButton();
+        uRLLabel1 = new urllabel.URLLabel.URLLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -84,6 +86,10 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanel2.add(botoPecharVU, gridBagConstraints);
+
+        uRLLabel1.setNavegador("firefox");
+        uRLLabel1.setUrl("www.google.es");
+        jPanel2.add(uRLLabel1, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -351,6 +357,8 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private urllabel.URLLabel.URLLabel uRLLabel1;
+    private urllabel.URLLabel.URLLabel uRLLabel2;
     // End of variables declaration//GEN-END:variables
 
     private void setAllErrorClear() {
