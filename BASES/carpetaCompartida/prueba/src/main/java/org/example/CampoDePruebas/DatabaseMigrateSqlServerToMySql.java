@@ -1,4 +1,4 @@
-package org.example.DBManagers;
+package org.example.CampoDePruebas;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -6,12 +6,12 @@ import java.util.List;
 
 public class DatabaseMigrateSqlServerToMySql {
     private Connection MySqlconexion;
-    private String MySqlurl = "jdbc:mysql://127.0.0.1:3306/bdempresa";
+    private String MySqlurl = "jdbc:mysql://127.0.0.1:3306/empresanew";
     private String MySqluser = "root";
     private String MySqlpassword = "abc123.";
 
     private Connection SqlServerconexion;
-    private String SqlServerurl = "jdbc:sqlserver://localhost:1433;databaseName=bdempresa;encrypt=true;trustServerCertificate=true";
+    private String SqlServerurl = "jdbc:sqlserver://localhost:1433;databaseName=empresanew;encrypt=true;trustServerCertificate=true";
     private String SqlServeruser = "sa";
     private String SqlServerpassword = "abc123.";
 
