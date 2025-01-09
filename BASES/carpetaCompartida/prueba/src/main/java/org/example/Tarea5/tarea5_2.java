@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class tarea5_2 {
     public static void main(String[] args) throws SQLException {
         DatabaseManagerSQLServer databaseManagerSQLServer = new  DatabaseManagerSQLServer();
-       //databaseManagerSQLServer.crearTablasVehiculos();
+       databaseManagerSQLServer.crearTablasVehiculos();
         VehiculoEmpresa vehiculoEmpresa = new VehiculoEmpresa('D',"Ibiza","Seat","1227DCC",
                 Date.valueOf(LocalDate.now()),200);
        VehiculoRenting vehiculoRenting = new VehiculoRenting('D',"Ibiza","Seat","1227DCC",Date.valueOf(LocalDate.now()),200,2);

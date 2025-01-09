@@ -1,14 +1,24 @@
 package org.example.DBManagers;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import org.example.Tarea5.objects.Vehiculo;
 import org.example.Tarea5.objects.VehiculoEmpresa;
 import org.example.Tarea5.objects.VehiculoRenting;
 import org.example.tarea2.objects.Departamento;
 import org.example.tarea2.objects.Proxecto;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DatabaseManagerSQLServer {
     private Connection conexion;
@@ -386,7 +396,10 @@ public class DatabaseManagerSQLServer {
                     "    TipoCombustible char(1)," +
                     "    constraint PK_VEHICULO PRIMARY KEY (codVehiculo)," +
                     "    constraint CK_VEHICULO_TIPOCOMBUSTIBLE CHECK (TipoCombustible IN ('G', 'D'))," +
-                    "    constraint CK_VEHICULO_MATRICULA CHECK (Matricula LIKE '[0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]')" +
+                    "    constraint CK_VEHICULO_MATRICULA CHECK (" +
+                    "        Matricula LIKE '[A-Z][A-Z][0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]' OR\n" +
+                    "        Matricula LIKE '[A-Z][A-Z][0-9][0-9][0-9][0-9][A-Z]' " +
+                    "    )" +
                     ")";
             statement.executeUpdate(sql);
             System.out.println("Táboa VEHICULO creada exitosamente.");
@@ -432,6 +445,9 @@ public class DatabaseManagerSQLServer {
 
             conexion.setAutoCommit(false);
 
+            if (VehiculoExiste(vehiculo.getMatricula())) {
+                throw new SQLException("Ya existe un vehículo con la matrícula " + vehiculo.getMatricula());
+            }
 
             String sql = "INSERT INTO VEHICULO (matricula, marca, modelo, tipocombustible) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -441,7 +457,7 @@ public class DatabaseManagerSQLServer {
             preparedStatement.setString(4, String.valueOf(vehiculo.getTipoConbustible()));
 
             ResultSet generatedKeys;
-            synchronized (this){
+            synchronized (this) {
                 preparedStatement.executeUpdate();
                 generatedKeys = preparedStatement.getGeneratedKeys();
             }
@@ -474,7 +490,6 @@ public class DatabaseManagerSQLServer {
 
             e.printStackTrace();
             conexion.rollback();
-            throw e;
         } finally {
 
             try {
@@ -483,6 +498,19 @@ public class DatabaseManagerSQLServer {
                 e.printStackTrace();
             }
         }
+    }
+
+    private boolean VehiculoExiste(String matricula) {
+        try {
+            String sql = "SELECT * FROM VEHICULO WHERE matricula = ?";
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, matricula);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private int obtenerClavePrimariaTabla(String table) {
@@ -497,5 +525,146 @@ public class DatabaseManagerSQLServer {
         }
         return -1;
     }
+
+    public void anhairvehiculosDeUnGson(String file) {
+        try {
+            conexion.setAutoCommit(false);
+
+            Gson gson = new Gson();
+            JsonObject jsonObject = JsonParser.parseReader(new FileReader(file)).getAsJsonObject();
+            Type vehiculoListType = new TypeToken<ArrayList<JsonObject>>() {
+            }.getType();
+            List<JsonObject> vehiculosJson = gson.fromJson(jsonObject.get("vehiculos"), vehiculoListType);
+
+            for (JsonObject vehiculoJson : vehiculosJson) {
+                try {
+                    String matricula = vehiculoJson.get("matricula").getAsString();
+                    if (matriculaEsCorrecta(matricula)) {
+                        String marca = vehiculoJson.get("marca").getAsString();
+                        String modelo = vehiculoJson.get("modelo").getAsString();
+                        char tipo = vehiculoJson.get("tipo").getAsCharacter();
+
+                        if (vehiculoJson.has("vehiculoPropio")) {
+                            JsonObject vehiculoPropioJson = vehiculoJson.getAsJsonObject("vehiculoPropio");
+                            Date fechaCompra = Date.valueOf(vehiculoPropioJson.get("fechaCompra").getAsString());
+                            float precio = vehiculoPropioJson.get("precio").getAsFloat();
+
+                            VehiculoEmpresa vehiculoEmpresa = new VehiculoEmpresa(tipo, modelo, marca, matricula, fechaCompra, precio);
+                            anhadirVehiculo(vehiculoEmpresa);
+                        } else if (vehiculoJson.has("vehiculoRenting")) {
+                            JsonObject vehiculoRentingJson = vehiculoJson.getAsJsonObject("vehiculoRenting");
+                            Date fechaInicio = Date.valueOf(vehiculoRentingJson.get("fechaInicio").getAsString());
+                            float precioMensual = vehiculoRentingJson.get("precioMensual").getAsFloat();
+                            int numMeses = vehiculoRentingJson.get("meses").getAsInt();
+
+                            VehiculoRenting vehiculoRenting = new VehiculoRenting(tipo, modelo, marca, matricula, fechaInicio, precioMensual, numMeses);
+                            anhadirVehiculo(vehiculoRenting);
+                        }
+                    } else {
+                        throw new SQLException("La matrícula " + matricula + " no es correcta.");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error procesando el vehículo: " + e.getMessage());
+                }
+            }
+
+            conexion.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                if (conexion != null) {
+                    conexion.rollback();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private boolean matriculaEsCorrecta(String matricula) {
+        String regex = "^[0-9]{4}[A-Z]{3}$|^[A-Z]{2}[0-9]{4}[A-Z]$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(matricula);
+        return matcher.matches();
+    }
+
+    public void sacarEnJsonVehiculos(String file) {
+    try {
+        Gson gson = new Gson();
+        List<JsonObject> vehiculos = new ArrayList<>();
+        String sql = "SELECT * FROM VEHICULO_RENTING";
+        Statement statement = conexion.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            int codVehiculo = resultSet.getInt("codVehiculo");
+            Date fechaInicio = resultSet.getDate("FechaInicio");
+            float precioMensual = resultSet.getFloat("PrecioMensual");
+            int numMeses = resultSet.getInt("numMeses");
+            String sqlVehiculo = "SELECT * FROM VEHICULO WHERE codVehiculo = " + codVehiculo;
+            Statement statementVehiculo = conexion.createStatement();
+            ResultSet resultSetVehiculo = statementVehiculo.executeQuery(sqlVehiculo);
+            if (resultSetVehiculo.next()) {
+                String matricula = resultSetVehiculo.getString("Matricula").trim();
+                String marca = resultSetVehiculo.getString("Marca");
+                String modelo = resultSetVehiculo.getString("Modelo");
+                char tipoCombustible = resultSetVehiculo.getString("TipoCombustible").charAt(0);
+
+                JsonObject vehiculoJson = new JsonObject();
+                vehiculoJson.addProperty("matricula", matricula);
+                vehiculoJson.addProperty("marca", marca);
+                vehiculoJson.addProperty("modelo", modelo);
+                vehiculoJson.addProperty("tipo", String.valueOf(tipoCombustible));
+
+                JsonObject vehiculoRentingJson = new JsonObject();
+                vehiculoRentingJson.addProperty("fechaInicio", fechaInicio.toString());
+                vehiculoRentingJson.addProperty("precioMensual", precioMensual);
+                vehiculoRentingJson.addProperty("meses", numMeses);
+
+                vehiculoJson.add("vehiculoRenting", vehiculoRentingJson);
+                vehiculos.add(vehiculoJson);
+            }
+        }
+
+        sql = "SELECT * FROM VEHICULO_EMPRESA";
+        statement = conexion.createStatement();
+        resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            int codVehiculo = resultSet.getInt("codVehiculo");
+            Date fechaCompra = resultSet.getDate("FechaCompra");
+            float precio = resultSet.getFloat("Precio");
+            String sqlVehiculo = "SELECT * FROM VEHICULO WHERE codVehiculo = " + codVehiculo;
+            Statement statementVehiculo = conexion.createStatement();
+            ResultSet resultSetVehiculo = statementVehiculo.executeQuery(sqlVehiculo);
+            if (resultSetVehiculo.next()) {
+                String matricula = resultSetVehiculo.getString("Matricula").trim();
+                String marca = resultSetVehiculo.getString("Marca");
+                String modelo = resultSetVehiculo.getString("Modelo");
+                char tipoCombustible = resultSetVehiculo.getString("TipoCombustible").charAt(0);
+
+                JsonObject vehiculoJson = new JsonObject();
+                vehiculoJson.addProperty("matricula", matricula);
+                vehiculoJson.addProperty("marca", marca);
+                vehiculoJson.addProperty("modelo", modelo);
+                vehiculoJson.addProperty("tipo", String.valueOf(tipoCombustible));
+
+                JsonObject vehiculoPropioJson = new JsonObject();
+                vehiculoPropioJson.addProperty("fechaCompra", fechaCompra.toString());
+                vehiculoPropioJson.addProperty("precio", precio);
+
+                vehiculoJson.add("vehiculoPropio", vehiculoPropioJson);
+                vehiculos.add(vehiculoJson);
+            }
+        }
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("vehiculos", gson.toJsonTree(vehiculos));
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(jsonObject, writer);
+        }
+
+    } catch (SQLException | IOException e) {
+        throw new RuntimeException(e);
+    }
+}
 
 }

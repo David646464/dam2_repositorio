@@ -31,55 +31,64 @@ public class DatabaseMigrateSqlServerToMySql {
         migrateDatabase();
         //Crear las tablas en el otro
         migrateTables();
+        //Migrar la información qu contiene cada tabla
+        migrateInfo();
         //Poner las claves foraneas
         migrateForeignKeys();
 
-        //Migrar la información qu contiene cada tabla
-       //migrateInfo();
+
     }
 
     private void migrateForeignKeys() {
-        try {
-            DatabaseMetaData databaseMetaData = SqlServerconexion.getMetaData();
-            ResultSet tables = databaseMetaData.getTables(null, "dbo", null, new String[]{"TABLE"});
-            while (tables.next()) {
-                String tableName = tables.getString("TABLE_NAME");
-                ResultSet foreignKeys = databaseMetaData.getImportedKeys(null, "dbo", tableName);
-                while (foreignKeys.next()) {
-                    String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
-                    String pkTableName = foreignKeys.getString("PKTABLE_NAME");
-                    String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
-                    String sql = "ALTER TABLE " + tableName + " ADD FOREIGN KEY (" + fkColumnName + ") REFERENCES " + pkTableName + "(" + pkColumnName + ")";
-                    MySqlconexion.prepareStatement(sql).execute();
-                }
+    try {
+        DatabaseMetaData databaseMetaData = SqlServerconexion.getMetaData();
+        ResultSet tables = databaseMetaData.getTables(null, "dbo", null, new String[]{"TABLE"});
+        while (tables.next()) {
+            String tableName = tables.getString("TABLE_NAME");
+            ResultSet foreignKeys = databaseMetaData.getImportedKeys(null, "dbo", tableName);
+            while (foreignKeys.next()) {
+                String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
+                String pkTableName = foreignKeys.getString("PKTABLE_NAME");
+                String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
+                String sql = "ALTER TABLE " + tableName + " ADD CONSTRAINT " + tableName + "_" + fkColumnName + "_fk FOREIGN KEY (" + fkColumnName + ") REFERENCES " + pkTableName + "(" + pkColumnName + ");";
+                MySqlconexion.prepareStatement(sql).execute();
             }
-            MySqlconexion.commit();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+        MySqlconexion.commit();
+    } catch (SQLException e) {
+        //mensaje de error porque hay datos con clave foranea sin referencia existente
+        System.err.println("Error al migrar las claves foraneas ya que no existe la referencia:\n " + e.getMessage());
+
     }
+}
 
     private void migrateInfo() {
         try {
             //TODO: Migrate data
             DatabaseMetaData databaseMetaData = SqlServerconexion.getMetaData();
-            ResultSet tables = databaseMetaData.getTables(null, null, null, new String[]{"TABLE"});
+            ResultSet tables = databaseMetaData.getTables(null, "dbo", null, new String[]{"TABLE"});
             while (tables.next()) {
+                int numColumns = 0;
                 String tableName = tables.getString("TABLE_NAME");
-                StringBuilder sql = new StringBuilder("INSERT INTO " + tableName + " VALUES (");
+                StringBuilder sql = new StringBuilder("INSERT INTO " + tableName + " (");
                 ResultSet columns = databaseMetaData.getColumns(null, null, tableName, null);
                 while (columns.next()) {
+                    numColumns++;
                     String columnName = columns.getString("COLUMN_NAME");
                     sql.append(columnName).append(",");
                 }
                 sql.deleteCharAt(sql.length() - 1);
                 sql.append(")");
                 ResultSet data = SqlServerconexion.createStatement().executeQuery("SELECT * FROM " + tableName);
+                sql.append(" VALUES (");
+                String original = sql.toString();
                 while (data.next()) {
-                    for (int i = 1; i <= columns.getFetchSize(); i++) {
-                        sql.append(data.getString(i)).append(",");
+                    sql = new StringBuilder(original);
+                    for (int i = 1; i <= numColumns; i++) {
+                        sql.append(detectarString(data.getString(i))).append(",");
                     }
                     sql.deleteCharAt(sql.length() - 1);
+                    sql.append(")");
                     MySqlconexion.prepareStatement(sql.toString()).execute();
                 }
             }
@@ -87,6 +96,15 @@ public class DatabaseMigrateSqlServerToMySql {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private String detectarString(String string) {
+       try {
+           Integer num = Integer.valueOf(string);
+       }catch (Exception e){
+           return "'" + string + "'";
+       }
+       return string;
     }
 
     private void migrateTables() throws SQLException {
