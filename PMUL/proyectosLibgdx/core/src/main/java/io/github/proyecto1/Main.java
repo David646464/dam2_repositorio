@@ -64,22 +64,24 @@ public class Main extends ApplicationAdapter {
         float delta = Gdx.graphics.getDeltaTime();
         timeElapsed += delta;
 
-        if (timeElapsed  >= timeElapsedBefore) {
-            changeColor();
-            timeElapsedBefore = timeElapsed + INTERVALO;
-        }
+     if (!perdiste){
+         if (timeElapsed  >= timeElapsedBefore) {
+             changeColor();
+             timeElapsedBefore = timeElapsed + INTERVALO;
+         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            esEspacioPresionado();
-        }
+         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+             esEspacioPresionado();
+         }
 
-        ScreenUtils.clear(color == 0 ? 0 : color == 1 ? 0 : 1, color == 0 ? 0 : color == 1 ? 1 : 0, color == 0 ? 1 : color == 1 ? 0 : 0, 1);
-        batch.begin();
-        String numberText = String.valueOf(number);
-        float textWidth = font.getRegion().getRegionWidth();
-        float textHeight = font.getRegion().getRegionHeight();
-        font.draw(batch, numberText, (Gdx.graphics.getWidth() - textWidth) / 2, (Gdx.graphics.getHeight() + textHeight) / 2);
-        batch.end();
+         ScreenUtils.clear(color == 0 ? 0 : color == 1 ? 0 : 1, color == 0 ? 0 : color == 1 ? 1 : 0, color == 0 ? 1 : color == 1 ? 0 : 0, 1);
+         batch.begin();
+         String numberText = String.valueOf(number);
+         float textWidth = font.getRegion().getRegionWidth();
+         float textHeight = font.getRegion().getRegionHeight();
+         font.draw(batch, numberText, (Gdx.graphics.getWidth() - textWidth) / 2, (Gdx.graphics.getHeight() + textHeight) / 2);
+         batch.end();
+     }
     }
 
     private void changeColor() {
