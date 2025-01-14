@@ -25,6 +25,7 @@ public class DatabaseManagerSQLServer {
     String url = "jdbc:sqlserver://localhost:1433;databaseName=bdempresa;encrypt=true;trustServerCertificate=true";
     String user = "sa";
     String password = "abc123.";
+    
 
     public DatabaseManagerSQLServer() throws SQLException {
         try {
