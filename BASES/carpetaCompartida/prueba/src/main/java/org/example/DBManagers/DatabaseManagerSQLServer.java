@@ -1,8 +1,6 @@
 package org.example.DBManagers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.example.Tarea5.objects.Vehiculo;
 import org.example.Tarea5.objects.VehiculoEmpresa;
@@ -25,7 +23,7 @@ public class DatabaseManagerSQLServer {
     String url = "jdbc:sqlserver://localhost:1433;databaseName=bdempresa;encrypt=true;trustServerCertificate=true";
     String user = "sa";
     String password = "abc123.";
-    
+
 
     public DatabaseManagerSQLServer() throws SQLException {
         try {
@@ -667,5 +665,192 @@ public class DatabaseManagerSQLServer {
         throw new RuntimeException(e);
     }
 }
+
+     public void eliminarDePartamentoConReasignamiento(String departamentoAEliminar, String departamentoReasignar, String jsonFile) throws SQLException {
+        conexion.setAutoCommit(false);
+        try {
+            // Obtener el código del departamento a eliminar
+            int codDepartamentoAEliminar = obtenerCodigoDepartamento(departamentoAEliminar);
+            int codDepartamentoReasignar = obtenerCodigoDepartamento(departamentoReasignar);
+
+            if (codDepartamentoAEliminar == -1 || codDepartamentoReasignar == -1) {
+                throw new SQLException("Uno de los departamentos proporcionados no existe.");
+            } else if (codDepartamentoAEliminar == codDepartamentoReasignar) {
+                throw new SQLException("Los departamentos proporcionados son iguales.");
+            }
+
+            // Visualizar datos del departamento a eliminar
+            System.out.println("Datos del departamento a eliminar:");
+            visualizarDatosDepartamento(codDepartamentoAEliminar);
+            System.out.println("Datos del departamento a reasignar:");
+            visualizarDatosDepartamento(codDepartamentoReasignar);
+
+            // Visualizar datos de los empleados pertenecientes al departamento a eliminar
+            List<JsonObject> empleadosReasignados = visualizarDatosEmpleados(codDepartamentoAEliminar, codDepartamentoReasignar);
+
+            // Visualizar datos de los proyectos que controla el departamento a eliminar
+            List<JsonObject> proyectosReasignados = visualizarDatosProyectos(codDepartamentoAEliminar, codDepartamentoReasignar);
+
+            // Eliminar el departamento y reasignar empleados y proyectos
+            eliminarDepartamento(codDepartamentoAEliminar, codDepartamentoReasignar);
+
+            // Generar archivo JSON con la información de la actualización
+            generarArchivoJson(empleadosReasignados, proyectosReasignados, codDepartamentoAEliminar, departamentoAEliminar, jsonFile);
+            
+            conexion.commit();
+        } catch (SQLException | IOException e) {
+            try {
+                if (conexion != null) {
+                    conexion.rollback();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conexion != null) {
+                    conexion.setAutoCommit(true);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private int obtenerCodigoDepartamento(String nombreDepartamento) throws SQLException {
+        //Comprobar si existe el procidemiento y si no lo crea
+        comprobarExitencia();
+        String sql = "{call pr_ObtenerCodigoDepartamento(?, ?)}";
+        CallableStatement cstmt = conexion.prepareCall(sql);
+        cstmt.setString(1, nombreDepartamento);
+        cstmt.registerOutParameter(2, Types.INTEGER);
+        cstmt.execute();
+        return cstmt.getInt(2);
+    }
+
+    private void comprobarExitencia() {
+        try {
+            DatabaseMetaData metaData = conexion.getMetaData();
+            ResultSet procedures = metaData.getProcedures(null, null, "pr_ObtenerCodigoDepartamento");
+            if (!procedures.next()) {
+                String sql = "CREATE PROCEDURE pr_ObtenerCodigoDepartamento " +
+                        "@nome_departamento VARCHAR(25), " +
+                        "@num_departamento INT OUTPUT " +
+                        "AS " +
+                        "BEGIN " +
+                        "    SELECT @num_departamento = Num_Departamento " +
+                        "    FROM DEPARTAMENTO " +
+                        "    WHERE Nome_Departamento = @nome_departamento " +
+                        "END";
+                Statement stmt = conexion.createStatement();
+                stmt.executeUpdate(sql);
+                conexion.commit();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void visualizarDatosDepartamento(int codDepartamento) throws SQLException {
+        String sql = "SELECT * FROM DEPARTAMENTO WHERE Num_Departamento = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(sql);
+        pstmt.setInt(1, codDepartamento);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            System.out.println("Departamento: " + rs.getString("Nome_Departamento"));
+        }
+    }
+
+    private List<JsonObject> visualizarDatosEmpleados(int codDepartamentoAEliminar, int codDepartamentoReasignar) throws SQLException {
+        List<JsonObject> empleadosReasignados = new ArrayList<>();
+        String sql = "SELECT * FROM EMPREGADO WHERE Num_departamento_pertenece = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        pstmt.setInt(1, codDepartamentoAEliminar);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            JsonObject empleadoJson = new JsonObject();
+            empleadoJson.addProperty("NSS", rs.getString("NSS"));
+            empleadoJson.addProperty("Nombre", rs.getString("Nome"));
+            empleadoJson.addProperty("Apelido1", rs.getString("Apelido_1"));
+            empleadoJson.addProperty("Apelido2", rs.getString("Apelido_2"));
+            empleadoJson.addProperty("NuevoDepartamento", codDepartamentoReasignar);
+            empleadosReasignados.add(empleadoJson);
+
+            imprimirElEmpleadoporPantalla(rs);
+            rs.updateInt("Num_departamento_pertenece", codDepartamentoReasignar);
+            rs.updateRow();
+        }
+        return empleadosReasignados;
+    }
+
+    private void imprimirElEmpleadoporPantalla(ResultSet rs) {
+        try {
+            System.out.println("Empleado: " + rs.getString("Nome") + " " + rs.getString("Apelido_1") + " " + rs.getString("Apelido_2"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<JsonObject> visualizarDatosProyectos(int codDepartamentoAEliminar, int codDepartamentoReasignar) throws SQLException {
+        List<JsonObject> proyectosReasignados = new ArrayList<>();
+        String sql = "SELECT * FROM PROXECTO WHERE Num_Departamento = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        pstmt.setInt(1, codDepartamentoAEliminar);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            JsonObject proyectoJson = new JsonObject();
+            proyectoJson.addProperty("Num_proxecto", rs.getInt("Num_proxecto"));
+            proyectoJson.addProperty("Nombre", rs.getString("Nome_Prxecto"));
+            proyectoJson.addProperty("NuevoDepartamentoControla", codDepartamentoReasignar);
+            proyectosReasignados.add(proyectoJson);
+            
+            imprimirElProyectoporPantalla(rs);
+
+            rs.updateInt("Num_Departamento", codDepartamentoReasignar);
+            rs.updateRow();
+        }
+        return proyectosReasignados;
+    }
+
+    private void imprimirElProyectoporPantalla(ResultSet rs) {
+        try {
+            System.out.println("Proyecto: " + rs.getString("Nome_Prxecto"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void eliminarDepartamento(int codDepartamentoAEliminar, int codDepartamentoReasignar) throws SQLException {
+        String sql = "DELETE FROM DEPARTAMENTO WHERE Num_Departamento = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(sql);
+        pstmt.setInt(1, codDepartamentoAEliminar);
+        pstmt.executeUpdate();
+    }
+
+    private void generarArchivoJson(List<JsonObject> empleadosReasignados, List<JsonObject> proyectosReasignados, int codDepartamentoAEliminar, String nombreDepartamentoAEliminar, String jsonFile) throws IOException {
+        JsonObject jsonObject = new JsonObject();
+        JsonArray empleadosArray = new JsonArray();
+
+        empleadosReasignados.forEach(empleadosArray::add);
+        jsonObject.add("EmpleadosReasignados", empleadosArray);
+        for (JsonElement jsonElement : empleadosArray) {
+
+        }
+
+        JsonArray proyectosArray = new JsonArray();
+        proyectosReasignados.forEach(proyectosArray::add);
+        jsonObject.add("ProyectosReasignados", proyectosArray);
+
+        JsonObject departamentoEliminado = new JsonObject();
+        departamentoEliminado.addProperty("Num_departamento", codDepartamentoAEliminar);
+        departamentoEliminado.addProperty("Nombre", nombreDepartamentoAEliminar);
+        jsonObject.add("DepartamentoEliminado", departamentoEliminado);
+
+        try (FileWriter writer = new FileWriter(jsonFile)) {
+            Gson gson = new Gson();
+            gson.toJson(jsonObject, writer);
+        }
+    }
 
 }

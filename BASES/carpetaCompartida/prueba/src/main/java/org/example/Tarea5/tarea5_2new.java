@@ -4,9 +4,10 @@ import org.example.DBManagers.DatabaseManagerSQLServer;
 
 import java.sql.SQLException;
 
-public class tarea5_3 {
+public class tarea5_2new {
     public static void main(String[] args) throws SQLException {
         DatabaseManagerSQLServer databaseManagerSQLServer = new DatabaseManagerSQLServer();
-        databaseManagerSQLServer.eliminarDePartamentoConReasignamiento("INFORMÁTICA","ESTADÍSTICA","src/main/java/org/example/Files/reasignamientoDeDeparamentosLog.json");
+        //databaseManagerSQLServer.anhairvehiculosDeUnGson("src/main/java/org/example/Files/InsertarVehiculos.json");
+        databaseManagerSQLServer.sacarEnJsonVehiculos("src/main/java/org/example/Files/VehiculosBaseDatos.json");
     }
 }
