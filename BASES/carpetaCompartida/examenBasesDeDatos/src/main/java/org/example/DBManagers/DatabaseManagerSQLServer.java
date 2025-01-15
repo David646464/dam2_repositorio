@@ -40,7 +40,23 @@ public class DatabaseManagerSQLServer {
     }
 
     public void createpr_cambioDomicilio() {
-        String sql = "CREATE PROCEDURE pr_cambioDomicilio " + "@NSS_cliente varchar(15), " + "@rua_domicilio VARCHAR(30), " + "@numero_domicilio int, " + "@piso_domicilio VARCHAR(4), " + "@CP_domicilio CHAR(5), " + "@localidade_domicilio VARCHAR(25) " + "AS " + "BEGIN " + "    UPDATE EMPREGADO " + "    SET Rua = @rua_domicilio, " + "        Numero_rua = @numero_domicilio, " + "        Piso = @piso_domicilio, " + "        CP = @CP_domicilio, " + "        Localidade = @localidade_domicilio " + "    WHERE NSS = @NSS_cliente " + "END";
+        String sql = "CREATE PROCEDURE pr_cambioDomicilio " +
+                "@NSS_cliente varchar(15), " +
+                "@rua_domicilio VARCHAR(30), " +
+                "@numero_domicilio int, " +
+                "@piso_domicilio VARCHAR(4), " +
+                "@CP_domicilio CHAR(5), " +
+                "@localidade_domicilio VARCHAR(25) " +
+                "AS " +
+                "BEGIN " +
+                "    UPDATE EMPREGADO " +
+                "    SET Rua = @rua_domicilio, " +
+                "        Numero_rua = @numero_domicilio, " +
+                "        Piso = @piso_domicilio, " +
+                "        CP = @CP_domicilio, " +
+                "        Localidade = @localidade_domicilio " +
+                "    WHERE NSS = @NSS_cliente " +
+                "END";
 
         Statement stmt = null;
         try {
@@ -90,7 +106,17 @@ public class DatabaseManagerSQLServer {
     }
 
     public void createpr_DatosProxectos() {
-        String sql = "CREATE PROCEDURE pr_DatosProxectos " + "@num_proxecto int, " + "@nome_proxecto varchar(25) " + "OUTPUT, @lugar varchar(25) OUTPUT," + " @num_departamento int OUTPUT " + "AS " + " BEGIN" + " SELECT @nome_proxecto = Nome_Prxecto,@lugar = Lugar,@num_departamento = Num_Departamento " + " from PROXECTO     " + " WHERE PROXECTO.Num_proxecto = @num_proxecto " + "END";
+        String sql = "CREATE PROCEDURE pr_DatosProxectos " +
+                "@num_proxecto int, " +
+                "@nome_proxecto varchar(25) " +
+                "OUTPUT, @lugar varchar(25) OUTPUT," +
+                " @num_departamento int OUTPUT " +
+                "AS " +
+                " BEGIN" +
+                " SELECT @nome_proxecto = Nome_Prxecto,@lugar = Lugar,@num_departamento = Num_Departamento " +
+                " from PROXECTO     " +
+                " WHERE PROXECTO.Num_proxecto = @num_proxecto " +
+                "END";
         Statement stmt = null;
         try {
             stmt = conexion.createStatement();
@@ -141,7 +167,13 @@ public class DatabaseManagerSQLServer {
     }
 
     public void createpr_DepartControlaProxe() {
-        String sql = "create procedure pr_DepartControlaProxe " + "@num_proxectos_controla int" + " AS " + "begin " + "select * from DEPARTAMENTO D where" + "        @num_proxectos_controla <= (select count(*) from PROXECTO P where P.num_departamento = D.num_departamento)" + "end";
+        String sql = "create procedure pr_DepartControlaProxe "
+                + "@num_proxectos_controla int"
+                + " AS "
+                + "begin "
+                + "select * from DEPARTAMENTO D where"
+                + "        @num_proxectos_controla <= (select count(*) from PROXECTO P where P.num_departamento = D.num_departamento)"
+                + "end";
 
         Statement stmt = null;
         try {
@@ -355,13 +387,43 @@ public class DatabaseManagerSQLServer {
             //Si existen las borra
 
             Statement statement = conexion.createStatement();
-            String sql = "CREATE TABLE VEHICULO" + "(" + "    codVehiculo     int IDENTITY(1,1)," + "    Matricula       CHAR(10)," + "    Marca           VARCHAR(20)," + "    Modelo          VARCHAR(20)," + "    TipoCombustible char(1)," + "    constraint PK_VEHICULO PRIMARY KEY (codVehiculo)," + "    constraint CK_VEHICULO_TIPOCOMBUSTIBLE CHECK (TipoCombustible IN ('G', 'D'))," + "    constraint CK_VEHICULO_MATRICULA CHECK (" + "        Matricula LIKE '[A-Z][A-Z][0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]' OR\n" + "        Matricula LIKE '[A-Z][A-Z][0-9][0-9][0-9][0-9][A-Z]' " + "    )" + ")";
+            String sql = "CREATE TABLE VEHICULO" +
+                    "(" +
+                    "    codVehiculo     int IDENTITY(1,1)," +
+                    "    Matricula       CHAR(10)," +
+                    "    Marca           VARCHAR(20)," +
+                    "    Modelo          VARCHAR(20)," +
+                    "    TipoCombustible char(1)," +
+                    "    constraint PK_VEHICULO PRIMARY KEY (codVehiculo)," +
+                    "    constraint CK_VEHICULO_TIPOCOMBUSTIBLE CHECK (TipoCombustible IN ('G', 'D'))," +
+                    "    constraint CK_VEHICULO_MATRICULA CHECK (" +
+                    "        Matricula LIKE '[A-Z][A-Z][0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]' OR\n" +
+                    "        Matricula LIKE '[A-Z][A-Z][0-9][0-9][0-9][0-9][A-Z]' " +
+                    "    )" +
+                    ")";
             statement.executeUpdate(sql);
             System.out.println("Táboa VEHICULO creada exitosamente.");
-            sql = "CREATE TABLE VEHICULO_EMPRESA" + "(" + "    codVehiculoEmpresa    int IDENTITY(1,1)," + "    codVehiculo           int," + "    FechaCompra           DATE," + "    Precio                DECIMAL(10, 2)," + "    constraint PK_VEHICULO_EMPRESA PRIMARY KEY (codVehiculoEmpresa)," + "    constraint FK_VEHICULO_VE FOREIGN KEY (codVehiculo) REFERENCES VEHICULO(codVehiculo)" + ")";
+            sql = "CREATE TABLE VEHICULO_EMPRESA" +
+                    "(" +
+                    "    codVehiculoEmpresa    int IDENTITY(1,1)," +
+                    "    codVehiculo           int," +
+                    "    FechaCompra           DATE," +
+                    "    Precio                DECIMAL(10, 2)," +
+                    "    constraint PK_VEHICULO_EMPRESA PRIMARY KEY (codVehiculoEmpresa)," +
+                    "    constraint FK_VEHICULO_VE FOREIGN KEY (codVehiculo) REFERENCES VEHICULO(codVehiculo)" +
+                    ")";
             statement.executeUpdate(sql);
             System.out.println("Táboa VEHICULO_EMPRESA creada exitosamente.");
-            sql = "CREATE TABLE VEHICULO_RENTING" + "(" + "    codVehiculoRenting    int IDENTITY(1,1)," + "    codVehiculo           int," + "    FechaInicio           DATE," + "    PrecioMensual         DECIMAL(10, 2)," + "    numMeses              int," + "    constraint PK_VEHICULO_RENTING PRIMARY KEY (codVehiculoRenting)," + "    constraint FK_VEHICULO_VR FOREIGN KEY (codVehiculo) REFERENCES VEHICULO(codVehiculo)" + ")";
+            sql = "CREATE TABLE VEHICULO_RENTING" +
+                    "(" +
+                    "    codVehiculoRenting    int IDENTITY(1,1)," +
+                    "    codVehiculo           int," +
+                    "    FechaInicio           DATE," +
+                    "    PrecioMensual         DECIMAL(10, 2)," +
+                    "    numMeses              int," +
+                    "    constraint PK_VEHICULO_RENTING PRIMARY KEY (codVehiculoRenting)," +
+                    "    constraint FK_VEHICULO_VR FOREIGN KEY (codVehiculo) REFERENCES VEHICULO(codVehiculo)" +
+                    ")";
             statement.executeUpdate(sql);
             System.out.println("Táboa VEHICULO_RENTING creada exitosamente.");
             conexion.commit();
@@ -527,85 +589,85 @@ public class DatabaseManagerSQLServer {
     }
 
     public void sacarEnJsonVehiculos(String file) {
-        try {
-            Gson gson = new Gson();
-            List<JsonObject> vehiculos = new ArrayList<>();
-            String sql = "SELECT * FROM VEHICULO_RENTING";
-            Statement statement = conexion.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                int codVehiculo = resultSet.getInt("codVehiculo");
-                Date fechaInicio = resultSet.getDate("FechaInicio");
-                float precioMensual = resultSet.getFloat("PrecioMensual");
-                int numMeses = resultSet.getInt("numMeses");
-                String sqlVehiculo = "SELECT * FROM VEHICULO WHERE codVehiculo = " + codVehiculo;
-                Statement statementVehiculo = conexion.createStatement();
-                ResultSet resultSetVehiculo = statementVehiculo.executeQuery(sqlVehiculo);
-                if (resultSetVehiculo.next()) {
-                    String matricula = resultSetVehiculo.getString("Matricula").trim();
-                    String marca = resultSetVehiculo.getString("Marca");
-                    String modelo = resultSetVehiculo.getString("Modelo");
-                    char tipoCombustible = resultSetVehiculo.getString("TipoCombustible").charAt(0);
+    try {
+        Gson gson = new Gson();
+        List<JsonObject> vehiculos = new ArrayList<>();
+        String sql = "SELECT * FROM VEHICULO_RENTING";
+        Statement statement = conexion.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            int codVehiculo = resultSet.getInt("codVehiculo");
+            Date fechaInicio = resultSet.getDate("FechaInicio");
+            float precioMensual = resultSet.getFloat("PrecioMensual");
+            int numMeses = resultSet.getInt("numMeses");
+            String sqlVehiculo = "SELECT * FROM VEHICULO WHERE codVehiculo = " + codVehiculo;
+            Statement statementVehiculo = conexion.createStatement();
+            ResultSet resultSetVehiculo = statementVehiculo.executeQuery(sqlVehiculo);
+            if (resultSetVehiculo.next()) {
+                String matricula = resultSetVehiculo.getString("Matricula").trim();
+                String marca = resultSetVehiculo.getString("Marca");
+                String modelo = resultSetVehiculo.getString("Modelo");
+                char tipoCombustible = resultSetVehiculo.getString("TipoCombustible").charAt(0);
 
-                    JsonObject vehiculoJson = new JsonObject();
-                    vehiculoJson.addProperty("matricula", matricula);
-                    vehiculoJson.addProperty("marca", marca);
-                    vehiculoJson.addProperty("modelo", modelo);
-                    vehiculoJson.addProperty("tipo", String.valueOf(tipoCombustible));
+                JsonObject vehiculoJson = new JsonObject();
+                vehiculoJson.addProperty("matricula", matricula);
+                vehiculoJson.addProperty("marca", marca);
+                vehiculoJson.addProperty("modelo", modelo);
+                vehiculoJson.addProperty("tipo", String.valueOf(tipoCombustible));
 
-                    JsonObject vehiculoRentingJson = new JsonObject();
-                    vehiculoRentingJson.addProperty("fechaInicio", fechaInicio.toString());
-                    vehiculoRentingJson.addProperty("precioMensual", precioMensual);
-                    vehiculoRentingJson.addProperty("meses", numMeses);
+                JsonObject vehiculoRentingJson = new JsonObject();
+                vehiculoRentingJson.addProperty("fechaInicio", fechaInicio.toString());
+                vehiculoRentingJson.addProperty("precioMensual", precioMensual);
+                vehiculoRentingJson.addProperty("meses", numMeses);
 
-                    vehiculoJson.add("vehiculoRenting", vehiculoRentingJson);
-                    vehiculos.add(vehiculoJson);
-                }
+                vehiculoJson.add("vehiculoRenting", vehiculoRentingJson);
+                vehiculos.add(vehiculoJson);
             }
-
-            sql = "SELECT * FROM VEHICULO_EMPRESA";
-            statement = conexion.createStatement();
-            resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                int codVehiculo = resultSet.getInt("codVehiculo");
-                Date fechaCompra = resultSet.getDate("FechaCompra");
-                float precio = resultSet.getFloat("Precio");
-                String sqlVehiculo = "SELECT * FROM VEHICULO WHERE codVehiculo = " + codVehiculo;
-                Statement statementVehiculo = conexion.createStatement();
-                ResultSet resultSetVehiculo = statementVehiculo.executeQuery(sqlVehiculo);
-                if (resultSetVehiculo.next()) {
-                    String matricula = resultSetVehiculo.getString("Matricula").trim();
-                    String marca = resultSetVehiculo.getString("Marca");
-                    String modelo = resultSetVehiculo.getString("Modelo");
-                    char tipoCombustible = resultSetVehiculo.getString("TipoCombustible").charAt(0);
-
-                    JsonObject vehiculoJson = new JsonObject();
-                    vehiculoJson.addProperty("matricula", matricula);
-                    vehiculoJson.addProperty("marca", marca);
-                    vehiculoJson.addProperty("modelo", modelo);
-                    vehiculoJson.addProperty("tipo", String.valueOf(tipoCombustible));
-
-                    JsonObject vehiculoPropioJson = new JsonObject();
-                    vehiculoPropioJson.addProperty("fechaCompra", fechaCompra.toString());
-                    vehiculoPropioJson.addProperty("precio", precio);
-
-                    vehiculoJson.add("vehiculoPropio", vehiculoPropioJson);
-                    vehiculos.add(vehiculoJson);
-                }
-            }
-
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.add("vehiculos", gson.toJsonTree(vehiculos));
-            try (FileWriter writer = new FileWriter(file)) {
-                gson.toJson(jsonObject, writer);
-            }
-
-        } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
         }
-    }
 
-    public void eliminarDePartamentoConReasignamiento(String departamentoAEliminar, String departamentoReasignar, String jsonFile) throws SQLException {
+        sql = "SELECT * FROM VEHICULO_EMPRESA";
+        statement = conexion.createStatement();
+        resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            int codVehiculo = resultSet.getInt("codVehiculo");
+            Date fechaCompra = resultSet.getDate("FechaCompra");
+            float precio = resultSet.getFloat("Precio");
+            String sqlVehiculo = "SELECT * FROM VEHICULO WHERE codVehiculo = " + codVehiculo;
+            Statement statementVehiculo = conexion.createStatement();
+            ResultSet resultSetVehiculo = statementVehiculo.executeQuery(sqlVehiculo);
+            if (resultSetVehiculo.next()) {
+                String matricula = resultSetVehiculo.getString("Matricula").trim();
+                String marca = resultSetVehiculo.getString("Marca");
+                String modelo = resultSetVehiculo.getString("Modelo");
+                char tipoCombustible = resultSetVehiculo.getString("TipoCombustible").charAt(0);
+
+                JsonObject vehiculoJson = new JsonObject();
+                vehiculoJson.addProperty("matricula", matricula);
+                vehiculoJson.addProperty("marca", marca);
+                vehiculoJson.addProperty("modelo", modelo);
+                vehiculoJson.addProperty("tipo", String.valueOf(tipoCombustible));
+
+                JsonObject vehiculoPropioJson = new JsonObject();
+                vehiculoPropioJson.addProperty("fechaCompra", fechaCompra.toString());
+                vehiculoPropioJson.addProperty("precio", precio);
+
+                vehiculoJson.add("vehiculoPropio", vehiculoPropioJson);
+                vehiculos.add(vehiculoJson);
+            }
+        }
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("vehiculos", gson.toJsonTree(vehiculos));
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(jsonObject, writer);
+        }
+
+    } catch (SQLException | IOException e) {
+        throw new RuntimeException(e);
+    }
+}
+
+     public void eliminarDePartamentoConReasignamiento(String departamentoAEliminar, String departamentoReasignar, String jsonFile) throws SQLException {
         conexion.setAutoCommit(false);
         try {
             // Obtener el código del departamento a eliminar
@@ -635,7 +697,7 @@ public class DatabaseManagerSQLServer {
 
             // Generar archivo JSON con la información de la actualización
             generarArchivoJson(empleadosReasignados, proyectosReasignados, codDepartamentoAEliminar, departamentoAEliminar, jsonFile);
-
+            
             conexion.commit();
         } catch (SQLException | IOException e) {
             try {
@@ -673,7 +735,15 @@ public class DatabaseManagerSQLServer {
             DatabaseMetaData metaData = conexion.getMetaData();
             ResultSet procedures = metaData.getProcedures(null, null, "pr_ObtenerCodigoDepartamento");
             if (!procedures.next()) {
-                String sql = "CREATE PROCEDURE pr_ObtenerCodigoDepartamento " + "@nome_departamento VARCHAR(25), " + "@num_departamento INT OUTPUT " + "AS " + "BEGIN " + "    SELECT @num_departamento = Num_Departamento " + "    FROM DEPARTAMENTO " + "    WHERE Nome_Departamento = @nome_departamento " + "END";
+                String sql = "CREATE PROCEDURE pr_ObtenerCodigoDepartamento " +
+                        "@nome_departamento VARCHAR(25), " +
+                        "@num_departamento INT OUTPUT " +
+                        "AS " +
+                        "BEGIN " +
+                        "    SELECT @num_departamento = Num_Departamento " +
+                        "    FROM DEPARTAMENTO " +
+                        "    WHERE Nome_Departamento = @nome_departamento " +
+                        "END";
                 Statement stmt = conexion.createStatement();
                 stmt.executeUpdate(sql);
                 conexion.commit();
@@ -735,7 +805,7 @@ public class DatabaseManagerSQLServer {
             proyectoJson.addProperty("Nombre", rs.getString("Nome_Prxecto"));
             proyectoJson.addProperty("NuevoDepartamentoControla", codDepartamentoReasignar);
             proyectosReasignados.add(proyectoJson);
-
+            
             imprimirElProyectoporPantalla(rs);
 
             rs.updateInt("Num_Departamento", codDepartamentoReasignar);
@@ -785,22 +855,49 @@ public class DatabaseManagerSQLServer {
     }
 
     public void crearTablasFamiliares() {
-        try {
-            Statement statement = conexion.createStatement();
-            String sql = "CREATE TABLE FAMILIAR" + "(" + "    NSS_empregado VARCHAR(15) NOT NULL," + "    Numero SMALLINT NOT NULL," + "    NSS VARCHAR(15) NOT NULL," + "    Nome VARCHAR(25) NOT NULL," + "    Apelido1 VARCHAR(25) NOT NULL," + "    Apelido2 VARCHAR(25)," + "    DataNacemento DATE," + "    Parentesco VARCHAR(20) NOT NULL," + "    Sexo CHAR(1) DEFAULT 'M' CHECK (Sexo IN ('H', 'M'))," + "    CONSTRAINT PK_FAMILIAR PRIMARY KEY (NSS_empregado, NSS)," + "    CONSTRAINT CK_FAMILIAR_SEXO CHECK (Sexo IN ('H', 'M'))," + "    CONSTRAINT FK_FAMILIAR_EMPREGADO FOREIGN KEY (NSS_empregado) REFERENCES EMPREGADO(NSS)" + ")";
-            statement.addBatch(sql);
+    try {
+        Statement statement = conexion.createStatement();
+        String sql = "CREATE TABLE FAMILIAR" +
+                "(" +
+                "    NSS_empregado VARCHAR(15) NOT NULL," +
+                "    Numero SMALLINT NOT NULL," +
+                "    NSS VARCHAR(15) NOT NULL," +
+                "    Nome VARCHAR(25) NOT NULL," +
+                "    Apelido1 VARCHAR(25) NOT NULL," +
+                "    Apelido2 VARCHAR(25)," +
+                "    DataNacemento DATE," +
+                "    Parentesco VARCHAR(20) NOT NULL," +
+                "    Sexo CHAR(1) DEFAULT 'M' CHECK (Sexo IN ('H', 'M'))," +
+                "    CONSTRAINT PK_FAMILIAR PRIMARY KEY (NSS_empregado, NSS)," +
+                "    CONSTRAINT CK_FAMILIAR_SEXO CHECK (Sexo IN ('H', 'M'))," +
+                "    CONSTRAINT FK_FAMILIAR_EMPREGADO FOREIGN KEY (NSS_empregado) REFERENCES EMPREGADO(NSS)"+
+                ")";
+        statement.addBatch(sql);
 
-            statement.executeBatch();
-            conexion.commit();
-            System.out.println("Táboa FAMILIAR creada exitosamente con el trigger.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        statement.executeBatch();
+        conexion.commit();
+        System.out.println("Táboa FAMILIAR creada exitosamente con el trigger.");
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 
+}
+
     public void createTriggerFamiliar() {
-        String triggerSql = "CREATE TRIGGER trg_CalculateNumero " + "ON FAMILIAR " + "INSTEAD OF INSERT " + "AS " + "BEGIN " + "    DECLARE @NSS_empregado VARCHAR(15), @Numero SMALLINT, @NSS VARCHAR(15), @Nome VARCHAR(25), @Apelido1 VARCHAR(25), @Apelido2 VARCHAR(25), @DataNacemento DATE, @Parentesco VARCHAR(20), @Sexo CHAR(1); " + "    SELECT @NSS_empregado = NSS_empregado, @NSS = NSS, @Nome = Nome, @Apelido1 = Apelido1, @Apelido2 = Apelido2, @DataNacemento = DataNacemento, @Parentesco = Parentesco, @Sexo = Sexo " + "    FROM inserted; " + "    SELECT @Numero = ISNULL(MAX(Numero), 0) + 1 " + "    FROM FAMILIAR " + "    WHERE NSS_empregado = @NSS_empregado; " + "    INSERT INTO FAMILIAR (NSS_empregado, Numero, NSS, Nome, Apelido1, Apelido2, DataNacemento, Parentesco, Sexo) " + "    VALUES (@NSS_empregado, @Numero, @NSS, @Nome, @Apelido1, @Apelido2, @DataNacemento, @Parentesco, @Sexo); " + "END;";
+        String triggerSql = "CREATE TRIGGER trg_CalculateNumero " +
+                "ON FAMILIAR " +
+                "INSTEAD OF INSERT " +
+                "AS " +
+                "BEGIN " +
+                "    DECLARE @NSS_empregado VARCHAR(15), @Numero SMALLINT, @NSS VARCHAR(15), @Nome VARCHAR(25), @Apelido1 VARCHAR(25), @Apelido2 VARCHAR(25), @DataNacemento DATE, @Parentesco VARCHAR(20), @Sexo CHAR(1); " +
+                "    SELECT @NSS_empregado = NSS_empregado, @NSS = NSS, @Nome = Nome, @Apelido1 = Apelido1, @Apelido2 = Apelido2, @DataNacemento = DataNacemento, @Parentesco = Parentesco, @Sexo = Sexo " +
+                "    FROM inserted; " +
+                "    SELECT @Numero = ISNULL(MAX(Numero), 0) + 1 " +
+                "    FROM FAMILIAR " +
+                "    WHERE NSS_empregado = @NSS_empregado; " +
+                "    INSERT INTO FAMILIAR (NSS_empregado, Numero, NSS, Nome, Apelido1, Apelido2, DataNacemento, Parentesco, Sexo) " +
+                "    VALUES (@NSS_empregado, @Numero, @NSS, @Nome, @Apelido1, @Apelido2, @DataNacemento, @Parentesco, @Sexo); " +
+                "END;";
         try {
             Statement statement = conexion.createStatement();
             statement.executeUpdate(triggerSql);
@@ -811,139 +908,30 @@ public class DatabaseManagerSQLServer {
         }
     }
 
-    public int anhadirFamiliar(String nssEmpregado, String nss, String nombre, String apelido1, String apelido2, LocalDate fechaNacimineto, String parentesco, char sexo) {
-        if (comprobarFamiliarNoExiste(nssEmpregado, nss) < 1) {
-            int numero = obtenerNumeroFamiliar(nssEmpregado);
+    public void anhadirFamiliar(String nssEmpregado, String nss, String nombre, String apelido1, String apelido2, LocalDate fechaNacimineto, String parentesco, char sexo) {
+        try {
+            String sql = "INSERT INTO FAMILIAR (NSS_empregado, NSS, Nome, Apelido1, Apelido2, DataNacemento, Parentesco, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, nssEmpregado);
+            preparedStatement.setString(2, nss);
+            preparedStatement.setString(3, nombre);
+            preparedStatement.setString(4, apelido1);
+            preparedStatement.setString(5, apelido2);
+            preparedStatement.setDate(6, Date.valueOf(fechaNacimineto));
+            preparedStatement.setString(7, parentesco);
+            preparedStatement.setString(8, String.valueOf(sexo));
+            preparedStatement.executeUpdate();
+            conexion.commit();
+            System.out.println("Familiar añadido exitosamente.");
+        } catch (SQLException e) {
             try {
-                String sql = "INSERT INTO FAMILIAR (NSS_empregado,Numero, NSS, Nome, Apelido1, Apelido2, DataNacemento, Parentesco, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement preparedStatement = conexion.prepareStatement(sql);
-                preparedStatement.setString(1, nssEmpregado);
-                preparedStatement.setInt(2, numero);
-                preparedStatement.setString(3, nss);
-                preparedStatement.setString(4, nombre);
-                preparedStatement.setString(5, apelido1);
-                preparedStatement.setString(6, apelido2);
-                preparedStatement.setDate(7, Date.valueOf(fechaNacimineto));
-                preparedStatement.setString(8, parentesco);
-                preparedStatement.setString(9, String.valueOf(sexo));
-                preparedStatement.executeUpdate();
-                conexion.commit();
-                System.out.println("Familiar añadido exitosamente.");
-            } catch (SQLException e) {
-                try {
-                    if (conexion != null) {
-                        conexion.rollback();
-                        System.out.println("Error al añadir el familiar." + e.getMessage());
-                        return -1;
-                    }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                    return -1;
+                if (conexion != null) {
+                    conexion.rollback();
                 }
-                e.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
-        } else {
-            System.out.println("Ya existe un familiar con el NSS " + nss + " para el empleado con NSS " + nssEmpregado);
-            return -1;
-        }
-        return 0;
-    }
-
-    private int obtenerNumeroFamiliar(String nssEmpregado) {
-        try {
-            String sql = "{? = call fn_GetNumeroFamiliar(?)}";
-            CallableStatement cstmt = conexion.prepareCall(sql);
-            cstmt.setString(2, nssEmpregado);
-            cstmt.registerOutParameter(1, Types.SMALLINT);
-            cstmt.execute();
-            return cstmt.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
-
-    private int comprobarFamiliarNoExiste(String nssEmpregado, String nss) {
-        try {
-            String sql = "{call pr_ComprobarFamiliarUnicoDeEmpleado(?, ?, ?)}";
-            CallableStatement cstmt = conexion.prepareCall(sql);
-            cstmt.setString(1, nssEmpregado);
-            cstmt.setString(2, nss);
-            cstmt.registerOutParameter(3, Types.INTEGER);
-            cstmt.execute();
-            return cstmt.getInt(3);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
-    private void crearFuncGetNumeroFamiliar() {
-        try {
-            DatabaseMetaData metaData = conexion.getMetaData();
-            ResultSet functions = metaData.getFunctions(null, null, "fn_GetNumeroFamiliar");
-            if (!functions.next()) {
-                String sql = "CREATE FUNCTION fn_GetNumeroFamiliar(@nss_empregado VARCHAR(15)) " + "RETURNS SMALLINT " + "AS " + "BEGIN " + "    DECLARE @numero SMALLINT; " + "    SELECT @numero = ISNULL(MAX(Numero), 0) + 1 " + "    FROM FAMILIAR " + "    WHERE NSS_empregado = @nss_empregado; " + "    RETURN @numero; " + "END";
-                Statement stmt = conexion.createStatement();
-                stmt.executeUpdate(sql);
-                conexion.commit();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void crearProcNOExisteFamiliarEnEmpleado() {
-        //el procedimiento devuelve 0 si no existe y 1 si existe
-        try {
-            DatabaseMetaData metaData = conexion.getMetaData();
-            ResultSet procedures = metaData.getProcedures(null, null, "pr_ComprobarFamiliarUnicoDeEmpleado");
-            if (!procedures.next()) {
-                String sql = "CREATE PROCEDURE pr_ComprobarFamiliarUnicoDeEmpleado " + "@nss_empregado VARCHAR(15), " + "@nss VARCHAR(15), " + "@existe INT OUTPUT " + "AS " + "BEGIN " + "    SELECT @existe = COUNT(*) " + "    FROM FAMILIAR " + "    WHERE NSS_empregado = @nss_empregado AND NSS = @nss; " + "END";
-                Statement stmt = conexion.createStatement();
-                stmt.executeUpdate(sql);
-                conexion.commit();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void anhadirFamiliaresDeUnJson(String file) {
-        try {
-            Gson gson = new Gson();
-            JsonObject jsonObject = JsonParser.parseReader(new FileReader(file)).getAsJsonObject();
-            Type empleadoListType = new TypeToken<ArrayList<JsonObject>>() {
-            }.getType();
-            List<JsonObject> empleadosJson = gson.fromJson(jsonObject.get("empleados"), empleadoListType);
-
-            for (JsonObject empleadoJson : empleadosJson) {
-                String nssEmpregado = empleadoJson.get("NSS_empleado").getAsString();
-                Type familiarListType = new TypeToken<ArrayList<JsonObject>>() {
-                }.getType();
-                List<JsonObject> familiaresJson = gson.fromJson(empleadoJson.get("familiares"), familiarListType);
-
-                for (JsonObject familiarJson : familiaresJson) {
-                    try {
-                        String nss = familiarJson.get("NSS").getAsString();
-                        String nombre = familiarJson.get("Nome").getAsString();
-                        String apelido1 = familiarJson.get("Apelido1").getAsString();
-                        String apelido2 = familiarJson.has("Apelido2") ? familiarJson.get("Apelido2").getAsString() : null;
-                        LocalDate fechaNacimiento = LocalDate.parse(familiarJson.get("DataNacemento").getAsString());
-                        String parentesco = familiarJson.get("Parentesco").getAsString();
-                        char sexo = familiarJson.get("Sexo").getAsCharacter();
-
-                        anhadirFamiliar(nssEmpregado, nss, nombre, apelido1, apelido2, fechaNacimiento, parentesco, sexo);
-                    } catch (Exception e) {
-                        System.err.println("Error procesando el familiar: " + e.getMessage());
-                    }
-                }
-            }
-        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-
-
