@@ -1,0 +1,4 @@
+inputadapter
+keydown
+keyup
+gestionar teclas (en otra clase que extienda inputadapter)
