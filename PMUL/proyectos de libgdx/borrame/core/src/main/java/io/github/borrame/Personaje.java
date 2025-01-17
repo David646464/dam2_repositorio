@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Personaje {
     float x,y;
-    final float VELOCIDAD = 40;
+    final float VELOCIDAD = 40 ;
 
 
 
