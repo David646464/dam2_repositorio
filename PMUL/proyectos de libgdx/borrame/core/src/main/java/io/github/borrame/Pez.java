@@ -22,6 +22,7 @@ public class Pez {
         this.velocidad = velocidad;
         this.seMueveDerecha = seMueveDerecha;
         this.randFish = setFish(randFish, fishtype);
+        System.out.println("Pez creado");
         ancho = this.randFish.getRegionWidth();
         alto = this.randFish.getRegionHeight();
     }
@@ -37,8 +38,14 @@ public class Pez {
             animation = splitTexture(randFish, randFish.getRegionWidth() / 4, randFish.getRegionHeight());
             System.out.println(animation.length);
             return animation[0];
-        } else {
+        } else if (fishtype == 3) {
+            System.out.println("Pez azul");
             numSprites = 1;
+            animation = splitTexture(randFish, randFish.getRegionWidth() , randFish.getRegionHeight());
+            System.out.println(animation.length);
+            return animation[0];
+        }
+        else {
             return randFish;
         }
     }

@@ -56,6 +56,7 @@ public class Main extends ApplicationAdapter {
         } else if (textureRegion.getRegionWidth() == tm.pezLila.getRegionWidth()) {
             return 2;
         } else {
+            System.out.println("Pez azul2");
             return 3;
         }
     }

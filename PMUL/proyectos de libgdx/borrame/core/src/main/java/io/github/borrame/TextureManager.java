@@ -86,7 +86,7 @@ public class TextureManager {
             case 2:
                 return pezAzul;
             default:
-                return pezAmarillo;
+                return pezAzul;
         }
     }
 }
