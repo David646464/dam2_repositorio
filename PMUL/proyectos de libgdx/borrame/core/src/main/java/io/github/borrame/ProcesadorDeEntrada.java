@@ -22,6 +22,12 @@ public class ProcesadorDeEntrada extends InputAdapter {
         } else if (keycode == Input.Keys.RIGHT) {
             personaje.derecha();
             teclasPulsadas.add(keycode);
+        } else if (keycode == Input.Keys.UP) {
+            personaje.subirAnzuelo();
+            teclasPulsadas.add(keycode);
+        } else if (keycode == Input.Keys.DOWN) {
+            personaje.bajarAnzuelo();
+            teclasPulsadas.add(keycode);
         }
 
         return true;
@@ -43,6 +49,21 @@ public class ProcesadorDeEntrada extends InputAdapter {
             } else {
                 personaje.parado();
             }
+        } else if (keycode == Input.Keys.UP) {
+            teclasPulsadas.remove(Integer.valueOf(keycode));
+            if (teclasPulsadas.contains(Input.Keys.DOWN)) {
+                personaje.bajarAnzuelo();
+            } else {
+                personaje.pararAnzuelo();
+            }
+        } else if (keycode == Input.Keys.DOWN) {
+            teclasPulsadas.remove(Integer.valueOf(keycode));
+            if (teclasPulsadas.contains(Input.Keys.UP)) {
+                personaje.subirAnzuelo();
+            } else {
+                personaje.pararAnzuelo();
+            }
+
         }
 
         return true;
