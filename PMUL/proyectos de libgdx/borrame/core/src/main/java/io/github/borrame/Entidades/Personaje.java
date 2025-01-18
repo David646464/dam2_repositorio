@@ -1,8 +1,10 @@
-package io.github.borrame;
+package io.github.borrame.Entidades;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import io.github.borrame.Managers.TextureManager;
 
 public class Personaje {
 

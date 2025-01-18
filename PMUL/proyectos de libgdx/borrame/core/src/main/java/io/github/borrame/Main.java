@@ -10,6 +10,11 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import io.github.borrame.Entidades.Personaje;
+import io.github.borrame.Entidades.Pez;
+import io.github.borrame.Managers.SoundManager;
+import io.github.borrame.Managers.TextureManager;
+
 public class Main extends ApplicationAdapter {
     private float stateTime;
     private TextureManager tm;

@@ -1,4 +1,4 @@
-package io.github.borrame;
+package io.github.borrame.Managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;

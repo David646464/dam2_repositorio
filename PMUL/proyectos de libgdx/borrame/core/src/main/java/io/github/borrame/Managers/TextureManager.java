@@ -1,10 +1,12 @@
-package io.github.borrame;
+package io.github.borrame.Managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import io.github.borrame.Entidades.Personaje;
 
 public class TextureManager {
 
@@ -40,8 +42,9 @@ public class TextureManager {
         sb.draw(pescador, personaje.x, personaje.y, 150, 200);
         sb.setColor(1, 1, 1, 1); // Restablecer el color a blanco
         personaje.dibuja(sb, pescador);
-        personaje.dibujaAnzuelo(sb, anzuelo);
         personaje.dibujaSedal(sb, punto);
+        personaje.dibujaAnzuelo(sb, anzuelo);
+        
     }
 
     private void loadAtlas() {

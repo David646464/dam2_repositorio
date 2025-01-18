@@ -5,6 +5,8 @@ import com.badlogic.gdx.InputAdapter;
 
 import java.util.ArrayList;
 
+import io.github.borrame.Entidades.Personaje;
+
 public class ProcesadorDeEntrada extends InputAdapter {
     Personaje personaje;
     ArrayList<Integer> teclasPulsadas = new ArrayList<>();

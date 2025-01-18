@@ -1,20 +1,20 @@
-package io.github.borrame;
+package io.github.borrame.Entidades;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Pez {
-    float x, y;
-    float velocidad;
-    boolean seMueveDerecha;
-    TextureRegion randFish;
-    int numSprites;
-    int currentSprite;
-    TextureRegion[] animation;
-    float ancho;
-    float alto;
-    boolean isAnimated = false;
+    public float x, y;
+    public float velocidad;
+    public boolean seMueveDerecha;
+    public TextureRegion randFish;
+   public int numSprites;
+   public int currentSprite;
+   public TextureRegion[] animation;
+   public float ancho;
+   public float alto;
+   public boolean isAnimated = false;
 
     public Pez(float x, float y, float velocidad, boolean seMueveDerecha, TextureRegion randFish, int fishtype) {
         this.x = x;
@@ -81,6 +81,12 @@ public class Pez {
             isAnimated = true;
             currentSprite = (int) (System.currentTimeMillis() / 100) % numSprites;
             randFish = animation[currentSprite];
+            if (!seMueveDerecha){
+                sb.draw(randFish, x, y, ancho, alto);
+            } else {
+                sb.draw(randFish, x + ancho, y, -ancho, alto);
+            }
+        }else{
             if (!seMueveDerecha){
                 sb.draw(randFish, x, y, ancho, alto);
             } else {
