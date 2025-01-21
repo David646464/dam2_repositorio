@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Cliente {
+public class Cliente3 {
     public static void main(String[] args) throws IOException {
         String servidor = "localhost", FIN = "fin", mensaje = "";
         int puerto = 7; // puerto ECHO

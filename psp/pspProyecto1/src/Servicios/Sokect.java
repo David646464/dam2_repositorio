@@ -5,10 +5,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Sokect extends Thread{
+public class Sokect extends Thread {
     public Socket sokect;
     boolean salir = false;
     String FIN = "fin";
+
     public Sokect(Socket sokect) {
         this.sokect = sokect;
     }
@@ -16,40 +17,33 @@ public class Sokect extends Thread{
 
     @Override
     public void run() {
-       while (!salir) {
-           DataInputStream in = null;
-           try {
-               in = new DataInputStream(sokect.getInputStream());
-           } catch (IOException e) {
-               throw new RuntimeException(e);
-           }
-           DataOutputStream out = null;
-           try {
-               out = new DataOutputStream(sokect.getOutputStream());
-           } catch (IOException e) {
-               throw new RuntimeException(e);
-           }
-           salir = false;
         while (!salir) {
-            String str = null;
+
             try {
-                str = in.readUTF();
+                DataInputStream in = null;
+                in = new DataInputStream(sokect.getInputStream());
+                DataOutputStream out = null;
+                out = new DataOutputStream(sokect.getOutputStream());
+                salir = false;
+                while (!salir) {
+                    String str = null;
+
+                    str = in.readUTF();
+
+                    out.writeUTF(str);
+
+                    if (str.equalsIgnoreCase(FIN))
+                        salir = true;
+                    else {
+                        System.out.println("Servidor retransmite: " + str);
+                        System.out.println("****************************");
+                    }
+                }
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            }
-            try {
-                out.writeUTF(str);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            if (str.equalsIgnoreCase(FIN))
-                salir = true;
-            else {
-                System.out.println("Servidor retransmite: " + str);
-                System.out.println("****************************");
             }
         }
-       }
         System.out.println("Desconectado");
     }
 }
