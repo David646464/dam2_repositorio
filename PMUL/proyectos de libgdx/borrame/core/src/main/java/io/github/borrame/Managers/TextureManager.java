@@ -44,7 +44,7 @@ public class TextureManager {
         personaje.dibuja(sb, pescador);
         personaje.dibujaSedal(sb, punto);
         personaje.dibujaAnzuelo(sb, anzuelo);
-        
+
     }
 
     private void loadAtlas() {

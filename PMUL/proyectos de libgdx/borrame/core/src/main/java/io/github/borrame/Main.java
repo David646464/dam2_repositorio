@@ -68,6 +68,7 @@ public class Main extends ApplicationAdapter {
 
     @Override
     public void render() {
+
         ScreenUtils.clear(1, 1, 1, 1);
         float delta = Gdx.graphics.getDeltaTime();
         stateTime += delta;

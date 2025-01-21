@@ -9,12 +9,12 @@ public class Pez {
     public float velocidad;
     public boolean seMueveDerecha;
     public TextureRegion randFish;
-   public int numSprites;
-   public int currentSprite;
-   public TextureRegion[] animation;
-   public float ancho;
-   public float alto;
-   public boolean isAnimated = false;
+    public int numSprites;
+    public int currentSprite;
+    public TextureRegion[] animation;
+    public float ancho;
+    public float alto;
+    public boolean isAnimated = false;
 
     public Pez(float x, float y, float velocidad, boolean seMueveDerecha, TextureRegion randFish, int fishtype) {
         this.x = x;
@@ -41,11 +41,10 @@ public class Pez {
         } else if (fishtype == 3) {
             System.out.println("Pez azul");
             numSprites = 1;
-            animation = splitTexture(randFish, randFish.getRegionWidth() , randFish.getRegionHeight());
+            animation = splitTexture(randFish, randFish.getRegionWidth(), randFish.getRegionHeight());
             System.out.println(animation.length);
             return animation[0];
-        }
-        else {
+        } else {
             return randFish;
         }
     }
@@ -61,7 +60,7 @@ public class Pez {
                     break;
                 }
 
-                regions[index ] = textureRegions[i][j];
+                regions[index] = textureRegions[i][j];
                 index++;
             }
         }
@@ -81,13 +80,13 @@ public class Pez {
             isAnimated = true;
             currentSprite = (int) (System.currentTimeMillis() / 100) % numSprites;
             randFish = animation[currentSprite];
-            if (!seMueveDerecha){
+            if (!seMueveDerecha) {
                 sb.draw(randFish, x, y, ancho, alto);
             } else {
                 sb.draw(randFish, x + ancho, y, -ancho, alto);
             }
-        }else{
-            if (!seMueveDerecha){
+        } else {
+            if (!seMueveDerecha) {
                 sb.draw(randFish, x, y, ancho, alto);
             } else {
                 sb.draw(randFish, x + ancho, y, -ancho, alto);
