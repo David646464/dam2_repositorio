@@ -1,10 +1,15 @@
 package io.github.borrame.Entidades;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Pez {
+    //Variable a borrar
+    Rectangle rectangle = null;
+
     public float x, y;
     public float velocidad;
     public boolean seMueveDerecha;
@@ -67,11 +72,11 @@ public class Pez {
         return regions;
     }
 
-    public void actualiza() {
+    public void actualiza(float delta) {
         if (seMueveDerecha) {
-            x += velocidad * Gdx.graphics.getDeltaTime();
+            x += velocidad * delta;
         } else {
-            x -= velocidad * Gdx.graphics.getDeltaTime();
+            x -= velocidad * delta;
         }
     }
 
@@ -92,5 +97,14 @@ public class Pez {
                 sb.draw(randFish, x + ancho, y, -ancho, alto);
             }
         }
+        //Borrar
+        Texture texture = new Texture("Rojo.png");
+        sb.draw(texture,rectangle.getX(),rectangle.getY(),rectangle.getWidth(),rectangle.getHeight());
+    }
+
+
+    //Borrar
+    public void setRectangle(Rectangle rectPez) {
+        this.rectangle = rectPez;
     }
 }

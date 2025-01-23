@@ -8,9 +8,8 @@ import io.github.borrame.Managers.TextureManager;
 
 public class Personaje {
 
+    private static final float TOPEANZUELOYABAJO = 0;
     public final int xini = 100, yini = 305;
-    public float x, y;
-    public float xanzuelo, yanzuelo;
     private final float VELOCIDAD = 80;
     private final float VELOCIDADANZUELO = 120;
     private final int anchopersonaje = 150;
@@ -18,23 +17,14 @@ public class Personaje {
     private final int anchoanzuelo = 20;
     private final int altoanzuelo = 30;
     private final float TOPEANZUELOYARRIBA = yini + altopersonaje - 66;
-    private static final float TOPEANZUELOYABAJO = 0;
+    public float x, y;
+    public float xanzuelo, yanzuelo;
     TextureRegion fishCaught = new TextureRegion();
-
-    enum EstadoAnzuelo {
-        SUBIENDO, BAJANDO, PARADO
-    }
-
-    enum Estado {
-        IZQUIERDA, DERECHA, PARADO
-    }
-
     Estado estado;
     EstadoAnzuelo estadoAnzuelo;
     boolean mirandoIzquierda;
     boolean pescoPez = false;
     TextureManager tm;
-
     public Personaje(TextureManager tm) {
         this.tm = tm;
         x = xini;
@@ -47,47 +37,51 @@ public class Personaje {
 
     }
 
-    public void actualiza() {
-        actualizaAnzuelo();
-        switch (estado) {
-            case IZQUIERDA: {
-                if (x >= 0) {
-                    x -= VELOCIDAD * Gdx.graphics.getDeltaTime();
-                    xanzuelo -= VELOCIDAD * Gdx.graphics.getDeltaTime();
+    public void actualiza(float delta) {
+        actualizaAnzuelo(delta);
+        if (estadoAnzuelo != EstadoAnzuelo.BAJANDO) {
+            switch (estado) {
+                case IZQUIERDA: {
+                    if (x >= 0) {
+                        x -= VELOCIDAD * delta;
+                        xanzuelo -= VELOCIDAD * delta;
+                    }
+                    mirandoIzquierda = true;
+                    break;
                 }
-                mirandoIzquierda = true;
-                break;
-            }
-            case DERECHA: {
-                if (x <= Gdx.graphics.getWidth() - 150) {
-                    x += VELOCIDAD * Gdx.graphics.getDeltaTime();
-                    xanzuelo += VELOCIDAD * Gdx.graphics.getDeltaTime();
+                case DERECHA: {
+                    if (x <= Gdx.graphics.getWidth() - 150) {
+                        x += VELOCIDAD * delta;
+                        xanzuelo += VELOCIDAD * delta;
+                    }
+                    mirandoIzquierda = false;
+                    break;
                 }
-                mirandoIzquierda = false;
-                break;
             }
+            subirAnzuelo();
+
         }
     }
 
-    private void actualizaAnzuelo() {
+    private void actualizaAnzuelo(float delta) {
         if (pescoPez) {
             if (yanzuelo >= TOPEANZUELOYARRIBA) {
                 pescoPez = false;
             } else {
-                yanzuelo += VELOCIDADANZUELO * Gdx.graphics.getDeltaTime();
+                yanzuelo += VELOCIDADANZUELO * delta;
             }
 
         } else {
             switch (estadoAnzuelo) {
                 case SUBIENDO: {
                     if (yanzuelo <= TOPEANZUELOYARRIBA) {
-                        yanzuelo += VELOCIDADANZUELO * Gdx.graphics.getDeltaTime();
+                        yanzuelo += VELOCIDADANZUELO * delta;
                     }
                     break;
                 }
                 case BAJANDO: {
                     if (yanzuelo >= TOPEANZUELOYABAJO) {
-                        yanzuelo -= VELOCIDADANZUELO * Gdx.graphics.getDeltaTime();
+                        yanzuelo -= VELOCIDADANZUELO * delta;
                     }
                     break;
                 }
@@ -108,7 +102,8 @@ public class Personaje {
             xanzuelo = x + anchopersonaje - 20;
         }
         if (pescoPez) {
-            sb.draw(fishCaught, xanzuelo-(fishCaught.getRegionWidth() / 2), yanzuelo - (fishCaught.getRegionHeight() / 2), fishCaught.getRegionWidth() / 2, fishCaught.getRegionHeight() / 2, fishCaught.getRegionWidth(), fishCaught.getRegionHeight(), 1, 1, 270);        } else {
+            sb.draw(fishCaught, xanzuelo - (fishCaught.getRegionWidth() / 2), yanzuelo - (fishCaught.getRegionHeight() / 2), fishCaught.getRegionWidth() / 2, fishCaught.getRegionHeight() / 2, fishCaught.getRegionWidth(), fishCaught.getRegionHeight(), 1, 1, 270);
+        } else {
             sb.draw(textura, xanzuelo, yanzuelo, anchoanzuelo, altoanzuelo);
         }
     }
@@ -175,6 +170,14 @@ public class Personaje {
         pescoPez = true;
 
 
+    }
+
+    enum EstadoAnzuelo {
+        SUBIENDO, BAJANDO, PARADO
+    }
+
+    enum Estado {
+        IZQUIERDA, DERECHA, PARADO
     }
 }
 

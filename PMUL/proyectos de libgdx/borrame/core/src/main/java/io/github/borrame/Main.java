@@ -2,6 +2,7 @@ package io.github.borrame;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,9 +17,12 @@ import io.github.borrame.Managers.SoundManager;
 import io.github.borrame.Managers.TextureManager;
 
 public class Main extends ApplicationAdapter {
+
+
+
     private float stateTime;
     private TextureManager tm;
-    SpriteBatch sb;
+    public SpriteBatch sb;
     BitmapFont fuente;
     Personaje personaje;
     Array<Pez> peces;
@@ -46,7 +50,7 @@ public class Main extends ApplicationAdapter {
 
     private void agregarPez() {
         TextureRegion textureRegion = tm.getRandFish();
-        boolean movingRight = MathUtils.randomBoolean();
+        boolean movingRight =MathUtils.randomBoolean();
         float x = movingRight ? (-textureRegion.getRegionWidth()) + 1 : Gdx.graphics.getWidth();
         float y = MathUtils.random(0, 305 - textureRegion.getRegionHeight());
         float velocidad = MathUtils.random(50, 150);
@@ -61,7 +65,7 @@ public class Main extends ApplicationAdapter {
         } else if (textureRegion.getRegionWidth() == tm.pezLila.getRegionWidth()) {
             return 2;
         } else {
-            System.out.println("Pez azul2");
+            System.out.println("Pez azul");
             return 3;
         }
     }
@@ -69,13 +73,15 @@ public class Main extends ApplicationAdapter {
     @Override
     public void render() {
 
+
+
         ScreenUtils.clear(1, 1, 1, 1);
         float delta = Gdx.graphics.getDeltaTime();
         stateTime += delta;
 
-        personaje.actualiza();
+        personaje.actualiza(delta);
         for (Pez pez : peces) {
-            pez.actualiza();
+            pez.actualiza(delta);
             // Check if the fish is caught by the hook
             if (pezCercaAnzuelo(pez)) {
                 // Handle fish caught logic
@@ -99,13 +105,13 @@ public class Main extends ApplicationAdapter {
         for (Pez pez : peces) {
             pez.dibuja(sb);
         }
-        fuente.setColor(0, 1, 0, 1); // RGB for green
+        fuente.setColor(0, 1, 0, 1);
         fuente.draw(sb, "Score: " + score, 0, 450);
 
 
         sb.end();
 
-        // Add new fish periodically
+
         if (stateTime > 2) {
             agregarPez();
             stateTime = 0;
@@ -114,7 +120,15 @@ public class Main extends ApplicationAdapter {
 
     private boolean pezCercaAnzuelo(Pez pez) {
         Rectangle rectAnzuelo = new Rectangle(personaje.xanzuelo, personaje.yanzuelo, personaje.getAnchoanzuelo(), personaje.getAltoanzuelo());
-        Rectangle rectPez = new Rectangle(pez.x, pez.y, pez.ancho, pez.alto);
+        Rectangle rectPez = new Rectangle(pez.x, pez.y + 30, 20, 40);
+        Texture texture = new Texture("Rojo.png");
+
+
+        if (pez.seMueveDerecha){
+
+             rectPez = new Rectangle(pez.x + pez.ancho - 20  , pez.y + 30, 20 , 40 );
+        }
+        pez.setRectangle(rectPez);
         return rectAnzuelo.overlaps(rectPez);
     }
 }

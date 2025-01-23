@@ -38,19 +38,23 @@ public class ProcesadorDeEntrada extends InputAdapter {
     @Override
     public boolean keyUp(int keycode) {
         if (keycode == Input.Keys.LEFT) {
-            teclasPulsadas.remove(Integer.valueOf(keycode));
-            if (teclasPulsadas.contains(Input.Keys.RIGHT)) {
-                personaje.derecha();
-            } else {
-                personaje.parado();
-            }
+
+                teclasPulsadas.remove(Integer.valueOf(keycode));
+                if (teclasPulsadas.contains(Input.Keys.RIGHT)) {
+                    personaje.derecha();
+                } else {
+                    personaje.parado();
+                }
+
         } else if (keycode == Input.Keys.RIGHT) {
-            teclasPulsadas.remove(Integer.valueOf(keycode));
-            if (teclasPulsadas.contains(Input.Keys.LEFT)) {
-                personaje.izquierda();
-            } else {
-                personaje.parado();
-            }
+
+                teclasPulsadas.remove(Integer.valueOf(keycode));
+                if (teclasPulsadas.contains(Input.Keys.LEFT)) {
+                    personaje.izquierda();
+                } else {
+                    personaje.parado();
+                }
+
         } else if (keycode == Input.Keys.UP) {
             teclasPulsadas.remove(Integer.valueOf(keycode));
             if (teclasPulsadas.contains(Input.Keys.DOWN)) {
