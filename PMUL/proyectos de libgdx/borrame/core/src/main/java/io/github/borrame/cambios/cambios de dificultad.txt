@@ -1,8 +1,8 @@
 cambios de dificultad
 peces huyen del anzuelo si lo ven moverse
 peces cocan entre si y se dan la vuelta
-solo se pescan los peces por la boca HECHO!!!!!
-solo te mueves  cunado no estas bajando y subiendo el anzuelo
+
+
 barra de vida(por tiempo)
 el anzuelo empuja los peces hacia abajo si lo empujas desde arriba
-sube solo si no te mueves o llega a bajo del todo HECHO!!!!!
+

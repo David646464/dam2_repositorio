@@ -9,9 +9,9 @@ import io.github.borrame.Managers.TextureManager;
 public class Personaje {
 
     private static final float TOPEANZUELOYABAJO = 0;
-    public final int xini = 100, yini = 305;
+    public final int xini = 100, yini = 350;
     private final float VELOCIDAD = 80;
-    private final float VELOCIDADANZUELO = 120;
+    public final float VELOCIDADANZUELO = 120;
     private final int anchopersonaje = 150;
     private final int altopersonaje = 200;
     private final int anchoanzuelo = 20;
@@ -19,11 +19,12 @@ public class Personaje {
     private final float TOPEANZUELOYARRIBA = yini + altopersonaje - 66;
     public float x, y;
     public float xanzuelo, yanzuelo;
+    public boolean soltoDown = false;
     TextureRegion fishCaught = new TextureRegion();
     Estado estado;
-    EstadoAnzuelo estadoAnzuelo;
+    public EstadoAnzuelo estadoAnzuelo;
     boolean mirandoIzquierda;
-    boolean pescoPez = false;
+    public boolean pescoPez = false;
     TextureManager tm;
     public Personaje(TextureManager tm) {
         this.tm = tm;
@@ -32,14 +33,16 @@ public class Personaje {
         estado = Estado.PARADO;
         estadoAnzuelo = EstadoAnzuelo.PARADO;
         xanzuelo = x + anchopersonaje - 20;
-        yanzuelo = y;
+        yanzuelo = TOPEANZUELOYARRIBA;
         mirandoIzquierda = false; // Inicialmente mirando a la derecha
+        fishCaught = tm.anzuelo;
+
 
     }
 
     public void actualiza(float delta) {
         actualizaAnzuelo(delta);
-        if (estadoAnzuelo != EstadoAnzuelo.BAJANDO) {
+        if (estadoAnzuelo == EstadoAnzuelo.PARADO) {
             switch (estado) {
                 case IZQUIERDA: {
                     if (x >= 0) {
@@ -50,7 +53,7 @@ public class Personaje {
                     break;
                 }
                 case DERECHA: {
-                    if (x <= Gdx.graphics.getWidth() - 150) {
+                    if (x <= Mundo.Width - 150) {
                         x += VELOCIDAD * delta;
                         xanzuelo += VELOCIDAD * delta;
                     }
@@ -58,15 +61,17 @@ public class Personaje {
                     break;
                 }
             }
-            subirAnzuelo();
+
 
         }
     }
 
     private void actualizaAnzuelo(float delta) {
-        if (pescoPez) {
+        if (pescoPez || soltoDown) {
             if (yanzuelo >= TOPEANZUELOYARRIBA) {
                 pescoPez = false;
+                soltoDown = false;
+                estadoAnzuelo = EstadoAnzuelo.PARADO;
             } else {
                 yanzuelo += VELOCIDADANZUELO * delta;
             }
@@ -82,6 +87,8 @@ public class Personaje {
                 case BAJANDO: {
                     if (yanzuelo >= TOPEANZUELOYABAJO) {
                         yanzuelo -= VELOCIDADANZUELO * delta;
+                    }else{
+                        soltoDown = true;
                     }
                     break;
                 }
@@ -172,11 +179,11 @@ public class Personaje {
 
     }
 
-    enum EstadoAnzuelo {
+    public enum EstadoAnzuelo {
         SUBIENDO, BAJANDO, PARADO
     }
 
-    enum Estado {
+    public enum Estado {
         IZQUIERDA, DERECHA, PARADO
     }
 }

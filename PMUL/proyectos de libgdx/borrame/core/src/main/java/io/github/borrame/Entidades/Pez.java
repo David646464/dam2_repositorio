@@ -99,7 +99,9 @@ public class Pez {
         }
         //Borrar
         Texture texture = new Texture("Rojo.png");
+        Texture texture2 = new Texture("Verde.png");
         sb.draw(texture,rectangle.getX(),rectangle.getY(),rectangle.getWidth(),rectangle.getHeight());
+        sb.draw(texture2,x,y+alto - 15,ancho,5);
     }
 
 

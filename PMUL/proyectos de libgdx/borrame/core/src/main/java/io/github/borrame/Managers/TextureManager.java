@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import io.github.borrame.Entidades.Barra;
+import io.github.borrame.Entidades.Mundo;
 import io.github.borrame.Entidades.Personaje;
 
 public class TextureManager {
@@ -13,7 +15,7 @@ public class TextureManager {
     public static TextureManager instance;
     public static Texture background = new Texture("graficos/fondo.jpg");
     public Personaje personaje;
-
+    public Barra barra;
     private TextureAtlas atlas;
     public TextureRegion pescador;
     public TextureRegion pezAmarillo;
@@ -28,7 +30,7 @@ public class TextureManager {
     }
 
     public static Texture paintBackground(SpriteBatch sb) {
-        sb.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        sb.draw(background, 0, 0, Mundo.Width, Mundo.Height);
         return background;
     }
 
@@ -38,11 +40,13 @@ public class TextureManager {
 
     public void renderScene(SpriteBatch sb) {
         paintBackground(sb);
+        personaje.dibujaSedal(sb, punto);
         sb.setColor(1, 1, 1, 1); // Color blanco sólido
         sb.draw(pescador, personaje.x, personaje.y, 150, 200);
         sb.setColor(1, 1, 1, 1); // Restablecer el color a blanco
+
+        barra.dibuja(sb);
         personaje.dibuja(sb, pescador);
-        personaje.dibujaSedal(sb, punto);
         personaje.dibujaAnzuelo(sb, anzuelo);
 
     }
@@ -91,5 +95,9 @@ public class TextureManager {
             default:
                 return pezAzul;
         }
+    }
+
+    public void addBarra(Barra barra) {
+        this.barra = barra;
     }
 }
