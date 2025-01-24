@@ -73,10 +73,13 @@ class HiloEcho extends Thread {
 
     @Override
     public void run() {
+        boolean salir = false;
+        hiloEchos = servidor.getHilos();
         SocketAddress clientAddress = socket.getRemoteSocketAddress();
         System.out.println("Ha conectado " + clientAddress);
         DataInputStream in;
         DataOutputStream out;
+
         try {
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
@@ -84,23 +87,34 @@ class HiloEcho extends Thread {
             System.out.println("Problemas creando la conexión");
             return;
         }
+        try {
+            if (contieneStr(nombre = in.readUTF())) {
+                out.writeUTF("Ya existe ese hilo");
+                salir = true;
+            } else {
+                hiloEchos.add(this);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         String str;
-        boolean salir = false;
+
         while (!salir) {
             hiloEchos = servidor.getHilos();
             try {
-                out.writeUTF("Escribe tu nombre");
+
                 str = in.readUTF();
-                if (str.equalsIgnoreCase(finServidor)) servidor.shutdown();
-                else if (contieneStr(str)) {
-
-                    out.writeUTF("Ya existe ese hilo");
-
-                }else{
-                    nombre = str;
-                    hiloEchos.add(this);
+                if (str.equalsIgnoreCase(finServidor)) {
+                    hiloEchos.remove(this);
+                    servidor.shutdown();
+                } else  {
+                    for (HiloEcho hiloEcho : hiloEchos) {
+                        if (hiloEcho.nombre.equals(str)) {
+                            out.writeUTF(in.readUTF());
+                        }
+                    }
                 }
-                out.writeUTF(str);
+
             } catch (IOException ex) {
                 System.out.println("Error en la transmisión");
                 break;
@@ -119,8 +133,8 @@ class HiloEcho extends Thread {
     }
 
     private boolean contieneStr(String str) {
-        for (HiloEcho hiloEcho : hiloEchos){
-            if (hiloEcho.nombre.equals(str)){
+        for (HiloEcho hiloEcho : hiloEchos) {
+            if (hiloEcho.nombre.equals(str)) {
                 return true;
             }
         }

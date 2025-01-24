@@ -19,13 +19,19 @@ public class Cliente {
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         System.out.println("Conectado con el servidor");
         System.out.println("escribe tu nombre");
+        mensaje = sc.nextLine();
+         out.writeUTF(mensaje);
         while (!mensaje.equalsIgnoreCase(FIN)) {
 // ENVIAMOS ...
+
+            System.out.println("Escribe qeu usuario quires mirar");
             mensaje = sc.nextLine();
             out.writeUTF(mensaje);
-
             String strRecibido = in.readUTF();
-            System.out.println("Cliente recibe: " + strRecibido);
+            System.out.print("Cliente : " + mensaje + "se ha conectado" + strRecibido + "veces y su estado actual es:");
+            out.writeUTF(strRecibido);
+            strRecibido = in.readUTF();
+            System.out.println(strRecibido);
 
         }
         socket.close();
