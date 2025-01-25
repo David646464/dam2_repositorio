@@ -4,60 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88971da7-ff90-46a9-8b98-3196877566f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/Captura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/Descricion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/Especie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/Especies.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/MainObjetoToXml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/Pesca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/Xornada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JABX/main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ2A5UD2/Hardware.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ2A5UD2/Hardware.xsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ2A5UD2/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ2A5UD2/hardware2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ3A5UD2/Alumnos.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ3A5UD2/Alumnos.xsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ3A5UD2/AlumnosHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ3A5UD2/AlumnosOut.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ3A5UD2/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Transformaciones/EJ3A5UD2/ManejadorAlumnos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UsarXPAHTYValidadcindeXSD/AccionesDOM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UsarXPAHTYValidadcindeXSD/Libro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UsarXPAHTYValidadcindeXSD/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UsarXPAHTYValidadcindeXSD/XpahtHelp.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/pesca.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ExamenPepa/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenPepa/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lunas2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lunas2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DowWithSax/AccionesDOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DowWithSax/AccionesDOM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DowWithSax/LuasHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DowWithSax/LuasHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DowWithSax/MainTransformarXMLPorSaxAUnDocument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PasarXmlAJson/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PasarXmlAJson/Libro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Person2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/Autores.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/Biblioteca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/CopiaItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/Copias.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/LibroItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/Libros.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/SeccionItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pruebas/Secciones.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/a/Biblioteca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/a/BibliotecaInformatica.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/a/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/a/Main2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/a/ObjectFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/b/Biblioteca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/b/BibliotecaInformatica.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/b/ObjectFactory.java" beforeDir="false" />
-    </list>
+    <list default="true" id="88971da7-ff90-46a9-8b98-3196877566f9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,9 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2p7mkGsspkrywCS58VnULHJVS2T" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -95,7 +42,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/clase2/repositorio/dam2_repositorio/BASES/ProjectoExamenUD2/src/main/resources/pesca.xsd",
+    "last_opened_file_path": "E:/clase2/repositorio/dam2_repositorio/BASES/proyectos/bases",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -201,6 +148,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732125629722</updated>
       <workItem from="1732125630819" duration="7723000" />
+      <workItem from="1737846161422" duration="59000" />
     </task>
     <servers />
   </component>
@@ -214,11 +162,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/UsarXPAHTYValidadcindeXSD/AccionesDOM.java</url>
           <line>331</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/JABX/main.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
