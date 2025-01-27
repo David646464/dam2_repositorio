@@ -1,5 +1,7 @@
 package io.github.proyecto1;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.io.File;
 import java.util.Stack;
 
@@ -33,6 +35,12 @@ public class TextureManager {
 
     public static boolean hayCartas() {
         return !cartas.isEmpty();
+    }
+
+    public void renderScene(SpriteBatch sb){
+        sb.begin();
+
+        sb.end();
     }
 
 
