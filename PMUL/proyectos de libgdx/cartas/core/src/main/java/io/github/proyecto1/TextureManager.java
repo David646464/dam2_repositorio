@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Stack;
 
 public class TextureManager {
-    public static String folderAssets = "ttrpg_legacy_cards_1.0";
+    public static String folderAssets = "assets/ttrpg_legacy_cards_1.0";
     public static Stack<String> cartas = getCartas();
 
     public static Stack<String> getCartas() {
