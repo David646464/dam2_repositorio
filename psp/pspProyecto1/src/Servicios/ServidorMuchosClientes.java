@@ -14,6 +14,7 @@ public class ServidorMuchosClientes extends Thread {
     ServerSocket serverSocket;
     boolean salir = false;
 
+
     public ServidorMuchosClientes() throws IOException {
         serverSocket = new ServerSocket(puerto);
         System.out.println("Servidor arriba");
@@ -63,7 +64,9 @@ class HiloEcho extends Thread {
     ServidorMuchosClientes servidor;
     Socket socket;
     ArrayList<HiloEcho> hiloEchos;
+    public int numVeces = 0;
     public String nombre;
+    boolean salio = false;
 
     public HiloEcho(ServidorMuchosClientes servidor, Socket socket, ArrayList<HiloEcho> hiloEchos) {
         this.servidor = servidor;
@@ -88,11 +91,25 @@ class HiloEcho extends Thread {
             return;
         }
         try {
-            if (contieneStr(nombre = in.readUTF())) {
-                out.writeUTF("Ya existe ese hilo");
-                salir = true;
-            } else {
-                hiloEchos.add(this);
+            while (!salir) {
+                if (contieneStr(nombre = in.readUTF()) && isActive(nombre)) {
+                    salir = true;
+                    System.out.println("b1");
+                    out.writeUTF("-1");
+                } else if (contieneStr(nombre)) {
+                    salir = false;
+                    HiloEcho hiloEcho = getEcho(nombre);
+                    hiloEcho.numVeces++;
+                    System.out.println("b2");
+                    out.writeUTF(nombre);
+                } else {
+                    salir = false;
+                    numVeces++;
+                    hiloEchos.add(this);
+                    System.out.println("usuario añadido");
+                    System.out.println("b3");
+                    out.writeUTF(nombre);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -100,29 +117,42 @@ class HiloEcho extends Thread {
         String str;
 
         while (!salir) {
+
             hiloEchos = servidor.getHilos();
             try {
 
                 str = in.readUTF();
+                System.out.println(str);
+                String numVeces = "null";
+                String estado = "null";
+
                 if (str.equalsIgnoreCase(finServidor)) {
-                    hiloEchos.remove(this);
                     servidor.shutdown();
-                } else  {
+                } else if (str.equalsIgnoreCase(finHilo)) {
+                    salir = true;
+                } else {
+                    System.out.println("========================");
                     for (HiloEcho hiloEcho : hiloEchos) {
+                        System.out.println(hiloEcho.nombre);
                         if (hiloEcho.nombre.equals(str)) {
-                            out.writeUTF(in.readUTF());
+                            numVeces = String.valueOf(hiloEcho.numVeces);
+                            estado = true != hiloEcho.salio ? " activo " : " desconectado ";
+                            contieneStr(hiloEcho.nombre);
+                            break;
                         }
                     }
+                    out.writeUTF(numVeces);
+                    out.writeUTF(estado);
                 }
 
             } catch (IOException ex) {
                 System.out.println("Error en la transmisión");
                 break;
             }
-            if (str.equalsIgnoreCase(finHilo)) salir = true;
-            else {
-                System.out.println("Servidor retransmite: " + str);
-                System.out.println("***************************");
+            if (str.equalsIgnoreCase(finHilo)) {
+                HiloEcho hiloEcho = getEcho(nombre);
+                hiloEcho.salio = true;
+                salir = true;
             }
         }
         try {
@@ -132,12 +162,38 @@ class HiloEcho extends Thread {
         }
     }
 
-    private boolean contieneStr(String str) {
+    private boolean isActive(String nombre) {
         for (HiloEcho hiloEcho : hiloEchos) {
-            if (hiloEcho.nombre.equals(str)) {
-                return true;
+            if (hiloEcho.nombre.equals(nombre)) {
+                return !hiloEcho.salio;
             }
         }
+        return false;
+    }
+
+    private HiloEcho getEcho(String nombre) {
+        for (HiloEcho hiloEcho : hiloEchos) {
+            if (hiloEcho.nombre.equals(nombre)) {
+                return hiloEcho;
+            }
+        }
+        return null;
+
+    }
+
+    private boolean contieneStr(String str) {
+
+        for (HiloEcho hiloEcho : hiloEchos) {
+            System.out.println(hiloEcho.nombre);
+            if (hiloEcho.nombre.equals(str)) {
+
+
+                return true;
+            }
+
+        }
+
+
         return false;
     }
 }
