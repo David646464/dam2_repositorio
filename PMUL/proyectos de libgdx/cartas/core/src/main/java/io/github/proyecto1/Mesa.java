@@ -18,7 +18,7 @@ public class Mesa {
 
     public static Fondo fondo = new Fondo();
     public static float margen = 30;
-    public static Dificultad dificultad = Dificultad.DIFICIL;
+    public static Dificultad dificultad = Dificultad.FACIL;
     public static float alturaCamara = 1400;
     public static float anchoCamara = 1600;
     public static int cantidadCartas = getCartasPorDificultad();

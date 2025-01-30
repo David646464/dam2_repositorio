@@ -19,8 +19,8 @@ public class Contador implements Entidad {
     }
 
     @Override
-    public void colisiona(Rectangle r) {
-
+    public boolean colisiona(Rectangle r) {
+        return false;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class Contador implements Entidad {
     }
 
     @Override
-    public void colisiona(Entidad e) {
-
+    public boolean colisiona(Entidad e) {
+        return  false;
     }
 
 

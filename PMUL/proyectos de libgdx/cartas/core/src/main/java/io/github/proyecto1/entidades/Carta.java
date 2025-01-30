@@ -19,7 +19,7 @@ public class Carta implements Entidad {
     private boolean seleccionada;
     private boolean encontrada;
     private int numero;
-    boolean contarDelta = false;
+    public boolean contarDelta = false;
     private float delta = 0;
 
 
@@ -37,8 +37,8 @@ public class Carta implements Entidad {
 
 
     @Override
-    public void colisiona(Rectangle r) {
-
+    public boolean colisiona(Rectangle r) {
+        return getRectangle().overlaps(r);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class Carta implements Entidad {
     }
 
     @Override
-    public void colisiona(Entidad e) {
-
+    public boolean colisiona(Entidad e) {
+        return false;
     }
 
     public boolean isVisible() {

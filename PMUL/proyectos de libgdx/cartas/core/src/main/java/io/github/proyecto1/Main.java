@@ -40,6 +40,7 @@ public class Main extends ApplicationAdapter {
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.setProjectionMatrix(camera.combined);
         tm.renderScene(batch,delta);
+
     }
 
     @Override

@@ -84,7 +84,7 @@ public class ProcesadorDeEntrada extends InputAdapter {
                 break;
         }
         for (Carta c : Mesa.cartas) {
-            if (c.getRectangle().overlaps(r)) {
+            if (c.colisiona(r)) {
                 System.out.println("Carta encontrada " + c.getNumero());
                 return c;
             }
