@@ -33,24 +33,37 @@ public class TextureManager {
         return new Texture(folderAssets + "/" + cartas.get(i));
     }
 
-    public static Texture getCartaOculta(){
+    public static Texture getCartaOculta() {
         return new Texture("oculta.png");
     }
 
-    public void renderScene(SpriteBatch sb, float delta){
+    public void renderScene(SpriteBatch sb, float delta) {
         sb.begin();
-        Mesa.fondo.dibujar(sb,delta);
-        Mesa.contador.dibujar(sb,delta);
-        for (int i = 0; i < Mesa.cartas.size; i++) {
-            Carta c = Mesa.cartas.get(i);
-            if (c.isVisible()) {
-               c.dibujar(sb,delta);
-            }
+        switch (Mesa.getScreenActual()) {
+            case 0:
+                Mesa.fondo.dibujar(sb, delta);
+                for (int i = 0; i < Mesa.botonesInicio.size; i++) {
+                    Mesa.botonesInicio.get(i).dibujar(sb, delta);
+                }
+
+                break;
+            case 1:
+                Mesa.fondo.dibujar(sb, delta);
+                Mesa.contador.dibujar(sb, delta);
+                for (int i = 0; i < Mesa.cartas.size; i++) {
+                    Carta c = Mesa.cartas.get(i);
+                    if (c.isVisible()) {
+                        c.dibujar(sb, delta);
+                    }
+                }
+                break;
+            case 2:
+                break;
+
+
         }
         sb.end();
     }
-
-
 
 
 }

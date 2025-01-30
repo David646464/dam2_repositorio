@@ -7,13 +7,13 @@ import com.badlogic.gdx.math.Vector3;
 import io.github.proyecto1.Mesa;
 import io.github.proyecto1.entidades.Carta;
 
-public class ProcesadorDeEntrada extends InputAdapter {
+public class ProcesadorDeEntradaJuego extends InputAdapter {
     private Carta carta1;
     private Carta carta2;
     private boolean carta1Seleccionada = false;
     private boolean carta2Seleccionada = false;
 
-    public ProcesadorDeEntrada() {
+    public ProcesadorDeEntradaJuego() {
     }
 
     @Override
