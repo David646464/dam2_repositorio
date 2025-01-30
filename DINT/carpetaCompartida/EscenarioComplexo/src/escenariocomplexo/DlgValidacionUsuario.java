@@ -6,6 +6,13 @@ package escenariocomplexo;
 
 import escenariocomplexo.Database.DatabaseManager;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -21,9 +28,9 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
     public DlgValidacionUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        getRootPane().setDefaultButton(botonConectarVU); 
+        getRootPane().setDefaultButton(botonConectarVU);
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -278,8 +285,8 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
 
             }
         }
-        
-        if (connection != null){
+
+        if (connection != null) {
             dispose();
         }
 
@@ -290,11 +297,22 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_campoPortoActionPerformed
 
     private void botoPecharVUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoPecharVUActionPerformed
-        if (DatabaseManager.getInstance() != null){
+         connection = DatabaseManager.getInstance(campoNome.getText(), campoContrasinal.getText(), campoIP.getText(), campoPorto.getText());
+        try {
+            String strRuta = "src/escenariocomplexo/pruebas/report1_prueba.jrxml";
+            JasperReport informeJasper = JasperCompileManager.compileReport(strRuta);
+            JasperPrint amosarInforme = JasperFillManager.fillReport(informeJasper, null, connection);
+            JasperViewer.viewReport(amosarInforme);
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(this, e);
+           
+        }
+
+        /*if (DatabaseManager.getInstance() != null){
             dispose();
         }else{
             System.exit(0);
-        }
+        }*/
     }//GEN-LAST:event_botoPecharVUActionPerformed
 
     /**

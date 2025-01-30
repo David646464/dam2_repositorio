@@ -124,17 +124,17 @@
 		<band splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="22" splitType="Stretch">
-			<textField>
-				<reportElement x="404" y="0" width="100" height="20" uuid="b85b1f9e-8266-4a0a-bd9b-ba17bcb915c8"/>
-				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="404" y="4" width="100" height="20" uuid="b85b1f9e-8266-4a0a-bd9b-ba17bcb915c8"/>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>
