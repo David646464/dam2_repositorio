@@ -109,7 +109,12 @@ public class Personaje {
             xanzuelo = x + anchopersonaje - 20;
         }
         if (pescoPez) {
-            sb.draw(fishCaught, xanzuelo - (fishCaught.getRegionWidth() / 2), yanzuelo - (fishCaught.getRegionHeight() / 2), fishCaught.getRegionWidth() / 2, fishCaught.getRegionHeight() / 2, fishCaught.getRegionWidth(), fishCaught.getRegionHeight(), 1, 1, 270);
+            sb.draw(fishCaught, xanzuelo - (fishCaught.getRegionWidth() / 2),
+                yanzuelo - (fishCaught.getRegionHeight() / 2),
+                fishCaught.getRegionWidth() / 2,
+                fishCaught.getRegionHeight() / 2,
+                fishCaught.getRegionWidth(),
+                fishCaught.getRegionHeight(), 1, 1, 270);
         } else {
             sb.draw(textura, xanzuelo, yanzuelo, anchoanzuelo, altoanzuelo);
         }

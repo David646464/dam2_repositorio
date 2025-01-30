@@ -30,6 +30,7 @@ public class Main extends ApplicationAdapter {
         sr = new ShapeRenderer();
         batch = new SpriteBatch();
         camera = Mesa.camera;
+
         tm = new TextureManager();
         Gdx.input.setInputProcessor(new ProcesadorDeEntrada());
     }
