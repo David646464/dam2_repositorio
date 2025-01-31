@@ -78,6 +78,12 @@ public class Pez {
         } else {
             x -= velocidad * delta;
         }
+        Rectangle rectPez = new Rectangle(x, y + 30, 20, 40);//40
+        if (seMueveDerecha) {
+
+            rectPez = new Rectangle(x + ancho - 20, y + 30, 20, 40);
+        }
+        setRectangle(rectPez);
     }
 
     public void dibuja(SpriteBatch sb) {
@@ -98,10 +104,12 @@ public class Pez {
             }
         }
         //Borrar
-        Texture texture = new Texture("Rojo.png");
-        Texture texture2 = new Texture("Verde.png");
-        sb.draw(texture,rectangle.getX(),rectangle.getY(),rectangle.getWidth(),rectangle.getHeight());
-        sb.draw(texture2,x,y+alto - 15,ancho,5);
+       if (rectangle != null){
+           Texture texture = new Texture("Rojo.png");
+           Texture texture2 = new Texture("Verde.png");
+           sb.draw(texture,rectangle.getX(),rectangle.getY(),rectangle.getWidth(),rectangle.getHeight());
+           sb.draw(texture2,x,y+alto - 15,ancho,5);
+       }
     }
 
 

@@ -1,0 +1,2 @@
+hacer las entidades sea por herencia y no por interfaz
+hacer clase general con las texturas cargadas de las cartas y que las cartas llamen a ellas

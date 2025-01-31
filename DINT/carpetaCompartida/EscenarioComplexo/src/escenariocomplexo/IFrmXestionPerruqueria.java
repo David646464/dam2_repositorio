@@ -19,9 +19,6 @@ import java.util.ArrayList;
  * @author Nitropc
  */
 public class IFrmXestionPerruqueria extends javax.swing.JInternalFrame {
-    
-    
-    
 
     /**
      * Creates new form IFrmXestionPerruqueria
@@ -341,25 +338,30 @@ public class IFrmXestionPerruqueria extends javax.swing.JInternalFrame {
         for (Cita c : citas) {
 
             switch (c.getHora()) {
-                case 10 -> {
+                case 10: {
                     boton10.setForeground(Color.red);
                     boton10.setEnabled(false);
+                     break;
                 }
-                case 11 -> {
+                case 11: {
                     boton11.setForeground(Color.red);
                     boton11.setEnabled(false);
+                     break;
                 }
-                case 12 -> {
+                case 12: {
                     boton12.setForeground(Color.red);
                     boton12.setEnabled(false);
+                     break;
                 }
-                case 16 -> {
+                case 16: {
                     boton16.setForeground(Color.red);
                     boton16.setEnabled(false);
+                     break;
                 }
-                case 17 -> {
+                case 17: {
                     boton17.setForeground(Color.red);
                     boton17.setEnabled(false);
+                     break;
 
                 }
             }
@@ -395,17 +397,22 @@ public class IFrmXestionPerruqueria extends javax.swing.JInternalFrame {
     private int horaSeleccionada() {
         int valueInt = 0;
         switch (botonHoras.getSelection().getActionCommand()) {
-            case "10" ->
+            case "10":
                 valueInt = 10;
-            case "11" ->
+                break;
+            case "11":
                 valueInt = 11;
-            case "12" ->
+                break;
+            case "12":
                 valueInt = 12;
-            case "16" ->
-                valueInt = 16;
-            case "17" ->
-                valueInt = 17;
+                break;
+            case "16":
 
+                valueInt = 16;
+                break;
+            case "17":
+                valueInt = 17;
+                break;
         }
         return valueInt;
     }
@@ -446,12 +453,12 @@ public class IFrmXestionPerruqueria extends javax.swing.JInternalFrame {
         if (botonHoras.getSelection() == null) {
             todoOK = false;
             ErrorClass.mostrarError(20, this.getDesktopPane());
-                    
-        }else if (comboCan.getSelectedItem() == null){
+
+        } else if (comboCan.getSelectedItem() == null) {
             todoOK = false;
             ErrorClass.mostrarError(21, this.getDesktopPane());
         }
-        
+
         return todoOK;
     }
 }

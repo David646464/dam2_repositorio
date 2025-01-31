@@ -180,6 +180,10 @@ public class DatabaseManager {
         }
     }
 
+    public static int conectar(String ipServidor, String porto, String usuario, String clinica, String contrasinal) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
     private DatabaseManager(String user, String passWord, String ip, String port) {
         this.user = user;

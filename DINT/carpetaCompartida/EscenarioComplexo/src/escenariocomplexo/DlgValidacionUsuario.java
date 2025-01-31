@@ -264,19 +264,19 @@ public class DlgValidacionUsuario extends javax.swing.JDialog {
             setAllErrorClear();
         } else {
             switch (DatabaseManager.getNumError()) {
-                case 1 -> {
+                case 1 :{
                     setAllErrorClear();
                     errorContrasinal.setText("Error con el usuario o la contraseña");
                     errorUsuario.setText("Error con el usuario o la contraseña");
                     break;
                 }
-                case 2 -> {
+                case 2 : {
                     setAllErrorClear();
                     errorIP.setText("Error con la ip o el puerto");
                     errorPorto.setText("Error con la ip o el puerto");
                     break;
                 }
-                case 3 -> {
+                case 3 : {
                     setAllErrorClear();
                     errorIP.setText("Error con la ip o el puerto");
                     errorPorto.setText("Error con la ip o el puerto");

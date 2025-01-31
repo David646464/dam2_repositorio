@@ -233,11 +233,12 @@ DateChooserAta.addSelectionChangedListener(new datechooser.events.SelectionChang
         filtros filtro = mirarFiltros();
         if (filtro != null) {
             switch (mirarFiltros()) {
-                case FECHA -> {
+                case FECHA : {
                     Vector citas = DatabaseManager.recuperarTodaAsCitasDePerrucariaEntreDuasDatas(formatearFecha(DateChooserDende), formatearFecha(DateChooserAta));
                     IFrmResultadosCitasPerruqueria frmResultadosCitasPerruqueria = new IFrmResultadosCitasPerruqueria(citas);
                     this.getDesktopPane().add(frmResultadosCitasPerruqueria);
                     frmResultadosCitasPerruqueria.setVisible(true);
+                    break;
                 }
             }
         } else {

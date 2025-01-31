@@ -3,7 +3,6 @@ package io.github.borrame;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -59,7 +58,6 @@ public class Main extends ApplicationAdapter {
     }
 
 
-
     private void agregarPez() {
         TextureRegion textureRegion = tm.getRandFish();
         boolean movingRight = MathUtils.randomBoolean();
@@ -102,25 +100,30 @@ public class Main extends ApplicationAdapter {
         Mundo.tiempo += delta;
         int i = 0;
         personaje.actualiza(delta);
+
         for (Pez pez : peces) {
             pez.actualiza(delta);
             // Check if the fish is caught by the hook
-            if ((i = pezCercaAnzuelo(pez)) == 0) {
-                // Handle fish caught logic
-                SoundManager.playCaptura();
-                score++;
-                fishCaught = pez.randFish;
-                personaje.pescoPez(fishCaught);
-                System.out.println("Score:" + score);
-                peces.removeValue(pez, true);
+            if (Personaje.EstadoAnzuelo.SUBIENDO == personaje.estadoAnzuelo) {
+                if ((i = pezCercaAnzuelo(pez)) == 0) {
+                    // Handle fish caught logic
+                    SoundManager.playCaptura();
+                    score++;
+                    fishCaught = pez.randFish;
+                    personaje.pescoPez(fishCaught);
+                    System.out.println("Score:" + score);
+                    peces.removeValue(pez, true);
 
-            } else if ((pez.x + pez.ancho < 0 && !pez.seMueveDerecha) || (pez.x > Gdx.graphics.getWidth() && pez.seMueveDerecha)) {
+                } else if (i == 2) {
+                    pez.y -= personaje.VELOCIDADANZUELO * delta;
+
+                }
+
+            }
+            if ((pez.x + pez.ancho < 0 && !pez.seMueveDerecha) || (pez.x > Gdx.graphics.getWidth() && pez.seMueveDerecha)) {
                 // Remove fish that have gone off screen
                 peces.removeValue(pez, true);
                 System.out.println("Pez fuera de pantalla");
-
-            } else if (i == 2) {
-                pez.y -= personaje.VELOCIDADANZUELO * delta;
 
             }
             pecesChocan(pez);
@@ -145,7 +148,7 @@ public class Main extends ApplicationAdapter {
             agregarPez();
             stateTime = 0;
         }
-        if (stateTime2 > 1f){
+        if (stateTime2 > 1f) {
             tm.barra.restarTamaño(delta);
             stateTime2 = 0;
         }
@@ -187,8 +190,8 @@ public class Main extends ApplicationAdapter {
         }
         pez.setRectangle(rectPez);
         int num = (rectAnzuelo.overlaps(rectPez) && personaje.estadoAnzuelo == Personaje.EstadoAnzuelo.SUBIENDO) == true ? 0 : 1;
-        if (num == 1){
-            if ((rectAnzuelo.overlaps(rectpezEmpuja) && personaje.estadoAnzuelo == Personaje.EstadoAnzuelo.BAJANDO)){
+        if (num == 1) {
+            if ((rectAnzuelo.overlaps(rectpezEmpuja) && personaje.estadoAnzuelo == Personaje.EstadoAnzuelo.BAJANDO)) {
                 num = 2;
             }
         }

@@ -11,7 +11,7 @@ public class PantallaInicio extends Pantalla {
     public void show() {
         Mesa.nuevoInicio();
         super.show();
-        Gdx.input.setInputProcessor(new ProcesadorDeEntradaInicio());// Call the parent class's show method
+        Gdx.input.setInputProcessor(new ProcesadorDeEntradaInicio());
     }
 
     @Override
@@ -22,11 +22,11 @@ public class PantallaInicio extends Pantalla {
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height); // Call the parent class's resize method
+        super.resize(width, height);
     }
 
     @Override
     public void dispose() {
-        super.dispose(); // Call the parent class's dispose method
+        super.dispose();
     }
 }

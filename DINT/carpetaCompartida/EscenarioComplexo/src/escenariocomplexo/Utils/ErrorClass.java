@@ -19,81 +19,115 @@ public class ErrorClass {
         // Configurar el mensaje según el tipo de error
         switch (numError) {
             //Errores del panel cans
-            case 1 ->
+            case 1 :
                 mensaje = "Se debe especificar el chip";
-            case 2 ->
+                break;
+            case 2 :
                 mensaje = "El chip existe. Introduzca uno que no exista";
-            case 3 ->
+                break;
+            case 3 :
                 mensaje = "Se debe especificar el nombre";
-            case 4 ->
+                break;
+            case 4 :
                 mensaje = "Se debe seleccionar una raza";
-            case 5 ->
+                break;
+            case 5 :
                 mensaje = "Se debe seleccionar un propietario";
+                break;
             //Errores del panel razas
-            case 6 ->
+            case 6 :
                 mensaje = "Se debe especificar el nombre de la raza";
-            case 7 ->
+                break;
+            case 7 :
                 mensaje = "Esa raza ya existe";
+                break;
             //Errores del panel propietarios
-            case 8 ->
+            case 8 :
                 mensaje = "Se debe especificar el DNI";
-            case 9 ->
+                break;
+            case 9 :
                 mensaje = "Ese DNI ya existe";
-            case 10 ->
+                break;
+            case 10 :
                 mensaje = "Se debe especificar el Nombre";
-            case 11 ->
+                break;
+            case 11 :
                 mensaje = "Se debe especificar el Apellido 1";
-            case 12 ->
+                break;
+            case 12 :
                 mensaje = "Se debe especificar el Telefono";
-            case 13 ->
+                break;
+            case 13 :
                 mensaje = "El numero de telefono no teien el formato (ej. 123456789)";
-            case 14 ->
+                break;
+            case 14 :
                 mensaje = "Se debe especificar el Email";
-            case 15 ->
+                break;
+            case 15 :
                 mensaje = "El Email no tiene el formato adecuado (ej. XXXXX@XXXX.XXX)";
-            case 16 ->
+                break;
+            case 16 :
                 mensaje = "El dni es incorrecto";
+                break;
             //Errores en vacinacion
-            case 17 ->
+            case 17 :
                 mensaje = "Para poder borrar esa dosis tienes que borrar las posteriores antes";
-            case 18 ->
+                break;
+            case 18 :
                 mensaje = "Hay que seleccionar el dueño y el perro y rrellenar todos los campos";
-            case 19 ->
+                break;
+            case 19 :
                 mensaje = "Ya se le administró todas las dosis de esa vacina";
+                break;
             //Errores en perruqueria
-            case 20 ->
+            case 20 :
                 mensaje = "No se ha elegido fecha";
-            case 21 ->
+                break;
+            case 21 :
                 mensaje = "No hay perro seleccionado";
+                break;
             //Errores al abrir mas de las xanelas permitidas
-            case 22 ->
+            case 22 :
                 mensaje = "No se pueden abrir mas ventanas de perruquerias";
-            case 23 ->
+                break;
+            case 23 :
                 mensaje = "No se pueden abrir mas ventanas de altas de cans/razas";
-            case 24 ->
+                break;
+            case 24 :
                 mensaje = "No se pueden abrir mas ventanas de propietarios";
-            case 25 ->
+                break;
+            case 25 :
                 mensaje = "No se pueden abrir mas ventanas de vacinacions";
-            case 26 ->
+                break;
+            case 26 :
                 mensaje = "No se puede abrir mas ventanas de xestion de citas";
+                break;
             //Errores en editar propietario
-            case 27 ->
+            case 27 :
                 mensaje = "No se puede borrar al propieratio porque ten cans";
-            case 28 ->
+                break;
+            case 28 :
                 mensaje = "El campo nome esta incorrecto";
-            case 29 ->
+                break;
+            case 29 :
                 mensaje = "El campo apelido1 esta incorrecto";
-            case 30 ->
+                break;
+            case 30 :
                 mensaje = "El campo apelido2 esta incorrecto";
-            case 31 ->
+                break;
+            case 31 :
                 mensaje = "El campo telefono esta incorrecto";
-            case 32 ->
+                break;
+            case 32 :
                 mensaje = "El campo Email esta incorrecto";
+                break;
                 //errores de xanelas
-            case 33 ->
+            case 33 :
                 mensaje = "No se pueden abrir mas listas de propietarios";
-            case 34 ->
+                break;
+            case 34 :
                 mensaje = "No se pueden abrir mas ediciones de propietarios";
+                break;
         }
 
         JOptionPane.showInternalMessageDialog(

@@ -59,6 +59,7 @@ public class Mesa {
     }
 
     public static void setScreen(int i) {
+        screen.dispose();
         ScreenActual = i;
         screen = getNewScreen();
         screen.show();
@@ -103,6 +104,7 @@ public class Mesa {
         miBoton = new Boton("BotonFacil", (anchoCamara / 2) - (anchoAltoBotones[0] / 2), alturaCamara / 2 + 200,  anchoAltoBotones[0], anchoAltoBotones[1], "Facil", () -> {
             Mesa.dificultad = Dificultad.FACIL;
         });
+
         botonesInicio.add(miBoton);
         miBoton = new Boton("BotonMedio", (anchoCamara / 2) - (anchoAltoBotones[0] / 2), alturaCamara / 2 ,  anchoAltoBotones[0], anchoAltoBotones[1], "Medio", () -> {
             Mesa.dificultad = Dificultad.MEDIO;
@@ -112,6 +114,31 @@ public class Mesa {
             Mesa.dificultad = Dificultad.DIFICIL;
         });
         botonesInicio.add(miBoton);
+
+        switch (dificultad) {
+            case FACIL:
+                setearApretado("BotonFacil");
+                break;
+            case MEDIO:
+                setearApretado("BotonMedio");
+                break;
+            case DIFICIL:
+                setearApretado("BotonDifficil");
+                break;
+            default:
+                setearApretado("BotonFacil");
+                break;
+        }
+    }
+
+    private static void setearApretado(String botonFacil) {
+        for (Boton boton : botonesInicio) {
+            if (boton.getNombre().equals(botonFacil)) {
+                boton.setApretado(true);
+            } else {
+                boton.setApretado(false);
+            }
+        }
     }
 
     public static void nuevaMesa() {
