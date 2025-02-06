@@ -1,0 +1,58 @@
+{
+  "EmpleadosReasignados": [
+    {
+      "NSS": "0010010",
+      "Nombre": "Rocio",
+      "Apelido1": "López",
+      "Apelido2": "Ferreiro",
+      "NuevoDepartamento": 5
+    },
+    {
+      "NSS": "0110010",
+      "Nombre": "Javier",
+      "Apelido1": "Quintero",
+      "Apelido2": "Alvarez",
+      "NuevoDepartamento": 5
+    },
+    {
+      "NSS": "0999900",
+      "Nombre": "Germán",
+      "Apelido1": "Gómez",
+      "Apelido2": "Rodríguez",
+      "NuevoDepartamento": 5
+    },
+    {
+      "NSS": "1010001",
+      "Nombre": "Diego",
+      "Apelido1": "Lamela",
+      "Apelido2": "Bello",
+      "NuevoDepartamento": 5
+    }
+  ],
+  "ProyectosReasignados": [
+    {
+      "Num_proxecto": 1,
+      "Nombre": "XESTION DE PERSOAL",
+      "NuevoDepartamentoControla": 5
+    },
+    {
+      "Num_proxecto": 2,
+      "Nombre": "PORTAL",
+      "NuevoDepartamentoControla": 5
+    },
+    {
+      "Num_proxecto": 3,
+      "Nombre": "APLICACIÓN CONTABLE",
+      "NuevoDepartamentoControla": 5
+    },
+    {
+      "Num_proxecto": 7,
+      "Nombre": "MELLORAS SOCIAIS",
+      "NuevoDepartamentoControla": 5
+    }
+  ],
+  "DepartamentoEliminado": {
+    "Num_departamento": 4,
+    "Nombre": "INFORMÁTICA"
+  }
+}
