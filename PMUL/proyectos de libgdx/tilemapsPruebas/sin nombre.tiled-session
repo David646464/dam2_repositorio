@@ -50,11 +50,11 @@
             "scaleInEditor": 1
         },
         "mapa1.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 5,
+            "scale": 0.75,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": -96,
-                "y": 162
+                "x": -102,
+                "y": 41.33333333333337
             }
         },
         "terreno.tsx": {
@@ -85,6 +85,7 @@
         "UI16X16.tsx"
     ],
     "project": "sin nombre.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
         "UI16X16.tsx",
         "ui.tsx",
