@@ -3,12 +3,32 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapa1.tmx",
+    "activeFile": "Mapa1Test.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "Mapa1Test.tmx": {
+            "expandedGroupLayers": [
+                4
+            ],
+            "expandedObjectLayers": [
+                9
+            ],
+            "scale": 1,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 91.5,
+                "y": 181
+            }
+        },
+        "Mapa1Test.tmx#TX Props": {
+            "scaleInDock": 0.75
+        },
+        "Mapa1Test.tmx#TX Shadow": {
+            "scaleInDock": 1
+        },
         "TX Plant.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 2
@@ -34,7 +54,7 @@
             "scaleInEditor": 1
         },
         "TX Tileset Grass.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "TX Tileset Stone Ground.tsx": {
@@ -82,23 +102,24 @@
         "TX Tileset Stone Ground.tsx",
         "TX Tileset Wall.tsx",
         "ui.tsx",
-        "UI16X16.tsx"
+        "UI16X16.tsx",
+        "Mapa1Test.tmx"
     ],
     "project": "sin nombre.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "UI16X16.tsx",
-        "ui.tsx",
-        "TX Tileset Wall.tsx",
-        "TX Tileset Stone Ground.tsx",
-        "TX Struct.tsx",
-        "TX Shadow.tsx",
-        "TX Shadow Plant.tsx",
-        "TX Props.tsx",
-        "terreno.tsx",
-        "TX Player.tsx",
+        "mapa1.tmx",
+        "TX Plant.tsx",
         "TX Tileset Grass.tsx",
-        "TX Plant.tsx"
+        "TX Player.tsx",
+        "terreno.tsx",
+        "TX Props.tsx",
+        "TX Shadow Plant.tsx",
+        "TX Shadow.tsx",
+        "TX Struct.tsx",
+        "TX Tileset Stone Ground.tsx",
+        "TX Tileset Wall.tsx",
+        "ui.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
