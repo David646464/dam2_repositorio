@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="4">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="5">
  <tileset firstgid="1" source="TX Tileset Grass.tsx"/>
  <layer id="1" name="Capa de patrones 1" width="30" height="20">
   <data encoding="csv">
@@ -26,10 +26,10 @@
 </data>
  </layer>
  <objectgroup id="2" name="Capa de Objetos 1">
-  <object id="3" x="64.1257" y="61.69" width="32" height="64">
+  <object id="3" x="64" y="64" width="32" height="64">
    <properties>
-    <property name="X" type="float" value="64.13"/>
-    <property name="Y" type="float" value="61.69"/>
+    <property name="X" type="float" value="64"/>
+    <property name="Y" type="float" value="64"/>
     <property name="name" value="player"/>
    </properties>
   </object>

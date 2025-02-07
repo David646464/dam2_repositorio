@@ -22,6 +22,8 @@ public class Main extends ApplicationAdapter {
     private SpriteBatch batch;
     private Player player;
     private AssetManager manager;
+    private float worldWidth;
+    private float worldHeight;
 
     @Override
     public void create() {
@@ -33,28 +35,31 @@ public class Main extends ApplicationAdapter {
         map = manager.get("maps/mapa1.tmx", TiledMap.class);
         mapRenderer = new OrthogonalTiledMapRenderer(map);
 
-        // Calcula las dimensiones del mapa
-        int mapWidth = map.getProperties().get("width", Integer.class) * map.getProperties().get("tilewidth", Integer.class);
-        int mapHeight = map.getProperties().get("height", Integer.class) * map.getProperties().get("tileheight", Integer.class);
+        // Calculate the dimensions of the map
+        int tileWidth = 32;
+        int tileHeight = 32;
+        int mapWidth = 20 * tileWidth;
+        int mapHeight = 30 * tileHeight;
 
-        // Configura la cámara para que se ajuste al mapa
+        worldWidth = mapWidth;
+        worldHeight = mapHeight;
+
+        // Configure the camera to fit the map
         camera = new OrthographicCamera();
-        System.out.println(mapWidth + " " + mapHeight);
-        camera.setToOrtho(false, mapWidth, mapHeight); // Tamaño de la ventana
-        camera.position.set(mapWidth / 2f, mapHeight / 2f, 0); // Centra la cámara en el mapa
+        camera.setToOrtho(false, 800, 480); // Window size
+        camera.position.set(mapWidth / 2f, mapHeight / 2f, 0); // Center the camera on the map
         camera.update();
 
         batch = new SpriteBatch();
 
-        // Cargar la posición del objeto player desde el TiledMap
+        // Load the player position from the TiledMap
         MapObjects objects = map.getLayers().get("Capa de Objetos 1").getObjects();
         for (MapObject object : objects) {
             if (object instanceof RectangleMapObject) {
                 Rectangle rect = ((RectangleMapObject) object).getRectangle();
                 if ("player".equals(object.getProperties().get("name"))) {
-                    float playerX = rect.x;
-                    float playerY = rect.y;
-                    player = new Player("Pixel Art Top Down - Basic v1.1.2/Texture/TX Player.png", playerX, playerY);
+                    System.out.println("Player found at: " + rect.x + ", " + rect.y);
+                    player = new Player("Pixel Art Top Down - Basic v1.1.2/Texture/TX Player.png", rect.x, mapHeight - rect.y - rect.height);
                     break;
                 }
             }
@@ -65,13 +70,13 @@ public class Main extends ApplicationAdapter {
         }
     }
 
-
     @Override
     public void render() {
         ScreenUtils.clear(0, 0, 0, 1);
 
         camera.update();
-        mapRenderer.setView(camera);
+        //mapRenderer.setView(camera);
+
         mapRenderer.render();
 
         handleInput(Gdx.graphics.getDeltaTime());

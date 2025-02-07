@@ -10,7 +10,8 @@ public class Player {
 
     public Player(String texturePath, float x, float y) {
         texture = new Texture(texturePath);
-        position = new Vector2(x, y);
+        System.out.println(x + " " + y);
+        position = new Vector2(x  , y );
     }
 
     public void render(SpriteBatch batch) {
