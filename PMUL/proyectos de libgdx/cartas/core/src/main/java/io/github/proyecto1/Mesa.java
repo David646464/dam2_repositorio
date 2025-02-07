@@ -150,5 +150,6 @@ public class Mesa {
         tablero = CreaTableros.crearTablero(cartasPorFila, cartasPorColumna);
         contador = new Contador();
         cartas = Mesa.getCartas();
+        intentos = 0;
     }
 }

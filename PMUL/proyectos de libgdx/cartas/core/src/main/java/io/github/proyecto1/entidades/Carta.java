@@ -21,6 +21,7 @@ public class Carta implements Entidad {
     private int numero;
     public boolean contarDelta = false;
     private float delta = 0;
+    private final float tiempoMostrarCartas = 1;
 
 
     public Carta(Texture texture, Texture textureEscondida, int numero, int xTablero, int yTablero) {
@@ -52,7 +53,7 @@ public class Carta implements Entidad {
         if (contarDelta){
             this.delta += delta;
         }
-        if (this.delta > 1){
+        if (this.delta > tiempoMostrarCartas){
            contarDelta = false;
            this.delta = 0;
         }

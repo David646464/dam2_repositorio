@@ -1,0 +1,36 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "TX Tileset Grass.tsx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "Todos los archivos (*)",
+    "fileStates": {
+        "TX Tileset Grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "terreno.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "E:/clase2/repositorio/dam2_repositorio/PMUL/proyectos de libgdx/assets/Pixel Art Top Down - Basic v1.1.2/Texture",
+    "map.fixedSize": false,
+    "map.height": 32,
+    "map.width": 32,
+    "openFiles": [
+        "TX Tileset Grass.tsx"
+    ],
+    "project": "mapa1.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "TX Tileset Grass.tsx",
+        "terreno.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 0
+}
