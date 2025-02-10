@@ -11,7 +11,7 @@ public class Player {
     public Player(String texturePath, float x, float y) {
         texture = new Texture(texturePath);
         System.out.println(x + " " + y);
-        position = new Vector2(x  , y );
+        position = new Vector2(x  , y - texture.getHeight());
     }
 
     public void render(SpriteBatch batch) {

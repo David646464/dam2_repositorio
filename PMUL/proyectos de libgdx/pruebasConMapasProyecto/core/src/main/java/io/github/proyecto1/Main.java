@@ -38,15 +38,14 @@ public class Main extends ApplicationAdapter {
         // Calculate the dimensions of the map
         int tileWidth = 32;
         int tileHeight = 32;
-        int mapWidth = 20 * tileWidth;
-        int mapHeight = 30 * tileHeight;
+        int mapWidth = 30 * tileWidth;
+        int mapHeight = 20 * tileHeight;
 
         worldWidth = mapWidth;
         worldHeight = mapHeight;
-
         // Configure the camera to fit the map
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480); // Window size
+        camera.setToOrtho(false, worldWidth, worldHeight); // Window size
         camera.position.set(mapWidth / 2f, mapHeight / 2f, 0); // Center the camera on the map
         camera.update();
 
@@ -59,7 +58,7 @@ public class Main extends ApplicationAdapter {
                 Rectangle rect = ((RectangleMapObject) object).getRectangle();
                 if ("player".equals(object.getProperties().get("name"))) {
                     System.out.println("Player found at: " + rect.x + ", " + rect.y);
-                    player = new Player("Pixel Art Top Down - Basic v1.1.2/Texture/TX Player.png", rect.x, mapHeight - rect.y - rect.height);
+                    player = new Player("Pixel Art Top Down - Basic v1.1.2/Texture/TX Player.png", rect.x, rect.y  );
                     break;
                 }
             }
@@ -75,7 +74,7 @@ public class Main extends ApplicationAdapter {
         ScreenUtils.clear(0, 0, 0, 1);
 
         camera.update();
-        //mapRenderer.setView(camera);
+        mapRenderer.setView(camera);
 
         mapRenderer.render();
 

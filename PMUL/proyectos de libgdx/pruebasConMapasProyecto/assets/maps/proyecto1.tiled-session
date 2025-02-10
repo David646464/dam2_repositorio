@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "TX Player.tsx",
+    "activeFile": "mapa1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -24,8 +24,8 @@
             "scale": 0.80453125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -101.9227034375607,
-                "y": 61.526510001942086
+                "x": 144.80481646921734,
+                "y": 270.3437560691396
             }
         }
     },
@@ -39,9 +39,9 @@
     "project": "proyecto1.tiled-project",
     "property.type": "float",
     "recentFiles": [
-        "mapa1.tmx",
+        "TX Player.tsx",
         "TX Tileset Grass.tsx",
-        "TX Player.tsx"
+        "mapa1.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }
