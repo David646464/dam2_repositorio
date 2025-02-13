@@ -1,12 +1,25 @@
 package io.github.proyecto1;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import io.github.proyecto1.Manejadores.ProcesadorDeEntradaJuego;
 import io.github.proyecto1.Manejadores.TextureManager;
 import io.github.proyecto1.Pantallas.PantallaInicio;
 import io.github.proyecto1.Pantallas.PantallaJuego;
+import io.github.proyecto1.Pantallas.PantallaRecords;
 import io.github.proyecto1.Utils.CreaTableros;
 import io.github.proyecto1.entidades.Boton;
 import io.github.proyecto1.entidades.Carta;
@@ -14,6 +27,14 @@ import io.github.proyecto1.entidades.Contador;
 import io.github.proyecto1.entidades.Fondo;
 
 public class Mesa {
+
+
+    public static int cartasEncontradas = 0;
+    public static boolean gano = false;
+    private static Preferences prefs = Gdx.app.getPreferences("MyPreferences");
+    private static Json json = new Json();
+
+
 
 
     public enum Dificultad {FACIL, MEDIO, DIFICIL}
@@ -41,6 +62,8 @@ public class Mesa {
 
     public static Array<Carta> cartas = null;
 
+    public static Map<Dificultad,Map<String,Integer>> records = new HashMap<Dificultad, Map<String, Integer>>();
+
     public static Screen getNewScreen() {
         switch (ScreenActual) {
             case 0:
@@ -48,7 +71,7 @@ public class Mesa {
             case 1:
                 return new PantallaJuego();
             case 2:
-
+                return new PantallaRecords();
             default:
                 return new PantallaInicio();
         }
@@ -129,6 +152,7 @@ public class Mesa {
                 setearApretado("BotonFacil");
                 break;
         }
+        ProcesadorDeEntradaJuego.nombreJugador = "";
     }
 
     private static void setearApretado(String botonFacil) {
@@ -142,8 +166,8 @@ public class Mesa {
     }
 
     public static void nuevaMesa() {
-
-
+        gano = false;
+        cartasEncontradas = 0;
         cantidadCartas = Mesa.getCartasPorDificultad();
         cartasPorFila = cantidadCartas - 1;
         cartasPorColumna = cantidadCartas;
@@ -152,4 +176,45 @@ public class Mesa {
         cartas = Mesa.getCartas();
         intentos = 0;
     }
+
+
+    public static void guardarRecord(String nombre, int intentos, Dificultad dificultad) {
+        Map<String, Integer> records = getRecords(dificultad);
+        records.put(nombre, intentos);
+        prefs.putString("records_" + dificultad.name(), json.toJson(records));
+        prefs.flush();
+    }
+
+    public static Map<String, Integer> getRecords(Dificultad dificultad) {
+        String recordsJson = prefs.getString("records_" + dificultad.name(), "{}");
+        return json.fromJson(HashMap.class, recordsJson);
+    }
+
+    public static Map<String, Integer> getSortedRecords(Dificultad dificultad) {
+        Map<String, Integer> records = getRecords(dificultad);
+        TreeMap<String, Integer> sortedRecords = new TreeMap<>(Comparator.comparingInt(records::get));
+        sortedRecords.putAll(records);
+        return sortedRecords;
+    }
+
+    public static void nuevoRecords() {
+        guardarRecord(ProcesadorDeEntradaJuego.nombreJugador, intentos, dificultad);
+        recupearRecords();
+        //modoDebujarRecords();
+        //resetRecords();
+    }
+
+    private static void recupearRecords() {
+        records.put(Dificultad.FACIL, getSortedRecords(Dificultad.FACIL));
+        records.put(Dificultad.MEDIO, getSortedRecords(Dificultad.MEDIO));
+        records.put(Dificultad.DIFICIL, getSortedRecords(Dificultad.DIFICIL));
+    }
+
+    public static void resetRecords() {
+        for (Dificultad dificultad : Dificultad.values()) {
+            prefs.remove("records_" + dificultad.name());
+        }
+        prefs.flush();
+    }
+
 }

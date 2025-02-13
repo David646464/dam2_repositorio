@@ -1,5 +1,6 @@
 package io.github.proyecto1.Manejadores;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -12,8 +13,36 @@ public class ProcesadorDeEntradaJuego extends InputAdapter {
     private Carta carta2;
     private boolean carta1Seleccionada = false;
     private boolean carta2Seleccionada = false;
+    public static String nombreJugador = "";
+
 
     public ProcesadorDeEntradaJuego() {
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+       if (keycode == Input.Keys.ENTER) {
+           Mesa.setScreen(2);
+       }
+        return true;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+
+       if(Mesa.gano){
+           if (character == '\b') { // Handle backspace
+               if (nombreJugador.length() > 0) {
+                   nombreJugador = nombreJugador.substring(0, nombreJugador.length() - 1);
+               }
+           } else if (character == '\r' || character == '\n') {
+           } else {
+               if (nombreJugador.length() < 10) {
+                   nombreJugador += character;
+               }
+           }
+       }
+        return true;
     }
 
     @Override
@@ -102,6 +131,11 @@ public class ProcesadorDeEntradaJuego extends InputAdapter {
                 carta1.setEncontrada(true);
                 carta2.setEncontrada(true);
                 System.out.println("Cartas encontradas");
+                Mesa.cartasEncontradas += 2;
+                if (Mesa.cartasEncontradas == Mesa.cartas.size) {
+                    Mesa.gano = true;
+                    System.out.println("Juego terminado");
+                }
             } else {
                 System.out.println("Cartas no encontradas");
                 carta1.setContarDelta(true);
