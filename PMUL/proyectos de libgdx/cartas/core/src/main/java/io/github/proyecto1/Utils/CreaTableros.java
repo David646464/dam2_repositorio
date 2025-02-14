@@ -44,6 +44,10 @@ public class CreaTableros {
     }
 
     public static void main(String[] args) {
-        crearTablero(4, 5);
+        //crearTablero(4, 5);
+        double a = 0.1;
+        double b = 0.2;
+        double c = a+b;
+        System.out.println(c);
     }
 }

@@ -21,27 +21,30 @@ public class ProcesadorDeEntradaJuego extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
-       if (keycode == Input.Keys.ENTER) {
-           Mesa.setScreen(2);
-       }
+        if (keycode == Input.Keys.ENTER) {
+            Mesa.setScreen(2);
+        }
         return true;
     }
 
     @Override
     public boolean keyTyped(char character) {
 
-       if(Mesa.gano){
-           if (character == '\b') { // Handle backspace
-               if (nombreJugador.length() > 0) {
-                   nombreJugador = nombreJugador.substring(0, nombreJugador.length() - 1);
-               }
-           } else if (character == '\r' || character == '\n') {
-           } else {
-               if (nombreJugador.length() < 10) {
-                   nombreJugador += character;
-               }
-           }
-       }
+        if (Mesa.gano) {
+            if (character == '\b') { // Handle backspace
+                if (nombreJugador.length() > 0) {
+                    nombreJugador = nombreJugador.substring(0, nombreJugador.length() - 1);
+                }
+            } else if (character == '\r' || character == '\n') {
+            } else {
+                if (nombreJugador.length() < 10) {
+                    nombreJugador += character;
+                }
+            }
+        } else if (character == 'r') {
+            Mesa.setScreen(0);
+
+        }
         return true;
     }
 
@@ -54,11 +57,11 @@ public class ProcesadorDeEntradaJuego extends InputAdapter {
             if (!carta1Seleccionada) {
                 System.out.println("==============");
                 carta1 = getCarta(worldCoordinates.x, worldCoordinates.y);
-                if (carta1 == null){
+                if (carta1 == null) {
                     System.out.println("==============");
                     return true;
                 }
-                if ( (carta1.getEncontrada() || carta1.getSelectionada())) {
+                if ((carta1.getEncontrada() || carta1.getSelectionada())) {
                     System.out.println("==============");
                     return true;
                 }
@@ -70,11 +73,11 @@ public class ProcesadorDeEntradaJuego extends InputAdapter {
             } else if (!carta2Seleccionada) {
                 System.out.println("==============");
                 carta2 = getCarta(worldCoordinates.x, worldCoordinates.y);
-                if (carta2 == null){
+                if (carta2 == null) {
                     System.out.println("==============");
                     return true;
                 }
-                if ((carta2.getEncontrada() || carta2.getSelectionada()) ) {
+                if ((carta2.getEncontrada() || carta2.getSelectionada())) {
                     System.out.println("==============");
                     return true;
                 }

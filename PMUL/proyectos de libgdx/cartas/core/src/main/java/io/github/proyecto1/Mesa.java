@@ -4,16 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import io.github.proyecto1.Manejadores.ProcesadorDeEntradaJuego;
 import io.github.proyecto1.Manejadores.TextureManager;
@@ -28,7 +25,6 @@ import io.github.proyecto1.entidades.Fondo;
 
 public class Mesa {
 
-
     public static int cartasEncontradas = 0;
     public static boolean gano = false;
     private static Preferences prefs = Gdx.app.getPreferences("MyPreferences");
@@ -38,14 +34,12 @@ public class Mesa {
 
 
     public enum Dificultad {FACIL, MEDIO, DIFICIL}
-
-    public static OrthographicCamera camera = new OrthographicCamera();
-    public static Fondo fondo = new Fondo();
-    ;
-    public static float margen = 30;
-    public static Dificultad dificultad = Dificultad.FACIL;
     public static float alturaCamara = 1400;
     public static float anchoCamara = 1600;
+    public static OrthographicCamera camera = new OrthographicCamera(anchoCamara,alturaCamara);
+    public static Fondo fondo = new Fondo();
+    public static float margen = 30;
+    public static Dificultad dificultad = Dificultad.FACIL;
     public static int cantidadCartas = 0;
     public static int cartasPorFila = 0;
     public static int cartasPorColumna = 0;
@@ -58,11 +52,11 @@ public class Mesa {
     public static TextureManager tm = new TextureManager();
     public static  float[] anchoAltoBotones = {400, 100};
 
-    public static Array<Boton> botonesInicio = new Array<Boton>();
+    public static Array<Boton> botonesInicio = new Array<>();
 
     public static Array<Carta> cartas = null;
 
-    public static Map<Dificultad,Map<String,Integer>> records = new HashMap<Dificultad, Map<String, Integer>>();
+    public static Map<Dificultad,Map<String,Integer>> records = new HashMap<>();
 
     public static Screen getNewScreen() {
         switch (ScreenActual) {
@@ -109,7 +103,7 @@ public class Mesa {
     ;
 
     public static Array<Carta> getCartas() {
-        Array<Carta> cartas = new Array<Carta>();
+        Array<Carta> cartas = new Array<>();
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 cartas.add(new Carta(TextureManager.getCarta(tablero[i][j]), TextureManager.getCartaOculta(), tablero[i][j], i, j));
@@ -119,23 +113,23 @@ public class Mesa {
     }
 
     public static void nuevoInicio(){
-        botonesInicio = new Array<Boton>();
-        Boton miBoton = new Boton("Botonjugar", (anchoCamara / 2) - (anchoAltoBotones[0] / 2), alturaCamara / 2 + 400, anchoAltoBotones[0], anchoAltoBotones[1], "Jugar", () -> {
-          Mesa.setScreen(1);
-        });
+        botonesInicio = new Array<>();
+        Boton miBoton = new Boton("Botonjugar", (anchoCamara / 2) - (anchoAltoBotones[0] / 2),
+            alturaCamara / 2 + 400, anchoAltoBotones[0], anchoAltoBotones[1], "Jugar",
+            () -> Mesa.setScreen(1));
         botonesInicio.add(miBoton);
-        miBoton = new Boton("BotonFacil", (anchoCamara / 2) - (anchoAltoBotones[0] / 2), alturaCamara / 2 + 200,  anchoAltoBotones[0], anchoAltoBotones[1], "Facil", () -> {
-            Mesa.dificultad = Dificultad.FACIL;
-        });
+        miBoton = new Boton("BotonFacil", (anchoCamara / 2) - (anchoAltoBotones[0] / 2),
+            alturaCamara / 2 + 200,  anchoAltoBotones[0], anchoAltoBotones[1], "Facil",
+            () -> Mesa.dificultad = Dificultad.FACIL);
 
         botonesInicio.add(miBoton);
-        miBoton = new Boton("BotonMedio", (anchoCamara / 2) - (anchoAltoBotones[0] / 2), alturaCamara / 2 ,  anchoAltoBotones[0], anchoAltoBotones[1], "Medio", () -> {
-            Mesa.dificultad = Dificultad.MEDIO;
-        });
+        miBoton = new Boton("BotonMedio", (anchoCamara / 2) - (anchoAltoBotones[0] / 2),
+            alturaCamara / 2 ,  anchoAltoBotones[0], anchoAltoBotones[1], "Medio",
+            () -> Mesa.dificultad = Dificultad.MEDIO);
         botonesInicio.add(miBoton);
-        miBoton = new Boton("BotonDifficil", (anchoCamara / 2) - (anchoAltoBotones[0] / 2), alturaCamara / 2 - 200, anchoAltoBotones[0], anchoAltoBotones[1], "Dificil", () -> {
-            Mesa.dificultad = Dificultad.DIFICIL;
-        });
+        miBoton = new Boton("BotonDifficil", (anchoCamara / 2) - (anchoAltoBotones[0] / 2),
+            alturaCamara / 2 - 200, anchoAltoBotones[0], anchoAltoBotones[1], "Dificil",
+            () -> Mesa.dificultad = Dificultad.DIFICIL);
         botonesInicio.add(miBoton);
 
         switch (dificultad) {
@@ -179,10 +173,23 @@ public class Mesa {
 
 
     public static void guardarRecord(String nombre, int intentos, Dificultad dificultad) {
+       if(!comprobarQuePersonaNoTieneRecordMayor(nombre, intentos, dificultad)){
+           Map<String, Integer> records = getRecords(dificultad);
+           records.put(nombre, intentos);
+           prefs.putString("records_" + dificultad.name(), json.toJson(records));
+           prefs.flush();
+       }
+       //anton:{class:java.lang.Integer,value:12}
+    }
+
+    private static boolean comprobarQuePersonaNoTieneRecordMayor(String nombre, int intentos, Dificultad dificultad) {
         Map<String, Integer> records = getRecords(dificultad);
-        records.put(nombre, intentos);
-        prefs.putString("records_" + dificultad.name(), json.toJson(records));
-        prefs.flush();
+        if (records.containsKey(nombre)) {
+            if (records.get(nombre) < intentos) {
+              return true;
+            }
+        }
+        return false;
     }
 
     public static Map<String, Integer> getRecords(Dificultad dificultad) {
@@ -192,9 +199,15 @@ public class Mesa {
 
     public static Map<String, Integer> getSortedRecords(Dificultad dificultad) {
         Map<String, Integer> records = getRecords(dificultad);
-        TreeMap<String, Integer> sortedRecords = new TreeMap<>(Comparator.comparingInt(records::get));
-        sortedRecords.putAll(records);
-        return sortedRecords;
+        return records.entrySet()
+            .stream()
+            .sorted(Map.Entry.comparingByValue())
+            .collect(Collectors.toMap(
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (e1, e2) -> e1,
+                LinkedHashMap::new
+            ));
     }
 
     public static void nuevoRecords() {
