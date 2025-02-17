@@ -191,6 +191,7 @@ public class Main extends ApplicationAdapter {
         pez.setRectangle(rectPez);
         int num = (rectAnzuelo.overlaps(rectPez) && personaje.estadoAnzuelo == Personaje.EstadoAnzuelo.SUBIENDO) == true ? 0 : 1;
         if (num == 1) {
+            //System.out.println("a");
             if ((rectAnzuelo.overlaps(rectpezEmpuja) && personaje.estadoAnzuelo == Personaje.EstadoAnzuelo.BAJANDO)) {
                 num = 2;
             }

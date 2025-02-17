@@ -1,10 +1,11 @@
 package io.github.proyecto1;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
-public class Main extends ApplicationAdapter {
+public class Main extends Game {
 
 
 
@@ -18,7 +19,6 @@ public class Main extends ApplicationAdapter {
     @Override
     public void render() {
         Mesa.getScreen().render(Gdx.graphics.getDeltaTime());
-
     }
 
     @Override
