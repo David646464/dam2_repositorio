@@ -1,0 +1,64 @@
+<odoo>
+<!--tree view-->
+    <record id="view_pedido_tree_view" model="ir.ui.view">
+        <field name="name">pedido.tree.view</field>
+        <field name="model">ramos_personalizados.pedido</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="IDPedido"/>
+                <field name="ramosID"/>
+                <field name="precioTotal"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pedido_form_view" model="ir.ui.view">
+        <field name="name">pedido.form.view</field>
+        <field name="model">ramos_personalizados.pedido</field>
+        <field name="arch" type="xml">
+            <form string="pedido">
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="IDPedido" required="1" placeholder="IDPedido"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="ramosID" placeholder="ramosID"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="precioTotal" placeholder="precioTotal"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h3>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pedido_search_view" model="ir.ui.view">
+        <field name="name">pedido Search</field>
+        <field name="model">ramos_personalizados.pedido"</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="IDPedido"/>
+                <field name="ramosID"/>
+                <field name="precioTotal"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pedido" model="ir.actions.act_window">
+        <field name="name">pedido</field>
+        <field name="res_model">ramos_personalizados.pedido"</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_ramos_personalizados_root" name="Creacion de ramos" sequence="1"/>
+    <menuitem id="menu_pedido" name="pedido" parent="menu_ramos_personalizados_root" action="action_pedido"
+              sequence="2"/>
+
+</odoo>

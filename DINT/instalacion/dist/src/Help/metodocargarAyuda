@@ -1,0 +1,20 @@
+ private void cargarAyuda() throws MalformedURLException, HelpSetException {
+      
+        File fichero = new File("src/Help/help_set.hs");
+        URL hsURL = fichero.toURI().toURL();
+
+        HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+        HelpBroker hb = helpset.createHelpBroker();
+       
+
+
+        hb.enableHelpKey(this.getContentPane(), "general", helpset);
+
+        hb.enableHelpKey(txtCliente, "detalles", helpset);
+        hb.enableHelpKey(txtDataFinal, "detalles", helpset);
+        hb.enableHelpKey(txtDataInicial, "detalles", helpset);
+        hb.enableHelpKey(txtNFacturaFinal, "detalles", helpset);
+        hb.enableHelpKey(txtNFacturaInicial, "detalles", helpset);
+        hb.enableHelpKey(txtResultado, "detalles", helpset);
+
+    }

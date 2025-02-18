@@ -1,0 +1,79 @@
+<odoo>
+<!--tree view-->
+    <record id="view_flores_tree_view" model="ir.ui.view">
+        <field name="name">flores.tree.view</field>
+        <field name="model">ramos_personalizados.flor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="IDflor"/>
+                <field name="nombre"/>
+                <field name="color"/>
+                <field name="precio"/>
+                <field name="stock"/>
+                <field name="IDRamo"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_flores_form_view" model="ir.ui.view">
+        <field name="name">flores.form.view</field>
+        <field name="model">ramos_personalizados.flor</field>
+        <field name="arch" type="xml">
+            <form string="flores">
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="IDflor" required="1" placeholder="IDflor"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="nombre" placeholder="nombre"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="color" placeholder="color"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="precio" placeholder="precio"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="stock" placeholder="stock"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="IDRamo" placeholder="IDRamo"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h3>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_flores_search_view" model="ir.ui.view">
+        <field name="name">flores Search</field>
+        <field name="model">ramos_personalizados.flor"</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="IDflor"/>
+                <field name="nombre"/>
+                <field name="color"/>
+                <field name="precio"/>
+                <field name="stock"/>
+                <field name="IDRamo"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_flores" model="ir.actions.act_window">
+        <field name="name">flores</field>
+        <field name="res_model">ramos_personalizados.flor"</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_ramos_personalizados_root" name="Creacion de ramos" sequence="1"/>
+    <menuitem id="menu_flores" name="flores" parent="menu_ramos_personalizados_root" action="action_flores"
+              sequence="2"/>
+
+</odoo>

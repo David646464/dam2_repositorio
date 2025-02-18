@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_Flor_manager,Flor.manager,model_ramos_personalizadosFlor,group_Flor_manager,1,1,1,1
+access_Flor_user,Flor.user,model_ramos_personalizadosFlor,group_Flor_user,1,1,1,1
+access_Ramo_manager,Ramo.manager,model_ramos_personalizadosRamo,group_Ramo_manager,1,1,1,1
+access_Ramo_user,Ramo.user,model_ramos_personalizadosRamo,group_Ramo_user,1,1,1,1
+access_Pedido_manager,Pedido.manager,model_ramos_personalizadosPedido,group_Pedido_manager,1,1,1,1
+access_Pedido_user,Pedido.user,model_ramos_personalizadosPedido,group_Pedido_user,1,1,1,1

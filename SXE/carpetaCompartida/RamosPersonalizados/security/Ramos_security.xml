@@ -1,0 +1,45 @@
+<odoo noupdate="1">
+    <!-- Grupo de acceso para usuarios básicos -->
+
+    <record id="module_category_ramos_personalizados" model="ir.module.category">
+        <field name="name">ramos_personalizados Management</field>
+        <field name="sequence">31</field>
+    </record>
+
+    <record id="group_Flor_manager" model="res.groups">
+        <field name="name">Flor manager</field>
+        <field name="category_id" ref="module_category_Flor"/>
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="group_Flor_user" model="res.groups">
+        <field name="name">Flor User</field>
+        <field name="category_id" ref="module_category_Flor"/>
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="group_Ramo_manager" model="res.groups">
+        <field name="name">Ramo manager</field>
+        <field name="category_id" ref="module_category_Ramo"/>
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="group_Ramo_user" model="res.groups">
+        <field name="name">Ramo User</field>
+        <field name="category_id" ref="module_category_Ramo"/>
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="group_Pedido_manager" model="res.groups">
+        <field name="name">Pedido manager</field>
+        <field name="category_id" ref="module_category_Pedido"/>
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="group_Pedido_user" model="res.groups">
+        <field name="name">Pedido User</field>
+        <field name="category_id" ref="module_category_Pedido"/>
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+    </record>
+
+</odoo>

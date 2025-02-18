@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/REST.iml" filepath="$PROJECT_DIR$/.idea/REST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/REST/RestDELETE/RestDELETE.iml" filepath="$PROJECT_DIR$/REST/RestDELETE/RestDELETE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/REST/RestGET/RestGET.iml" filepath="$PROJECT_DIR$/REST/RestGET/RestGET.iml" />
+      <module fileurl="file://$PROJECT_DIR$/REST/RestPOST/RestPOST.iml" filepath="$PROJECT_DIR$/REST/RestPOST/RestPOST.iml" />
+    </modules>
+  </component>
+</project>

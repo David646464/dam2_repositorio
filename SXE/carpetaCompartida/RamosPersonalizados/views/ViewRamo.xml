@@ -1,0 +1,75 @@
+<odoo>
+<!--tree view-->
+    <record id="view_ramos_tree_view" model="ir.ui.view">
+        <field name="name">flores.tree.view</field>
+        <field name="model">ramos_personalizados.ramo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="IDRamo"/>
+                <field name="nombre"/>
+                <field name="color"/>
+                <field name="precio"/>
+                <field name="stock"/>
+                <field name="IDRamo"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ramos_form_view" model="ir.ui.view">
+        <field name="name">ramos.form.view</field>
+        <field name="model">ramos_personalizados.ramo</field>
+        <field name="arch" type="xml">
+            <form string="ramos">
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="IDRamo" required="1" placeholder="IDRamo"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="FloresID" placeholder="FloresID"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="CreadorRamo" placeholder="CreadorRamo"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="FechaCreacion" placeholder="FechaCreacion"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="PrecioRamo" placeholder="PrecioRamo"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h3>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ramos_search_view" model="ir.ui.view">
+        <field name="name">ramos Search</field>
+        <field name="model">ramos_personalizados.ramo"</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="IDRamo"/>
+                <field name="FloresID"/>
+                <field name="CreadorRamo"/>
+                <field name="FechaCreacion"/>
+                <field name="PrecioRamo"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ramos" model="ir.actions.act_window">
+        <field name="name">ramos</field>
+        <field name="res_model">ramos_personalizados.ramo"</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_ramos_personalizados_root" name="Creacion de ramos" sequence="1"/>
+    <menuitem id="menu_flores" name="ramos" parent="menu_ramos_personalizados_root" action="action_ramos"
+              sequence="2"/>
+
+</odoo>
