@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="aeronaves_form_view" model="ir.ui.view">
+            <field name="name">aeronaves.form</field>
+            <field name="model">viajes.aeronaves</field>
+            <field name="arch" type="xml">
+                <form string="aeronaves">
+                    <sheet>
+                        <group>
+                            <group>
+                                <notebook colspan="4" position="inside">
+                                    <page string="Informacion" name="Informacion">
+                                        <label for="Nombre"/>
+                                        <field name="Nombre" nolabel="1" placeholder="Nombre" colspan="2"/>
+                                        <label for="Matricula"/>
+                                        <field name="Matricula" nolabel="1" placeholder="Matricula" colspan="2"/>
+                                    </page>
+                                    <page string="Otros Datos" name="OtrosDatos">
+                                        <label for="FechaCompra"/>
+                                        <field name="FechaCompra" nolabel="1" placeholder="Fecha Compra" colspan="2"/>
+                                        <label for="NumeroKMActual"/>
+                                        <field name="NumeroKMActual" nolabel="1" colspan="2"/>
+                                        <label for="Angar"/>
+                                        <field name="Angar" nolabel="1" placeholder="Angar" colspan="2"/>
+                                    </page>
+                                </notebook>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="aeronaves_tree_view" model="ir.ui.view">
+            <field name="name">aeronaves.tree</field>
+            <field name="model">viajes.aeronaves</field>
+            <field name="arch" type="xml">
+                <tree string="aeronaves">
+                    <field name="Nombre" nolabel="1" placeholder="Nombre" colspan="2"/>
+                    <field name="Matricula" nolabel="1" placeholder="Matricula" colspan="2"/>
+                    <field name="FechaCompra" nolabel="1" placeholder="Fecha Compra" colspan="2"/>
+                    <field name="NumeroKMActual" nolabel="1" colspan="2"/>
+                    <field name="Angar" nolabel="1" placeholder="Angar" colspan="2"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="aeronaves_act_window" model="ir.actions.act_window">
+            <field name="name">aeronaves.window</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">viajes.aeronaves</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+</odoo>

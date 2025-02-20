@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_recetas_recetario,recetas.recetario,model_recetas_recetario,base.group_user,1,1,1,1
+access_recetas_ingredientes,recetas.ingredientes,model_recetas_ingredientes,base.group_user,1,1,1,1
+access_recetas_menurestaurante,recetas.menurestaurante,model_recetas_menurestaurante,base.group_user,1,1,1,1
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="angares_form_view" model="ir.ui.view">
+            <field name="name">angares.form</field>
+            <field name="model">viajes.angares</field>
+            <field name="arch" type="xml">
+                <form string="angares">
+                    <sheet>
+                        <group>
+                            <group>
+                                <label for="Lugar"/>
+                                <field name="Lugar" nolabel="1" placeholder="Lugar" colspan="2"/>
+                                <label for="Nombre"/>
+                                <field name="Nombre" nolabel="1" placeholder="Nombre" colspan="2"/>
+                                <label for="FechaConstruccion"/>
+                                <field name="FechaConstruccion" nolabel="1" placeholder="Fecha Construccion"
+                                       colspan="2"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="angares_tree_view" model="ir.ui.view">
+            <field name="name">angares.tree</field>
+            <field name="model">viajes.angares</field>
+            <field name="arch" type="xml">
+                <tree string="angares">
+                    <field name="Lugar" nolabel="1" placeholder="Lugar" colspan="2"/>
+                    <field name="Nombre" nolabel="1" placeholder="Nombre" colspan="2"/>
+                    <field name="FechaConstruccion" nolabel="1" placeholder="Fecha Construccion" colspan="2"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="angares_act_window" model="ir.actions.act_window">
+            <field name="name">angares.window</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">viajes.angares</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<menuitem name="Angares" id="angares_menu" parent="viajes_menu_root" action="angares_act_window"/>
+    </data>
+</odoo>

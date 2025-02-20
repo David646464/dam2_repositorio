@@ -1,0 +1,57 @@
+<odoo>
+    <record id="view_menurestaurante_recetas_tree" model="ir.ui.view">
+        <field name="name">recetas.menurestaurante.tree</field>
+        <field name="model">recetas.menurestaurante</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nombre"/>
+                <field name="precio"/>
+                <field name="en_oferta"/>
+                <field name="precio_oferta"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_menurestaurante_recetas_form" model="ir.ui.view">
+        <field name="name">recetas.menurestaurante.form</field>
+        <field name="model">recetas.menurestaurante</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="descripcion"/>
+                    </group>
+                    <notebook>
+                        <page string="Recetas">
+                            <field name="recetas" widget="many2many_tags"/>
+                        </page>
+                        <page string="Precios y Oferta">
+                            <group>
+                                <field name="precio"/>
+                                <field name="en_oferta"/>
+                                <field name="precio_oferta"/>
+                            </group>
+                            <group>
+                                <field name="fecha_inicio"/>
+                                <field name="fecha_fin"/>
+                            </group>
+                        </page>
+                        <page string="Dietas y Restricciones">
+                            <group>
+                                <field name="es_vegetariano"/>
+                                <field name="es_vegano"/>
+                                <field name="apto_celiacos"/>
+                            </group>
+                        </page>
+                        <page string="Notas">
+                            <field name="notas"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

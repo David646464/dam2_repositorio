@@ -1,0 +1,56 @@
+<odoo>
+    <record id="view_ingredientes_tree_view" model="ir.ui.view">
+        <field name="name">recetas.ingredientes.tree.view</field>
+        <field name="model">recetas.ingredientes</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo"/>
+                <field name="nombre"/>
+                <field name="descripcion"/>
+                <field name="categoria"/>
+                <field name="unidad_medida"/>
+                <field name="calorias_por_unidad"/>
+                <field name="es_alergenico"/>
+                <field name="recetas_relacionadas"/>
+            </tree>
+        </field>    
+    </record>
+
+    <record id="action_ingredientes" model="ir.actions.act_window">
+        <field name="name">Ingredientes</field>
+        <field name="res_model">recetas.ingredientes</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Registra el primer ingrediente.</p>
+        </field>
+    </record>
+
+    <record id="action_recetario" model="ir.actions.act_window">
+        <field name="name">Recetario</field>
+        <field name="res_model">recetas.recetario</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Añade la primera receta.</p>
+        </field>
+    </record>
+
+    <record id="action_menurestaurante" model="ir.actions.act_window">
+        <field name="name">Menús</field>
+        <field name="res_model">recetas.menurestaurante</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Añade el primer menú.</p>
+        </field>
+    </record>
+    
+
+    <menuitem id="ingredientes_main_menu" name="Recetas" sequence="1"/>
+
+    <menuitem id="ingredientes_type_menu" name="Ingredientes" parent="ingredientes_main_menu" action="action_ingredientes"/>
+
+    <menuitem id="recetario_type_menu" name="Recetario" parent="ingredientes_main_menu" action="action_recetario"/>
+
+    <menuitem id="menurestaurante_type_menu" name="Menús" parent="ingredientes_main_menu" action="action_menurestaurante"/>
+
+
+</odoo>
