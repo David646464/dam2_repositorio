@@ -86,7 +86,7 @@ public class Boton implements Entidad {
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(float delta) {
     }
 
     @Override

@@ -3,13 +3,14 @@ package io.github.proyecto1.Pantallas;
 import com.badlogic.gdx.Gdx;
 
 import io.github.proyecto1.Mundo;
-import io.github.proyecto1.Procesadores.ProcesadorDePantalla1;
+import io.github.proyecto1.Procesadores.ProcesadorDePantallaMenu;
+import io.github.proyecto1.Procesadores.ProcesadorDePantallaPausa;
 
-public class Pantalla1 extends Pantalla{
+public class PantallaPausa extends Pantalla{
     @Override
     public void show() {
         super.show();
-        Gdx.input.setInputProcessor(new ProcesadorDePantalla1());
+        Gdx.input.setInputProcessor(new ProcesadorDePantallaPausa());
     }
 
     @Override
