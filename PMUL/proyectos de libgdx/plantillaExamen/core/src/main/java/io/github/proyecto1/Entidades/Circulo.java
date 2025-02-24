@@ -117,5 +117,12 @@ public class Circulo implements Entidad {
         y = yAleatoria;
         colisiono = false;
 
+        numRebotes = MathUtils.random(1, 4);
+        if (numRebotes <= 1){
+            textura = TextureGetter.circuloRojo();
+        }else{
+            textura = TextureGetter.circuloVerde();
+        }
+
     }
 }

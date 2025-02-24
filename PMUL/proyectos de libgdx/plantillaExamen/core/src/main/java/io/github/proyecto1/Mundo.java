@@ -29,7 +29,7 @@ public class Mundo {
     public static ArrayList<Entidad> enemigos = new ArrayList<>();
     public static ArrayList<Entidad> enemigosGuardados = new ArrayList<>();
     public static float stateTime2 = 0;
-    public static float tiempoGeneracion = 1;
+    public static float tiempoGeneracion = 0.5f;
 
 
     private static void setScreen(Screen screen) {

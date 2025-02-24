@@ -116,6 +116,10 @@ public class Cuadrado implements Entidad {
         float yAleatoria = MathUtils.random(100, Mundo.alturaCamara - alto);
         y = yAleatoria;
         colisiono = false;
-
+        if (numRebotes <= 1){
+            textura = TextureGetter.rojo();
+        }else{
+            textura = TextureGetter.verde();
+        }
     }
 }
