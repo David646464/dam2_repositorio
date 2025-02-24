@@ -94,6 +94,6 @@ public class Equis implements Entidad {
         float yAleatoria = MathUtils.random(100, Mundo.alturaCamara - alto);
         y = yAleatoria;
         colisiono = false;
-
+        textura = TextureGetter.verde();
     }
 }

@@ -157,4 +157,18 @@ public class TextureGetter {
         circuloRojo.dispose();
         circuloRojo = null;
     }
+
+    private static Texture circuloVerde;
+
+    public static Texture circuloVerde() {
+        if (circuloVerde == null) {
+            circuloVerde = new Texture("CirculoVerde.png");
+        }
+        return circuloVerde;
+    }
+
+    private static void liberarCirculoVerde(){
+        circuloVerde.dispose();
+        circuloVerde = null;
+    }
 }
