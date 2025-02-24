@@ -1,0 +1,46 @@
+<odoo>
+    <!-- Vista de formulario de Ramo -->
+    <record id="view_ramo_form" model="ir.ui.view">
+        <field name="name">ramo.form</field>
+        <field name="model">ramospersonalizados.ramo</field>
+        <field name="arch" type="xml">
+            <form string="Ramo">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="precio"/>
+                        <field name="flores_ids">
+                            <tree editable="bottom">
+                                <field name="flor_id"/>
+                                <field name="cantidad"/>
+                                <field name="precio_total" readonly="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de lista de Ramos -->
+    <record id="view_ramo_tree" model="ir.ui.view">
+        <field name="name">ramo.tree</field>
+        <field name="model">ramospersonalizados.ramo</field>
+        <field name="arch" type="xml">
+            <tree string="Ramos">
+                <field name="name"/>
+                <field name="precio"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción de la vista de Ramos -->
+    <record id="action_ramo" model="ir.actions.act_window">
+        <field name="name">Ramos</field>
+        <field name="res_model">ramospersonalizados.ramo</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Submenú para Ramos -->
+    <menuitem id="menu_ramo" name="Ramos" parent="menu_ramos_personalizados_root" action="action_ramo"/>
+</odoo>
