@@ -96,5 +96,7 @@
                 <column name="NumHoras" precision="53" scale="0"/>
             </property>
         </joined-subclass>
+
+
     </class>
 </hibernate-mapping>

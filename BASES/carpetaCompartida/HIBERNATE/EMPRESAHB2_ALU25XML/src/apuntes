@@ -1,0 +1,302 @@
+CLAVES PRIMARIAS INDIVIDUAIS :
+                  (nombre en el pojo)
+ <id name="numDepartamento" type="int">
+                                   (nome na base de datos)
+            <column name="NumDepartamento"/>
+            (generator)
+            assigned, increment, sequence, native, identity,select,foreign,hilo,seqhilo,uuid,guid
+            <generator class="increment"/>
+        </id>
+
+        explicacion:
+        Se usa para mapear una clave primaria individual, en este caso se mapea la tabla departamento con una clave primaria
+
+CLAVES COMPUESTAS:
+        <composite-id name="id" class="POJOS.EdicionId">
+            <key-property name="codigo" type="int">
+                <column name="Codigo"/>
+            </key-property>
+            <key-property name="numero" type="int">
+                <column name="Numero"/>
+            </key-property>
+        </composite-id>
+
+        explicacion:
+        Se usa para mapear una clave compuesta, en este caso se mapea la tabla edicion con dos claves primarias
+
+CAMPOS:
+name: Nome da propiedade, coa letra inicial en minúscula.
+▪ column (opcional - por defecto é o nome da propiedade): Nome da columna da táboa de base de
+datos mapeada.
+▪ type (opcional): Nome que indica o tipo de datos de Hibernate.
+▪ update, insert (opcional - por defecto é true): Especifica que as columnas mapeadas deben ser
+incluídas nas declaracións SQL UPDATE e/ou INSERT. Especificando ambas as dúas como
+false, permite unha propiedade "derivada", o seu valor iníciase dende algunha outra propiedade
+que mapee á mesma columna (ou columnas), por un disparador ou por outra aplicación.
+▪ formula (opcional): Expresión SQL que define o valor para unha propiedade calculada. As
+propiedades calculadas non teñen unha columna mapeada propia.
+▪ lazy (opcional - por defecto é false): Especifica que se debe recuperar preguiceiramente esta
+propiedade cando se acceda por primeira vez á variable de instancia.
+▪ unique (opcional): Restrición de unicidade para a columna.
+▪ not-null (opcional): Restrición de nulabilidade para a columna.
+▪ generated (opcional - por defecto é never): Especifica que o valor da propiedade é xerado pola
+base de datos.
+
+ <property name="nomeDepartamento" type="string">
+            <column name="NomeDepartamento" length="25" not-null="true"/>
+        </property>
+
+MAPEO DE SET:
+<set name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+        </set>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+
+MAPEO DE LIST:
+<list name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <list-index column="Posicion"/>
+            <one-to-many class="POJOS.Empregado"/>
+        </list>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+MAPEO DE BAG:
+<bag name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+        </bag>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+MAPEO DE IBAG:
+<idbag name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <collection-id type="int">
+                <column name="Id"/>
+            </collection-id>
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+        </idbag>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+
+MAPEO DE MAP:
+<map name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <map-key column="Codigo"/>
+            <one-to-many class="POJOS.Empregado"/>
+        </map>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+
+MAPEO DE COLLECTION:
+<set name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+        </set>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+
+MAPEO DE COLLECTION ORDENADA:
+<set name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select" sort="natural" (segun el compare to de la clase)>
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+            <set-order>
+                <order by="Nome"/>
+            </set-order>
+        </set>
+
+explicacion:
+Se usa para mapear una coleccion de objetos, en este caso se mapea la tabla departamento con la tabla empleado
+y se ordena segun el campo nome
+
+MAPEO DE COMPONENTE:
+<component name="direccion" class="POJOS.Direccion">
+            <property name="calle" type="string">
+                <column name="Calle" length="40" not-null="true"/>
+            </property>
+            <property name="numero" type="int">
+                <column name="Numero"/>
+            </property>
+            <property name="piso" type="int">
+                <column name="Piso"/>
+            </property>
+            <property name="ciudad" type="string">
+                <column name="Ciudad" length="30"/>
+            </property>
+        </component>
+
+explicacion:
+Se usa para estrapolar campos de una tabla a otros pojos a mas en este casa se estrapola cuatro campos al pojo direccion
+MAPEO DE COLECCION DE COMPONENTES:
+<map name="telefonos" table="Telefonos" lazy="true" fetch="select">
+            <key>
+                <column name="NumEmpleado"/>
+            </key>
+            <index column="Tipo"/>
+            <composite-element class="POJOS.Telefono">
+                <property name="numero" type="string">
+                    <column name="Numero" length="9"/>
+                </property>
+                <property name="tipo" type="string">
+                    <column name="Tipo" length="9"/>
+                </property>
+            </composite-element>
+        </map>
+
+explicacion:
+Se usa para mapear una coleccion de componentes, en este caso se mapea la tabla empleado con la tabla telefonos
+
+MAPEO DE HERENCIA:
+        <subclass name="POJOS.Empleado" discriminator-value="E">
+            <property name="categoria" type="string">
+                <column name="Categoria" length="20"/>
+            </property>
+        </subclass>
+        <subclass name="POJOS.Director" discriminator-value="D">
+            <property name="categoria" type="string">
+                <column name="Categoria" length="20"/>
+            </property>
+            <property name="incentivo" type="double">
+                <column name="Incentivo"/>
+            </property>
+        </subclass>
+        <subclass name="POJOS.JefeProyecto" discriminator-value="J">
+            <property name="categoria" type="string">
+                <column name="Categoria" length="20"/>
+            </property>
+            <property name="jefe" type="string">
+                <column name="Jefe" length="20"/>
+            </property>
+        </subclass>
+
+explicacion:
+Se usa para mapear una tabla con una jerarquia de clases, en este caso se mapea la tabla empleado con tres clases distint
+
+MAPEO DE ONE TO ONE:
+<one-to-one name="direccion" class="POJOS.Direccion" cascade="all" fetch="select">
+            <property name="calle" type="string">
+                <column name="Calle" length="40" not-null="true"/>
+            </property>
+            <property name="numero" type="int">
+                <column name="Numero"/>
+            </property>
+            <property name="piso" type="int">
+                <column name="Piso"/>
+            </property>
+            <property name="ciudad" type="string">
+                <column name="Ciudad" length="30"/>
+            </property>
+        </one-to-one>
+
+explicacion:
+Se usa para mapear una relacion uno a uno entre dos tablas, en este caso se mapea la tabla empleado con la tabla direccion
+
+MAPEO DE MANY TO MANY:
+<set name="proyectos" table="Proyectos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumEmpleado"/>
+            </key>
+            <many-to-many class="POJOS.Proyecto">
+                <column name="NumProyecto"/>
+            </many-to-many>
+        </set>
+
+explicacion:
+Se usa para mapear una relacion muchos a muchos entre dos tablas, en este caso se mapea la tabla empleado con la tabla proyecto
+
+MAPEO DE MANY TO MANY CON DATOS ADICIONALES:
+definicion de la tabla intermedia
+        <hibernate-mapping>
+    <class name="POJOS.EmpleadoProyecto" table="EMPREGADO_PROXECTO" schema="dbo" catalog="EMPRESAHB2_25">
+        <composite-id>
+            <key-many-to-one name="empleado" class="POJOS.Empregado">
+                <column name="NumEmpleado" not-null="true"/>
+            </key-many-to-one>
+            <key-many-to-one name="proyecto" class="POJOS.Proyecto">
+                <column name="NumProxecto" not-null="true"/>
+            </key-many-to-one>
+        </composite-id>
+        <property name="fechaInicio" type="date">
+            <column name="FechaInicio"/>
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="FechaFin"/>
+        </property>
+    </class>
+</hibernate-mapping>
+
+definicion de la relacion en la clase empleado
+<set name="proyectos" table="EMPREGADO_PROXECTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumEmpleado"/>
+            </key>
+            <many-to-many class="POJOS.Proyecto" column="NumProxecto">
+                <column name="NumProxecto"/>
+            </many-to-many>
+        </set>
+
+definicion de la relacion en la clase proyecto
+<set name="empregados" table="EMPREGADO_PROXECTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumProxecto"/>
+            </key>
+            <many-to-many class="POJOS.Empregado" column="NumEmpleado">
+                <column name="NumEmpleado"/>
+            </many-to-many>
+        </set>
+explicacion:
+Se usa para mapear una relacion muchos a muchos entre dos tablas, en este caso se mapea la tabla empleado con la tabla proyecto
+pero ademas se añaden datos adicionales a la tabla intermedia
+
+MAPEO ONE TO MANY:
+<set name="empregados" table="Empregados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NumDepartamento"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+        </set>
+
+explicacion:
+Se usa para mapear una relacion uno a muchos entre dos tablas, en este caso se mapea la tabla departamento con la tabla empleado
+
+MAPEO MANY TO ONE:
+<many-to-one name="departamento" class="POJOS.Departamento" fetch="select">
+            <column name="NumDepartamento" not-null="true"/>
+        </many-to-one>
+
+explicacion:
+Se usa para mapear una relacion muchos a uno entre dos tablas, en este caso se mapea la tabla empleado con la tabla departamento
+
+MAPEO HERENCIA CON TABLA POR CLASE:
+<joined-subclass name="POJOS.Empleado" table="Empleados">
+            <key column="NumEmpleado"/>
+            <property name="categoria" type="string">
+                <column name="Categoria" length="20"/>
+            </property>
+        </joined-subclass>
+
+explicacion:
+Se usa para mapear una tabla con una jerarquia de clases, en este caso se mapea la tabla empleado con una clase
+
+
