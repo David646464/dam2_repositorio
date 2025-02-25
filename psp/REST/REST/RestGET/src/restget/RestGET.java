@@ -12,11 +12,16 @@ import com.google.gson.reflect.TypeToken;
 
 class Cliente {
     private String nombre;
+    private String apellidos;
     private String vip;
     private int codProvincia;
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
     }
 
     public boolean isVip() {
@@ -34,8 +39,8 @@ public class RestGET {
     public static String json = "";
     public static String strURL = "http://localhost/clientes/rest.php/clientes";
 
-    public static void imprimirClientes(){
-         try {
+    public static void imprimirClientes() {
+        try {
             url = new URL(strURL);
             con = (HttpURLConnection) url.openConnection();
             con.connect();
@@ -46,15 +51,19 @@ public class RestGET {
                     json += linea;
                 bufferIn.close();
 
-                /* Analizamos el JSON devuelto, que sabemos que es un array de objetos cliente */
+                // Imprimir el JSON recibido
+                System.out.println("JSON recibido: " + json);
+
+                // Analizar el JSON
                 Gson gson = new Gson();
-                List<Cliente> clientes = gson.fromJson(json, new TypeToken<List<Cliente>>() {
-                }.getType());
+                List<Cliente> clientes = gson.fromJson(json, new TypeToken<List<Cliente>>() {}.getType());
+
+                // Imprimir los clientes
                 for (Cliente cliente : clientes) {
-                    System.out.printf("%s de %d %s es VIP\n", cliente.getNombre(), cliente.getCodProvincia(), cliente.isVip() ? "" : "no");
+                    System.out.printf("%s %s de %d %s es VIP\n", cliente.getNombre(), cliente.getApellidos(), cliente.getCodProvincia(), cliente.isVip() ? "" : "no");
                 }
             } else {
-                System.out.println("Problemas.Respuesta: (" + con.getResponseCode() + ") " + con.getResponseMessage());
+                System.out.println("Problemas. Respuesta: (" + con.getResponseCode() + ") " + con.getResponseMessage());
             }
         } catch (IOException ex) {
             System.out.println("Error en la conexión");
@@ -62,10 +71,6 @@ public class RestGET {
     }
 
     public static void main(String[] args) {
-
-
-
-
+        imprimirClientes();
     }
-
 }

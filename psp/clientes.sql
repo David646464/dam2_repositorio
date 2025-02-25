@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Xerado en: 04 de Feb de 2025 ás 14:21
--- Versión do servidor: 10.4.32-MariaDB
--- Versión do PHP: 8.2.12
+-- Tiempo de generación: 25-02-2025 a las 14:28:49
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `clientes`
+-- Estructura de tabla para la tabla `clientes`
 --
 
 CREATE TABLE `clientes` (
@@ -35,10 +35,18 @@ CREATE TABLE `clientes` (
   `vip` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`codCliente`, `nombre`, `apellidos`, `codProvincia`, `vip`) VALUES
+(1, 'david', 'sanchez peso', 1, 1),
+(2, 'vipo', ' rua gomez', 3, 0);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `provincias`
+-- Estructura de tabla para la tabla `provincias`
 --
 
 CREATE TABLE `provincias` (
@@ -47,7 +55,7 @@ CREATE TABLE `provincias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- A extraer os datos da táboa `provincias`
+-- Volcado de datos para la tabla `provincias`
 --
 
 INSERT INTO `provincias` (`codProvincia`, `nombre`) VALUES
@@ -57,44 +65,44 @@ INSERT INTO `provincias` (`codProvincia`, `nombre`) VALUES
 (4, 'Pontevedra');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `clientes`
+-- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`codCliente`),
   ADD KEY `codProvincia` (`codProvincia`);
 
 --
--- Indexes for table `provincias`
+-- Indices de la tabla `provincias`
 --
 ALTER TABLE `provincias`
   ADD PRIMARY KEY (`codProvincia`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `clientes`
+-- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `codCliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `provincias`
+-- AUTO_INCREMENT de la tabla `provincias`
 --
 ALTER TABLE `provincias`
   MODIFY `codProvincia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Restricións para os envorcados das táboas
+-- Restricciones para tablas volcadas
 --
 
 --
--- Restricións para a táboa `clientes`
+-- Filtros para la tabla `clientes`
 --
 ALTER TABLE `clientes`
   ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`codProvincia`) REFERENCES `provincias` (`codProvincia`);
