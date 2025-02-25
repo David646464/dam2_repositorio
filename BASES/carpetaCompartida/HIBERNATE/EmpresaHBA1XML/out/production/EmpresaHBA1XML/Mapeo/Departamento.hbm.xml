@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 ene. 2025 9:24:40 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Pojos.Departamento" table="DEPARTAMENTO" schema="dbo" catalog="EmpresaHB" optimistic-lock="version">
+        <id name="numDepartamento" type="int">
+            <column name="Num_departamento" />
+            <generator class="increment" />
+        </id>
+        <property name="nomeDepartamento" type="string">
+            <column name="Nome_departamento" length="25" not-null="true" unique="true" />
+        </property>
+
+
+        <idbag name="lugares" table="LUGAR">
+            <collection-id column="ID" type="java.lang.Integer">
+                <generator class="increment"/>
+            </collection-id>
+            <key column="numDepartamento" not-null="true"/>
+            <element column="lugar" type="java.lang.String" not-null="true"/>
+        </idbag>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-feb-2023 8:57:24 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class catalog="EMPRESAHB2_25" name="POJOS.Empregado" schema="dbo" table="EMPREGADO">
+        <id name="nss" type="string">
+            <column length="15" name="NSS"/>
+            <generator class="assigned"/>
+        </id>
+
+        <property name="nome" type="string">
+            <column length="25" name="Nome" not-null="true"/>
+        </property>
+        <property name="apelido1" type="string">
+            <column length="25" name="Apelido1" not-null="true"/>
+        </property>
+        <property name="apelido2" type="string">
+            <column length="25" name="Apelido2"/>
+        </property>
+
+        <property name="rua" type="string">
+            <column length="30" name="Rua"/>
+        </property>
+        <property name="numeroCalle" type="java.lang.Integer">
+            <column name="Numero_Calle"/>
+        </property>
+        <property name="piso" type="string">
+            <column length="4" name="Piso"/>
+        </property>
+        <property name="cp" type="string">
+            <column length="5" name="CP"/>
+        </property>
+        <property name="localidade" type="string">
+            <column length="25" name="Localidade"/>
+        </property>
+        <property name="provincia" type="string">
+            <column length="15" name="Provincia"/>
+        </property>
+        <property name="dataNacemento" type="timestamp">
+            <column length="23" name="DataNacemento"/>
+        </property>
+        <property name="sexo" type="java.lang.Character">
+            <column length="1" name="Sexo"/>
+        </property>
+
+        <many-to-one name="supervisor" class="POJOS.Empregado">
+            <column name="NSSSupervisa" length="15" not-null="false"/>
+        </many-to-one>
+
+        <set name="empregadosSupervisados" table="EMPREGADO" lazy="true" inverse="true" fetch="select">
+            <key>
+                <column name="NSSSupervisa" not-null="false" length="15"/>
+            </key>
+            <one-to-many class="POJOS.Empregado"/>
+        </set>
+
+        <set name="proxectos" table="EMPREGADO_PROXECTO" lazy="true" inverse="true">
+            <key>
+                <column name="NumProxecto" not-null="true" length="15"/>
+            </key>
+            <one-to-many class="POJOS.EmpregadoProxecto"/>
+        </set>
+
+        <!--subclase de Empregado(empregadoFixo) por la herencia -->
+        <joined-subclass name="POJOS.Empregadofixo" table="EMPREGADOFIXO">
+            <key column="NSS"/>
+            <property name="salario" type="java.lang.Double">
+                <column name="Salario" precision="53" scale="0"/>
+            </property>
+            <property name="dataAlta" type="date">
+                <column name="DataAlta" length="10"/>
+            </property>
+            <property name="categoria" type="string">
+                <column name="Categoria" length="20"/>
+            </property>
+            <set name="ediciones" table="EDICION" lazy="true" inverse="true">
+                <key>
+                    <column name="Profesor" not-null="true" length="15"/>
+                </key>
+            <one-to-many class="POJOS.Edicion"/>
+            </set>
+        </joined-subclass>
+        <joined-subclass name="POJOS.Empregadotemporal" table="EMPREGADOTEMPORAL">
+            <key column="NSS"/>
+            <property name="dataInicio" type="date">
+                <column name="DataInicio" length="10"/>
+            </property>
+            <property name="dataFin" type="date">
+                <column name="DataFin" length="10"/>
+            </property>
+            <property name="costeHora" type="java.lang.Double">
+                <column name="CosteHora" precision="53" scale="0"/>
+            </property>
+            <property name="numHoras" type="java.lang.Double">
+                <column name="NumHoras" precision="53" scale="0"/>
+            </property>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libsUd4ADAT">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../PROYECTOS/libsUd4ADAT" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../PROYECTOS/libsUd4ADAT" recursive="false" />
+  </library>
+</component>

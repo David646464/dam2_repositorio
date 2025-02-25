@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="EmpresaHBA1ANOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/EmpresaHBA1ANOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="mysql">
+    <CLASSES>
+      <root url="jar://E:/drivers/gson-2.10.1.jar!/" />
+      <root url="file://E:/drivers/mysql" />
+      <root url="jar://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/mssql-jdbc-11.2.0.jre18.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://E:/drivers/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/esn/help/samples/adaptive" />
+      <root url="file://E:/drivers/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/esn/help/samples/connections" />
+      <root url="file://E:/drivers/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/esn/help/samples/datatypes" />
+      <root url="file://E:/drivers/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/esn/help/samples/resultsets" />
+      <root url="file://E:/drivers/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/esn/help/samples/sparse" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/adaptive" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/alwaysencrypted" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/azureactivedirectoryauthentication" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/connections" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/constrained" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/dataclassification" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/datatypes" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/resultsets" />
+      <root url="file://E:/drivers/SqlServer 2019/sqljdbc_11.2.0.0_enu/sqljdbc_11.2/enu/samples/sparse" />
+      <root url="file://E:/drivers/SqlServer 2019" />
+    </SOURCES>
+    <jarDirectory url="file://E:/drivers/mysql" recursive="false" />
+    <jarDirectory url="file://E:/drivers/SqlServer 2019" recursive="false" type="SOURCES" />
+  </library>
+</component>
