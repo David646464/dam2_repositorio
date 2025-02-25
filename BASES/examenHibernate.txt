@@ -1,0 +1,17 @@
+4 relaciones
+one to one
+many to many
+one to many
+many to many con tabla intermedia
+
+3 componentes 
+ibag
+map
+set 
+list 
+bag
+
+select 
+insert
+delete
+update
