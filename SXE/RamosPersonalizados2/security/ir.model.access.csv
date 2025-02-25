@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ramospersonalizados_flor,ramospersonalizados.flor,model_ramospersonalizados_flor,base.group_user,1,1,1,1
+access_ramospersonalizados_ramo,ramospersonalizados.ramo,model_ramospersonalizados_ramo,base.group_user,1,1,1,1
+access_ramospersonalizados_pedido,ramospersonalizados.pedido,model_ramospersonalizados_pedido,base.group_user,1,1,1,1
+access_ramospersonalizados_ramo_flor,ramospersonalizados.ramoflor,model_ramospersonalizados_ramoflor,base.group_user,1,1,1,1
+access_ramospersonalizados_pedido_ramo,ramospersonalizados.pedidoramo,model_ramospersonalizados_pedidoramo,base.group_user,1,1,1,1

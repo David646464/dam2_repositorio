@@ -1,0 +1,44 @@
+<odoo>
+    <!-- Vista Formulario para Flores -->
+    <record id="view_flor_form" model="ir.ui.view">
+        <field name="name">flor.form</field>
+        <field name="model">ramospersonalizados.flor</field>
+        <field name="arch" type="xml">
+            <form string="Flor">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="color"/>
+                        <field name="precio"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Árbol para Flores -->
+    <record id="view_flor_tree" model="ir.ui.view">
+        <field name="name">flor.tree</field>
+        <field name="model">ramospersonalizados.flor</field>
+        <field name="arch" type="xml">
+            <tree string="Flores">
+                <field name="name"/>
+                <field name="color"/>
+                <field name="precio"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para ver las flores -->
+    <record id="action_flor" model="ir.actions.act_window">
+        <field name="name">Flores</field>
+        <field name="res_model">ramospersonalizados.flor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú Principal -->
+    <menuitem id="menu_ramos_personalizados_root" name="Ramos Personalizados" sequence="1"/>
+
+    <!-- Submenú para Flores -->
+    <menuitem id="menu_flor" name="Flores" parent="menu_ramos_personalizados_root" action="action_flor"/>
+</odoo>
