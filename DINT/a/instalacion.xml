@@ -1,0 +1,37 @@
+<izpack:installation version="5.0"
+xmlns:izpack="http://izpack.org/schema/installation"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+<info>
+<appname>Nome da Aplicación</appname>
+<appversion>1.0</appversion>
+<url>http://www.exemplo.com</url>
+<authors>
+<author name="Autor" email="autor@exemplo.com"/>
+</authors>
+</info>
+<guiprefs resizable="yes" width="800" height="600"/>
+<locale>
+<langpack iso3="glg"/>
+</locale>
+<panels>
+<panel classname="HelloPanel"/>
+<panel classname="PacksPanel"/>
+<panel classname="TargetPanel"/>
+<panel classname="InstallPanel"/>
+<panel classname="FinishPanel"/>
+</panels>
+
+<packs>
+<pack name="executables" required="yes">
+<description>Ficheiros da aplicación</description>
+<file src="/home/usuario/intefaces/EscenarioComplexoExamen/EscenarioComplexo.v22/EscenarioComplexo/dist" targetdir="$INSTALL_PATH/"/>
+<file src="/home/usuario/intefaces/EscenarioComplexoExamen/EscenarioComplexo.v22/EscenarioComplexo/dist/lib" targetdir="$INSTALL_PATH/lib"/>
+</pack>
+
+<pack name="documentacion" required="no">
+<description>Documentación</description>
+<file src="/home/usuario/intefaces/EscenarioComplexoExamen/EscenarioComplexo.v22/EscenarioComplexo/src/Help" targetdir="$INSTALL_PATH/help"/>
+</pack>
+</packs>
+</izpack:installation>

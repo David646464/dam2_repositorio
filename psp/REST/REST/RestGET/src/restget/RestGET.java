@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -28,14 +29,13 @@ class Cliente {
 }
 
 public class RestGET {
+    public static URL url = null;
+    public static HttpURLConnection con = null;
+    public static String json = "";
+    public static String strURL = "http://localhost/clientes/rest.php/clientes";
 
-    public static void main(String[] args) {
-
-        URL url = null;
-        HttpURLConnection con = null;
-        String json = "";
-        String strURL = "http://localhost/clientes/rest.php/clientes";
-        try {
+    public static void imprimirClientes(){
+         try {
             url = new URL(strURL);
             con = (HttpURLConnection) url.openConnection();
             con.connect();
@@ -48,7 +48,8 @@ public class RestGET {
 
                 /* Analizamos el JSON devuelto, que sabemos que es un array de objetos cliente */
                 Gson gson = new Gson();
-                List<Cliente> clientes = gson.fromJson(json, new TypeToken<List<Cliente>>(){}.getType());
+                List<Cliente> clientes = gson.fromJson(json, new TypeToken<List<Cliente>>() {
+                }.getType());
                 for (Cliente cliente : clientes) {
                     System.out.printf("%s de %d %s es VIP\n", cliente.getNombre(), cliente.getCodProvincia(), cliente.isVip() ? "" : "no");
                 }
@@ -58,6 +59,12 @@ public class RestGET {
         } catch (IOException ex) {
             System.out.println("Error en la conexión");
         }
+    }
+
+    public static void main(String[] args) {
+
+
+
 
     }
 
