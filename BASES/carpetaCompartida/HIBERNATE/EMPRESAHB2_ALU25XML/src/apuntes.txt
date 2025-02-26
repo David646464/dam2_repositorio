@@ -209,6 +209,7 @@ MAPEO DE ONE TO ONE:
             </property>
         </one-to-one>
 
+
 explicacion:
 Se usa para mapear una relacion uno a uno entre dos tablas, en este caso se mapea la tabla empleado con la tabla direccion
 
@@ -243,6 +244,13 @@ definicion de la tabla intermedia
         <property name="fechaFin" type="date">
             <column name="FechaFin"/>
         </property>
+         <many-to-one name="empregado" class="POJOS.Empregado">
+            <column name="nssempregado" length="15" not-null="true"/>
+        </many-to-one>
+
+        <many-to-one name="proxecto" class="POJOS.Proxecto" insert="false" update="false">
+            <column name="NumProxecto" not-null="true"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>
 
@@ -298,5 +306,7 @@ MAPEO HERENCIA CON TABLA POR CLASE:
 
 explicacion:
 Se usa para mapear una tabla con una jerarquia de clases, en este caso se mapea la tabla empleado con una clase
+
+%-15s bbbbbbb
 
 
