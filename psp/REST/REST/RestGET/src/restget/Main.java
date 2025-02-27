@@ -15,7 +15,7 @@ public class Main {
                    RestGET.imprimirClientes();
                 }
                  case 2->{
-                      System.out.println(numSeleccinado);
+                     RestGET.seleccionarCliente(sc);
                 }
                  case 3->{
                       System.out.println(numSeleccinado);
@@ -31,7 +31,7 @@ public class Main {
     private static void imprimirMenu() {
         System.out.println("**************************************");
         System.out.println("*Opcion 1 : Imprimir clientes                      *" );
-        System.out.println("*Opcion 2 :                                                *");
+        System.out.println("*Opcion 2 : Seleccionar un cliente             *");
         System.out.println("*Opcion 3 :                                                *");
         System.out.println("*Opcion 4 : Salir                                        *");
          System.out.println("**************************************");

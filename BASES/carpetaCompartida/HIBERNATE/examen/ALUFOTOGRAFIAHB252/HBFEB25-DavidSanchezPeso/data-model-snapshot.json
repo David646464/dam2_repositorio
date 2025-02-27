@@ -1,0 +1,1112 @@
+{
+  "snapshot": {
+    "created": "2025-02-27T09:18:06.778",
+    "database": {
+      "shortName": "mssql",
+      "majorVersion": "999",
+      "minorVersion": "999",
+      "productName": "SQL Server",
+      "url": "jdbc://mock"
+    },
+    "objects": {
+      "liquibase.structure.core.Catalog": [
+        {
+          "catalog": {
+            "default": true,
+            "snapshotId": "7a3c100"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Column": [
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Apellidos",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c117",
+            "type": {
+              "columnSize": "100!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Ciudad",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c150",
+            "snapshotId": "7a3c153",
+            "type": {
+              "columnSize": "30!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Color",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c102",
+            "snapshotId": "7a3c108",
+            "type": {
+              "columnSize": "1!{java.lang.Integer}",
+              "typeName": "char"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Direccion",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c119",
+            "type": {
+              "columnSize": "150!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Email",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c120",
+            "type": {
+              "columnSize": "150!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Fecha",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c150",
+            "snapshotId": "7a3c154",
+            "type": {
+              "typeName": "date"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "FechaCaptura",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c102",
+            "snapshotId": "7a3c106",
+            "type": {
+              "typeName": "date"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "FechaExpedicion",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c133",
+            "snapshotId": "7a3c139",
+            "type": {
+              "typeName": "date"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "FechaVencimiento",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c133",
+            "snapshotId": "7a3c140",
+            "type": {
+              "typeName": "date"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdEvento",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c150",
+            "snapshotId": "7a3c149",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdEvento",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c143",
+            "snapshotId": "7a3c146",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "IdFotografia",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c102",
+            "snapshotId": "7a3c104",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdFotografo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c102",
+            "snapshotId": "7a3c107",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "IdFotografo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c110",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdFotografo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c143",
+            "snapshotId": "7a3c145",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdFotografo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c126",
+            "snapshotId": "7a3c128",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdFotografo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c133",
+            "snapshotId": "7a3c138",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdFotografo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c158",
+            "snapshotId": "7a3c163",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "IdInfluencer",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c118",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Idioma",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c126",
+            "snapshotId": "7a3c129",
+            "type": {
+              "columnSize": "30!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Marca",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c158",
+            "snapshotId": "7a3c166",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Material",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c158",
+            "snapshotId": "7a3c165",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Modelo",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c158",
+            "snapshotId": "7a3c167",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Nivel",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c126",
+            "snapshotId": "7a3c130",
+            "type": {
+              "columnSize": "30!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Nombre",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c116",
+            "type": {
+              "columnSize": "100!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "NombreEvento",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c150",
+            "snapshotId": "7a3c152",
+            "type": {
+              "columnSize": "40!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Numero",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c158",
+            "snapshotId": "7a3c164",
+            "type": {
+              "typeName": "int"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "NumeroLicencia",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c133",
+            "snapshotId": "7a3c135",
+            "type": {
+              "columnSize": "15!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "NumeroSerie",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c158",
+            "snapshotId": "7a3c160",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Seudonimo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c113",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "TelefonoFijo",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c121",
+            "type": {
+              "columnSize": "20!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "TelefonoMovil",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c122",
+            "type": {
+              "columnSize": "20!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "TipoEvento",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c150",
+            "snapshotId": "7a3c155",
+            "type": {
+              "columnSize": "20!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "Titulo",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#7a3c102",
+            "snapshotId": "7a3c105",
+            "type": {
+              "columnSize": "40!{java.lang.Integer}",
+              "typeName": "varchar"
+            }
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.ForeignKey": [
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c128"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c126",
+            "name": "FK_Certificaciones_Fotografo",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c131"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c107"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c102",
+            "name": "FK_Fotografia_Fotografo",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c109"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c146"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c143",
+            "name": "FK_Fotografo_Evento_Evento",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c149"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c150",
+            "snapshotId": "7a3c148"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c145"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c143",
+            "name": "FK_Fotografo_Evento_Fotografo",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c147"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c118"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "name": "FK_Fotografo_Influencer",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c123"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c138"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c133",
+            "name": "FK_Licencia_Fotografo",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c141"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyNoAction!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#7a3c163"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#7a3c158",
+            "name": "FK_Material_Fotografo",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#7a3c111",
+            "snapshotId": "7a3c168"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Index": [
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdEvento"
+                }
+              }
+            ]
+            ,
+            "name": "PK_Evento",
+            "snapshotId": "7a3c151",
+            "table": "liquibase.structure.core.Table#7a3c150",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdFotografo"
+                }
+              }
+            ]
+            ,
+            "name": "PK_FotgrafoLicenica",
+            "snapshotId": "7a3c137",
+            "table": "liquibase.structure.core.Table#7a3c133",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdFotografia"
+                }
+              }
+            ]
+            ,
+            "name": "PK_Fotografia",
+            "snapshotId": "7a3c103",
+            "table": "liquibase.structure.core.Table#7a3c102",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdFotografo"
+                }
+              },
+              {
+                "column": {
+                  "name": "Idioma"
+                }
+              }
+            ]
+            ,
+            "name": "PK_FotografoIdioma",
+            "snapshotId": "7a3c127",
+            "table": "liquibase.structure.core.Table#7a3c126",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdFotografo"
+                }
+              }
+            ]
+            ,
+            "name": "PK_IdFotografo",
+            "snapshotId": "7a3c115",
+            "table": "liquibase.structure.core.Table#7a3c111",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdFotografo"
+                }
+              },
+              {
+                "column": {
+                  "name": "Numero"
+                }
+              }
+            ]
+            ,
+            "name": "PK_Material",
+            "snapshotId": "7a3c162",
+            "table": "liquibase.structure.core.Table#7a3c158",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "IdFotografo"
+                }
+              },
+              {
+                "column": {
+                  "name": "IdEvento"
+                }
+              }
+            ]
+            ,
+            "name": "PK__Fotograf__1FAABD4C61DEE701",
+            "snapshotId": "7a3c144",
+            "table": "liquibase.structure.core.Table#7a3c143",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "NumeroLicencia"
+                }
+              }
+            ]
+            ,
+            "name": "UK_NumeroLicencia",
+            "snapshotId": "7a3c136",
+            "table": "liquibase.structure.core.Table#7a3c133",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "NumeroSerie"
+                }
+              }
+            ]
+            ,
+            "name": "UK_NumerosERIE",
+            "snapshotId": "7a3c161",
+            "table": "liquibase.structure.core.Table#7a3c158",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "Seudonimo"
+                }
+              }
+            ]
+            ,
+            "name": "UK_Seudonimo",
+            "snapshotId": "7a3c114",
+            "table": "liquibase.structure.core.Table#7a3c111",
+            "unique": true
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.PrimaryKey": [
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c151",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c149"
+            ]
+            ,
+            "name": "PK_Evento",
+            "snapshotId": "7a3c156",
+            "table": "liquibase.structure.core.Table#7a3c150"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c137",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c138"
+            ]
+            ,
+            "name": "PK_FotgrafoLicenica",
+            "snapshotId": "7a3c142",
+            "table": "liquibase.structure.core.Table#7a3c133"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c103",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c104"
+            ]
+            ,
+            "name": "PK_Fotografia",
+            "snapshotId": "7a3c125",
+            "table": "liquibase.structure.core.Table#7a3c102"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c127",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c128",
+              "liquibase.structure.core.Column#7a3c129"
+            ]
+            ,
+            "name": "PK_FotografoIdioma",
+            "snapshotId": "7a3c132",
+            "table": "liquibase.structure.core.Table#7a3c126"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c115",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c110"
+            ]
+            ,
+            "name": "PK_IdFotografo",
+            "snapshotId": "7a3c124",
+            "table": "liquibase.structure.core.Table#7a3c111"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c162",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c163",
+              "liquibase.structure.core.Column#7a3c164"
+            ]
+            ,
+            "name": "PK_Material",
+            "snapshotId": "7a3c169",
+            "table": "liquibase.structure.core.Table#7a3c158"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c144",
+            "columns": [
+              "liquibase.structure.core.Column#7a3c145",
+              "liquibase.structure.core.Column#7a3c146"
+            ]
+            ,
+            "name": "PK__Fotograf__1FAABD4C61DEE701",
+            "snapshotId": "7a3c157",
+            "table": "liquibase.structure.core.Table#7a3c143"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Schema": [
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#7a3c100",
+            "default": true,
+            "name": "dbo",
+            "snapshotId": "7a3c101"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Table": [
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c149",
+              "liquibase.structure.core.Column#7a3c152",
+              "liquibase.structure.core.Column#7a3c153",
+              "liquibase.structure.core.Column#7a3c154",
+              "liquibase.structure.core.Column#7a3c155"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c151"
+            ]
+            ,
+            "name": "Evento",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c156",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c150"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c104",
+              "liquibase.structure.core.Column#7a3c105",
+              "liquibase.structure.core.Column#7a3c106",
+              "liquibase.structure.core.Column#7a3c107",
+              "liquibase.structure.core.Column#7a3c108"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c103"
+            ]
+            ,
+            "name": "Fotografia",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7a3c109"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c125",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c102"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c110",
+              "liquibase.structure.core.Column#7a3c116",
+              "liquibase.structure.core.Column#7a3c117",
+              "liquibase.structure.core.Column#7a3c113",
+              "liquibase.structure.core.Column#7a3c118",
+              "liquibase.structure.core.Column#7a3c119",
+              "liquibase.structure.core.Column#7a3c120",
+              "liquibase.structure.core.Column#7a3c121",
+              "liquibase.structure.core.Column#7a3c122"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c115"
+            ]
+            ,
+            "name": "Fotografo",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7a3c123"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c124",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c111",
+            "uniqueConstraints": [
+              "liquibase.structure.core.UniqueConstraint#7a3c112"
+            ]
+            
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c145",
+              "liquibase.structure.core.Column#7a3c146"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c144"
+            ]
+            ,
+            "name": "FotografoEvento",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7a3c147",
+              "liquibase.structure.core.ForeignKey#7a3c148"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c157",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c143"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c128",
+              "liquibase.structure.core.Column#7a3c129",
+              "liquibase.structure.core.Column#7a3c130"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c127"
+            ]
+            ,
+            "name": "Idioma",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7a3c131"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c132",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c126"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c138",
+              "liquibase.structure.core.Column#7a3c135",
+              "liquibase.structure.core.Column#7a3c139",
+              "liquibase.structure.core.Column#7a3c140"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c137"
+            ]
+            ,
+            "name": "Licencia",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7a3c141"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c142",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c133",
+            "uniqueConstraints": [
+              "liquibase.structure.core.UniqueConstraint#7a3c134"
+            ]
+            
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#7a3c163",
+              "liquibase.structure.core.Column#7a3c164",
+              "liquibase.structure.core.Column#7a3c160",
+              "liquibase.structure.core.Column#7a3c165",
+              "liquibase.structure.core.Column#7a3c166",
+              "liquibase.structure.core.Column#7a3c167"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#7a3c162"
+            ]
+            ,
+            "name": "Material",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#7a3c168"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#7a3c169",
+            "schema": "liquibase.structure.core.Schema#7a3c101",
+            "snapshotId": "7a3c158",
+            "uniqueConstraints": [
+              "liquibase.structure.core.UniqueConstraint#7a3c159"
+            ]
+            
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.UniqueConstraint": [
+        {
+          "uniqueConstraint": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c136",
+            "clustered": false,
+            "columns": [
+              "liquibase.structure.core.Column#7a3c135"
+            ]
+            ,
+            "deferrable": false,
+            "disabled": false,
+            "initiallyDeferred": false,
+            "name": "UK_NumeroLicencia",
+            "snapshotId": "7a3c134",
+            "table": "liquibase.structure.core.Table#7a3c133",
+            "validate": true
+          }
+        },
+        {
+          "uniqueConstraint": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c161",
+            "clustered": false,
+            "columns": [
+              "liquibase.structure.core.Column#7a3c160"
+            ]
+            ,
+            "deferrable": false,
+            "disabled": false,
+            "initiallyDeferred": false,
+            "name": "UK_NumerosERIE",
+            "snapshotId": "7a3c159",
+            "table": "liquibase.structure.core.Table#7a3c158",
+            "validate": true
+          }
+        },
+        {
+          "uniqueConstraint": {
+            "backingIndex": "liquibase.structure.core.Index#7a3c114",
+            "clustered": false,
+            "columns": [
+              "liquibase.structure.core.Column#7a3c113"
+            ]
+            ,
+            "deferrable": false,
+            "disabled": false,
+            "initiallyDeferred": false,
+            "name": "UK_Seudonimo",
+            "snapshotId": "7a3c112",
+            "table": "liquibase.structure.core.Table#7a3c111",
+            "validate": true
+          }
+        }
+      ]
+      
+    },
+    "snapshotControl": {
+      "snapshotControl": {
+        "includedType": [
+          "liquibase.structure.core.Catalog",
+          "liquibase.structure.core.Column",
+          "liquibase.structure.core.ForeignKey",
+          "liquibase.structure.core.Index",
+          "liquibase.structure.core.PrimaryKey",
+          "liquibase.structure.core.Schema",
+          "liquibase.structure.core.Sequence",
+          "liquibase.structure.core.Table",
+          "liquibase.structure.core.UniqueConstraint",
+          "liquibase.structure.core.View"
+        ]
+        
+      }
+    }
+  }
+}

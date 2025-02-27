@@ -229,22 +229,20 @@ Se usa para mapear una relacion muchos a muchos entre dos tablas, en este caso s
 MAPEO DE MANY TO MANY CON DATOS ADICIONALES:
 definicion de la tabla intermedia
         <hibernate-mapping>
-    <class name="POJOS.EmpleadoProyecto" table="EMPREGADO_PROXECTO" schema="dbo" catalog="EMPRESAHB2_25">
-        <composite-id>
-            <key-many-to-one name="empleado" class="POJOS.Empregado">
-                <column name="NumEmpleado" not-null="true"/>
-            </key-many-to-one>
-            <key-many-to-one name="proyecto" class="POJOS.Proyecto">
-                <column name="NumProxecto" not-null="true"/>
-            </key-many-to-one>
+        <class name="POJOS.EmpregadoProxecto" table="EMPREGADO_PROXECTO" schema="dbo" catalog="EMPRESAHB2_25">
+        <composite-id name="id" class="POJOS.EmpregadoProxectoId">
+            <key-property name="nssempregado" type="string">
+                <column name="NSSEmpregado" length="15"/>
+            </key-property>
+            <key-property name="numProxecto" type="int">
+                <column name="NumProxecto"/>
+            </key-property>
         </composite-id>
-        <property name="fechaInicio" type="date">
-            <column name="FechaInicio"/>
+        <property name="horas" type="java.lang.Integer">
+            <column name="Horas"/>
         </property>
-        <property name="fechaFin" type="date">
-            <column name="FechaFin"/>
-        </property>
-         <many-to-one name="empregado" class="POJOS.Empregado">
+
+        <many-to-one name="empregado" class="POJOS.Empregado">
             <column name="nssempregado" length="15" not-null="true"/>
         </many-to-one>
 
@@ -307,6 +305,7 @@ MAPEO HERENCIA CON TABLA POR CLASE:
 explicacion:
 Se usa para mapear una tabla con una jerarquia de clases, en este caso se mapea la tabla empleado con una clase
 
-%-15s bbbbbbb
+%-15s
+
 
 
